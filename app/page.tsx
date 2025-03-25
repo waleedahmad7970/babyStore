@@ -13,7 +13,6 @@ export default function Home() {
           height={38}
           priority
         />
-        <Link href="/signup">signup </Link>
       </main>
     </div>
   );
