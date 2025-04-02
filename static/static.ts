@@ -1,0 +1,675 @@
+import {
+  lunch_box,
+  school_bag,
+  stationary,
+  water_bottle,
+} from "@/public/assets/sections";
+import { img1, img2, img3 } from "../public/assets/blogs";
+import {
+  user,
+  truck,
+  heart,
+  packet,
+  basket,
+  headset,
+  full_star,
+  half_star,
+  cash_back,
+  truck2,
+  headset2,
+  PayPal,
+  stripe,
+  GooglePay,
+  ApplePay,
+  Mastercard,
+  employee,
+  share,
+  left_right_arrow,
+  fav,
+  Money,
+  pools,
+  inflatables,
+  beach_toys,
+  swimwear,
+  pool_shoes,
+  sun_protector,
+} from "../public/assets/icons";
+import {
+  babychairs,
+  breast,
+  cribs,
+  detail_image,
+  detail_image_1,
+  detail_image_2,
+  detail_image_3,
+  detail_image_4,
+  diaper,
+  fashion,
+  feeding,
+  gear,
+  mommy,
+  new_arrivals,
+  nursery,
+  onis,
+  p1,
+  p2,
+  p3,
+  p4,
+  p5,
+  party,
+  rockers,
+  sale,
+  school,
+  seats,
+  skincare,
+  stollers,
+  toy,
+  uutdoor,
+} from "../public/assets/products";
+import {
+  aed100,
+  aed200,
+  aed50,
+  ages,
+  gear2,
+  booster,
+  iso,
+  reversible,
+  toy_banner,
+  toys,
+  feeding2,
+  outdoor,
+  school_bag_2,
+  lunch_box_2,
+  water_botle_2,
+  stationary_2,
+  diapers,
+  wipes,
+  formula,
+  skin_care,
+  boys_banners,
+  girls_banner,
+  activity,
+  kitchen,
+  rc_toys,
+  blocks,
+  doll_house,
+  stem_toys,
+} from "@/public/assets/banner";
+
+// nav
+export const userMenu = [user, basket, heart];
+// categoryData.js
+export const categories = [
+  {
+    name: "gear",
+    image: gear,
+  },
+  {
+    name: "Nursery",
+    image: nursery,
+  },
+  {
+    name: "Feeding",
+    image: feeding,
+  },
+  {
+    name: "Diapering",
+    image: diaper,
+  },
+  {
+    name: "Toys",
+    image: toy,
+  },
+  {
+    name: "Skincare",
+    image: skincare,
+  },
+  {
+    name: "Outdoor",
+    image: uutdoor,
+  },
+  {
+    name: "School",
+    image: school,
+  },
+  {
+    name: "Mommy",
+    image: mommy,
+  },
+  {
+    name: "Party",
+    image: party,
+  },
+  {
+    name: "Fashion",
+    image: fashion,
+  },
+  {
+    name: "SALE",
+    image: sale,
+  },
+];
+// sections
+
+export const schoolSection = [school_bag, water_bottle, stationary, lunch_box];
+export const travelSection = [reversible, booster, iso, ages];
+export const clearanceSection = [toys, gear2, feeding2, outdoor];
+export const babySection = [diapers, wipes, formula, skin_care];
+export const summerSection = [
+  pools,
+  inflatables,
+  beach_toys,
+  swimwear,
+  pool_shoes,
+  sun_protector,
+];
+export const firstDaySection = [
+  school_bag_2,
+  lunch_box_2,
+  water_botle_2,
+  stationary_2,
+];
+
+export const dualSectionBannersBoyGirls = [boys_banners, girls_banner];
+export const dualCateSection = [
+  activity,
+  kitchen,
+  rc_toys,
+  blocks,
+  doll_house,
+  stem_toys,
+];
+
+export const categoriesL2 = [
+  {
+    name: "New Arrivals",
+    image: new_arrivals,
+  },
+  {
+    name: "Strollers",
+    image: stollers,
+  },
+  {
+    name: "Car Seats",
+    image: seats,
+  },
+  {
+    name: "Onesies",
+    image: onis,
+  },
+  {
+    name: "Breast Pumps",
+    image: breast,
+  },
+  {
+    name: "Cribs",
+    image: cribs,
+  },
+  {
+    name: "Rockers",
+    image: rockers,
+  },
+  {
+    name: "High Chairs",
+    image: babychairs,
+  },
+];
+// paths
+export const breadcrumbPaths = [
+  { name: "Home", link: "/" },
+  { name: "Products", link: "/products" },
+  { name: "Evenflo EveryStage LX All-In-One Car Seat", link: "#" },
+];
+// product data
+export const productData = {
+  id: 1,
+  name: "Ubeybi Shopping Trolley & High Chair Hygienic Cover - Black",
+  brand: "Kidkraft",
+  price: 165,
+  originalPrice: 199,
+  discount: "25% OFF",
+  coupon: "NEW15",
+  ratings: [
+    {
+      id: 1,
+      rating: 5,
+      count: 200,
+      icon: full_star,
+    },
+    {
+      id: 2,
+      rating: 4,
+      count: 150,
+      icon: full_star,
+    },
+    {
+      id: 3,
+      rating: 3,
+      count: 100,
+      icon: full_star,
+    },
+    {
+      id: 4,
+      rating: 2,
+      count: 50,
+      icon: full_star,
+    },
+    {
+      id: 5,
+      rating: 1,
+      count: 20,
+      icon: half_star,
+    },
+  ],
+  deliveryService: [
+    {
+      id: 1,
+      icon: truck,
+      title: "Free Shipping",
+    },
+    {
+      id: 2,
+      icon: cash_back,
+      title: "2x Cashback",
+    },
+    {
+      id: 3,
+      icon: headset,
+      title: "24/7 Support",
+    },
+    {
+      id: 4,
+      icon: packet,
+      title: "Cash Delivery",
+    },
+  ],
+  shareProduct: [share, left_right_arrow, fav],
+  reviews: 80,
+  image: detail_image,
+  sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
+  images: [detail_image_1, detail_image_2, detail_image_3, detail_image_4],
+  highlights: [
+    "Recommended Age: 0 - 3 years",
+    "Returns: Eligible for refund within 7 days",
+    "Type: Car Seat",
+    "Color: Black",
+    "Dimensions: 80cm x 50cm x 5cm",
+    "Weight: 9.3kg",
+    "SKU: 103297",
+  ],
+  features: [
+    "Side impact protection for the head",
+    "Anatomical head hugger with back support",
+    "8 points belt",
+    "Padded shoulder straps and crotch strap",
+    "Practical height adjustment mechanism",
+    "Side display for correct use",
+    "Headrest adjustable in 7 heights",
+  ],
+  specifications:
+    "Scudo is the innovative car seat by Cam of the Group 0/1/2/3 that follows the growth of your child from birth...",
+};
+export const productsLIST1 = [
+  {
+    id: 1,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p1,
+    price: 10529,
+    oldPrice: 10625,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 2,
+    title: "Aptamil - Advance 1 Next Generation Infant",
+    image: p2,
+    price: 22339,
+    oldPrice: 5233,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 3,
+    title: "Aptamil - Advance 1 Next Generation Infant",
+    image: p3,
+    price: 63234,
+    oldPrice: 7233,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 4,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p4,
+    price: 4735,
+    oldPrice: 6030,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 2,
+    title: "Aptamil - Advance 1 Next Generation Infant",
+    image: p2,
+    price: 229,
+    oldPrice: 523,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 3,
+    title: "Aptamil - Advance 1 Next Generation Infant",
+    image: p3,
+    price: 3333,
+    oldPrice: 7323,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 4,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p4,
+    price: 47325,
+    oldPrice: 6002,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 2,
+    title: "Aptamil - Advance 1 Next Generation Infant",
+    image: p2,
+    price: 22329,
+    oldPrice: 3223,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 3,
+    title: "Ching Ching - Smart Coupe - Green ext Generation Infa",
+    image: p3,
+    price: 63324,
+    oldPrice: 723,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 4,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p4,
+    price: 47325,
+    oldPrice: 60032,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 5,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p5,
+    price: 475,
+    oldPrice: 600,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 6,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p1,
+    price: 43275,
+    oldPrice: 60320,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+  {
+    id: 7,
+    title: "Lindale Outdoor Wooden Swing & Slide Playset",
+    image: p4,
+    price: 47325,
+    oldPrice: 6020,
+    discount: "20% OFF",
+    rating: 3.9,
+  },
+];
+// product card data
+export const cardsData = [
+  {
+    id: 1,
+    bgColor: "bg-[#DAF0DC]",
+    rightContent: [
+      { text: "CALL US TO RECEIVE YOUR PERSONALIZED DISCOUNT CODES" },
+    ],
+  },
+  {
+    id: 1,
+    bgColor: "bg-pink-100",
+    leftContent: { text: "2X", subtext: "Cashback", bold: true },
+    rightContent: [
+      { text: "Earn AED 5.50", className: "text-green-600 font-semibold" },
+      { text: "Earn 2 Points for Every Dirham Spent" },
+    ],
+  },
+  {
+    id: 2,
+    bgColor: "bg-gray-100",
+    leftContent: { image: "/kwik.png" },
+    rightContent: [
+      {
+        text: "Deliver to Abu Dhabi Media Co, Abu Dhabi",
+        className: "text-green-600",
+      },
+      { text: "by Tomorrow, January 27", className: "font-bold" },
+      { text: "When you order before 12 PM." },
+    ],
+  },
+  {
+    id: 3,
+    bgColor: "bg-orange-100",
+    leftContent: {
+      text: "Price Match",
+      bgColor: "bg-orange-500",
+      textColor: "text-white",
+    },
+    rightContent: [
+      { text: "Find a better price? We'll beat it by", className: "" },
+      { text: "10%", className: "font-bold" },
+      { text: "CONNECT ON", icon: "/whatsapp.png" },
+    ],
+  },
+  {
+    id: 4,
+    bgColor: "bg-green-100",
+    leftContent: { image: "/tabby.png" },
+    rightContent: [{ text: "Split in 4 payments. No interest. No late fees." }],
+  },
+];
+// rating
+export const blogs = [
+  {
+    id: 1,
+    category: "High Chair",
+    date: "Jun 21, 2021",
+    read_time: "5 min read",
+    title: "What to look in a baby high chair?",
+    description:
+      "As a parent, finding the right babysitting chair to ensure your child will be safe and comfortable while caring for another individual can be daunting...",
+    image: img1,
+  },
+  {
+    id: 2,
+    category: "Bassinets",
+    date: "Jun 21, 2021",
+    read_time: "8 min read",
+    title: "How to find the best baby bassinets?",
+    description:
+      "As a parent, you want to ensure your baby is safe and comfortable. One of the most important things you need to buy is a good bassinet, as you...",
+    image: img2,
+  },
+  {
+    id: 3,
+    category: "Baby Swings",
+    date: "Jun 21, 2021",
+    read_time: "4 min read",
+    title: "How to choose the best baby swing?",
+    description:
+      "A baby swing is a magical device that will rock your little one to provide comfort like never before. With its soft and cozy seat, gentle rocking m...",
+    image: img3,
+  },
+  {
+    id: 4,
+    category: "High Chair",
+    date: "Jun 21, 2021",
+    read_time: "9 min read",
+    title: "Two little ones -",
+    description:
+      "Shopping for a twin stroller comes with double the choices, sizes, and options, however...",
+    image: img1,
+  },
+];
+export const reviews = [
+  {
+    id: 1,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 2,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 3,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 4,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+];
+export const storeInfoServices = [
+  {
+    title: "Baby Store – New Mom and Baby Products online in UAE",
+    describtion:
+      "No more hopping from one baby shop in Dubai to other in search of best quality products for your little ones when Baby store is there for you. While shopping with us, rest assured to get the widest range of quality baby care products in an array of niches. We know how special is your little bundle of joy and to make sure that your loved one gets the products which are tested and reviewed. Though each and every moment with kids is special, but from pregnancy to the preschool, you have to be little more cautious and careful when it comes to essentials. Considering this mind, we have all that you need from tummy to toddler phase. No matter whether you are looking for feeding essentials, clothes, diapers, toys, skincare products, gear & safety products, pregnancy essentials, school essentials and even gifts, we have everything at just a click of a button.",
+  },
+  {
+    title: "Online Shopping with Babystore.ae",
+    describtion:
+      "There is no dearth of online shopping sites when it comes to baby products. Selecting and choosing the right online store for kids shopping become even more important as it is related to your little ones. We at babystore.ae works on one simple philosophy- If we would use a product for our own baby then we stock it if we wouldn’t then we don’t! So while browsing hundreds of products on the site, you can leave all your worries at bay.  When you shop online with us, sit back and relax on your couch, search for the desired category or product, make an online payment and you are done. The product will be right there at your doorstep. So no more waiting for your spouse’s holiday or relying on your nanny to shop for your baby’s essential when it can be done right from the comfort zone of your home.",
+  },
+  {
+    title: "Online Shopping for Kids made easy",
+    describtion:
+      "With a huge collection of products available online, selecting the right one is definitely a difficult task. To help you with the same, we have categorized products in simple categories like Feeding, Clothes, Diapers, Toys, and so on. So get your newborn baby shopping checklist ready and keep ticking the products as you add them to your cart at the site. It’s simple and yes fun of course!!! No matter whether you are pregnant for the first time or getting a sibling for your little one, you will get everything under one roof. And yes, we also have a wide range of organic products under our Go Green section.",
+  },
+  {
+    title: "Best Offers And Deals When You Baby Shop Online",
+    describtion: `In addition to comfort, huge collection of products and easy process, we at Babystore.ae want to make your shopping experience even more amazing and thus have special deals, offers, and sale from time to time. The offers are not only limited to our online baby shopping UAE but to salons, play areas, restaurants, and other baby shop Dubai.
+    
+    Birthdays are really special and we try to make them a little more special for one lucky kid every month where we gift them a voucher worth AED 200. It's just a token of love and wishes from the entire team at Babystore.ae.
+
+    And yes, you can even earn points when you shop, refer, and review us.
+    
+    Babystore.ae as an online baby shopping UAE site ensures that you have funfilled, comfortable, and an enjoyable shopping experience.`,
+  },
+];
+export const navigationsLinks = [
+  {
+    title: "Categories",
+    links: [
+      { name: "Feeding", url: "#" },
+      { name: "Skincare", url: "#" },
+      { name: "Nursery", url: "#" },
+      { name: "Clothes", url: "#" },
+      { name: "Diapers", url: "#" },
+      { name: "Toys", url: "#" },
+      { name: "gear & Safety", url: "#" },
+      { name: "School", url: "#" },
+      { name: "Mommy", url: "#" },
+      { name: "Outdoor", url: "#" },
+    ],
+  },
+  {
+    title: "Contact",
+    details: {
+      address:
+        "Babystore. c/o Edge Technical Solutions, 1706, Silver Tower, Marasi Dr, Business Bay, Dubai, United Arab Emirates",
+      phone: "+212 929 9953",
+      whatsapp: "+971 55 799 4258",
+      emails: [
+        { type: "info", email: "info@babystore.ae" },
+        { type: "sales", email: "sales@babystore.ae" },
+      ],
+    },
+  },
+  {
+    title: "Company Info",
+    links: [
+      { name: "About Us", url: "#" },
+      { name: "Contact Us", url: "#" },
+      { name: "Our Brands", url: "#" },
+      { name: "Media & Press", url: "#" },
+      { name: "Blogs", url: "#" },
+    ],
+  },
+  {
+    title: "Shipping & Policies",
+    links: [
+      { name: "Terms & Conditions", url: "#" },
+      { name: "Privacy Policy", url: "#" },
+      { name: "Shipping Policy", url: "#" },
+      { name: "Cancellation & Returns", url: "#" },
+    ],
+  },
+];
+export const featuresData = [
+  { id: 1, icon: truck2, text: "Free Shipping" },
+  { id: 2, icon: Money, text: "2x Cashback" },
+  { id: 3, icon: headset2, text: "24/7 Support" },
+];
+
+// banners sections
+
+export const toy_section = {
+  banner: toy_banner,
+  underPrice: [aed50, aed100, aed200],
+};
+
+// footer data
+export const aboutUsData = {
+  title: "babystore",
+  tagline: "From Tummy to Toddler",
+  description: `Babystore.ae is one of the biggest online store with mother and babv products. Having a tagline "From tummv to toddler", we carrv a large number of brands with various categories. Our range of International brands is of highest aualitv and best suited for babv and mommv. We provide free deliver all over UAE which includes Dubai. Abu Dhabi. Shariah. Aiman. RAK. Fuiairah and UAO. Our range includes evervthing a mom needs herself and her little one. from prenatal care to the toddler stage and bevond. We are the best Online Shonning Store. and we providing 50k+ Products.`,
+};
+export const paymentMethods = [
+  { name: "PayPal", img: PayPal },
+  { name: "Stripe", img: stripe },
+  { name: "Google Pay", img: GooglePay },
+  { name: "Apple Pay", img: ApplePay },
+  { name: "Mastercard", img: Mastercard },
+];
+export const footerBottomLinks = [
+  { name: "Promotion", url: "/promotion" },
+  { name: "Contact", url: "/contact" },
+  { name: "Frequently Asked Questions", url: "/faq" },
+];

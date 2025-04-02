@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@layer components {
+  .cus-container {
+    @apply mx-auto max-w-[1360px];
+  }
+  /* fonts */
+
+  /* heading fonst */
+  .pri_Heading {
+    @apply text-[24px] leading-[100%] font-semibold;
+  }
+
+  /* text colors */
+  .text-primary {
+    @apply text-[#E7448C];
+  }
+  .text-secondary {
+    @apply text-gray-800;
+  }
+  /* bg colors */
+  .bg-primary {
+    @apply bg-[#FFF0F5];
+  }
+}
+
+/* scroll bar */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* slider css  */
+
+/* product slider  */
+.product-slider .slick-slide {
+  width: 240px;
+  margin: 0px 5px;
+}
+.review-slider .slick-slide {
+  max-width: 368px;
+  margin: 0px 5px;
+}
+.blog-slider .slick-list .slick-track .slick-slide {
+  width: 407px;
+  margin: 0px 5px;
+}
+
+@media (max-width: 1280px) {
+  .cus-container {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-slider .slick-slide {
+    width: 277px !important;
+  }
+  .review-slider .slick-slide {
+    width: 260px;
+    margin: 0px 5px;
+  }
+}
