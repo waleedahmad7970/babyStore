@@ -55,6 +55,7 @@ export { default as doll_house } from "../banner/doll_house.svg";
 export { default as boys_banners } from "../banner/boys_banners.svg";
 export { default as girls_banner } from "../banner/girls_banner.svg";
 // striplighter
+export { default as bars } from "../banner/bars.png";
 export { default as StripesLight } from "../banner/StripesLight.svg";
 
 // symmer

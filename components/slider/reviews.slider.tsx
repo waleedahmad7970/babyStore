@@ -57,7 +57,7 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       <SliderHeading onPrev={previous} onNext={next} />
 
       <div className="relative mx-auto min-h-[310px] max-w-[1360px] md:min-h-[400px]">
-        <div className="absolute left-0 w-[150%]">
+        <div className="absolute left-0 w-[100vw]">
           <Slider ref={sliderRef} {...settings}>
             {reviews.map((review) => (
               <ReviewCard key={review.id} review={review} />

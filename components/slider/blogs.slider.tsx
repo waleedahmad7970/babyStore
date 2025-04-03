@@ -68,7 +68,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
       <SliderHeading onPrev={previous} onNext={next} />
 
       <div className="relative mx-auto min-h-[244px] max-w-[1360px] md:min-h-[400px]">
-        <div className="absolute left-0 w-[150%]">
+        <div className="absolute left-0 w-[100vw]">
           <Slider ref={sliderRef} {...settings}>
             {blogs.map((blog) => (
               <BlogCard

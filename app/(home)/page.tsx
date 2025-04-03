@@ -1,22 +1,15 @@
 import Banner from "@/components/banners/banner";
-import BlogSlider from "@/components/slider/blogs.slider";
-import ReviewSlider from "@/components/slider/reviews.slider";
 import CategoryList from "@/components/category/category-list";
-import DeliveryService from "@/components/features/delivery-services";
-import StoreInfoSection from "@/components/features/store-info-section";
-import SubscribeSection from "@/components/features/subscribtion-section";
 import CategoryListTwo from "@/components/category/cards/category-list-two";
 import CategorySection from "@/components/category/category-sections/category-section";
 import CategorySectionTwo from "@/components/category/category-sections/category-section-two";
 
 import {
   babySection,
-  blogs,
   clearanceSection,
   dualCateSection,
   dualSectionBannersBoyGirls,
   firstDaySection,
-  reviews,
   schoolSection,
   summerSection,
   travelSection,
@@ -38,6 +31,7 @@ import {
 } from "@/public/assets/banner";
 import { school_banner, school_banner_mob } from "@/public/assets/sections";
 import { summer_banner } from "@/public/assets/icons";
+import DiscountStripsBanner from "@/components/banners/discount-strips";
 
 export default function Home() {
   return (
@@ -45,6 +39,7 @@ export default function Home() {
       <CategoryList />
       {/* need edit mode access */}
       {/* <MonthlyDiscount />  */}
+      <DiscountStripsBanner />
       <Banner
         Img={happyTummyBanner}
         className={"hidden h-[466px] min-h-[466px] w-full sm:block"}
@@ -53,6 +48,7 @@ export default function Home() {
         Img={mobile_banner_happy_tummmy}
         className={"block min-h-[375px] w-full sm:hidden"}
       />
+
       {/* cate twp */}
       <CategoryListTwo />
       {/* section school */}
@@ -62,7 +58,6 @@ export default function Home() {
         categoryImages={schoolSection}
       />
       {/* section traverl */}
-
       <CategorySection
         bannerImage={travel_banner}
         bannerImageMob={travel_banner_mob}
@@ -83,12 +78,12 @@ export default function Home() {
             "hidden h-[466px] min-h-[466px] w-full object-cover sm:block"
           }
         />
-
         <Banner
           Img={mummy_banner_mob}
           className={"block min-h-[236px] w-full object-cover sm:hidden"}
         />
       </div>
+
       <CategorySection
         bannerImageMob={clearance_banner_mob}
         bannerImage={clearance_banner}
@@ -111,11 +106,6 @@ export default function Home() {
         bannerImages={dualSectionBannersBoyGirls}
         ImgClass="w-[172px] h-[201px] md:w-full md:h-auto lg:w-[215px] lg:h-[252px] object-cover"
       />
-      <ReviewSlider reviews={reviews} />
-      <BlogSlider blogs={blogs} />
-      <StoreInfoSection />
-      <SubscribeSection />
-      <DeliveryService />
     </div>
   );
 }

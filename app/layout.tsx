@@ -22,13 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={`${inter.className}`}>
-        <Providers>
-          <FreeShipping />
-          <Navbar />
-          {children}
-          <Footer />
-        </Providers>
+      <body suppressHydrationWarning className={inter.className}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
