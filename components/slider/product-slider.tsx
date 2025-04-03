@@ -29,7 +29,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
-    autoplay: false,
+    autoplay: true,
     variableWidth: true,
     autoplaySpeed: 2000,
     responsive: [
