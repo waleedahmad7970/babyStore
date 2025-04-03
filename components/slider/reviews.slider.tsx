@@ -35,6 +35,7 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     variableWidth: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
       {
