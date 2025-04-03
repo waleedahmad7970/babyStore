@@ -62,7 +62,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   return (
     <div className="relative w-full overflow-hidden px-[10px]">
       {/* <SliderHeading onPrev={previous} onNext={next} /> */}
-      <div className="relative mx-auto min-h-[400px] max-w-[1360px]">
+      <div className="relative mx-auto min-h-[410px] max-w-[1360px]">
         <div className="absolute left-0 w-[100vw]">
           <Slider ref={sliderRef} {...settings}>
             {products.map((product) => (
