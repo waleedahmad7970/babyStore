@@ -49,6 +49,11 @@
   width: 407px;
   margin: 0px 5px;
 }
+/* In global.css */
+.swiper-wrapper {
+  scroll-behavior: smooth;
+  transition-timing-function: ease-out !important;
+}
 
 /* stripes csss */
 .striped-bg {
