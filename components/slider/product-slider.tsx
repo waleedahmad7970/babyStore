@@ -21,39 +21,86 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
 
   const next = () => sliderRef.current?.slickNext();
   const previous = () => sliderRef.current?.slickPrev();
-
+  // // old
+  // const settings = {
+  //   className: "product-slider",
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 5,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  //   autoplay: false,
+  //   variableWidth: true,
+  //   autoplaySpeed: 2000,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 4,
+  //         slidesToScroll: 3,
+  //         infinite: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //         initialSlide: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+  // updated
   const settings = {
     className: "product-slider",
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToShow: 10,
+    slidesToScroll: 10,
     initialSlide: 0,
-    autoplay: true,
+    autoplay: false,
     variableWidth: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 0,
+    cssEase: "ease-out",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
+          slidesToShow: 10,
+          slidesToScroll: 10,
+          initialSlide: 0,
+          cssEase: "ease-out",
+          autoplaySpeed: 0,
           infinite: true,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 10,
+          slidesToScroll: 10,
+          initialSlide: 0,
+          cssEase: "ease-out",
+          infinite: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 10,
+          slidesToScroll: 10,
+          initialSlide: 0,
+          cssEase: "ease-out",
+          infinite: true,
+          speed: 800,
         },
       },
     ],
@@ -62,7 +109,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   return (
     <div className="relative w-full overflow-hidden px-[10px]">
       {/* <SliderHeading onPrev={previous} onNext={next} /> */}
-      <div className="relative mx-auto min-h-[410px] max-w-[1360px]">
+      <div className="relative mx-auto min-h-[400px] max-w-[1360px]">
         <div className="absolute left-0 w-[100vw]">
           <Slider ref={sliderRef} {...settings}>
             {products.map((product) => (
