@@ -32,7 +32,7 @@ export default function ProductSwiperSlider({ products }: ProductSliderProps) {
             //   momentumRatio: 0.5,
             //   momentumVelocityRatio: 0.5,
             // }}
-            speed={100}
+            speed={500}
             freeMode={true}
             spaceBetween={20}
             modules={[FreeMode]}
