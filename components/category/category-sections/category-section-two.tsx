@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { productsLIST1, toy_section } from "@/static/static";
-import ProductSlider from "@/components/slider/product-slider";
 import UnderPricerBanner from "@/components/banners/under-price";
+import ProductSwiperSlider from "@/components/slider/product.swiper";
 
 interface CategorSectiondProps {
   ImgClass?: string;
@@ -60,7 +60,8 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         ))}
       </div>
 
-      <ProductSlider products={productsLIST1} />
+      {/* <ProductSlider products={productsLIST1} /> */}
+      <ProductSwiperSlider products={productsLIST1} />
     </div>
   );
 };

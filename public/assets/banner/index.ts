@@ -1,7 +1,21 @@
 export { default as happyTummyBanner } from "../banner/happyTummy.svg";
 export { default as mobile_banner_happy_tummmy } from "../banner/mobile_banner_happy_tummmy.svg";
 
-// toy station
+export { default as ban_desk_1 } from "../banner/ban_desk_1.jpg";
+export { default as ban_desk_2 } from "../banner/ban_desk_2.jpg";
+export { default as ban_desk_3 } from "../banner/ban_desk_3.jpg";
+export { default as ban_desk_4 } from "../banner/ban_desk_4.jpg";
+export { default as ban_desk_5 } from "../banner/ban_desk_5.jpg";
+export { default as ban_desk_6 } from "../banner/ban_desk_6.jpg";
+
+export { default as ban_mob_1 } from "../banner/ban_mob_1.jpg";
+export { default as ban_mob_2 } from "../banner/ban_mob_2.jpg";
+export { default as ban_mob_3 } from "../banner/ban_mob_3.jpg";
+export { default as ban_mob_4 } from "../banner/ban_mob_4.jpg";
+export { default as ban_mob_5 } from "../banner/ban_mob_5.jpg";
+export { default as ban_mob_6 } from "../banner/ban_mob_6.jpg";
+
+// toy statio5
 export { default as aed50 } from "../banner/aed50.svg";
 export { default as aed100 } from "../banner/aed100.svg";
 export { default as aed200 } from "../banner/aed200.svg";

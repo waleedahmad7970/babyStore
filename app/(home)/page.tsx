@@ -6,6 +6,7 @@ import CategorySectionTwo from "@/components/category/category-sections/category
 
 import {
   babySection,
+  bannerData,
   clearanceSection,
   dualCateSection,
   dualSectionBannersBoyGirls,
@@ -21,8 +22,6 @@ import {
   diapers_banner_mob,
   first_day_banner,
   firstday_banner_mob,
-  happyTummyBanner,
-  mobile_banner_happy_tummmy,
   mummy_banner,
   mummy_banner_mob,
   summer_banner_mob,
@@ -32,6 +31,7 @@ import {
 import { school_banner, school_banner_mob } from "@/public/assets/sections";
 import { summer_banner } from "@/public/assets/icons";
 import DiscountStripsBanner from "@/components/banners/discount-strips";
+import BannerSlider from "@/components/slider/banner.slider";
 
 export default function Home() {
   return (
@@ -40,14 +40,7 @@ export default function Home() {
       {/* need edit mode access */}
       {/* <MonthlyDiscount />  */}
       <DiscountStripsBanner />
-      <Banner
-        Img={happyTummyBanner}
-        className={"hidden h-[466px] min-h-[466px] w-full sm:block"}
-      />
-      <Banner
-        Img={mobile_banner_happy_tummmy}
-        className={"block min-h-[375px] w-full sm:hidden"}
-      />
+      <BannerSlider slides={bannerData} />
 
       {/* cate twp */}
       <CategoryListTwo />

@@ -1,8 +1,8 @@
-import Image, { StaticImageData } from "next/image";
 import React from "react";
+import Image, { StaticImageData } from "next/image";
 import { productsLIST1 } from "@/static/static";
-import ProductSlider from "@/components/slider/product-slider";
 import { happyTummyBanner } from "@/public/assets/banner";
+import ProductSwiperSlider from "@/components/slider/product.swiper";
 
 interface CategorSectiondProps {
   ImgClass?: string;
@@ -41,7 +41,8 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
           <Image key={index} className={ImgClass} src={item} alt={"product"} />
         ))}
       </div>
-      <ProductSlider products={productsLIST1} />
+      {/* <ProductSlider products={productsLIST1} /> */}
+      <ProductSwiperSlider products={productsLIST1} />
     </div>
   );
 };
