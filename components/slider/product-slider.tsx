@@ -102,6 +102,11 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
           cssEase: "ease-out",
           infinite: true,
           speed: 800,
+          // extra 2nd push
+          swipe: true,
+          draggable: true,
+          touchThreshold: 5,
+          swipeToSlide: true,
         },
       },
     ],
