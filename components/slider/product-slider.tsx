@@ -22,6 +22,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   const next = () => sliderRef.current?.slickNext();
   const previous = () => sliderRef.current?.slickPrev();
   // // old
+  //
   // const settings = {
   //   className: "product-slider",
   //   infinite: true,
