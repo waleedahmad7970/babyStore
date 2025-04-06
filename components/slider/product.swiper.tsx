@@ -1,9 +1,8 @@
 "use client";
-import { FreeMode } from "swiper/modules";
+import { useRef } from "react";
 import { StaticImageData } from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import ProductCard from "../product/cards/product-card";
+import SliderHeading from "../header-titles/slider-header";
 interface Product {
   id: number;
   title: string;
@@ -18,32 +17,33 @@ interface ProductSliderProps {
 }
 
 export default function ProductSwiperSlider({ products }: ProductSliderProps) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const scrollBy = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+
+    const scrollAmount = 260;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="relative w-full overflow-hidden px-[10px]">
-      {/* <SliderHeading onPrev={previous} onNext={next} /> */}
-      <div className="relative mx-auto min-h-[410px] max-w-[1360px]">
-        <div className="relative left-0 w-[100vw]">
-          <Swiper
-            slidesPerView="auto"
-            // freeMode={{
-            //   enabled: true,
-            //   momentum: true,
-            //   momentumBounce: true,
-            //   momentumRatio: 0.5,
-            //   momentumVelocityRatio: 0.5,
-            // }}
-            speed={500}
-            freeMode={true}
-            spaceBetween={20}
-            modules={[FreeMode]}
-            className="product-swiper"
-          >
+    <div className="relative mx-auto min-h-[410px] max-w-[1360px]">
+      <SliderHeading
+        onPrev={() => scrollBy("left")}
+        onNext={() => scrollBy("right")}
+      />
+      <div className="relative left-0 w-[100vw] px-[10px]">
+        <div
+          ref={scrollRef}
+          className="no-scrollbar mx-auto flex w-full justify-between gap-3 overflow-x-auto"
+        >
+          <div className="flex max-w-[240px] justify-start gap-5">
             {products?.map((product) => (
-              <SwiperSlide key={product.id} className="!w-[240px]">
-                <ProductCard key={product.id} product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              <ProductCard key={product.id} product={product} />
+            ))}{" "}
+          </div>
         </div>
       </div>
     </div>

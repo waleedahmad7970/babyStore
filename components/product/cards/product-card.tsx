@@ -31,8 +31,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }}
       className="max-w-[240px] rounded-[8px] border-[1.5px]"
     >
-      <div className="w-full max-w-[240px] overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white">
-        <div className="relative">
+      <div className="w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white">
+        <div className="relative w-[240px]">
           <Image
             src={product.image}
             alt={"sw"}
