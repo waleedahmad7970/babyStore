@@ -14,7 +14,7 @@ export default function StoreInfoSection() {
             <h3 className="text-[20px] leading-[24.5px] font-semibold text-[#1A1718]">
               {section.title}
             </h3>
-            <p className="text-[20px] leading-[22px] font-light whitespace-pre-line text-[#1A1718]">
+            <p className="font-Inter text-[20px] leading-[22px] font-light whitespace-pre-line text-[#1A1718]">
               {section.describtion}
             </p>
           </div>

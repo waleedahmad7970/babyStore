@@ -6,6 +6,8 @@ import { StaticImageData } from "next/image";
 
 import SliderHeading from "../header-titles/slider-header";
 import BlogCard from "../cards/blog-card";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { useScrollSlider } from "@/hooks/useScrollSlider";
 
 interface Blog {
   id: number;
@@ -65,25 +67,66 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
     ],
   };
 
-  return (
-    <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-0 md:py-10">
-      <SliderHeading onPrev={previous} onNext={next} />
+  const { width } = useWindowDimensions();
+  const scrollAmount = width < 768 ? 277 : 407;
+  const { scrollRef, scrollBy } = useScrollSlider(scrollAmount);
+  // const { scrollRef, itemRefs, scrollToNext, scrollToPrev } = useScrollSlider();
 
-      <div className="relative mx-auto min-h-[244px] max-w-[1360px] md:min-h-[400px]">
-        <div className="absolute left-0 w-[100vw]">
-          <Slider ref={sliderRef} {...settings}>
-            {blogs.map((blog) => (
-              <BlogCard
-                key={blog.id}
-                image={blog.image}
-                category={blog.category}
-                date={blog.date}
-                readTime={blog.read_time}
-                title={blog.title}
-                description={blog.description}
-              />
-            ))}
-          </Slider>
+  let left = (width - 1360) / 2 - 10;
+  if (left < 0) left = 0;
+  return (
+    // <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-0 md:py-10">
+    //   <SliderHeading onPrev={previous} onNext={next} />
+
+    //   <div className="relative mx-auto min-h-[244px] max-w-[1360px] md:min-h-[400px]">
+    //     <div className="absolute left-0 w-[100vw]">
+    //       <Slider ref={sliderRef} {...settings}>
+    //         {blogs.map((blog) => (
+    //           <BlogCard
+    //             key={blog.id}
+    //             image={blog.image}
+    //             category={blog.category}
+    //             date={blog.date}
+    //             readTime={blog.read_time}
+    //             title={blog.title}
+    //             description={blog.description}
+    //           />
+    //         ))}
+    //       </Slider>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
+      <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
+        <SliderHeading
+          onPrev={() => scrollBy("left")}
+          onNext={() => scrollBy("right")}
+        />
+      </div>
+      <div
+        // ref={scrollRef}
+        style={{ paddingLeft: `${left}px` }}
+        className="relative w-full max-w-[100dvw]"
+      >
+        <div
+          ref={scrollRef}
+          //  style={{ marginLeft: `${left}px` }}
+          className="no-scrollbar relative flex snap-x snap-mandatory justify-start gap-[10px] overflow-x-auto scroll-smooth md:gap-4"
+        >
+          {/* <div className=""> */}
+          {blogs.map((blog) => (
+            <BlogCard
+              key={blog.id}
+              image={blog.image}
+              category={blog.category}
+              date={blog.date}
+              readTime={blog.read_time}
+              title={blog.title}
+              description={blog.description}
+            />
+          ))}
+          {/* </div> */}
         </div>
       </div>
     </div>

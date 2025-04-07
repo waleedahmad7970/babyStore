@@ -656,6 +656,36 @@ export const blogs = [
       "Shopping for a twin stroller comes with double the choices, sizes, and options, however...",
     image: img1,
   },
+  {
+    id: 5,
+    category: "High Chair",
+    date: "Jun 21, 2021",
+    read_time: "9 min read",
+    title: "Two little ones -",
+    description:
+      "Shopping for a twin stroller comes with double the choices, sizes, and options, however...",
+    image: img1,
+  },
+  {
+    id: 6,
+    category: "High Chair",
+    date: "Jun 21, 2021",
+    read_time: "9 min read",
+    title: "Two little ones -",
+    description:
+      "Shopping for a twin stroller comes with double the choices, sizes, and options, however...",
+    image: img1,
+  },
+  {
+    id: 7,
+    category: "High Chair",
+    date: "Jun 21, 2021",
+    read_time: "9 min read",
+    title: "Two little ones -",
+    description:
+      "Shopping for a twin stroller comes with double the choices, sizes, and options, however...",
+    image: img1,
+  },
 ];
 export const reviews = [
   {
@@ -690,6 +720,46 @@ export const reviews = [
   },
   {
     id: 4,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 5,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 6,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 7,
+    review_count: 837,
+    text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
+    reviewer: {
+      name: "Millon Zahino",
+      field: "Behavioral Science",
+      image: employee,
+    },
+  },
+  {
+    id: 8,
     review_count: 837,
     text: "The customer service team reached out and assisted me with my problems just as I was about to deactivate my account. I'm glad I gave them a chance because my experience on the platform has significantly improved since I did.",
     reviewer: {

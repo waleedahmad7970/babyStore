@@ -2,10 +2,12 @@
 
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import { StaticImageData } from "next/image";
 
-import SliderHeading from "../header-titles/slider-header";
 import ReviewCard from "../cards/product-review-card";
+import SliderHeading from "../header-titles/slider-header";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { StaticImageData } from "next/image";
+import { useScrollSlider } from "@/hooks/useScrollSlider";
 
 interface Review {
   id: number;
@@ -52,17 +54,50 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
     ],
   };
 
-  return (
-    <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-10">
-      <SliderHeading onPrev={previous} onNext={next} />
+  const { width } = useWindowDimensions();
+  const scrollAmount = width < 768 ? 280 : 388;
+  const { scrollRef, scrollBy } = useScrollSlider(scrollAmount);
+  // const { scrollRef, itemRefs, scrollToNext, scrollToPrev } = useScrollSlider();
 
-      <div className="relative mx-auto min-h-[310px] max-w-[1360px] md:min-h-[400px]">
-        <div className="absolute left-0 w-[100vw]">
-          <Slider ref={sliderRef} {...settings}>
-            {reviews.map((review) => (
-              <ReviewCard key={review.id} review={review} />
-            ))}
-          </Slider>
+  let left = (width - 1360) / 2 - 10;
+  if (left < 0) left = 0;
+  return (
+    // <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-10">
+    //   <SliderHeading onPrev={previous} onNext={next} />
+
+    //   <div className="relative mx-auto min-h-[310px] max-w-[1360px] md:min-h-[400px]">
+    //     <div className="absolute left-0 w-[100vw]">
+    //       <Slider ref={sliderRef} {...settings}>
+    //         {reviews.map((review) => (
+    //           <ReviewCard key={review.id} review={review} />
+    //         ))}
+    //       </Slider>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
+      <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
+        <SliderHeading
+          onPrev={() => scrollBy("left")}
+          onNext={() => scrollBy("right")}
+        />
+      </div>
+      <div
+        // ref={scrollRef}
+        style={{ paddingLeft: `${left}px` }}
+        className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+      >
+        <div
+          ref={scrollRef}
+          //  style={{ marginLeft: `${left}px` }}
+          className="no-scrollbar relative flex min-h-[310px] snap-x snap-mandatory justify-start gap-4 overflow-x-auto scroll-smooth md:min-h-[410px]"
+        >
+          {/* <div className=""> */}
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+          {/* </div> */}
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             alt={"sw"}
             className="h-full max-h-[240px] w-full rounded-lg object-cover"
           />
-          <button className="absolute top-2 right-2 rounded-[4px] bg-white p-2 shadow-md">
+          <button className="absolute top-[15px] right-[14px] rounded-[4px] bg-white p-2 shadow-md">
             <Image height={20} width={20} src={HeartIcon} alt="heart" />
           </button>
         </div>
@@ -48,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }}
           className="flex h-[170px] flex-col justify-between border-t-1 px-3 pt-2 pb-3"
         >
-          <p className="font-inter text-left text-[13px] leading-[15.73px] font-normal">
+          <p className="font-inter text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
             {product.title}
           </p>
           <div className="flex flex-row items-center justify-between space-x-2">
