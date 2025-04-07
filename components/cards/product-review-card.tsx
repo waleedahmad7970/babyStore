@@ -47,7 +47,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
 
       <div className="my-[15.57px] h-[2px] w-full bg-[#F470AB33] md:my-[22px]" />
 
-      <div className="flex items-center">
+      <div className="flex w-[260px] items-center">
         {typeof image === "string" ? (
           <Image
             src={image}

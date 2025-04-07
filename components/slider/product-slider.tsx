@@ -62,49 +62,53 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
   // updated
   const settings = {
     className: "product-slider",
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 10,
-    slidesToScroll: 10,
+    slidesToScroll: 1,
     initialSlide: 0,
     autoplay: false,
     variableWidth: true,
     autoplaySpeed: 0,
+    swipeToSlide: true,
+    touchMove: true,
+    swipe: true,
+    draggable: true,
     cssEase: "ease-out",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 10,
-          slidesToScroll: 10,
-          initialSlide: 0,
-          cssEase: "ease-out",
-          autoplaySpeed: 0,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 10,
-          slidesToScroll: 10,
-          initialSlide: 0,
-          cssEase: "ease-out",
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 10,
-          slidesToScroll: 10,
-          initialSlide: 0,
-          cssEase: "ease-out",
-          infinite: true,
-          speed: 800,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 10,
+    //       slidesToScroll: 10,
+    //       initialSlide: 0,
+    //       cssEase: "ease-out",
+    //       autoplaySpeed: 0,
+    //       infinite: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 10,
+    //       slidesToScroll: 10,
+    //       initialSlide: 0,
+    //       cssEase: "ease-out",
+    //       infinite: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 10,
+    //       slidesToScroll: 10,
+    //       initialSlide: 0,
+    //       cssEase: "ease-out",
+    //       infinite: true,
+    //       speed: 800,
+    //     },
+    //   },
+    // ],
   };
 
   return (

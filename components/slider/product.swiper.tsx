@@ -1,8 +1,11 @@
 "use client";
-import { useRef } from "react";
 import { StaticImageData } from "next/image";
+
 import ProductCard from "../product/cards/product-card";
+import { useScrollSlider } from "@/hooks/useScrollSlider";
 import SliderHeading from "../header-titles/slider-header";
+import { useRef } from "react";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 interface Product {
   id: number;
   title: string;
@@ -17,29 +20,30 @@ interface ProductSliderProps {
 }
 
 export default function ProductSwiperSlider({ products }: ProductSliderProps) {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const scrollBy = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-
-    const scrollAmount = 260;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
+  const { width } = useWindowDimensions();
+  const { scrollRef, scrollBy } = useScrollSlider();
+  let left = (width - 1360) / 2 - 10;
+  if (left < 0) left = 0;
 
   return (
-    <div className="relative mx-auto min-h-[410px] max-w-[1360px]">
-      <SliderHeading
-        onPrev={() => scrollBy("left")}
-        onNext={() => scrollBy("right")}
-      />
-      <div className="relative left-0 w-[100vw] px-[10px]">
+    <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
+      <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
+        <SliderHeading
+          onPrev={() => scrollBy("left")}
+          onNext={() => scrollBy("right")}
+        />
+      </div>
+      <div
+        // ref={scrollRef}
+        style={{ paddingLeft: `${left}px` }}
+        className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+      >
         <div
           ref={scrollRef}
-          className="no-scrollbar mx-auto flex w-full justify-between gap-3 overflow-x-auto"
+          //  style={{ marginLeft: `${left}px` }}
+          className="no-scrollbar relative min-h-[310px] overflow-x-auto md:min-h-[410px]"
         >
-          <div className="flex max-w-[240px] justify-start gap-5">
+          <div className="flex justify-start gap-5">
             {products?.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}{" "}

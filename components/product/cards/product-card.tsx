@@ -29,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       style={{
         borderColor: "rgba(0, 0, 0, 0.04)",
       }}
-      className="max-w-[240px] rounded-[8px] border-[1.5px]"
+      className="product-card max-w-[240px] rounded-[8px] border-[1.5px]"
     >
       <div className="w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white">
         <div className="relative w-[240px]">

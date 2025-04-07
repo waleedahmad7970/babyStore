@@ -61,7 +61,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
       </div>
 
       {/* <ProductSlider products={productsLIST1} /> */}
-      <ProductSwiperSlider products={productsLIST1} />
+      {/* <ProductSwiperSlider products={productsLIST1} /> */}
     </div>
   );
 };

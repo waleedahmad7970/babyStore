@@ -17,7 +17,7 @@ const SliderHeading: React.FC<SliderHeadingProps> = ({
   onNext,
 }) => {
   return (
-    <div className="cus-container mx-auto mb-4 flex items-center justify-between">
+    <div className="mx-auto mb-4 flex items-center justify-between">
       <h2 className="font-inter text-[20px] font-semibold text-[#1F1F1F] md:text-[32px] md:leading-[30px]">
         {title}
       </h2>
