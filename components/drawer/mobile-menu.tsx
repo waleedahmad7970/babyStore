@@ -42,10 +42,10 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             {categoryIconsOne.map((item, index) => (
               <div
                 key={index}
-                className="group relative h-[114px] w-full max-w-[86px] cursor-pointer overflow-hidden rounded-[8.795px] text-[#434343] transition-all duration-300 hover:translate-y-2"
+                className="group relative h-[114px] w-full max-w-[86px] cursor-pointer overflow-hidden rounded-[8.795px] text-[#434343] transition-all duration-300 hover:translate-y-2 active:translate-y-1"
               >
-                <div className="absolute top-0 right-0 left-0 z-10 flex items-center justify-center bg-[#F0F0F0] transition-colors duration-300 group-hover:bg-[#FD71AF]">
-                  <p className="font-Inter mb-0 py-[8.8px] text-[10px] leading-[7px] font-normal transition-colors duration-300 group-hover:text-white">
+                <div className="absolute top-0 right-0 left-0 z-10 flex items-center justify-center bg-[#F0F0F0] transition-colors duration-300 group-hover:bg-[#FD71AF] group-active:bg-[#FD71AF]">
+                  <p className="font-Inter mb-0 py-[8.8px] text-[10px] leading-[7px] font-normal transition-colors duration-300 group-hover:text-white group-active:text-white">
                     {item.name}
                   </p>
                 </div>
@@ -56,8 +56,7 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
-
-                  <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80">
+                  <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80 group-active:opacity-80">
                     <p className="text-[12px] leading-[9px] font-bold text-white underline">
                       VIEW ALL
                     </p>
@@ -93,10 +92,10 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             {categoryIconsTwo.map((item, index) => (
               <div
                 key={index}
-                className="group relative h-[114px] w-full max-w-[86px] cursor-pointer overflow-hidden rounded-[8.795px] text-[#434343] transition-all duration-300 hover:translate-y-2"
+                className="group relative h-[114px] w-full max-w-[86px] cursor-pointer overflow-hidden rounded-[8.795px] text-[#434343] transition-all duration-300 hover:translate-y-2 active:translate-y-1"
               >
-                <div className="absolute top-0 right-0 left-0 z-10 flex items-center justify-center bg-[#F0F0F0] transition-colors duration-300 group-hover:bg-[#FD71AF]">
-                  <p className="font-Inter mb-0 py-[8.8px] text-[10px] leading-[7px] font-normal transition-colors duration-300 group-hover:text-white">
+                <div className="absolute top-0 right-0 left-0 z-10 flex items-center justify-center bg-[#F0F0F0] transition-colors duration-300 group-hover:bg-[#FD71AF] group-active:bg-[#FD71AF]">
+                  <p className="font-Inter mb-0 py-[8.8px] text-[10px] leading-[7px] font-normal transition-colors duration-300 group-hover:text-white group-active:text-white">
                     {item.name}
                   </p>
                 </div>
@@ -107,8 +106,7 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
-
-                  <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80">
+                  <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80 group-active:opacity-80">
                     <p className="text-[12px] leading-[9px] font-bold text-white underline">
                       VIEW ALL
                     </p>
