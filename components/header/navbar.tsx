@@ -20,8 +20,10 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <nav className="mx-auto block py-[14px] sm:hidden md:py-7">
-      <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+    <nav className="mx-auto block py-[14px] md:py-7">
+      <div className="block sm:hidden">
+        <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+      </div>
       <div className="cus-container mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">

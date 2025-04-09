@@ -50,7 +50,7 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                   </p>
                 </div>
 
-                <div className="relative h-full w-full">
+                <div className="relative h-full w-full overflow-hidden rounded-[8.795px]">
                   <Image
                     src={item.icon}
                     alt="item"
@@ -70,7 +70,7 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
               style={{
                 boxShadow: "0px 8px 20px 0px rgba(0, 0, 0, 0.20)",
               }}
-              className="my-[14px] flex flex-col gap-[10px] rounded-[8px] bg-white px-5 py-[15px]"
+              className="mx-[5px] my-[14px] flex flex-col gap-[10px] rounded-[8px] bg-white px-5 py-[15px]"
             >
               {categoryData.map((cat, idx) => (
                 <ExpandableCategoryItem
