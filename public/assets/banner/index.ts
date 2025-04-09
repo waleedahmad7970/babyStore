@@ -74,3 +74,8 @@ export { default as StripesLight } from "../banner/StripesLight.svg";
 
 // symmer
 export { default as summer_banner_mob } from "../banner/summer_banner_mob.svg";
+
+// menu banners
+
+export { default as menu1 } from "../banner/menu1.svg";
+export { default as menu2 } from "../banner/menu2.svg";

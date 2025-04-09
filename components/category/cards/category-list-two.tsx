@@ -20,7 +20,7 @@ export default function CategoryListTwo() {
           <div key={index} className="flex-shrink-0">
             <CategoryCard
               paraClassName="mt-[18px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[20px] md:leading-normal"
-              ImgClass="object-contain max-w-[70px] sm:max-w-[131px] max-h-[65px] sm:max-h-[123px]"
+              ImgClass="object-contain max-w-[70px] md:max-w-[131px] max-h-[65px] md:max-h-[123px]"
               className="h-[85px] w-[85px] !rounded-[35px] bg-[#FFF1E9] md:h-[162px] md:w-[162px] md:!rounded-[70px]"
               {...category}
             />

@@ -35,8 +35,9 @@ export default function ProductSwiperSlider({ products }: ProductSliderProps) {
       </div>
       <div
         // ref={scrollRef}
-        style={{ paddingLeft: `${left}px` }}
-        className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+        // style={{ paddingLeft: `${left}px` }}
+        // className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+        className="relative mx-auto min-h-[310px] w-full max-w-[1360px] md:min-h-[410px]"
       >
         <div
           ref={scrollRef}

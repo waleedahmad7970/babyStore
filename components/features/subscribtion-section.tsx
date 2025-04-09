@@ -15,7 +15,7 @@ export default function SubscribeSection() {
         </div>
       </div>
 
-      <div className="mt-[10px] mb-[30px] w-full text-black md:mt-0 md:mb-0 md:w-1/2 md:px-0">
+      <div className="mt-[10px] mb-[30px] w-full text-black md:px-0 lg:mt-0 lg:mb-0 lg:w-1/2">
         <h2 className="font-inter text-dark text-[20px] leading-[24px] font-semibold md:text-[24px] md:leading-[29.05px]">
           Subscribe to our awesome emails.
         </h2>
@@ -23,7 +23,7 @@ export default function SubscribeSection() {
           Get our latest offers & news straight in your inbox.
         </p>
 
-        <div className="mt-10 flex w-full max-w-[637px] items-center overflow-hidden rounded-[8px] bg-[#F7F8F7] p-[10px]">
+        <div className="mt-10 flex w-full items-center overflow-hidden rounded-[8px] bg-[#F7F8F7] p-[10px] lg:max-w-[637px]">
           <input
             type="email"
             placeholder="Please Enter Your Email Address"
@@ -35,7 +35,7 @@ export default function SubscribeSection() {
         </div>
       </div>
 
-      <div className="mt-0 mb-[30px] md:mt-4 md:mb-0 md:px-4">
+      <div className="mt-0 mb-[30px] md:mt-4 md:px-4 lg:mb-0">
         <h2 className="font-inter text-dark text-[20px] leading-[24.05px] font-semibold md:text-[24px] md:leading-[29.05px]">
           Download our apps
         </h2>

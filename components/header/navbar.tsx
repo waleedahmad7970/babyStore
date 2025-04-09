@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import { userMenu } from "@/static/static";
 import { basket, menu, search } from "@/public/assets/icons";
 import { logo } from "@/public/assets/brands";
+import MobileDrawer from "../drawer/mobile-menu";
 
 interface NavbarProps {
   categories?: string[];
@@ -12,13 +14,20 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   categories = ["All Categories", "Toys", "Clothing", "Accessories"],
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="mx-auto py-[14px] md:py-7">
+    <nav className="mx-auto block py-[14px] sm:hidden md:py-7">
+      <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="cus-container mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">
           <div className="flex items-center justify-between gap-5">
             <Image
+              onClick={menuHandler}
               src={menu}
               width={32}
               height={32}

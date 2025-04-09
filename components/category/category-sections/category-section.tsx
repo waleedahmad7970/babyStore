@@ -3,8 +3,6 @@ import Image, { StaticImageData } from "next/image";
 import { productsLIST1 } from "@/static/static";
 import { happyTummyBanner } from "@/public/assets/banner";
 import ProductSwiperSlider from "@/components/slider/product.swiper";
-import ProductCard from "@/components/product/cards/product-card";
-import ProductSlider from "@/components/slider/product-slider";
 
 interface CategorSectiondProps {
   ImgClass?: string;
@@ -18,7 +16,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
   bannerImage = happyTummyBanner,
   className = " gap-[10px] md:gap-[21px]",
   categoryImages = [],
-  ImgClass = "w-[172px] h-[201px] md:w-auto md:h-auto lg:w-[324px] lg:h-[379px] object-cover",
+  ImgClass = "w-[172px] h-[201px]  lg:w-[324px] lg:h-[379px] object-cover",
 }) => {
   return (
     <div className="relative mb-10 flex flex-col items-center gap-[10px] py-5 text-center md:mb-0 md:gap-[30px] md:py-[60px]">
@@ -44,7 +42,6 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         ))}
       </div>
 
-      {/* <ProductSlider products={productsLIST1} /> */}
       <ProductSwiperSlider products={productsLIST1} />
     </div>
   );

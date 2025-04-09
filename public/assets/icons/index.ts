@@ -76,3 +76,8 @@ export { default as swimwear } from "../icons/swimwear.svg";
 export { default as pool_shoes } from "../icons/pool_shoes.svg";
 export { default as sun_protector } from "../icons/sun_protector.svg";
 export { default as summer_banner } from "../icons/summer_banner.svg";
+
+// mob search
+
+export { default as X } from "../icons/X.svg";
+export { default as mob_search_icon } from "../icons/mob_search_icon.svg";

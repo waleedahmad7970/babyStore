@@ -1,7 +1,30 @@
 import {
+  Brands,
+  Breast,
+  Clothes,
+  development,
+  Diapering,
+  Ess,
+  Feeding,
+  Gear,
+  Home,
   lunch_box,
+  mini_art,
+  mini_blocks,
+  mini_kidd,
+  mini_play,
+  mini_wooden,
+  Mommy,
+  Nursery,
+  Outdoor,
+  Party,
+  School,
   school_bag,
+  Seats,
+  Skincare,
   stationary,
+  sub_baby_toy,
+  Toys,
   water_bottle,
 } from "@/public/assets/sections";
 import { img1, img2, img3 } from "../public/assets/blogs";
@@ -114,50 +137,67 @@ export const userMenu = [user, basket, heart];
 // categoryData.js
 export const categories = [
   {
+    id: 1,
     name: "gear",
     image: gear,
   },
   {
+    id: 2,
+
     name: "Nursery",
     image: nursery,
   },
   {
+    id: 3,
     name: "Feeding",
     image: feeding,
   },
   {
+    id: 4,
+
     name: "Diapering",
     image: diaper,
   },
   {
+    id: 5,
+
     name: "Toys",
     image: toy,
   },
   {
+    id: 6,
     name: "Skincare",
     image: skincare,
   },
   {
+    id: 7,
     name: "Outdoor",
     image: uutdoor,
   },
   {
+    id: 8,
     name: "School",
     image: school,
   },
   {
+    id: 9,
     name: "Mommy",
     image: mommy,
   },
   {
+    id: 10,
     name: "Party",
     image: party,
   },
   {
+    id: 11,
+
     name: "Fashion",
     image: fashion,
   },
   {
+    id: 12,
+
     name: "SALE",
     image: sale,
   },
@@ -561,7 +601,43 @@ export const bannerData = [
     alt: "Banner 6 Description",
   },
 ];
-
+export const categoryData = [
+  {
+    title: "Baby Toys",
+    icon: sub_baby_toy,
+    subcategories: ["Board Games & Puzzles", "Soft Toys", "Building Blocks"],
+  },
+  {
+    title: "Toddler & kids toys",
+    icon: mini_kidd,
+    subcategories: [],
+  },
+  {
+    title: "Building sets & blocks",
+    icon: mini_blocks,
+    subcategories: [],
+  },
+  {
+    title: "Development toys",
+    icon: development,
+    subcategories: ["Board Games & Puzzles", "Soft Toys", "Building Blocks"],
+  },
+  {
+    title: "Art & craft",
+    icon: mini_art,
+    subcategories: [],
+  },
+  {
+    title: "Role play",
+    icon: mini_play,
+    subcategories: [],
+  },
+  {
+    title: "Wooden toys",
+    icon: mini_wooden,
+    subcategories: [],
+  },
+];
 // product card data
 export const cardsData = [
   {
@@ -851,6 +927,30 @@ export const featuresData = [
   { id: 3, icon: headset2, text: "24/7 Support" },
 ];
 
+// menu bar mob
+
+export const categoryIconsOne = [
+  { name: "Feeding", icon: Feeding },
+  { name: "Skincare", icon: Skincare },
+  { name: "Nursery", icon: Nursery },
+  { name: "Clothes", icon: Clothes },
+  { name: "Diapering", icon: Diapering },
+  { name: "Toys", icon: Diapering },
+  // { name: "Toys", icon: Toys },
+  { name: "Outdoor", icon: Outdoor },
+  { name: "Gear", icon: Gear },
+];
+
+export const categoryIconsTwo = [
+  { name: "School", icon: School },
+  { name: "Mommy", icon: Mommy },
+  { name: "Party", icon: Party },
+  { name: "Home", icon: Home },
+  { name: "Breast", icon: Breast },
+  { name: "Seats", icon: Seats },
+  { name: "Brands", icon: Brands },
+  { name: "Essentials", icon: Ess },
+];
 // banners sections
 
 export const toy_section = {

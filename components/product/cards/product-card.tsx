@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white">
         <div className="relative w-[240px]">
           <Image
-            src={product.image}
+            src={product?.image}
             alt={"sw"}
             className="h-full max-h-[240px] w-full rounded-lg object-cover"
           />
@@ -49,26 +49,31 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="flex h-[170px] flex-col justify-between border-t-1 px-3 pt-2 pb-3"
         >
           <p className="font-inter text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
-            {product.title}
+            {product?.title}
           </p>
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex flex-col gap-1">
-              <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-1px]">
+              <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-1px] text-[#1A1718]">
                 AED{" "}
-                <span className="ml-1 text-left text-[16px] font-bold">
-                  {product.price}
+                <span className="ml-[1px] text-left text-[16px] font-bold">
+                  {product?.price?.toLocaleString()}
                 </span>
               </p>
-              {product.oldPrice && (
-                <p className="flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-1px] text-[#1F1F1F80]">
-                  AED{" "}
-                  <span className="ml-1 text-left text-[14px] leading-[10px] font-bold text-[#1F1F1F80] line-through">
-                    {product.oldPrice}
+              {product?.oldPrice && (
+                <p className="flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-1px] text-[#1F1F1F80] line-through">
+                  AED
+                  <span className="ml-[1px] text-left text-[14px] leading-[10px] font-semibold text-[#1F1F1F80]">
+                    {product?.oldPrice?.toLocaleString()}
                   </span>
                 </p>
               )}
             </div>
-            <div className="max-h-max rounded-[4px] p-[6px] shadow-lg">
+            <div
+              style={{
+                boxShadow: "0px 0px 7px 0px rgba(0, 0, 0, 0.15)",
+              }}
+              className="max-h-max rounded-[4px] p-[6px]"
+            >
               <Image
                 src={cart}
                 height={18}
@@ -82,9 +87,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <p className="text-link text-[9px] leading-[10px] font-semibold text-[#54A3FA] italic">
               Free Delivery
             </p>
-            {product.discount && (
+            {product?.discount && (
               <p className="text-[12px] leading-[14.52px] font-bold text-[#2AA136]">
-                {product.discount}
+                {product?.discount}
               </p>
             )}
           </div>
