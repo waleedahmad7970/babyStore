@@ -35,7 +35,7 @@ export default function SubscribeSection() {
         </div>
       </div>
 
-      <div className="mt-0 mb-[30px] md:mt-4 md:px-4 lg:mb-0">
+      <div className="mt-0 mb-[30px] md:px-4 lg:mb-0">
         <h2 className="font-inter text-dark text-[20px] leading-[24.05px] font-semibold md:text-[24px] md:leading-[29.05px]">
           Download our apps
         </h2>
