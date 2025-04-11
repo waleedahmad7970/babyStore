@@ -203,7 +203,6 @@ export const categories = [
   },
 ];
 // sections
-
 export const schoolSection = [school_bag, water_bottle, stationary, lunch_box];
 export const travelSection = [reversible, booster, iso, ages];
 export const clearanceSection = [toys, gear2, feeding2, outdoor];
@@ -222,7 +221,6 @@ export const firstDaySection = [
   water_botle_2,
   stationary_2,
 ];
-
 export const dualSectionBannersBoyGirls = [boys_banners, girls_banner];
 export const dualCateSection = [
   activity,
@@ -232,7 +230,6 @@ export const dualCateSection = [
   doll_house,
   stem_toys,
 ];
-
 export const categoriesL2 = [
   {
     name: "New Arrivals",
@@ -928,7 +925,6 @@ export const featuresData = [
 ];
 
 // menu bar mob
-
 export const categoryIconsOne = [
   { name: "Feeding", icon: Feeding },
   { name: "Skincare", icon: Skincare },
@@ -940,7 +936,6 @@ export const categoryIconsOne = [
   { name: "Outdoor", icon: Outdoor },
   { name: "Gear", icon: Gear },
 ];
-
 export const categoryIconsTwo = [
   { name: "School", icon: School },
   { name: "Mommy", icon: Mommy },
@@ -951,8 +946,8 @@ export const categoryIconsTwo = [
   { name: "Brands", icon: Brands },
   { name: "Essentials", icon: Ess },
 ];
-// banners sections
 
+// banners sections
 export const toy_section = {
   banner: toy_banner,
   underPrice: [aed50, aed100, aed200],

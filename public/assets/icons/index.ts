@@ -12,6 +12,7 @@ export { default as basket } from "../icons/basket.svg";
 export { default as matched } from "../icons/matched.svg";
 export { default as right_angle } from "../icons/right_angle.svg";
 export { default as rating_star } from "../icons/rating_star.svg";
+export { default as mini_whatsapp } from "../icons/mini_whatsapp.svg";
 export { default as left_right_arrow } from "../icons/left_right_arrow.svg";
 
 // rating

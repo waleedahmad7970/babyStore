@@ -20,7 +20,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
   categoryImages = [],
 }) => {
   return (
-    <div className="relative mb-5 flex flex-col items-center gap-5 py-5 text-center sm:mb-0 md:py-[60px]">
+    <div className="relative mb-5 flex flex-col items-center gap-5 pb-5 text-center sm:mb-0 md:pb-[60px]">
       {/* Banner Section */}
       <UnderPricerBanner data={toy_section} />
       {showPrices && (
@@ -60,8 +60,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         ))}
       </div>
 
-      {/* <ProductSlider products={productsLIST1} /> */}
-      {/* <ProductSwiperSlider productproductsLIST1} /> */}
+      <ProductSwiperSlider products={productsLIST1} />
     </div>
   );
 };

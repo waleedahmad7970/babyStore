@@ -75,30 +75,8 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
   let left = (width - 1360) / 2 - 10;
   if (left < 0) left = 0;
   return (
-    // <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-0 md:py-10">
-    //   <SliderHeading onPrev={previous} onNext={next} />
-
-    //   <div className="relative mx-auto min-h-[244px] max-w-[1360px] md:min-h-[400px]">
-    //     <div className="absolute left-0 w-[100vw]">
-    //       <Slider ref={sliderRef} {...settings}>
-    //         {blogs.map((blog) => (
-    //           <BlogCard
-    //             key={blog.id}
-    //             image={blog.image}
-    //             category={blog.category}
-    //             date={blog.date}
-    //             readTime={blog.read_time}
-    //             title={blog.title}
-    //             description={blog.description}
-    //           />
-    //         ))}
-    //       </Slider>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
-      <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
+    <div className="cus-container relative w-full overflow-hidden !py-5 pl-[10px] md:py-10">
+      <div className="relative mx-auto w-full pr-[10px]">
         <SliderHeading
           onPrev={() => scrollBy("left")}
           onNext={() => scrollBy("right")}
@@ -106,8 +84,9 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
       </div>
       <div
         // ref={scrollRef}
-        style={{ paddingLeft: `${left}px` }}
-        className="relative w-full max-w-[100dvw]"
+        // style={{ paddingLeft: `${left}px` }}
+        // className="relative w-full max-w-[100dvw]"
+        className="relative w-full"
       >
         <div
           ref={scrollRef}

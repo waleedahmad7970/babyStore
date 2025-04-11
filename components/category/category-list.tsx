@@ -170,7 +170,7 @@ export default function CategoryList() {
         {hoveredId && (
           <div
             style={{
-              boxShadow: "-14px 14px 33px 0px rgba(0, 0, 0, 0.09)",
+              boxShadow: "box-shadow: -14px 14px 33px 0px rgba(0, 0, 0, 0.09)",
             }}
             className="absolute top-[23px] right-0 left-0 z-30 mx-auto hidden max-w-[1360px] rounded-[8px] bg-white px-[41px] py-6 md:block"
           >

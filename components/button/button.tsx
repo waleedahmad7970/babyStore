@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps {
-  text?: string;
+  text?: string | number;
   handler?: () => void;
   className?: string;
 }

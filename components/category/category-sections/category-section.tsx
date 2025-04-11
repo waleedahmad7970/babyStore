@@ -19,7 +19,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
   ImgClass = "w-[172px] h-[201px]  lg:w-[324px] lg:h-[379px] object-cover",
 }) => {
   return (
-    <div className="relative mb-10 flex flex-col items-center gap-[10px] py-5 text-center md:mb-0 md:gap-[30px] md:py-[60px]">
+    <div className="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <Image
         src={bannerImage}
         width={100}

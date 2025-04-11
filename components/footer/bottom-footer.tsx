@@ -14,7 +14,7 @@ interface PaymentMethod {
 
 const FooterBottom: React.FC = () => {
   return (
-    <div className="bg-white pb-[10px] md:pb-0">
+    <div className="bg-white pt-[20px] pb-[10px] md:pt-0 md:pb-0">
       <div className="cus-container mx-auto flex flex-col items-start justify-between gap-[10px] px-2 pt-5 pb-[10px] text-gray-900 md:py-[21px] lg:flex-row lg:items-center lg:gap-0">
         <div className="text-center text-sm text-[#1F1F1F] md:text-left">
           <p className="font-inter text-dark text-[12px] leading-[14.52px] font-normal">

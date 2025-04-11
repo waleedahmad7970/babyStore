@@ -62,22 +62,8 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
   let left = (width - 1360) / 2 - 10;
   if (left < 0) left = 0;
   return (
-    // <div className="relative w-full overflow-hidden px-[10px] py-5 md:py-10">
-    //   <SliderHeading onPrev={previous} onNext={next} />
-
-    //   <div className="relative mx-auto min-h-[310px] max-w-[1360px] md:min-h-[400px]">
-    //     <div className="absolute left-0 w-[100vw]">
-    //       <Slider ref={sliderRef} {...settings}>
-    //         {reviews.map((review) => (
-    //           <ReviewCard key={review.id} review={review} />
-    //         ))}
-    //       </Slider>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
-      <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
+    <div className="cus-container relative w-full overflow-hidden !py-5 pl-[10px] md:py-10">
+      <div className="relative mx-auto w-full pr-[10px]">
         <SliderHeading
           onPrev={() => scrollBy("left")}
           onNext={() => scrollBy("right")}
@@ -85,8 +71,9 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       </div>
       <div
         // ref={scrollRef}
-        style={{ paddingLeft: `${left}px` }}
-        className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+        // style={{ paddingLeft: `${left}px` }}
+        // className="relative min-h-[310px] w-full max-w-[100dvw] md:min-h-[410px]"
+        className="relative min-h-[310px] w-full md:min-h-[410px]"
       >
         <div
           ref={scrollRef}
