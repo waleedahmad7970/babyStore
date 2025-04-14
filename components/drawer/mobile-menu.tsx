@@ -234,10 +234,8 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </div>
 
                 <div className="relative h-full w-full">
-                  <Image
+                  <img
                     src={item.icon}
-                    width={86}
-                    height={114}
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
@@ -248,10 +246,12 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                   </div>
                 </div>
                 <div className="relative h-full w-full">
-                  <img
+                  <Image
                     src={item.icon}
+                    width={86}
+                    height={114}
                     alt="item"
-                    className="z-0 h-full max-h-[114px] w-full max-w-[86px] object-cover"
+                    className="z-0 h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80 group-active:opacity-80">
                     <p className="text-[12px] leading-[9px] font-bold text-white underline">
