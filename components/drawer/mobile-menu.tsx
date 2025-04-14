@@ -182,6 +182,8 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                   <Image
                     src={item.icon}
                     quality={100}
+                    width={86}
+                    height={114}
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
@@ -234,6 +236,8 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 <div className="relative h-full w-full">
                   <Image
                     src={item.icon}
+                    width={86}
+                    height={114}
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
