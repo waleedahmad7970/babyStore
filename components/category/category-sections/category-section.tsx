@@ -27,7 +27,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         className="cus-container hidden h-[236px] w-full object-cover sm:block md:h-full"
         alt="banner"
       /> */}
-      <div className="relative hidden aspect-[1148/199] max-h-[436px] w-full sm:block">
+      <div className="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
         <Image
           src={bannerImage}
           alt="Banner"
@@ -39,7 +39,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         className="cus-container block h-[236px] w-full object-cover sm:hidden md:h-full"
         alt="banner"
       /> */}
-      <div className="cus-container relative block aspect-[640/236] w-full sm:hidden">
+      <div className="cus-container relative block aspect-[640/236] w-full rounded-[8px] sm:hidden">
         <Image
           src={bannerImageMob}
           alt="Mobile Banner"
