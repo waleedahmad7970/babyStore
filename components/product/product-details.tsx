@@ -19,6 +19,7 @@ import {
 } from "../cards/card-info-components";
 import { seperator } from "@/public/assets/icons";
 import ProductSwiperSlider from "../slider/product.swiper";
+import ProductPagingSlider from "../slider/product-pagging-slider";
 
 export default function ProductDetails({ product = productData }) {
   const [quantity, setQuantity] = useState(1);
@@ -26,8 +27,8 @@ export default function ProductDetails({ product = productData }) {
 
   return (
     <div className="cus-container mx-auto mt-3 rounded-lg md:mt-10">
-      <div className="flex flex-col justify-between gap-4 lg:flex-row">
-        <div className="relative w-full lg:max-w-[839px]">
+      <div className="flex flex-col justify-between gap-4 xl:flex-row">
+        <div className="relative mx-auto w-full md:max-w-[839px]">
           <div className="absolute top-3 right-3 z-10 flex flex-col gap-5 md:top-7 md:right-[33px] md:gap-2">
             {product.shareProduct.map((item, index) => (
               <Image
@@ -51,15 +52,17 @@ export default function ProductDetails({ product = productData }) {
               25% Off
             </div>
           </div>
-          <div className="h-[375px] overflow-hidden rounded-[10px] border border-[#00000033] md:h-[839px] lg:max-w-[839px]">
+
+          <ProductPagingSlider />
+          {/* <div className="h-[375px] overflow-hidden rounded-[10px] border border-[#00000033] md:h-[839px] lg:max-w-[839px]">
             <Image
               src={product.image}
               alt={product.name}
               className="h-full w-full object-cover"
             />
-          </div>
+          </div> */}
 
-          <div className="mt-4 hidden space-x-2 md:flex">
+          {/* <div className="mt-4 hidden space-x-2 md:flex">
             {product.images.map((img, index) => (
               <Image
                 key={index}
@@ -71,7 +74,7 @@ export default function ProductDetails({ product = productData }) {
                 onClick={() => setSelectedImage(img)}
               />
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="mx-auto w-full md:max-w-[469px]">
           <h1 className="font-inter tracking-0 text-[14px] leading-[16.94px] font-normal text-[#1F1F1F] md:text-[20px] md:leading-[24px]">

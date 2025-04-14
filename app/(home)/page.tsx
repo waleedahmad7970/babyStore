@@ -64,17 +64,12 @@ export default function Home() {
         ImgClass="w-[172px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover"
       />
 
-      <div className="mb-10 py-0 sm:mb-0 md:pb-[60px]">
-        <Banner
-          Img={mummy_banner}
-          className={
-            "hidden h-[466px] min-h-[466px] w-full object-cover sm:block"
-          }
-        />
-        <Banner
+      <div className="mb-10 w-full py-0 sm:mb-0 md:pb-[60px]">
+        <Banner Img={mummy_banner} mobImg={mummy_banner_mob} />
+        {/* <Banner
           Img={mummy_banner_mob}
           className={"block min-h-[236px] w-full object-cover sm:hidden"}
-        />
+        /> */}
       </div>
 
       <CategorySection

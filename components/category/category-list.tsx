@@ -1,8 +1,8 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import CategoryCard from "./cards/category-card";
+
 import { categories } from "../../static/static";
 import { menu1, menu2 } from "@/public/assets/banner";
 import {
@@ -13,8 +13,7 @@ import {
   brand5,
   brand6,
 } from "@/public/assets/brands";
-
-const sections = [
+const sections: any[] = [
   {
     title: "Bath",
     items: [
@@ -52,7 +51,6 @@ const sections = [
       "Travel Kits",
     ],
   },
-
   {
     title: "Skin & Hair & Body",
     items: [
@@ -124,40 +122,61 @@ const sections = [
     ],
   },
 ];
-
 const menuImages = [menu1, menu2];
 const menuBrands = [brand1, brand2, brand3, brand4, brand5, brand6];
+
 export default function CategoryList() {
+  const hoverTimer = useRef<NodeJS.Timeout | null>(null);
+
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [previousId, setPreviousId] = useState<number | null>(null);
+  const [animationDirection, setAnimationDirection] = useState<string>("");
 
+  // ds
+  const [hoveredInitail, setHoveredInitail] = useState<boolean | null>(null);
+
+  const handleHover = (id: number) => {
+    if (id !== hoveredId) {
+      if (hoveredId !== null) {
+        // Determine direction before updating state
+        const direction = id > hoveredId ? "slide-left" : "slide-right";
+        setAnimationDirection(direction);
+      }
+      setPreviousId(hoveredId);
+      setHoveredId(id);
+    }
+  };
+  console.log("hoveredInitail", hoveredInitail);
   return (
-    <div className="relative mb-0 hidden w-full px-4 md:block md:px-0 md:pb-6">
+    <div
+      onMouseEnter={() => setHoveredInitail(true)}
+      className="group relative mb-0 hidden w-full px-4 md:block md:px-0 md:pb-6"
+    >
       {hoveredId !== null && (
-        <div className="fixed inset-0 z-30 bg-black/50 transition duration-300"></div>
+        <div
+          onMouseEnter={() => {
+            setHoveredId(null);
+            setAnimationDirection("");
+          }}
+          className="fixed inset-0 z-30 bg-black/50 transition duration-300"
+        ></div>
       )}
-
-      <div className="cus-container no-scrollbar relative z-30 mx-auto flex justify-between gap-3 overflow-x-auto">
+      <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
         {categories.map((category) => (
           <div
             key={category.id}
             className="relative"
-            onMouseEnter={() => setHoveredId(category.id)}
-            onMouseLeave={() => setHoveredId(null)}
+            onMouseEnter={() => {
+              if (hoverTimer.current) clearTimeout(hoverTimer.current);
+              handleHover(category.id);
+            }}
+            onMouseLeave={() => {
+              hoverTimer.current = setTimeout(() => {
+                setHoveredId(null);
+                setAnimationDirection("");
+              }, 300);
+            }}
           >
-            {/* {hoveredId !== null && hoveredId !== category.id && (
-              <div className="absolute z-0 bg-black/5 transition duration-300" />
-            )} */}
-
-            {hoveredId === category.id && (
-              <div className="animate-fade-in absolute -top-48 left-1/2 z-20 w-40 -translate-x-1/2">
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  className="h-40 w-40 rounded-lg object-cover shadow-2xl"
-                />
-              </div>
-            )}
-
             <CategoryCard
               {...category}
               hoveredId={hoveredId}
@@ -167,61 +186,69 @@ export default function CategoryList() {
         ))}
       </div>
       <div className="relative">
-        {hoveredId && (
-          <div
-            style={{
-              boxShadow: "box-shadow: -14px 14px 33px 0px rgba(0, 0, 0, 0.09)",
-            }}
-            className="absolute top-[23px] right-0 left-0 z-30 mx-auto hidden max-w-[1360px] rounded-[8px] bg-white px-[41px] py-6 md:block"
-          >
-            <div className="flex w-full flex-col justify-between gap-[33px] lg:flex-row">
-              <div className="grid grid-cols-3 gap-[36.88px]">
-                {[0, 1, 2].map((colIndex) => (
-                  <div
-                    key={colIndex}
-                    className="flex w-full max-w-[232.81px] flex-col gap-6"
-                  >
-                    {sections
-                      .slice(colIndex * 3, colIndex * 3 + 3)
-                      .map((section, i) => (
-                        <div key={i} className="w-[232px] max-w-[232px]">
-                          <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
-                            {section.title}
-                          </h2>
-                          <ul className="space-y-1 text-sm text-gray-600">
-                            {section.items.map((item, idx) => (
-                              <li
-                                className="mb-0 border-b-1 border-[#F5F5F5] text-[12px] leading-[24px] font-[274px] text-[#1F1F1F]"
-                                key={idx}
-                              >
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex w-full justify-between gap-[26.51px] lg:max-w-[483px]">
-                <div className="flex flex-col gap-[12.35px]">
-                  {menuImages.map((menu, index) => {
-                    return <Image src={menu} alt="im" key={index} />;
-                  })}
-                </div>
-                <div className="flex flex-col gap-0">
-                  <p className="mb-0 text-[14px] leading-[24px] font-bold text-[#1F1F1F]">
-                    TOP BRANDS
-                  </p>
-                  {menuBrands?.map((brand, index) => (
-                    <Image src={brand} alt="im" key={index} />
+        <div
+          onMouseEnter={() =>
+            hoverTimer.current && clearTimeout(hoverTimer.current)
+          }
+          style={{
+            boxShadow: "-14px 14px 33px 0px rgba(0, 0, 0, 0.09)",
+          }}
+          className="animate-scale-in absolute top-[-8px] right-0 left-0 z-40 mx-auto mt-2 hidden w-full max-w-[1390px] origin-top scale-200 transform overflow-hidden rounded-[8px] bg-white opacity-0 shadow-lg transition-all duration-300 ease-out group-hover:block group-hover:scale-100 group-hover:opacity-100"
+        >
+          {hoveredId && (
+            <div
+              key={hoveredId}
+              className={`hiddenbg-white top-[20px] right-0 left-0 z-30 mx-auto px-[41px] py-6 md:block ${animationDirection}`}
+            >
+              <div className="flex w-full flex-col justify-between gap-[33px] lg:flex-row">
+                <div className="grid grid-cols-3 gap-[36.88px]">
+                  {[0, 1, 2].map((colIndex) => (
+                    <div
+                      key={colIndex}
+                      className="flex w-full max-w-[232.81px] flex-col gap-6"
+                    >
+                      {sections
+                        .slice(colIndex * 3, colIndex * 3 + 3)
+                        .map((section, i) => (
+                          <div key={i} className="w-[232px] max-w-[232px]">
+                            <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
+                              {section.title}
+                            </h2>
+                            <ul className="space-y-1 text-sm text-gray-600">
+                              {section.items.map((item: any, idx: number) => (
+                                <li
+                                  className="mb-0 border-b-1 border-[#F5F5F5] text-[12px] leading-[24px] font-[274px] text-[#1F1F1F]"
+                                  key={idx}
+                                >
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                    </div>
                   ))}
+                </div>
+
+                <div className="flex w-full justify-between gap-[26.51px] lg:max-w-[483px]">
+                  <div className="flex flex-col gap-[12.35px]">
+                    {menuImages.map((menu, index) => {
+                      return <Image src={menu} alt="im" key={index} />;
+                    })}
+                  </div>
+                  <div className="flex flex-col gap-0">
+                    <p className="mb-0 text-[14px] leading-[24px] font-bold text-[#1F1F1F]">
+                      TOP BRANDS
+                    </p>
+                    {menuBrands?.map((brand, index) => (
+                      <Image src={brand} alt="im" key={index} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

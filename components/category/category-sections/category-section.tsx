@@ -20,20 +20,33 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
 }) => {
   return (
     <div className="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
-      <Image
+      {/* <Image
         src={bannerImage}
         width={100}
         height={100}
         className="cus-container hidden h-[236px] w-full object-cover sm:block md:h-full"
         alt="banner"
-      />
-      <Image
+      /> */}
+      <div className="relative hidden aspect-[1148/199] max-h-[436px] w-full sm:block">
+        <Image
+          src={bannerImage}
+          alt="Banner"
+          className="cus-container h-full w-full object-cover"
+        />
+      </div>
+      {/* <Image
         src={bannerImageMob}
-        width={100}
-        height={100}
         className="cus-container block h-[236px] w-full object-cover sm:hidden md:h-full"
         alt="banner"
-      />
+      /> */}
+      <div className="cus-container relative block aspect-[640/236] w-full sm:hidden">
+        <Image
+          src={bannerImageMob}
+          alt="Mobile Banner"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
       <div
         className={`cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between ${className}`}
       >
