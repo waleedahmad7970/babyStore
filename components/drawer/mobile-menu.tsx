@@ -126,7 +126,7 @@ import { X } from "@/public/assets/icons";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
 import ExpandableCategoryItem from "../category/expandable-catgory-list";
-import { Feeding } from "@/public/assets/sections";
+import { Feeding, test } from "@/public/assets/sections";
 import {
   categoryData,
   categoryIconsOne,
@@ -234,10 +234,16 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </div>
 
                 <div className="relative h-full w-full">
-                  <img
+                  {/* <Image
                     src={item.icon}
+                  
                     alt="item"
                     className="z-0 h-full w-full object-cover"
+                  /> */}
+                  <img
+                    src={item.icon.src}
+                    alt="item"
+                    className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] opacity-0 transition-opacity duration-300 group-hover:opacity-80 group-active:opacity-80">
                     <p className="text-[12px] leading-[9px] font-bold text-white underline">
