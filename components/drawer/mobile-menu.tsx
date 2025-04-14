@@ -181,6 +181,7 @@ export default function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 <div className="relative h-full w-full overflow-hidden rounded-[8.795px]">
                   <Image
                     src={item.icon}
+                    quality={100}
                     alt="item"
                     className="z-0 h-full w-full object-cover"
                   />
