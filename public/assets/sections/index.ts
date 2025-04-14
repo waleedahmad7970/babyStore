@@ -32,3 +32,5 @@ export { default as mini_kidd } from "../sections/mini_kidd.svg";
 export { default as mini_play } from "../sections/mini_play.svg";
 export { default as mini_wooden } from "../sections/mini-wooden.svg";
 export { default as development } from "../sections/development.svg";
+
+export { default as test } from "../sections/test.png";
