@@ -34,3 +34,4 @@ export { default as mini_wooden } from "../sections/mini-wooden.svg";
 export { default as development } from "../sections/development.svg";
 
 export { default as test } from "../sections/test.png";
+export { default as test2 } from "../sections/test.svg";

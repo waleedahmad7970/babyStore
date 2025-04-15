@@ -25,6 +25,7 @@ import {
   stationary,
   sub_baby_toy,
   test,
+  test2,
   Toys,
   water_bottle,
 } from "@/public/assets/sections";
@@ -930,7 +931,7 @@ export const categoryIconsOne = [
   { name: "Feeding", icon: Feeding },
   { name: "Skincare", icon: Skincare },
   { name: "Nursery", icon: Nursery },
-  { name: "Clothes", icon: Clothes },
+  { name: "Clothes", icon: test2 },
   { name: "Diapering", icon: test },
   { name: "Toys", icon: Diapering },
   // { name: "Toys", icon: Toys },

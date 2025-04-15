@@ -81,4 +81,7 @@ export { default as summer_banner } from "../icons/summer_banner.svg";
 // mob search
 
 export { default as X } from "../icons/X.svg";
+export { default as grid } from "../icons/grid.svg";
+export { default as sort } from "../icons/sort.svg";
+export { default as angle_down } from "../icons/angle_down.svg";
 export { default as mob_search_icon } from "../icons/mob_search_icon.svg";
