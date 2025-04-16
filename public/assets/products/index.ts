@@ -22,7 +22,8 @@ export { default as stollers } from "../products/stollers.svg";
 
 // details of pro
 export { default as detail_image } from "../products/detail_image.svg";
-export { default as detail_image_1 } from "../products/detail_image_1.svg";
+// export { default as detail_image_1 } from "../products/detail_image_1.svg";
+export { default as detail_image_1 } from "../products/product_slider_1.svg";
 export { default as detail_image_2 } from "../products/detail_image_2.svg";
 export { default as detail_image_3 } from "../products/detail_image_3.svg";
 export { default as detail_image_4 } from "../products/detail_image_4.svg";
