@@ -1,6 +1,7 @@
 "use client";
 
 import ProductCard from "@/components/product/cards/product-card";
+import FilterSidebar from "@/components/sidebar/filter-sidebar";
 import { angle_down, grid, sort } from "@/public/assets/icons";
 import { productsLIST1 } from "@/static/static";
 import Image from "next/image";
@@ -13,7 +14,7 @@ type PageClickEvent = {
 
 export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
-  const itemsPerPage = 10;
+  const itemsPerPage = 12;
 
   const [currentPage, setCurrentPage] = useState<number>(0);
 
@@ -26,11 +27,13 @@ export default function Page(): JSX.Element {
   const currentItems = productsLIST1.slice(start, end);
 
   return (
-    <div className="w-full">
-      <div className="flex justify-between gap-4">
-        <div className="w-full max-w-[240px]">240px</div>
+    <div className="cus-container mx-auto w-full">
+      <div className="flex justify-between gap-4 py-10">
+        <div className="hidden w-full max-w-[240px] md:block">
+          <FilterSidebar />
+        </div>
         <div className="w-full max-w-[1104px]">
-          <div className="flex items-center justify-between">
+          <div className="mb-4 flex flex-col items-start justify-between md:flex-row md:items-center">
             <div className="text-[16px] leading-[25px] font-medium text-[#E7448C]">
               {productsLIST1.length} Results!
             </div>
@@ -44,7 +47,7 @@ export default function Page(): JSX.Element {
                   <p className="mb-0 text-[15px] leading-[9.6px] font-medium text-[#A0A0A0]">
                     Price: High to Low
                   </p>
-                  <Image src={angle_down} alt="sort" className="h-2 w-1" />
+                  <Image src={angle_down} alt="sort" className="h-2 min-w-1" />
                 </div>
               </div>
               <div className="flex items-center justify-between gap-[6.43px] rounded-[21px] bg-[#FFF0F5] px-[15px] py-[8.5px]">
@@ -60,32 +63,43 @@ export default function Page(): JSX.Element {
                     height={11}
                     src={angle_down}
                     alt="arrow"
-                    className="h-2 w-1"
+                    className="h-2 min-w-1"
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex min-h-[1104px] flex-wrap justify-between sm:gap-[22px] md:justify-start">
             {currentItems.map((product) => {
-              return <ProductCard key={product.id} product={product} />;
+              return (
+                <div
+                  key={product.id}
+                  className="w-full max-w-[230px] cursor-pointer max-[430px]:max-w-1/2 md:max-w-[259px]"
+                >
+                  <ProductCard product={product} />
+                </div>
+              );
             })}
           </div>
 
           <ReactPaginate
             breakLabel="..."
-            nextLabel="Next >"
+            nextLabel={
+              <Image src={angle_down} alt="angl" className="-rotate-90" />
+            }
             onPageChange={handlePageClick}
             pageRangeDisplayed={3}
             marginPagesDisplayed={1}
             pageCount={Math.ceil(items.length / itemsPerPage)}
-            previousLabel="< Prev"
-            containerClassName="flex gap-2 justify-center mt-4"
-            pageClassName="px-3 py-1 rounded bg-gray-200"
-            activeClassName="bg-blue-500 text-white"
-            previousClassName="px-3 py-1 bg-gray-300 rounded"
-            nextClassName="px-3 py-1 bg-gray-300 rounded"
-            breakClassName="px-2"
+            previousLabel={
+              <Image src={angle_down} alt="angl" className="rotate-90" />
+            }
+            containerClassName="flex gap-[5px] justify-center pt-8 pb-4"
+            pageClassName=" rounded-full h-[30px] w-[30px] flex text-[#1F1F1F80] justify-center items-center border-1 !border-[#1F1F1F80]"
+            activeClassName="!bg-[#FF6AAF] border-none  text-white"
+            previousClassName="h-[30px] w-[30px]  rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0 "
+            nextClassName="h-[30px] w-[30px] rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0 "
+            breakClassName="text-[#1F1F1F80]"
           />
         </div>
       </div>

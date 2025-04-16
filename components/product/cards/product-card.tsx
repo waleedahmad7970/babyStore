@@ -29,14 +29,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       style={{
         borderColor: "rgba(0, 0, 0, 0.04)",
       }}
-      className="product-card max-w-[240px] rounded-[8px] border-[1.5px]"
+      className="product-card rounded-[8px] border-[1.5px]"
     >
-      <div className="w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white">
-        <div className="relative w-[240px]">
+      <div
+        className={`w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white`}
+      >
+        <div className="relative min-w-[240px]">
           <Image
             src={product?.image}
             alt={"sw"}
-            className="h-full max-h-[240px] w-full rounded-lg object-cover"
+            className="h-full min-h-[240px] w-full rounded-lg object-cover"
           />
           <button className="absolute top-[15px] right-[14px] rounded-[4px] bg-white p-2 shadow-md">
             <Image height={20} width={20} src={HeartIcon} alt="heart" />
