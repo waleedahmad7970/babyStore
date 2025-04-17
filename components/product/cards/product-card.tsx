@@ -57,14 +57,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="flex flex-col gap-1">
               <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
                 AED{" "}
-                <span className="ml-[1px] text-left text-[16px] font-bold">
+                <span className="ml-[3px] text-left text-[16px] font-bold">
                   {product?.price?.toLocaleString()}
                 </span>
               </p>
               {product?.oldPrice && (
                 <p className="flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1F1F1F80] line-through">
                   AED
-                  <span className="ml-[1px] text-left text-[14px] leading-[10px] font-semibold text-[#1F1F1F80]">
+                  <span className="ml-[3px] text-left text-[14px] leading-[10px] font-medium text-[#1F1F1F80]">
                     {product?.oldPrice?.toLocaleString()}
                   </span>
                 </p>

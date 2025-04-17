@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "swiper/css";
 import "swiper/css/free-mode";
+import "swiper/css/effect-fade";
 
 const inter = Inter({ subsets: ["latin"] });
 

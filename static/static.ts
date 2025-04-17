@@ -72,6 +72,7 @@ import {
   fashion,
   feeding,
   gear,
+  ios,
   mommy,
   new_arrivals,
   nursery,
@@ -365,7 +366,7 @@ export const productsLIST1 = [
   {
     id: 1,
     title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    image: p1,
+    image: ios,
     price: 10529,
     oldPrice: 10625,
     discount: "20% OFF",

@@ -34,3 +34,6 @@ export { default as p2 } from "../products/p2.svg";
 export { default as p3 } from "../products/p3.svg";
 export { default as p4 } from "../products/p4.svg";
 export { default as p5 } from "../products/p5.svg";
+
+// ios
+export { default as ios } from "../products/ios.png";

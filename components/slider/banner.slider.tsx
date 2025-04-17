@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,7 +19,8 @@ export default function BannerSlider({ slides }: { slides: Slide[] }) {
   return (
     <div className="relative w-full">
       <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
+        effect="fade"
+        modules={[Pagination, Navigation, Autoplay, EffectFade]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         slidesPerView={1}
         loop
@@ -47,14 +48,22 @@ export default function BannerSlider({ slides }: { slides: Slide[] }) {
 
             {/* Desktop Image (hidden on mobile) */}
             {/* <div className="relative hidden h-[466px] w-full md:block"> */}
-            <div className="relative hidden aspect-[1440/466] w-full sm:block">
+            {/* <div className="relative hidden aspect-[1440/466] w-full sm:block">
               <Image
                 src={slide.desktopImg}
                 alt={slide.alt}
-                className="h-full w-full object-fill"
+                className="h-full w-full"
                 // fill
                 priority
                 // sizes="100vw"
+              />
+            </div> */}
+            <div className="relative hidden aspect-[1440/466]] w-full sm:block">
+              <Image
+                src={slide.desktopImg}
+                alt={slide.alt}
+                className="h-auto w-full object-contain"
+                priority
               />
             </div>
           </SwiperSlide>
