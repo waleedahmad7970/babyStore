@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 interface CategoryCardProps {
   name: string;
-  image: string;
+  image: string | StaticImageData;
   className?: string;
   paraClassName?: string;
   ImgClass?: string;
