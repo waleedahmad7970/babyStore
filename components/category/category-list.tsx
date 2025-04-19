@@ -219,8 +219,8 @@ export default function CategoryList() {
                             <ul className="space-y-1 text-sm text-gray-600">
                               {section.items.map((item: any, idx: number) => (
                                 <li
-                                  className="mb-0 border-b-1 border-[#F5F5F5] text-[12px] leading-[24px] font-[274px] text-[#1F1F1F]"
                                   key={idx}
+                                  className="mb-0 cursor-pointer border-b border-[#F5F5F5] text-[12px] leading-[24px] text-[#1F1F1F] transition-all duration-200 hover:translate-x-3 hover:text-[#F82D8B99]"
                                 >
                                   {item}
                                 </li>
