@@ -1003,3 +1003,65 @@ export const blogTags = [
   "Prophet Stories",
   "Diapering",
 ];
+export const babySwingCardsData = [
+  {
+    image: "/assets/baby-swing-1.jpg",
+    date: "12 Mar, 2023",
+    comments: 52,
+    title: "How to choose the best baby swing?",
+    description:
+      "We've tested dozens of baby swings so you don’t have to. tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to. From smart Bluetooth-enabled models to simple manual ones, here are the top picks that balance comfort, safety, and ease of use for busy parents.",
+    authorName: "Lionardo De Caprio",
+    authorImage: "/assets/authors/samantha.jpg",
+  },
+  {
+    image: "/assets/baby-swing-2.jpg",
+    date: "24 Feb, 2023",
+    comments: 136,
+    title: "How to Choose the Right Baby Swing",
+    description:
+      "Not all baby swings are made equal. This guide helps you understand the different types, features to prioritize like recline settings and noise levels, and how to match the swing to your baby's age and temperament.",
+    authorName: "Lionardo De Caprio",
+    authorImage: "/assets/authors/lionardo.jpg",
+  },
+  {
+    image: "/assets/baby-swing-3.jpg",
+    date: "03 Jan, 2023",
+    comments: 87,
+    title: "Swing Safety Tips Every Parent Should Know",
+    description:
+      "Even the best swing isn't safe if not used properly. Learn about essential safety practices including harnessing, placement, swing timing, and why it's important never to leave your baby unattended.",
+    authorName: "Emily Stone",
+    authorImage: "/assets/authors/emily.jpg",
+  },
+  {
+    image: "/assets/baby-swing-4.jpg",
+    date: "18 Dec, 2022",
+    comments: 64,
+    title: "Best Budget Baby Swings That Actually Work",
+    description:
+      "On a tight budget? We’ve reviewed swings under $100 that are still durable, reliable, and packed with useful features. Find out which ones are worth it and which to avoid.",
+    authorName: "Michael Sun",
+    authorImage: "/assets/authors/michael.jpg",
+  },
+  {
+    image: "/assets/baby-swing-5.jpg",
+    date: "06 Nov, 2022",
+    comments: 29,
+    title: "When to Start and Stop Using a Baby Swing",
+    description:
+      "Wondering when to introduce your baby to a swing? Or when it’s time to stop using it altogether? Our pediatric-backed advice breaks down age guidelines, developmental milestones, and weaning tips.",
+    authorName: "Isabella Blue",
+    authorImage: "/assets/authors/isabella.jpg",
+  },
+  {
+    image: "/assets/baby-swing-6.jpg",
+    date: "21 Oct, 2022",
+    comments: 111,
+    title: "Do Baby Swings Help with Sleep?",
+    description:
+      "Baby swings can be soothing—but are they safe for sleep? We explore what doctors recommend, how to use swings for short naps, and when it's time to transition to a crib for better sleep habits.",
+    authorName: "James Holloway",
+    authorImage: "/assets/authors/james.jpg",
+  },
+];
