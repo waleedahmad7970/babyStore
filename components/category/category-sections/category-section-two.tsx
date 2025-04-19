@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 import { productsLIST1, toy_section } from "@/static/static";
 import UnderPricerBanner from "@/components/banners/under-price";
@@ -8,8 +8,8 @@ interface CategorSectiondProps {
   ImgClass?: string;
   className?: string;
   showPrices?: boolean;
-  bannerImages?: string[];
-  categoryImages: string[];
+  bannerImages?:  string[] | StaticImageData[];
+  categoryImages:  string[] | StaticImageData[];
 }
 
 const CategorySection: React.FC<CategorSectiondProps> = ({

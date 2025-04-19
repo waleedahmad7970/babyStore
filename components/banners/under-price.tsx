@@ -1,10 +1,10 @@
 import { toys_banner_mob } from "@/public/assets/banner";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface Props {
   data: {
-    banner: string;
-    underPrice: string[];
+    banner: string | StaticImageData;
+    underPrice: string[] | StaticImageData[];
   };
 }
 

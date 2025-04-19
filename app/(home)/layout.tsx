@@ -11,6 +11,7 @@ import StoreInfoSection from "@/components/features/store-info-section";
 import BlogSlider from "@/components/slider/blogs.slider";
 import ReviewSlider from "@/components/slider/reviews.slider";
 import { blogs, reviews } from "@/static/static";
+import BottomNavigation from "@/components/menu/mobile-menu";
 
 export default function HomePageLayout({
   children,
@@ -28,6 +29,7 @@ export default function HomePageLayout({
       <SubscribeSection />
       <DeliveryService />
       <Footer />
+      <BottomNavigation />
     </Fragment>
   );
 }

@@ -24,9 +24,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       <div
         className={`flex cursor-pointer items-center justify-center rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] ${className}`}
       >
-        {hoveredId !== null && hoveredId !== categoryId && (
+        {/* {hoveredId !== null && hoveredId !== categoryId && (
           <div className="absolute z-0 h-[99px] w-[99px] rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] bg-black/50 transition duration-300" />
-        )}
+        )} */}
         <Image src={image} alt={name} className={ImgClass} loading="lazy" />
       </div>
       <p className={`${paraClassName}`}>{name}</p>

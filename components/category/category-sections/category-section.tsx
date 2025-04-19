@@ -8,8 +8,8 @@ interface CategorSectiondProps {
   ImgClass?: string;
   className?: string;
   bannerImage?: string | StaticImageData;
-  categoryImages: string[];
-  bannerImageMob?: string;
+  categoryImages: string[] | StaticImageData[];
+  bannerImageMob?: string | StaticImageData;
 }
 const CategorySection: React.FC<CategorSectiondProps> = ({
   bannerImageMob = "",

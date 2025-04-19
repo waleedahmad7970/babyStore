@@ -2,7 +2,13 @@
 
 import ProductCard from "@/components/product/cards/product-card";
 import FilterSidebar from "@/components/sidebar/filter-sidebar";
-import { angle_down, grid, sort } from "@/public/assets/icons";
+import {
+  angle_down,
+  burger_menu,
+  expendMore,
+  grid,
+  sort,
+} from "@/public/assets/icons";
 import { productsLIST1 } from "@/static/static";
 import Image from "next/image";
 import React, { JSX, useState } from "react";
@@ -11,13 +17,21 @@ import ReactPaginate from "react-paginate";
 type PageClickEvent = {
   selected: number;
 };
-
+const sortOptions = [
+  { label: "Recommended", count: 120 },
+  { label: "Best Seller", count: 42 },
+  { label: "New Arrivals", count: 7 },
+  { label: "Discount", count: 5 },
+  { label: "Price low to high", count: 32 },
+  { label: "Price high to low", count: 32 },
+];
 export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 12;
 
   const [currentPage, setCurrentPage] = useState<number>(0);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(sortOptions[0]);
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
   };
@@ -37,34 +51,69 @@ export default function Page(): JSX.Element {
             <div className="text-[16px] leading-[25px] font-medium text-[#E7448C]">
               {productsLIST1.length} Results!
             </div>
-            <div className="flex items-center justify-between gap-[11px]">
-              <div className="flex items-center justify-between gap-[6.43px] rounded-[21px] bg-[#FFF0F5] px-[15px] py-[8.5px]">
-                <Image src={grid} alt="grid" />
-                <p className="mb-0 text-[15px] leading-[9.6px] font-medium text-[#A0A0A0]">
-                  Show
-                </p>
-                <div className="flex items-center justify-between gap-2">
-                  <p className="mb-0 text-[15px] leading-[9.6px] font-medium text-[#A0A0A0]">
-                    Price: High to Low
-                  </p>
-                  <Image src={angle_down} alt="sort" className="h-2 min-w-1" />
+
+            <div className="relative inline-block w-full max-w-[300px] text-left">
+              <div
+                style={{
+                  borderColor: "rgba(248, 45, 139, 0.10)",
+                }}
+                onClick={() => setIsOpen((prev) => !prev)}
+                className={`relative flex cursor-pointer items-center justify-between gap-2 rounded-[10px] border bg-[#FFE7F2] px-5 py-2 transition-all duration-200 ${
+                  isOpen ? "rounded-b-none" : ""
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="rounded-[5px] bg-[#F82D8B1A] p-[5px]">
+                    <Image
+                      src={burger_menu}
+                      alt="menu"
+                      className="h-[16px] w-[16px]"
+                    />
+                  </div>
+                  <span className="text-[14px] font-normal text-[#333]">
+                    Sort by
+                  </span>
+                  <span className="text-[16px] font-semibold text-[#000]">
+                    {selected.label}
+                  </span>
                 </div>
-              </div>
-              <div className="flex items-center justify-between gap-[6.43px] rounded-[21px] bg-[#FFF0F5] px-[15px] py-[8.5px]">
-                <Image src={sort} alt="sort icon" />
-                <p className="mb-0 text-[15px] leading-[9.6px] font-medium text-[#A0A0A0]">
-                  Show
-                </p>
-                <div className="flex items-center justify-between gap-2">
-                  <p className="mb-0 text-[15px] leading-[9.6px] font-medium text-[#A0A0A0]">
-                    12
-                  </p>
-                  <Image
-                    height={11}
-                    src={angle_down}
-                    alt="arrow"
-                    className="h-2 min-w-1"
-                  />
+                <Image
+                  src={expendMore}
+                  alt="arrow"
+                  className={`h-[22px] w-[22px] transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+                <div
+                  className={`absolute top-full right-[-1px] left-[-1px] z-50 min-w-[260px] origin-top transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${isOpen ? "scale-y-100 opacity-100" : "scale-y-95 opacity-0"} `}
+                >
+                  <div
+                    style={{
+                      borderColor: "rgba(248, 45, 139, 0.10)",
+                    }}
+                    className="] rounded-b-[10px] border-x border-b bg-[#FFE7F2] px-5"
+                  >
+                    <ul className="">
+                      {sortOptions.map((option) => (
+                        <li
+                          key={option.label}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelected(option);
+                            setIsOpen(false);
+                          }}
+                          className="flex cursor-pointer items-center justify-between rounded-[8px] py-[6px] transition-colors duration-150 hover:bg-[#fdd9e8]"
+                        >
+                          <span className="text-[15px] text-[#000]">
+                            {option.label}
+                          </span>
+                          <span className="rounded-full bg-white px-[10px] py-[2px] text-[14px] font-semibold text-[#F82D8B] transition-all duration-150 hover:scale-105">
+                            {option.count}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

@@ -70,13 +70,13 @@ export { default as WhatsappLogo } from "../icons/WhatsappLogo.svg";
 
 // summer
 
-export { default as pools } from "../icons/pools.svg";
-export { default as inflatables } from "../icons/inflatables.svg";
-export { default as beach_toys } from "../icons/beach_toys.svg";
-export { default as swimwear } from "../icons/swimwear.svg";
-export { default as pool_shoes } from "../icons/pool_shoes.svg";
-export { default as sun_protector } from "../icons/sun_protector.svg";
-export { default as summer_banner } from "../icons/summer_banner.svg";
+export { default as pools } from "../icons/pools.png";
+export { default as inflatables } from "../icons/inflatables.png";
+export { default as beach_toys } from "../icons/beach_toys.png";
+export { default as swimwear } from "../icons/swimwear.png";
+export { default as pool_shoes } from "../icons/pool_shoes.png";
+export { default as sun_protector } from "../icons/sun_protector.png";
+export { default as summer_banner } from "../icons/summer_banner.png";
 
 // mob search
 
@@ -86,3 +86,23 @@ export { default as grid } from "../icons/grid.svg";
 export { default as sort } from "../icons/sort.svg";
 export { default as angle_down } from "../icons/angle_down.svg";
 export { default as mob_search_icon } from "../icons/mob_search_icon.svg";
+
+// pngs  blogs ucons
+
+export { default as men } from "../icons/men.png";
+export { default as comments } from "../icons/comments.png";
+export { default as strong_calendar } from "../icons/strong_calendar.png";
+export { default as white_arrow_right } from "../icons/white_arrow_right.png";
+
+// iocm
+
+export { default as close } from "../icons/close.png";
+export { default as burger_menu } from "../icons/burger_menu.png";
+export { default as expendMore } from "../icons/expand-more.png";
+
+//  mon menu icons
+export { default as home } from "../icons/home.png";
+export { default as menu2 } from "../icons/menu-2.png";
+export { default as bag } from "../icons/bag.png";
+export { default as profile } from "../icons/profile.png";
+export { default as Search } from "../icons/Search.png";

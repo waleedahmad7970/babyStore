@@ -78,8 +78,6 @@ import {
   new_arrivals,
   nursery,
   onis,
-  p1,
-  p2,
   p3,
   p4,
   p5,
@@ -274,6 +272,10 @@ export const breadcrumbPaths = [
   { name: "Products", link: "/products" },
   { name: "Evenflo EveryStage LX All-In-One Car Seat", link: "#" },
 ];
+export const breadcrumbPathsBlog = [
+  { name: "Home", link: "/" },
+  { name: "How to choose the best baby swing?", link: "#" },
+];
 // product data
 export const productData = {
   id: 1,
@@ -376,7 +378,7 @@ export const productsLIST1 = [
   {
     id: 2,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 22339,
     oldPrice: 5233,
     discount: "20% OFF",
@@ -403,7 +405,7 @@ export const productsLIST1 = [
   {
     id: 5,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 229,
     oldPrice: 523,
     discount: "20% OFF",
@@ -430,7 +432,7 @@ export const productsLIST1 = [
   {
     id: 8,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 22329,
     oldPrice: 3223,
     discount: "20% OFF",
@@ -466,7 +468,7 @@ export const productsLIST1 = [
   {
     id: 12,
     title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    image: p1,
+    image: ios,
     price: 43275,
     oldPrice: 60320,
     discount: "20% OFF",
@@ -476,7 +478,7 @@ export const productsLIST1 = [
   {
     id: 13,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 22339,
     oldPrice: 5233,
     discount: "20% OFF",
@@ -503,7 +505,7 @@ export const productsLIST1 = [
   {
     id: 16,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 229,
     oldPrice: 523,
     discount: "20% OFF",
@@ -521,7 +523,7 @@ export const productsLIST1 = [
   {
     id: 18,
     title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    image: p1,
+    image: ios,
     price: 10529,
     oldPrice: 10625,
     discount: "20% OFF",
@@ -530,7 +532,7 @@ export const productsLIST1 = [
   {
     id: 19,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 22339,
     oldPrice: 5233,
     discount: "20% OFF",
@@ -557,7 +559,7 @@ export const productsLIST1 = [
   {
     id: 22,
     title: "Aptamil - Advance 1 Next Generation Infant",
-    image: p2,
+    image: ios2,
     price: 229,
     oldPrice: 523,
     discount: "20% OFF",
@@ -974,4 +976,30 @@ export const footerBottomLinks = [
   { name: "Promotion", url: "/promotion" },
   { name: "Contact", url: "/contact" },
   { name: "Frequently Asked Questions", url: "/faq" },
+];
+
+export const blogTags = [
+  "ALL",
+  "Clothing & Fashion",
+  "Parenting Tips",
+  "Nursery & Decor",
+  "Skin & Bath",
+  "Feeding & Nursing",
+  "Baby Travel - Tips & Accessories",
+  "Rideons & Bikes",
+  "Parenting Tips",
+  "Gears And Safety",
+  "Toys",
+  "Cribs & Bassinets",
+  "Outdoor",
+  "Christmas",
+  "Decor",
+  "Mommy",
+  "Mommy Essentials",
+  "Maternity Pillows",
+  "Daily Hacks",
+  "New Events",
+  "Ramadan",
+  "Prophet Stories",
+  "Diapering",
 ];

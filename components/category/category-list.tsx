@@ -152,7 +152,7 @@ export default function CategoryList() {
       onMouseEnter={() => setHoveredInitail(true)}
       className="group relative mb-0 hidden w-full px-4 md:block md:px-0 md:pb-6"
     >
-      {hoveredId !== null && (
+      {/* {hoveredId !== null && (
         <div
           onMouseEnter={() => {
             setHoveredId(null);
@@ -160,7 +160,7 @@ export default function CategoryList() {
           }}
           className="fixed inset-0 z-30 bg-black/50 transition duration-300"
         ></div>
-      )}
+      )} */}
       <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
         {categories.map((category) => (
           <div
@@ -178,8 +178,10 @@ export default function CategoryList() {
             }}
           >
             <CategoryCard
+              paraClassName={`${hoveredId === category.id ? "text-[#F82D8B99]" : "text-[#1A1718]"}`}
               {...category}
-              hoveredId={hoveredId}
+              ImgClass="w-[82px] h-[82px]"
+              // hoveredId={hoveredId}
               categoryId={category.id}
             />
           </div>

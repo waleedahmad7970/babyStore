@@ -1,6 +1,6 @@
 "use client";
 
-import { angle_down, XBlack } from "@/public/assets/icons";
+import { angle_down, close, XBlack } from "@/public/assets/icons";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -178,15 +178,14 @@ export default function FilterSidebar() {
             {[...selected].map((value) => (
               <div
                 key={value}
-                className="boder-1 mb-0 flex items-center gap-[10px] rounded-[50px] border border-[#2AA136] px-[18px] py-[12.4px] text-[12px] leading-[14px] font-medium text-[#1F1F1F]"
-                style={{ boxShadow: "0px 3px 0px 0px #2AA136 inset" }}
+                className="mb-0 flex items-center gap-[15px] rounded-[48px] bg-[#FFF0F5] px-[11px] py-[6px] text-[12px] leading-[14px] font-medium text-[#1F1F1F]"
               >
                 {value}
                 <button
                   onClick={() => toggleSelection(value)}
                   className="cursor-pointer text-[#999] hover:text-[#333]"
                 >
-                  <Image src={XBlack} alt="x" />
+                  <Image src={close} alt="x" className="h-[24px] w-[24px]" />
                 </button>
               </div>
             ))}
@@ -242,8 +241,10 @@ export default function FilterSidebar() {
                       onClick={() => toggleSelection(opt.value)}
                     >
                       <div
-                        className={`h-4 w-4 rounded-[3px] border border-[#1F1F1F33] ${
-                          selected.has(opt.value) ? "bg-[#2AA136]" : "bg-white"
+                        className={`h-4 w-4 rounded-[3px] border ${
+                          selected.has(opt.value)
+                            ? "border-transparent bg-[#F470AB]"
+                            : "border-[#1F1F1F33] bg-white"
                         }`}
                       />
                       <span
@@ -301,7 +302,7 @@ export default function FilterSidebar() {
                             <div
                               className={`h-4 w-4 rounded-[3px] ${
                                 selected.has(child.value)
-                                  ? "border-none bg-[#2AA136]"
+                                  ? "border-none bg-[#F470AB]"
                                   : "border border-[#1F1F1F33] bg-white"
                               }`}
                             />
@@ -361,7 +362,7 @@ export default function FilterSidebar() {
                                 <div
                                   className={`h-4 w-4 rounded-[3px] ${
                                     selected.has(grand.value)
-                                      ? "border-none bg-[#2AA136]"
+                                      ? "border-none bg-[#F470AB]"
                                       : "border border-[#1F1F1F33] bg-white"
                                   }`}
                                 />
