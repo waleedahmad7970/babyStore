@@ -22,7 +22,7 @@
 
 // details of pro
 export { default as detail_image } from "../products/detail_image.png";
-export { default as detail_image_1 } from "../products/product_slider_1.png";
+export { default as detail_image_1 } from "../products/detail_image_1.png";
 export { default as detail_image_2 } from "../products/detail_image_2.png";
 export { default as detail_image_3 } from "../products/detail_image_3.png";
 export { default as detail_image_4 } from "../products/detail_image_4.png";
