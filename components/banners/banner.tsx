@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface Props {
-  Img: string;
-  mobImg?: string;
+  Img: StaticImageData | string; // Accepts both imported images and string paths
+  mobImg?: StaticImageData | string;
   className?: string;
 }
 

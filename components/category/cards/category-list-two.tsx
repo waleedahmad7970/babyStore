@@ -3,10 +3,11 @@ import CategoryCard from "./category-card";
 import { categoriesL2 } from "@/static/static";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
+import { StaticImageData } from "next/image";
 
 interface Category {
   name: string;
-  image: string;
+  image: StaticImageData;
 }
 
 export default function CategoryListTwo() {
