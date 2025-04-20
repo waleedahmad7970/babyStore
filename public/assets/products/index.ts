@@ -21,11 +21,11 @@
 // export { default as stollers } from "../products/stollers.svg";
 
 // details of pro
-export { default as detail_image } from "../products/detail_image.svg";
-export { default as detail_image_1 } from "../products/product_slider_1.svg";
-export { default as detail_image_2 } from "../products/detail_image_2.svg";
-export { default as detail_image_3 } from "../products/detail_image_3.svg";
-export { default as detail_image_4 } from "../products/detail_image_4.svg";
+export { default as detail_image } from "../products/detail_image.png";
+export { default as detail_image_1 } from "../products/product_slider_1.png";
+export { default as detail_image_2 } from "../products/detail_image_2.png";
+export { default as detail_image_3 } from "../products/detail_image_3.png";
+export { default as detail_image_4 } from "../products/detail_image_4.png";
 
 // products
 // export { default as p1 } from "../products/p1.svg";
