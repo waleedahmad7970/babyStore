@@ -29,7 +29,6 @@ export default function HomePageLayout({
       <SubscribeSection />
       <DeliveryService />
       <Footer />
-      <BottomNavigation />
     </Fragment>
   );
 }

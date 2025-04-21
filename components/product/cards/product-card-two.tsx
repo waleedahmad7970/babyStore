@@ -25,7 +25,7 @@ interface ProductCardProps {
   product: ProductData;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCardTwo: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       style={{
@@ -36,11 +36,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div
         className={`w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white`}
       >
-        <div className="relative min-w-[240px]">
+        <div className="relative max-h-[175px] max-w-[174px] md:h-auto lg:max-h-[259px] lg:max-w-[259px]">
           <Image
             src={product?.image}
             alt={"sw"}
-            className="h-full min-h-[240px] w-full rounded-lg object-cover"
+            className="h-full w-full rounded-lg object-cover md:min-h-[240px]"
           />
           <button
             style={{
@@ -118,4 +118,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default ProductCardTwo;

@@ -105,4 +105,7 @@ export { default as home } from "../icons/home.png";
 export { default as menu2 } from "../icons/menu-2.png";
 export { default as bag } from "../icons/bag.png";
 export { default as profile } from "../icons/profile.png";
+export { default as funnel } from "../icons/funnel.svg";
 export { default as Search } from "../icons/Search.png";
+export { default as redBag } from "../icons/bag.svg";
+export { default as wishlist } from "../icons/wishlist.svg";
