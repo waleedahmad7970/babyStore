@@ -16,12 +16,22 @@ export const QuantityControlMob = ({
     style={{
       borderColor: "rgba(0, 0, 0, 0.10)",
     }}
-    className="flex flex-col items-center justify-between rounded-[8px] border p-2"
+    className="flex flex-col items-center justify-between gap-[6px] rounded-[8px] border p-2"
   >
-    <Image onClick={onDecrease} src={decrement} alt="min" className="h-6 w-6" />
+    <Image
+      onClick={onDecrease}
+      src={decrement}
+      alt="min"
+      className="h-6 min-w-6"
+    />
 
     <span className="text-[14px] font-medium text-[#191818]">{quantity}</span>
 
-    <Image onClick={onIncrease} src={increment} alt="min" className="h-6 w-6" />
+    <Image
+      onClick={onIncrease}
+      src={increment}
+      alt="min"
+      className="h-6 min-w-6"
+    />
   </div>
 );
