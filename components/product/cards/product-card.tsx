@@ -33,9 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }}
       className="product-card rounded-[8px] border-[1.5px]"
     >
-      <div
-        className={`w-full overflow-hidden rounded-[8px] border-[1.5px] border-[#1F1F1F0A] bg-white`}
-      >
+      <div className={`w-full overflow-hidden rounded-[8px] bg-white`}>
         <div className="relative min-w-[240px]">
           <Image
             src={product?.image}
