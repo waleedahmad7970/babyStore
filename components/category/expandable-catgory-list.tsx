@@ -61,11 +61,11 @@
 // export default ExpandableCategoryItem;
 "use client";
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface ExpandableCategoryItemProps {
   title: string;
-  icon: string;
+  icon: string | StaticImageData;
   children?: React.ReactNode[];
   isOpen?: boolean;
   onToggle?: () => void;
