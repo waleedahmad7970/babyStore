@@ -61,7 +61,7 @@ export default function Home() {
         bannerImage={summer_banner}
         categoryImages={summerSection}
         className="gap-[10px] md:gap-[14px]"
-        ImgClass="w-[172px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover"
+        ImgClass="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover"
       />
 
       <div className="mb-10 w-full py-0 sm:mb-0 md:pb-[60px]">
@@ -76,7 +76,7 @@ export default function Home() {
         bannerImageMob={clearance_banner_mob}
         bannerImage={clearance_banner}
         categoryImages={clearanceSection}
-        ImgClass="w-[172px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover"
+        ImgClass="w-[162px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover"
       />
       <CategorySection
         bannerImageMob={firstday_banner_mob}
@@ -92,7 +92,7 @@ export default function Home() {
         showPrices={true}
         categoryImages={dualCateSection}
         bannerImages={dualSectionBannersBoyGirls}
-        ImgClass="w-[172px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover"
+        ImgClass="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover"
       />
     </div>
   );

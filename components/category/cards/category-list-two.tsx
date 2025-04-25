@@ -17,6 +17,31 @@ export default function CategoryListTwo() {
         Top Categories
       </div>
       {/* Scrollable container */}
+      {/* <Swiper
+        slidesPerView={8}
+        spaceBetween={8}
+        loop={true}
+        speed={2000}
+        allowTouchMove={true}
+        autoplay={{
+          delay: 0, // instant scroll
+          disableOnInteraction: true,
+          pauseOnMouseEnter: true, // 👈 important: DO NOT pause on hover
+        }}
+        modules={[FreeMode, Autoplay]}
+        className="w-full"
+      >
+        {[...categoriesL2, ...categoriesL2].map((category: Category, index) => (
+          <SwiperSlide key={index} style={{ width: "162px" }}>
+            <CategoryCard
+              paraClassName="mt-[18px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[20px] md:leading-normal"
+              ImgClass="object-contain max-w-[70px] md:max-w-[131px] max-h-[65px] md:max-h-[123px]"
+              className="h-[85px] w-[85px] !rounded-[35px] bg-[#FFF1E9] md:h-[162px] md:w-[162px] md:!rounded-[70px]"
+              {...category}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper> */}
 
       {/* <Swiper
         spaceBetween={8}

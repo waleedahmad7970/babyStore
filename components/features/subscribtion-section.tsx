@@ -47,12 +47,12 @@ export default function SubscribeSection() {
           <Image
             src={app_store}
             alt="App Store"
-            className="h-[67px] w-full max-w-[170px] cursor-pointer md:max-w-[234px]"
+            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px]"
           />
           <Image
             src={google_play}
             alt="Google Play"
-            className="h-[67px] w-full max-w-[170px] cursor-pointer md:max-w-[234px]"
+            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px]"
           />
         </div>
       </div>

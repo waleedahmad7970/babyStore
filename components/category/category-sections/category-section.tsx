@@ -16,7 +16,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
   bannerImage = happyTummyBanner,
   className = " gap-[10px] md:gap-[21px]",
   categoryImages = [],
-  ImgClass = "w-[172px] h-[201px]  lg:w-[324px] lg:h-[379px] object-cover",
+  ImgClass = "w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover",
 }) => {
   return (
     <div className="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
@@ -39,7 +39,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
         className="cus-container block h-[236px] w-full object-cover sm:hidden md:h-full"
         alt="banner"
       /> */}
-      <div className="cus-container relative block aspect-[640/236] w-full rounded-[8px] sm:hidden">
+      <div className="cus-container relative block w-full rounded-[8px] sm:hidden">
         <Image
           src={bannerImageMob}
           alt="Mobile Banner"

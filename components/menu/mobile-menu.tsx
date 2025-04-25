@@ -1,135 +1,11 @@
-// "use client";
-// import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
-// import Image from "next/image";
-// import { useRouter } from "next/navigation";
-// import React, { useState } from "react";
-
-// type TabType = {
-//   id: string;
-//   icon: React.ReactNode;
-//   label: string;
-//   link: string;
-// };
-
-// const BottomNavigation: React.FC = () => {
-//   const [activeTab, setActiveTab] = useState<string>("Home");
-//   const router = useRouter();
-
-//   const tabs: TabType[] = [
-//     {
-//       id: "Categories",
-//       icon: <Image src={menu2} alt="icon" className="h-[24px] w-[24px]" />,
-//       label: "Categories",
-//       link: "/category",
-//     },
-//     {
-//       id: "Home",
-//       icon: <Image src={home} alt="icon" className="h-[24px] w-[24px]" />,
-//       label: "Home",
-//       link: "/",
-//     },
-//     {
-//       id: "Search",
-//       icon: <Image src={Search} alt="icon" className="h-[24px] w-[24px]" />,
-//       label: "Search",
-//       link: "/brnad",
-//     },
-//     {
-//       id: "Bag",
-//       icon: <Image src={bag} alt="icon" className="h-[24px] w-[24px]" />,
-//       label: "Bag",
-//       link: "/product",
-//     },
-//     {
-//       id: "Profile",
-//       icon: <Image src={profile} alt="icon" className="h-[24px] w-[24px]" />,
-//       label: "Profile",
-//       link: "/profile",
-//     },
-//   ];
-//   const sortOptions = [
-//     { label: "Recommended", count: 120 },
-//     { label: "Best Seller", count: 42 },
-//     { label: "New Arrivals", count: 7 },
-//     { label: "Discount", count: 5 },
-//     { label: "Price : low to high", count: 32 },
-//     { label: "Price : high to low", count: 32 },
-//   ];
-
-//   const handleTabClick = (tabId: string, link?: string) => {
-//     setActiveTab(tabId);
-//     router.push(link);
-//   };
-
-//   return (
-//     <nav className="fixed right-0 bottom-0 left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
-//       <div
-//         style={{
-//           boxShadow: " 0px -14px 40px 0px rgba(0, 0, 0, 0.20)",
-//         }}
-//         className="absolute right-0 bottom-[64px] left-0 flex flex-col items-center justify-start gap-5 rounded-tl-[16px] rounded-tr-[16px] bg-[#FCFCFC] px-[10px] py-6"
-//       >
-//         <div className="t h-[6px] w-full max-w-[42px] rounded-[12px] bg-[#00000066]"></div>
-//         <p className="text-[17px] leading-[24px] font-semibold text-[#000]">
-//           Sort By
-//         </p>
-//         <div className="flex w-full flex-col justify-start border-t-1 border-[#E5E5E5]">
-//           {sortOptions?.map((option, index) => {
-//             return (
-//               <div
-//                 key={index}
-//                 className="border-b-1 border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal text-[#000]"
-//               >
-//                 {option.label}
-//               </div>
-//             );
-//           })}
-//         </div>
-//         <div
-//           style={{
-//             background: "rgba(248, 45, 139, 0.60)",
-//           }}
-//           className="font-Inter flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
-//         >
-//           Apply
-//         </div>
-//       </div>
-//       <div className="flex items-center justify-around px-5 py-[10px]">
-//         {tabs.map((tab) => (
-//           <button
-//             key={tab.id}
-//             onClick={() => handleTabClick(tab.id, tab?.link)}
-//             className={`flex h-full w-full flex-col items-center justify-center transition-all duration-300 ${
-//               activeTab === tab.id ? "text-[#F82D8B]" : "text-gray-500"
-//             }`}
-//             aria-label={tab.label}
-//           >
-//             <div
-//               className={`transition-transform duration-300 ${
-//                 activeTab === tab.id ? "scale-110" : "scale-100"
-//               }`}
-//             >
-//               {tab.icon}
-//             </div>
-//             <span
-//               className={`mt-1 text-[10px] leading-[160%] font-normal ${activeTab === tab.id ? "text-[#51545A]" : "text-[#C7CFDA]"} `}
-//             >
-//               {tab.label}
-//             </span>
-//           </button>
-//         ))}
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default BottomNavigation;
 "use client";
 
 import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 type TabType = {
   id: string;
@@ -146,10 +22,23 @@ type TabType2 = {
 const BottomNavigation: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("Home");
   const [activeCategory, setActiveCategory] = useState("Color");
-  const [SelectedFilter, setSelectedFilter] = useState("");
-  const [showFilter, setshowFilter] = useState(false);
+
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const { isFilter = "" } = useAppSelector((state) => state.globalStates);
   const router = useRouter();
+  const pathname = usePathname();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isFilter) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isFilter]);
 
   const tabs: TabType[] = [
     {
@@ -218,14 +107,14 @@ const BottomNavigation: React.FC = () => {
     setActiveTab(tabId);
     if (link) router.push(link);
   };
-  const selectFilter = (filter: string) => {
-    setshowFilter(true);
-    setSelectedFilter(filter);
+
+  const handleFilterOpen = (filter: string) => {
+    dispatch(globalStateActions.setFilter(filter));
   };
 
   return (
     <nav className="fixed right-0 bottom-0 left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
-      {showFilter ? (
+      {isFilter ? (
         <div
           style={{ boxShadow: "0px -14px 40px 0px rgba(0, 0, 0, 0.20)" }}
           className="absolute right-0 bottom-[64px] left-0 flex flex-col items-center justify-start gap-5 rounded-tl-[16px] rounded-tr-[16px] bg-[#FCFCFC] px-[10px] py-6"
@@ -234,7 +123,7 @@ const BottomNavigation: React.FC = () => {
           <p className="text-[17px] leading-[24px] font-semibold text-[#000]">
             Sort By
           </p>
-          {SelectedFilter === "sort" ? (
+          {isFilter === "sort" ? (
             <div className="flex w-full flex-col justify-start border-t border-[#E5E5E5]">
               {sortOptions.map((option, index) => (
                 <div
@@ -287,7 +176,7 @@ const BottomNavigation: React.FC = () => {
 
           <button
             onClick={() => {
-              setshowFilter(false);
+              handleFilterOpen("");
             }}
             style={{ background: "rgba(248, 45, 139, 0.60)" }}
             className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
@@ -296,21 +185,25 @@ const BottomNavigation: React.FC = () => {
           </button>
         </div>
       ) : (
-        <div className="absolute right-0 bottom-[88px] left-0 mx-auto flex max-w-[95px] items-center justify-around rounded-[10px] bg-[#FD71AF] px-[10px] py-[5px] text-white">
-          <span
-            onClick={() => selectFilter("sort")}
-            className="text-[12px] font-semibold text-white"
-          >
-            Sort
-          </span>
-          <div className="h-[8px] w-[1px] bg-white" />
-          <span
-            onClick={() => selectFilter("filter")}
-            className="text-[12px] font-semibold text-white"
-          >
-            Filters
-          </span>
-        </div>
+        <>
+          {["/category", "/brand"].includes(pathname) && (
+            <div className="absolute right-0 bottom-[88px] left-0 mx-auto flex max-w-[95px] items-center justify-around rounded-[10px] bg-[#FD71AF] px-[10px] py-[5px] text-white">
+              <span
+                onClick={() => handleFilterOpen("sort")}
+                className="text-[12px] font-semibold text-white"
+              >
+                Sort
+              </span>
+              <div className="h-[8px] w-[1px] bg-white" />
+              <span
+                onClick={() => handleFilterOpen("filter")}
+                className="text-[12px] font-semibold text-white"
+              >
+                Filters
+              </span>
+            </div>
+          )}
+        </>
       )}
       {/* Bottom Tabs */}
       <div className="flex items-center justify-around px-5 py-[10px]">

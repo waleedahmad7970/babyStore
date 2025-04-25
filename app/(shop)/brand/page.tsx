@@ -10,8 +10,10 @@ import {
   funnel,
 } from "@/public/assets/icons";
 import { productsLIST1 } from "@/static/static";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
-import React, { JSX, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 
 type PageClickEvent = {
@@ -28,10 +30,25 @@ const sortOptions = [
 export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 12;
-
+  const dispatch = useAppDispatch();
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(sortOptions[0]);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (el) {
+      const lineHeight = parseFloat(getComputedStyle(el).lineHeight || "0");
+      const totalLines = el.scrollHeight / lineHeight;
+      if (totalLines > 3) {
+        setShowButton(true);
+      }
+    }
+  }, []);
+  const toggleText = () => setIsExpanded(!isExpanded);
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
   };
@@ -39,7 +56,9 @@ export default function Page(): JSX.Element {
   const start = currentPage * itemsPerPage;
   const end = start + itemsPerPage;
   const currentItems = productsLIST1.slice(start, end);
-
+  const handleFilterOpen = (filter: string) => {
+    dispatch(globalStateActions.setFilter(filter));
+  };
   return (
     <div className="w-full">
       {/* mobile */}
@@ -61,6 +80,7 @@ export default function Page(): JSX.Element {
 
           <div className="relative flex items-center justify-between gap-[10px]">
             <div
+              onClick={() => handleFilterOpen("sort")}
               style={{
                 borderColor: "rgba(248, 45, 139, 0.10)",
               }}
@@ -80,6 +100,7 @@ export default function Page(): JSX.Element {
               </div>
             </div>
             <div
+              onClick={() => handleFilterOpen("filter")}
               style={{
                 borderColor: "rgba(248, 45, 139, 0.10)",
               }}
@@ -117,12 +138,31 @@ export default function Page(): JSX.Element {
                 <p className="mb-[7px] text-[24px] leading-[25px] font-bold text-[#000] md:text-[32px]">
                   KinderKraft
                 </p>
-                <p className="mb-0 max-w-[804px] text-[12px] leading-normal font-normal text-[#000] md:text-[16px]">
+                {/* <p className="mb-0 max-w-[804px] text-[12px] leading-normal font-normal text-[#000] md:text-[16px]">
                   Kinderkraft is all about creating positive experiences for
                   baby and parents. The first magic incomprehensible words
                   uttered, the first babysteps made without falling…..
                   KinderKraft wants to be there!{" "}
+                </p> */}
+                <p
+                  className={`mb-0 text-[12px] leading-normal font-normal text-[#000] transition-all md:text-[16px] ${
+                    isExpanded ? "line-clamp-none" : "line-clamp-3"
+                  }`}
+                >
+                  Kinderkraft is all about creating positive experiences for
+                  baby and parents. The first magic incomprehensible words
+                  uttered, the first babysteps made without falling KinderKraft
+                  wants to be there!
                 </p>
+
+                {showButton && (
+                  <button
+                    onClick={toggleText}
+                    className="mt-2 text-sm font-medium text-pink-500 hover:underline"
+                  >
+                    {isExpanded ? "Show Less" : "Show More"}
+                  </button>
+                )}
               </div>
             </div>
             {/* desktop filter */}
@@ -198,7 +238,7 @@ export default function Page(): JSX.Element {
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-between gap-1 sm:gap-[22px] md:min-h-[1104px] md:justify-start">
+            {/* <div className="flex flex-wrap justify-between gap-1 sm:gap-[22px] md:min-h-[1104px] md:justify-start">
               {currentItems.map((product) => {
                 return (
                   <div
@@ -209,8 +249,19 @@ export default function Page(): JSX.Element {
                   </div>
                 );
               })}
+            </div> */}
+            <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
+              {currentItems.map((product) => {
+                return (
+                  <div
+                    key={product.id}
+                    className="w-full max-w-full cursor-pointer sm:max-w-[175px] lg:max-w-[240px] xl:max-w-[259px]"
+                  >
+                    <ProductCardTwo product={product} />
+                  </div>
+                );
+              })}
             </div>
-
             <ReactPaginate
               breakLabel="..."
               nextLabel={

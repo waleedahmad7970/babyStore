@@ -9,6 +9,8 @@ import {
   funnel,
 } from "@/public/assets/icons";
 import { productsLIST1 } from "@/static/static";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
 import React, { JSX, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -27,6 +29,7 @@ const sortOptions = [
 export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 12;
+  const dispatch = useAppDispatch();
 
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -38,9 +41,11 @@ export default function Page(): JSX.Element {
   const start = currentPage * itemsPerPage;
   const end = start + itemsPerPage;
   const currentItems = productsLIST1.slice(start, end);
-
+  const handleFilterOpen = (filter: string) => {
+    dispatch(globalStateActions.setFilter(filter));
+  };
   return (
-    <div className="w-full">
+    <div className={`w-full`}>
       {/* mobile */}
       <div
         className="border-b"
@@ -60,6 +65,7 @@ export default function Page(): JSX.Element {
 
           <div className="relative flex items-center justify-between gap-[10px]">
             <div
+              onClick={() => handleFilterOpen("sort")}
               style={{
                 borderColor: "rgba(248, 45, 139, 0.10)",
               }}
@@ -79,6 +85,7 @@ export default function Page(): JSX.Element {
               </div>
             </div>
             <div
+              onClick={() => handleFilterOpen("filter")}
               style={{
                 borderColor: "rgba(248, 45, 139, 0.10)",
               }}
@@ -180,12 +187,24 @@ export default function Page(): JSX.Element {
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-between gap-1 sm:gap-[22px] md:min-h-[1104px] md:justify-start">
+            {/* <div className="flex flex-wrap justify-between gap-1 sm:gap-[22px] md:min-h-[1104px] md:justify-start">
               {currentItems.map((product) => {
                 return (
                   <div
                     key={product.id}
-                    className="w-full max-w-[175px] cursor-pointer lg:max-w-[240px] xl:max-w-[259px]"
+                    className="w-full  max-w-[175px] cursor-pointer lg:max-w-[240px] xl:max-w-[259px]"
+                  >
+                    <ProductCardTwo product={product} />
+                  </div>
+                );
+              })}
+            </div> */}
+            <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
+              {currentItems.map((product) => {
+                return (
+                  <div
+                    key={product.id}
+                    className="w-full max-w-full cursor-pointer sm:max-w-[175px] lg:max-w-[240px] xl:max-w-[259px]"
                   >
                     <ProductCardTwo product={product} />
                   </div>

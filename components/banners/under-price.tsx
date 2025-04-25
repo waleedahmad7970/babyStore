@@ -25,7 +25,7 @@ function UnderPricerBanner({ data }: Props) {
           className="h-full w-full object-cover"
         />
       </div>
-      <div className="relative block aspect-[640/236] w-full rounded-[8px] sm:hidden">
+      <div className="relative block w-full rounded-[8px] sm:hidden">
         <Image
           src={toys_banner_mob}
           alt="Mobile Banner"

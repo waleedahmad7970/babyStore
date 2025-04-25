@@ -16,6 +16,7 @@ import {
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 import userSlice from "./slices/auth.slice";
+import globalStateSlice from "./slices/globalStates";
 
 // Create noop storage for server-side
 const createNoopStorage = () => ({
@@ -37,6 +38,7 @@ const createNoopStorage = () => ({
 
 const rootReducer = combineReducers({
   user: userSlice,
+  globalStates: globalStateSlice,
 });
 const isServer = typeof window === "undefined";
 const storage = isServer ? createNoopStorage() : createWebStorage("local");

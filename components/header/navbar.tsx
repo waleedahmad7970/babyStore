@@ -6,6 +6,8 @@ import { userMenu } from "@/static/static";
 import { basket, menu, search } from "@/public/assets/icons";
 import { logo } from "@/public/assets/brands";
 import MobileDrawer from "../drawer/mobile-menu";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { globalStateActions } from "@/store/slices/globalStates";
 
 interface NavbarProps {
   categories?: string[];
@@ -14,22 +16,26 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   categories = ["All Categories", "Toys", "Clothing", "Accessories"],
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const { isMobMenu } = useAppSelector((state) => state.globalStates);
   const menuHandler = () => {
-    setIsOpen(!isOpen);
+    dispatch(globalStateActions.setMobileMenu(true));
+  };
+  const menuHandlerClose = () => {
+    dispatch(globalStateActions.setMobileMenu(false));
   };
 
   return (
     <nav className="mx-auto block py-[14px] md:py-7">
       <div className="block sm:hidden">
-        <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+        <MobileDrawer isOpen={isMobMenu} close={menuHandlerClose} />
       </div>
       <div className="cus-container mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">
           <div className="flex items-center justify-between gap-5">
             <Image
-              onClick={menuHandler}
+              onClick={() => menuHandler()}
               src={menu}
               width={32}
               height={32}

@@ -8,13 +8,13 @@ interface CategorSectiondProps {
   ImgClass?: string;
   className?: string;
   showPrices?: boolean;
-  bannerImages?:  string[] | StaticImageData[];
-  categoryImages:  string[] | StaticImageData[];
+  bannerImages?: string[] | StaticImageData[];
+  categoryImages: string[] | StaticImageData[];
 }
 
 const CategorySection: React.FC<CategorSectiondProps> = ({
   className = "",
-  ImgClass = "w-[172px] h-[201px] md:w-auto md:h-auto lg:w-[324px] lg:h-[379px] object-cover",
+  ImgClass = "w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover",
   showPrices = false,
   bannerImages = [],
   categoryImages = [],
