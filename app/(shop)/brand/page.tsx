@@ -152,17 +152,18 @@ export default function Page(): JSX.Element {
                   Kinderkraft is all about creating positive experiences for
                   baby and parents. The first magic incomprehensible words
                   uttered, the first babysteps made without falling KinderKraft
-                  wants to be there!
+                  wants to be there!Kinderkraft is all about creating positive
+                  experiences for baby and parents. The first magic
+                  incomprehensible words uttered, the first babysteps made
+                  without falling KinderKraft wants to be there!
                 </p>
 
-                {showButton && (
-                  <button
-                    onClick={toggleText}
-                    className="mt-2 text-sm font-medium text-pink-500 hover:underline"
-                  >
-                    {isExpanded ? "Show Less" : "Show More"}
-                  </button>
-                )}
+                <button
+                  onClick={toggleText}
+                  className="mt-2 text-sm font-medium text-pink-500 hover:underline"
+                >
+                  {isExpanded ? "Show Less" : "Show More"}
+                </button>
               </div>
             </div>
             {/* desktop filter */}
