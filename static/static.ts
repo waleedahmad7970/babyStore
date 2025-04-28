@@ -29,7 +29,18 @@ import {
   Toys,
   water_bottle,
 } from "@/public/assets/sections";
-import { img1, img2, img3 } from "../public/assets/blogs";
+import {
+  blog_detail_1,
+  blog_detail_2,
+  blog_detail_3,
+  blog_detail_4,
+  blog_detail_5,
+  blogImageTwo,
+  blogmain,
+  img1,
+  img2,
+  img3,
+} from "../public/assets/blogs";
 import {
   user,
   truck,
@@ -1065,3 +1076,87 @@ export const babySwingCardsData = [
     authorImage: "/assets/authors/james.jpg",
   },
 ];
+
+export const blogDetailsData = {
+  date: "Lionardo de Caprio • Fri 24 Feb 2023",
+  title: "How to choose the best baby swing?",
+  description:
+    "A baby swing is a magical device that will rock your little one to provide comfort like never before. With its soft and cozy seat, gentle rocking motion, and fun toy bar, your baby will be cradled in comfort.",
+  tags: ["Outdoor", "Online", "Kid", "Baby Products"],
+  blogImage: blogmain,
+  blogDescription:
+    "A baby swing is a magical device that will rock your little one to provide comfort like never before. With its soft and cozy seat, gentle rocking motion, and fun toy bar, your baby will be cradled in comfort. Plus, some swings come equipped with music, vibration, and adjustable speeds to personalize the experience. The best part? This solution allows you to take a much-needed break without holding your baby the entire time. It is designed for babies 4 months and younger, and a baby swing is essential in every parent's toolkit.",
+  blogImageTwo: blogImageTwo,
+  sectionOne: {
+    title: "How you should be choosin the best for your baby?",
+    description:
+      "Choosing the right baby can be a lifesaver for busy parents! With so many options available, it can be difficult to find the one that will perfectly fit your lifestyle and baby comfort. To make your life easier, here are some key factors to consider when choosing the best baby swing for your needs.",
+    sectionItems: [
+      {
+        title: "Padded Seats:",
+        image: blog_detail_1,
+        description:
+          " Cozy and plush, the padded seats of the baby swing provide the ultimate comfort for your little one. Whether they’re playing or napping, the softness of the seats ensures that they can sit and play for hours on end without any discomfort. So let your baby have a good time while you can have peace of mind that they’re safe and comfortable in the baby swing.",
+      },
+      {
+        title: "Multiple Recline Positions::",
+        image: blog_detail_2,
+        description:
+          "A baby swing with multiple recline positions will allow you to adjust the angle of the seat to suit your baby’s needs. Whether they prefer a soothing back-and-forth motion, a gentle side-to-side sway, or a mesmerizing circular motion, this swing has it all! No more worrying about your baby getting fussy or uncomfortable in a one-position swing because now you have the flexibility to adjust the angle and motion to their ",
+      },
+      {
+        title: "Padded Seats:",
+        image: blog_detail_1,
+        description:
+          " Cozy and plush, the padded seats of the baby swing provide the ultimate comfort for your little one. Whether they’re playing or napping, the softness of the seats ensures that they can sit and play for hours on end without any discomfort. So let your baby have a good time while you can have peace of mind that they’re safe and comfortable in the baby swing.",
+      },
+      {
+        title: "Multiple Recline Positions :",
+        image: blog_detail_2,
+        description:
+          "  A baby swing with multiple recline positions will allow you to adjust the angle of the seat to suit your baby’s needs. Whether they prefer a soothing back-and-forth motion, a gentle side-to-side sway, or a mesmerizing circular motion, this swing has it all! No more worrying about your baby getting fussy or uncomfortable in a one-position swing because now you have the flexibility to adjust the angle and motion to their ",
+      },
+      {
+        title: "Padded Seats:",
+        image: blog_detail_1,
+        description:
+          " Cozy and plush, the padded seats of the baby swing provide the ultimate comfort for your little one. Whether they’re playing or napping, the softness of the seats ensures that they can sit and play for hours on end without any discomfort. So let your baby have a good time while you can have peace of mind that they’re safe and comfortable in the baby swing.",
+      },
+      {
+        title: "Multiple Recline Positions :",
+        image: blog_detail_2,
+        description:
+          "  A baby swing with multiple recline positions will allow you to adjust the angle of the seat to suit your baby’s needs. Whether they prefer a soothing back-and-forth motion, a gentle side-to-side sway, or a mesmerizing circular motion, this swing has it all! No more worrying about your baby getting fussy or uncomfortable in a one-position swing because now you have the flexibility to adjust the angle and motion to their ",
+      },
+    ],
+  },
+  sectionTwo: {
+    title: "Recommendation of Top-Rated Baby Swings:",
+    description:
+      "As for the top-rated baby swings in the UAE, there are a few that stand out.",
+
+    sectionItems: [
+      {
+        title: "Ingenuity - Ingenuity Dream Comfort Cradling Swing – Grey",
+        image: blog_detail_3,
+        description:
+          "If you're looking for a baby swing that's both stylish and functional, the Ingenuity Dream Comfort Cradling Swing is a great option. Although the swing has a 180-degree rotation, this swing allows for easy access to your baby from any angle. Plus, the included USB Power Adapter cord offers the option for smartphone connectivity, allowing you to control the swing's settings and play soothing music for your baby right from your phone. And when not in use, the swing's foldable design makes for easy storage and portability.",
+      },
+      {
+        title: "Brevi - Portable Swing Brilly - Love Natural",
+        image: blog_detail_4,
+        description:
+          "This versatile swing works on a battery or power adapter, providing you with the flexibility to take it wherever you go. With 12 soothing melodies and 3 natural sounds, your baby will be lulled into a peaceful slumber in no time. The best part? It folds easily and quickly, so you can lean back and relax while your little one plays.",
+      },
+      {
+        title: "4Moms MamaRoo 4.0 Cool Mesh - Baby Bouncer/Rocker And Swing",
+        image: blog_detail_5,
+        description:
+          "This innovative baby seat is designed to replicate parents' natural motions to comfort their little ones. Featuring five different speeds and five unique motions, the MamaRoo 4.0 Cool Mesh can be customized to suit your baby's preferences. Moreover, it provides a breathable, comfortable seating surface for your baby, while the adjustable recline feature allows you to find the perfect position for your little one.",
+      },
+    ],
+  },
+  conclusionTitle: "Conclusion",
+  conclusionDescription:
+    "From traditional swings to modern, high-tech options, a wide selection suits your needs and preferences. Plus, with the convenience of online shopping, you can browse and compare different models and brands from the comfort of your home. You can have the perfect swing delivered right to your doorstep with just a few clicks. So, don't wait any longer! Order a baby swing online today and give your little one the ultimate comfort and relaxation. Your little one will love it!",
+};

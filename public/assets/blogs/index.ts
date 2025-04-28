@@ -9,3 +9,11 @@ export { default as blog_card } from "../blogs/blog_card.png";
 // blogpngs
 
 export { default as blogmain } from "../blogs/blog-main.png";
+
+// blog detals
+export { default as blogImageTwo } from "../blogs/blogImageTwo.png";
+export { default as blog_detail_1 } from "../blogs/blog_detail_1.png";
+export { default as blog_detail_2 } from "../blogs/blog_detail_2.png";
+export { default as blog_detail_3 } from "../blogs/blog_detail_3.png";
+export { default as blog_detail_4 } from "../blogs/blog_detail_4.png";
+export { default as blog_detail_5 } from "../blogs/blog_detail_5.png";
