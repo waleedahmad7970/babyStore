@@ -111,3 +111,16 @@ export { default as funnel } from "../icons/funnel.svg";
 export { default as Search } from "../icons/Search.png";
 export { default as redBag } from "../icons/bag.svg";
 export { default as wishlist } from "../icons/wishlist.svg";
+
+// checkout
+export { default as minus } from "../icons/minus.svg";
+export { default as plus } from "../icons/plus.svg";
+export { default as cross } from "../icons/cross.svg";
+export { default as free_delivery } from "../icons/free_delivery.svg";
+export { default as checkout_1 } from "../icons/checkout_1.png";
+export { default as checkout_2 } from "../icons/checkout_2.png";
+export { default as checkout_3 } from "../icons/checkout_3.png";
+
+export { default as FreeShipping } from "../icons/FreeShipping.svg";
+export { default as Cashback2x } from "../icons/2xCashback.svg";
+export { default as Support7 } from "../icons/7Support.svg";

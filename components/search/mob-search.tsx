@@ -1,8 +1,6 @@
 "use client";
 import { mob_search_icon, X } from "@/public/assets/icons";
-import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
-import { useEffect } from "react";
 
 interface mobSearchProps {
   name: string;
@@ -17,19 +15,6 @@ interface MobSearchComponentProps {
 export const MobSearch: React.FC<MobSearchComponentProps> = ({
   closeButton,
 }) => {
-  const { isMobMenu } = useAppSelector((state) => state.globalStates);
-
-  // useEffect(() => {
-  //   if (isMobMenu) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "";
-  //   }
-  //   return () => {
-  //     document.body.style.overflow = "";
-  //   };
-  // }, [isMobMenu]);
-
   return (
     <div className="flex items-center justify-between gap-[10px] border-t-1 border-b-1 border-[#F1F1F1] px-[5px] py-[10px]">
       <div className="flex w-full items-center justify-between gap-[10px] rounded-[10px] bg-[#F6F6F6]">

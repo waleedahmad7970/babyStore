@@ -376,6 +376,206 @@ export const productData = {
   specifications:
     "Scudo is the innovative car seat by Cam of the Group 0/1/2/3 that follows the growth of your child from birth...",
 };
+// export const productsLIST1 = [
+//   {
+//     id: 1,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: ios,
+//     price: 10529,
+//     oldPrice: 10625,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 2,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 22339,
+//     oldPrice: 5233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 3,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: p3,
+//     price: 63234,
+//     oldPrice: 7233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 4,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: ios2,
+//     price: 4735,
+//     oldPrice: 6030,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 5,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 229,
+//     oldPrice: 523,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 6,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: p3,
+//     price: 3333,
+//     oldPrice: 7323,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 7,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: p4,
+//     price: 47325,
+//     oldPrice: 6002,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 8,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 22329,
+//     oldPrice: 3223,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 9,
+//     title: "Ching Ching - Smart Coupe - Green ext Generation Infa",
+//     image: p3,
+//     price: 63324,
+//     oldPrice: 723,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 10,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: p4,
+//     price: 47325,
+//     oldPrice: 60032,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 11,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: p5,
+//     price: 475,
+//     oldPrice: 600,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 12,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: ios,
+//     price: 43275,
+//     oldPrice: 60320,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 13,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 22339,
+//     oldPrice: 5233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 14,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: p3,
+//     price: 63234,
+//     oldPrice: 7233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 15,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: p4,
+//     price: 4735,
+//     oldPrice: 6030,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 16,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 229,
+//     oldPrice: 523,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 17,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: p3,
+//     price: 3333,
+//     oldPrice: 7323,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 18,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: ios,
+//     price: 10529,
+//     oldPrice: 10625,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 19,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 22339,
+//     oldPrice: 5233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 20,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: p3,
+//     price: 63234,
+//     oldPrice: 7233,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 21,
+//     title: "Lindale Outdoor Wooden Swing & Slide Playset",
+//     image: p4,
+//     price: 4735,
+//     oldPrice: 6030,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+//   {
+//     id: 22,
+//     title: "Aptamil - Advance 1 Next Generation Infant",
+//     image: ios2,
+//     price: 229,
+//     oldPrice: 523,
+//     discount: "20% OFF",
+//     rating: 3.9,
+//   },
+// ];
 export const productsLIST1 = [
   {
     id: 1,
@@ -385,6 +585,7 @@ export const productsLIST1 = [
     oldPrice: 10625,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 2,
@@ -394,6 +595,7 @@ export const productsLIST1 = [
     oldPrice: 5233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 3,
@@ -403,6 +605,7 @@ export const productsLIST1 = [
     oldPrice: 7233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 4,
@@ -412,6 +615,7 @@ export const productsLIST1 = [
     oldPrice: 6030,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 5,
@@ -421,6 +625,7 @@ export const productsLIST1 = [
     oldPrice: 523,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 6,
@@ -430,6 +635,7 @@ export const productsLIST1 = [
     oldPrice: 7323,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 7,
@@ -439,6 +645,7 @@ export const productsLIST1 = [
     oldPrice: 6002,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 8,
@@ -448,6 +655,7 @@ export const productsLIST1 = [
     oldPrice: 3223,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 9,
@@ -457,6 +665,7 @@ export const productsLIST1 = [
     oldPrice: 723,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 10,
@@ -466,6 +675,7 @@ export const productsLIST1 = [
     oldPrice: 60032,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 11,
@@ -475,6 +685,7 @@ export const productsLIST1 = [
     oldPrice: 600,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 12,
@@ -484,8 +695,8 @@ export const productsLIST1 = [
     oldPrice: 60320,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
-
   {
     id: 13,
     title: "Aptamil - Advance 1 Next Generation Infant",
@@ -494,6 +705,7 @@ export const productsLIST1 = [
     oldPrice: 5233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 14,
@@ -503,6 +715,7 @@ export const productsLIST1 = [
     oldPrice: 7233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 15,
@@ -512,6 +725,7 @@ export const productsLIST1 = [
     oldPrice: 6030,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 16,
@@ -521,6 +735,7 @@ export const productsLIST1 = [
     oldPrice: 523,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 17,
@@ -530,6 +745,7 @@ export const productsLIST1 = [
     oldPrice: 7323,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 18,
@@ -539,6 +755,7 @@ export const productsLIST1 = [
     oldPrice: 10625,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 19,
@@ -548,6 +765,7 @@ export const productsLIST1 = [
     oldPrice: 5233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 20,
@@ -557,6 +775,7 @@ export const productsLIST1 = [
     oldPrice: 7233,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 21,
@@ -566,6 +785,7 @@ export const productsLIST1 = [
     oldPrice: 6030,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
   {
     id: 22,
@@ -575,8 +795,10 @@ export const productsLIST1 = [
     oldPrice: 523,
     discount: "20% OFF",
     rating: 3.9,
+    link: "/product",
   },
 ];
+
 export const bannerData = [
   {
     id: 1,

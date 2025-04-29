@@ -161,7 +161,7 @@ export default function CategoryList() {
           className="fixed inset-0 z-30 bg-black/50 transition duration-300"
         ></div>
       )} */}
-      <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
+      <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between gap-[14px] overflow-x-auto">
         {categories.map((category) => (
           <div
             key={category.id}

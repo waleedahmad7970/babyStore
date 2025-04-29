@@ -22,10 +22,10 @@
 
 // details of pro
 export { default as detail_image } from "../products/detail_image.png";
-export { default as detail_image_1 } from "../products/detail_image_1.png";
-export { default as detail_image_2 } from "../products/detail_image_2.png";
-export { default as detail_image_3 } from "../products/detail_image_3.png";
-export { default as detail_image_4 } from "../products/detail_image_4.png";
+export { default as detail_image_1 } from "../products/product_page_image_1.jpg";
+export { default as detail_image_2 } from "../products/product_page_image_2.jpg";
+export { default as detail_image_3 } from "../products/product_page_image_3.jpg";
+export { default as detail_image_4 } from "../products/product_page_image_4.jpg";
 
 // products
 // export { default as p1 } from "../products/p1.svg";

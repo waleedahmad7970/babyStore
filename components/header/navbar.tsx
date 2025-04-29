@@ -8,6 +8,7 @@ import { logo } from "@/public/assets/brands";
 import MobileDrawer from "../drawer/mobile-menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
+import Link from "next/link";
 
 interface NavbarProps {
   categories?: string[];
@@ -33,21 +34,23 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="cus-container mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">
-          <div className="flex items-center justify-between gap-5">
-            <Image
-              onClick={() => menuHandler()}
-              src={menu}
-              width={32}
-              height={32}
-              alt="Menu"
-              className="block md:hidden"
-            />
-            <Image
-              src={logo}
-              alt="Logo"
-              className="h-[32px] w-[120px] md:h-[58px] md:w-[213px]"
-            />
-          </div>
+          <Link href={`/`} className="block text-inherit no-underline">
+            <div className="flex items-center justify-between gap-5">
+              <Image
+                onClick={() => menuHandler()}
+                src={menu}
+                width={32}
+                height={32}
+                alt="Menu"
+                className="block md:hidden"
+              />
+              <Image
+                src={logo}
+                alt="Logo"
+                className="h-[32px] w-[120px] md:h-[58px] md:w-[213px]"
+              />
+            </div>
+          </Link>
           <Image
             width={32}
             height={32}
