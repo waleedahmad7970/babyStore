@@ -1,12 +1,18 @@
+"use client";
 import { blog_card, blogmain } from "@/public/assets/blogs";
 import { men, strong_calendar, white_arrow_right } from "@/public/assets/icons";
 import { babySwingCardsData, blogTags } from "@/static/static";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const tags = ["Outdoor", "Online", "Kids", "Outdoor"];
 
-export default function page() {
+export default function Page() {
+  const router = useRouter();
+  const redirectToCart = (path: any) => {
+    router.push(path);
+  };
   return (
     <div className="cus-container mx-auto w-full">
       <div className="relative my-0 w-full overflow-hidden rounded-[5px] md:my-10">
@@ -69,6 +75,7 @@ export default function page() {
       >
         {babySwingCardsData.map((item, index) => (
           <div
+            onClick={() => redirectToCart("/blog/1")}
             key={index}
             className="flex max-h-fit min-w-[166px] flex-col justify-start gap-[6.1px] rounded-[7px] md:w-full md:max-w-[442px] md:gap-[14.4px]"
           >
