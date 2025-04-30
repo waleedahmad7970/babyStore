@@ -52,7 +52,7 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
           <MobSearch closeButton={close} />
 
           {/* Top Category Icons */}
-          <div className="mx-[5px] mt-4 flex flex-wrap justify-start gap-[7px]">
+          <div className="mx-[5px] mt-4 grid grid-cols-4 gap-[7px]">
             {categoryIconsOne.map((item, index) => (
               <div
                 key={index}
@@ -142,7 +142,7 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
           </div>
 
           {/* Bottom Category Icons */}
-          <div className="flex flex-wrap justify-start gap-[7px] px-[5px]">
+          <div className="mx-[5px] mt-4 grid grid-cols-4 gap-[7px]">
             {categoryIconsTwo.map((item, index) => (
               <div
                 key={index}

@@ -11,6 +11,7 @@ import {
 } from "../../../public/assets/icons";
 
 import { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ProductData {
   id: number;
@@ -26,6 +27,10 @@ interface ProductCardProps {
 }
 
 const ProductCardTwo: React.FC<ProductCardProps> = ({ product }) => {
+  const router = useRouter();
+  const redirectToCart = (path: any) => {
+    router.push(path);
+  };
   return (
     <div
       style={{
@@ -34,7 +39,10 @@ const ProductCardTwo: React.FC<ProductCardProps> = ({ product }) => {
       className="product-card rounded-[8px] border-[1.5px]"
     >
       <div className={`w-full overflow-hidden rounded-[8px] bg-white`}>
-        <div className="max-h-auto relative overflow-hidden md:h-auto lg:max-h-[259px] lg:max-w-[259px]">
+        <div
+          onClick={() => redirectToCart("/product")}
+          className="max-h-auto relative overflow-hidden md:h-auto lg:max-h-[259px] lg:max-w-[259px]"
+        >
           <Image
             src={product?.image}
             alt={"sw"}
@@ -77,6 +85,7 @@ const ProductCardTwo: React.FC<ProductCardProps> = ({ product }) => {
               )}
             </div>
             <button
+              onClick={() => redirectToCart("/cart")}
               style={{
                 background: "rgba(248, 45, 139, 0.04)",
                 borderColor: "rgba(248, 45, 139, 0.10)",

@@ -20,6 +20,7 @@ import {
 import { seperator } from "@/public/assets/icons";
 import ProductSwiperSlider from "../slider/product.swiper";
 import ProductPagingSlider from "../slider/product-pagging-slider";
+import Link from "next/link";
 
 export default function ProductDetails({ product = productData }) {
   const [quantity, setQuantity] = useState(1);
@@ -80,12 +81,17 @@ export default function ProductDetails({ product = productData }) {
           <h1 className="font-inter tracking-0 text-[14px] leading-[16.94px] font-normal text-[#1F1F1F] md:text-[20px] md:leading-[24px]">
             {product.name}
           </h1>
-          <p className="font-inter text-[11px] leading-[13px] font-semibold text-[#858585]">
+          <p className="font-inter flex gap-[2px] text-[11px] leading-[13px] font-semibold text-[#858585]">
             View all{" "}
-            <span className="font-inter mr-[2px] text-[11px] font-semibold text-[#6A94FF] underline">
-              {" "}
-              {product.brand}{" "}
-            </span>
+            <Link
+              href={`/brand`}
+              className="block max-w-max text-inherit no-underline"
+            >
+              <span className="font-inter mr-[2px] text-[11px] font-semibold text-[#6A94FF] underline">
+                {" "}
+                {product.brand}{" "}
+              </span>
+            </Link>
             products.
           </p>
           <div className="flex items-center justify-between py-4">

@@ -222,7 +222,7 @@ export default function Page(): JSX.Element {
                               setSelected(option);
                               setIsOpen(false);
                             }}
-                            className="flex cursor-pointer items-center justify-between rounded-[8px] py-[6px] transition-colors duration-150 hover:bg-[#fdd9e8]"
+                            className="flex cursor-pointer items-center justify-between rounded-[8px] py-[6px] transition-colors duration-150 hover:bg-[#fdd9e8] hover:px-3"
                           >
                             <span className="text-[15px] text-[#000]">
                               {option.label}

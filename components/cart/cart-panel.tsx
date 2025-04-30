@@ -9,6 +9,7 @@ import {
 } from "@/public/assets/icons";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
+import { QuantityControl } from "./quanity-controller";
 
 interface CartItem {
   id: number;
@@ -87,8 +88,8 @@ export default function CartPanel() {
             width={104}
             className="min-w-[104px] rounded-[5.67px] object-contain"
           />
-          <div className="flex h-full flex-col justify-between pr-5 md:pr-0">
-            <p className="w[97%] line-clamp-2 text-[13px] leading-[17.2px] font-medium text-[#1F1F1F] md:w-[195px]">
+          <div className="flex h-full w-full flex-col justify-between">
+            <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
               {item.name}
             </p>
             <div className="flex items-center justify-between">
@@ -100,7 +101,7 @@ export default function CartPanel() {
                   {item.price.toFixed(2)}
                 </p>
               </div>
-              <div className="flex items-center rounded-[5.329px] border-[1.2px] border-[#E7448C] px-[10px] py-[5px]">
+              {/* <div className="flex items-center rounded-[5.329px] border-[1.2px] border-[#E7448C] px-[10px] py-[5px]">
                 <Image
                   src={minus}
                   alt="min"
@@ -117,7 +118,13 @@ export default function CartPanel() {
                   onClick={() => updateQuantity(item.id, 1)}
                   className="w-[10px]"
                 />
-              </div>
+              </div> */}
+              <QuantityControl
+                className="gap-4"
+                quantity={item.quantity}
+                onIncrease={() => updateQuantity(item.id, -1)}
+                onDecrease={() => updateQuantity(item.id, 1)}
+              />
             </div>
           </div>
         </div>

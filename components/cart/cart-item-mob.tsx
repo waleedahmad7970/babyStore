@@ -23,7 +23,7 @@ export const CartItemMob = ({
     <div className="flex w-full max-w-[354px] items-center justify-between gap-4">
       <div className="h-4 min-w-4 rounded-[3px] border border-[#E0E0E0] bg-white"></div>
       <div className="flex items-center justify-between gap-[11px]">
-        <div className="h-[80px] min-w-[80px] overflow-hidden rounded-[6px] border-1 border-[#E0E0E0]">
+        <div className="h-[80px] max-w-[80px] min-w-[80px] overflow-hidden rounded-[6px] border-1 border-[#E0E0E0]">
           <Image
             src={product.image}
             alt={product.title}

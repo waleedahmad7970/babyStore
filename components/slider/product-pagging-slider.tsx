@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Thumbs, FreeMode } from "swiper/modules";
+import { Thumbs, FreeMode, Pagination } from "swiper/modules";
 import { productData } from "@/static/static";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
+import "swiper/css/pagination";
 
 const ProductPagingSlider: React.FC = () => {
   const { images = [] } = productData;
@@ -17,8 +18,10 @@ const ProductPagingSlider: React.FC = () => {
       <div className="overflow-hidden rounded-[10px] border border-[#00000033]">
         <Swiper
           spaceBetween={10}
+          modules={[Pagination, Thumbs]}
+          pagination={{ clickable: true }}
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[Thumbs]}
+          // modules={[Thumbs]}j
           className="w-full"
         >
           {images.map((img, index) => (

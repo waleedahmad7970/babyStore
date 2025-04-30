@@ -1,11 +1,12 @@
 "use client";
 
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type TabType = {
   id: string;
@@ -22,13 +23,17 @@ type TabType2 = {
 const BottomNavigation: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("Home");
   const [activeCategory, setActiveCategory] = useState("Color");
-
+  const [dragStartY, setDragStartY] = useState<number | null>(null);
+  const [dragDistance, setDragDistance] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const { isFilter = "" } = useAppSelector((state) => state.globalStates);
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
-
+  const menuRef = useRef(null);
+  useClickOutside(menuRef, () => {
+    dispatch(globalStateActions.setFilter(""));
+  });
   useEffect(() => {
     if (isFilter) {
       document.body.style.overflow = "hidden";
@@ -116,7 +121,34 @@ const BottomNavigation: React.FC = () => {
     <nav className="fixed right-0 bottom-0 left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
       {isFilter ? (
         <div
-          style={{ boxShadow: "0px -14px 40px 0px rgba(0, 0, 0, 0.20)" }}
+          ref={menuRef}
+          style={{
+            boxShadow: "0px -14px 40px 0px rgba(0, 0, 0, 0.20)",
+            transform: `translateY(${dragDistance}px)`,
+            transition:
+              dragStartY === null ? "transform 0.3s ease-out" : "none",
+          }}
+          onTouchStart={(e) => setDragStartY(e.touches[0].clientY)}
+          onTouchMove={(e) => {
+            if (dragStartY !== null) {
+              const deltaY = e.touches[0].clientY - dragStartY;
+              if (deltaY > 0) setDragDistance(deltaY); // only allow downward drag
+            }
+          }}
+          onTouchEnd={() => {
+            if (dragDistance > 100) {
+              // Smoothly animate to full screen height
+              setDragDistance(window.innerHeight); // slide it down fully
+              setTimeout(() => {
+                dispatch(globalStateActions.setFilter("")); // then close
+                setDragDistance(0); // reset for next time
+              }, 300); // match your transition duration
+            } else {
+              // Not enough swipe — bounce back
+              setDragDistance(0);
+            }
+            setDragStartY(null);
+          }}
           className="absolute right-0 bottom-[64px] left-0 flex flex-col items-center justify-start gap-5 rounded-tl-[16px] rounded-tr-[16px] bg-[#FCFCFC] px-[10px] py-6"
         >
           <div className="h-[6px] w-full max-w-[42px] rounded-[12px] bg-[#00000066]" />
@@ -127,6 +159,7 @@ const BottomNavigation: React.FC = () => {
             <div className="flex w-full flex-col justify-start border-t border-[#E5E5E5]">
               {sortOptions.map((option, index) => (
                 <div
+                  onClick={() => dispatch(globalStateActions.setFilter(""))}
                   key={index}
                   className="border-b border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal text-[#000]"
                 >
@@ -173,16 +206,17 @@ const BottomNavigation: React.FC = () => {
               </div>
             </div>
           )}
-
-          <button
-            onClick={() => {
-              handleFilterOpen("");
-            }}
-            style={{ background: "rgba(248, 45, 139, 0.60)" }}
-            className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
-          >
-            Apply
-          </button>
+          <div className="w-full px-[5px] sm:px-0">
+            <button
+              onClick={() => {
+                handleFilterOpen("");
+              }}
+              style={{ background: "rgba(248, 45, 139, 0.60)" }}
+              className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
+            >
+              Apply
+            </button>
+          </div>
         </div>
       ) : (
         <>

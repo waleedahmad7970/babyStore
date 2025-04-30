@@ -72,12 +72,12 @@ export default function page() {
             key={index}
             className="flex max-h-fit min-w-[166px] flex-col justify-start gap-[6.1px] rounded-[7px] md:w-full md:max-w-[442px] md:gap-[14.4px]"
           >
-            <div className="relative h-[108px] w-full overflow-hidden rounded-[7px] md:h-[248px]">
+            <div className="relative h-[138px] w-full overflow-hidden rounded-[7px] md:h-[248px]">
               <Image
                 src={blog_card}
                 alt={item.title}
                 fill
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             <div className="flex items-center justify-start gap-4">
@@ -87,7 +87,7 @@ export default function page() {
                   className="h-[9.2px] w-[9.2px] md:h-[18px] md:w-[18px]"
                   alt="cal"
                 />
-                <span className="text-[4.365px] leading-[10px] font-normal tracking-[0.524px] text-[#747474] md:text-[10px] md:tracking-[1.2px]">
+                <span className="text-[5px] leading-[10px] font-normal tracking-[0.524px] text-[#747474] md:text-[10px] md:tracking-[1.2px]">
                   {"24 Feb,2023"}
                 </span>
               </div>
@@ -98,15 +98,15 @@ export default function page() {
                   className="h-[9.2px] w-[9.2px] md:h-[18px] md:w-[18px]"
                   alt="cal"
                 />
-                <span className="text-[4.365px] leading-[10px] font-normal tracking-[0.524px] text-[#747474] md:text-[10px] md:tracking-[1.2px]">
+                <span className="text-[5px] leading-[10px] font-normal tracking-[0.524px] text-[#747474] md:text-[10px] md:tracking-[1.2px]">
                   136 COMMENTS
                 </span>
               </div>
             </div>
-            <h3 className="text-[7.857px] leading-[140%] font-normal text-[#070A13] md:text-[18px] md:font-medium">
+            <h3 className="text-[10px] leading-[140%] font-normal text-[#070A13] md:text-[18px] md:font-medium">
               {item.title}
             </h3>
-            <p className="text-[6px] leading-[9.601px] font-normal text-[#747474] md:text-[14px] md:leading-[22px]">
+            <p className="text-[10px] leading-[10px] font-normal text-[#747474] md:text-[14px] md:leading-[22px]">
               {item.description}
             </p>
             <div className="flex items-center justify-between">
@@ -117,7 +117,7 @@ export default function page() {
                   className="h-[28px] w-[28px] rounded-full object-cover"
                 />
 
-                <span className="text-[5.2px] leading-[7.566px] font-normal tracking-[1.2px] text-[#1F1F1F] md:text-[12px] md:leading-[17.333px] md:font-semibold">
+                <span className="max-w-[63px] text-[8px] leading-[7.566px] font-normal tracking-[1.2px] text-[#1F1F1F] md:max-w-max md:text-[12px] md:leading-[17.333px] md:font-semibold">
                   {item.authorName}
                 </span>
               </div>

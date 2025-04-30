@@ -1,5 +1,6 @@
 import { paymentMethods } from "@/static/static";
 import Image from "next/image";
+import Link from "next/link";
 interface PaymentMethod {
   name: string;
   img: string;
@@ -83,12 +84,16 @@ export const CartSummary = () => (
         ))}
       </div>
       <div className="flex w-full flex-col gap-2 pt-5">
-        <button className="w-full rounded-[50px] bg-[#E7448C] px-5 py-[10px] text-[20px] font-semibold text-white uppercase">
-          CHECKOUT
-        </button>
-        <button className="w-full rounded-[50px] bg-[#61B482] px-5 py-[10px] text-[20px] font-semibold text-white uppercase">
-          SHOP MORE
-        </button>
+        <Link href={`/checkout`} className="block text-inherit no-underline">
+          <button className="w-full rounded-[50px] bg-[#E7448C] px-5 py-[10px] text-[20px] font-semibold text-white uppercase">
+            CHECKOUT
+          </button>
+        </Link>
+        <Link href={`/category`} className="block text-inherit no-underline">
+          <button className="w-full rounded-[50px] bg-[#61B482] px-5 py-[10px] text-[20px] font-semibold text-white uppercase">
+            SHOP MORE
+          </button>
+        </Link>
       </div>
     </div>
     <div
