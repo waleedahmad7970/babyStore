@@ -1382,3 +1382,10 @@ export const blogDetailsData = {
   conclusionDescription:
     "From traditional swings to modern, high-tech options, a wide selection suits your needs and preferences. Plus, with the convenience of online shopping, you can browse and compare different models and brands from the comfort of your home. You can have the perfect swing delivered right to your doorstep with just a few clicks. So, don't wait any longer! Order a baby swing online today and give your little one the ultimate comfort and relaxation. Your little one will love it!",
 };
+
+export const orderColorPallte = {
+  purple: "#8A8CD9",
+  green: "#4AA785",
+  blue: "#59A8D4",
+  yellow: "#FFC555",
+};

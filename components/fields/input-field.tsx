@@ -6,7 +6,7 @@ interface InputFieldProps {
   type?: string;
   placeholder?: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | any;
   className?: string;
   required?: boolean;
   disabled?: boolean;
@@ -26,7 +26,7 @@ const InputField: React.FC<InputFieldProps> = ({
   disabled = false,
 }) => {
   return (
-    <div className={`flex w-full flex-col gap-1 sm:w-auto`}>
+    <div className={`flex w-full flex-col gap-1 sm:w-full`}>
       {label && (
         <label htmlFor={name} className="text-sm font-medium text-gray-700">
           {label}

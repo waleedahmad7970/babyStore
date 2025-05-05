@@ -83,11 +83,15 @@ export { default as summer_banner } from "../icons/summer_banner.png";
 // mob search
 
 export { default as X } from "../icons/X.svg";
+export { default as pink_arrow } from "../icons/pink_arrow.svg";
+export { default as copyClipboard } from "../icons/copy.svg";
+export { default as call_icon_white } from "../icons/call_icon_white.svg";
 export { default as XBlack } from "../icons/X-black.svg";
 export { default as grid } from "../icons/grid.svg";
 export { default as sort } from "../icons/sort.svg";
 export { default as angle_down } from "../icons/angle_down.svg";
 export { default as mob_search_icon } from "../icons/mob_search_icon.svg";
+export { default as order_customer } from "../icons/order_customer.svg";
 
 // pngs  blogs ucons
 

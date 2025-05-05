@@ -146,7 +146,6 @@ export default function CategoryList() {
       setHoveredId(id);
     }
   };
-  console.log("hoveredInitail", hoveredInitail);
   return (
     <div
       onMouseEnter={() => setHoveredInitail(true)}
@@ -161,11 +160,11 @@ export default function CategoryList() {
           className="fixed inset-0 z-30 bg-black/50 transition duration-300"
         ></div>
       )} */}
-      <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between gap-[14px] overflow-x-auto">
-        {categories.map((category) => (
+      <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
+        {categories.map((category, index) => (
           <div
             key={category.id}
-            className="relative"
+            className={`relative ${index === categories?.length - 1 ? "" : "pr-[14px]"}`}
             onMouseEnter={() => {
               if (hoverTimer.current) clearTimeout(hoverTimer.current);
               handleHover(category.id);

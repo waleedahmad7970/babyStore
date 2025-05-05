@@ -94,10 +94,10 @@
 }
 
 .slide-left {
-  animation: slideLeft 0.4s ease-in-out forwards;
+  animation: slideLeft 0.4s linear forwards;
 }
 .slide-right {
-  animation: slideRight 0.4s ease-in-out forwards;
+  animation: slideRight 0.4s linear forwards;
 }
 
 @keyframes slideLeft {
