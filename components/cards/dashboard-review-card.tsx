@@ -1,3 +1,4 @@
+import { men, rating_star } from "@/public/assets/icons";
 import Image from "next/image";
 
 const reviews = [
@@ -33,38 +34,47 @@ const reviews = [
 
 export default function DashboardReviewCards() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
       {reviews.map((review, index) => (
         <div
           key={index}
-          className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+          className="flex flex-col justify-between gap-3 rounded-[8px] border border-none bg-[#FCFCFC] p-6"
         >
-          <div className="mb-4 flex items-center gap-1">
+          <div className="flex items-center gap-2">
             {Array.from({ length: review.rating }).map((_, i) => (
-              <span key={i} className="text-xl text-yellow-400">
-                ★
-              </span>
+              <Image
+                src={rating_star}
+                key={i}
+                className="h-[24px] min-w-[24px]"
+                alt="rating"
+              />
             ))}
           </div>
 
-          <p className="mb-4 text-sm text-gray-800">{review.text}</p>
+          <p className="text-[14px] leading-[24px] font-normal text-[#1F1F1F]">
+            {review.text}
+          </p>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[6px]">
               <Image
-                src={review.avatar}
+                src={men}
                 alt={review.name}
-                width={40}
-                height={40}
+                width={32}
+                height={32}
                 className="rounded-full object-cover"
               />
               <div>
-                <p className="font-semibold text-gray-900">{review.name}</p>
-                <p className="text-xs text-gray-400">{review.date}</p>
+                <p className="text-[14px] leading-[20px] font-semibold text-[#1F1F1F]">
+                  {review.name}
+                </p>
+                <p className="text-[11.5px] leading-[16.5px] text-[#94A3B8]">
+                  {review.date}
+                </p>
               </div>
             </div>
 
-            <div className="rounded bg-yellow-100 px-2 py-1 text-xs font-semibold text-yellow-600">
+            <div className="rounded bg-[#FFCD52] px-2 py-1 text-xs font-semibold text-white">
               {review.rating.toFixed(1)} ★
             </div>
           </div>

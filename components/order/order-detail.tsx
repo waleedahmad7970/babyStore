@@ -66,6 +66,17 @@ export const OrderDetails: FC = () => {
   return (
     <div className="space-y-6 font-sans text-white">
       <div className="flex flex-col justify-between gap-5 md:flex-row">
+        <div className="block rounded-[8px] bg-[#F8F8F8] p-4 md:hidden">
+          <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
+            Order ID
+          </p>
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-[20px] leading-[24px] font-normal text-[#473A3F]">
+              6428421100
+            </p>
+            <Image src={copyClipboard} alt="copy" className="h-6 min-w-6" />
+          </div>
+        </div>
         <div className="lg:min-w-[310px]">
           <h2 className="mb-2 text-[24px] leading-[24px] font-medium text-[#473A3F]">
             Order information
@@ -102,7 +113,7 @@ export const OrderDetails: FC = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-max self-start rounded-[8px] bg-[#F8F8F8] p-4">
+      <div className="hidden max-w-max self-start rounded-[8px] bg-[#F8F8F8] p-4 md:block">
         <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
           Order ID
         </p>

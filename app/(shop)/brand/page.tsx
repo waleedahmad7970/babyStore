@@ -239,18 +239,6 @@ export default function Page(): JSX.Element {
               </div>
             </div>
 
-            {/* <div className="flex flex-wrap justify-between gap-1 sm:gap-[22px] md:min-h-[1104px] md:justify-start">
-              {currentItems.map((product) => {
-                return (
-                  <div
-                    key={product.id}
-                    className="w-full max-w-[175px] cursor-pointer lg:max-w-[240px] xl:max-w-[259px]"
-                  >
-                    <ProductCardTwo product={product} />
-                  </div>
-                );
-              })}
-            </div> */}
             <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
               {currentItems.map((product) => {
                 return (
