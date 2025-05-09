@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from "next/image";
 import { userMenu } from "@/static/static";
@@ -9,6 +9,9 @@ import MobileDrawer from "../drawer/mobile-menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Link from "next/link";
+import AddToCard from "../model/add-to-card";
+import CartPanel from "../cart/cart-panel";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 interface NavbarProps {
   categories?: string[];
@@ -17,8 +20,14 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   categories = ["All Categories", "Toys", "Clothing", "Accessories"],
 }) => {
+  const cartRef = useRef(null);
   const dispatch = useAppDispatch();
+  const [showCart, setShowCart] = useState(false);
+  const { addToCartModel } = useAppSelector((state) => state.cart);
   const { isMobMenu } = useAppSelector((state) => state.globalStates);
+  useClickOutside(cartRef, () => {
+    setShowCart(false);
+  });
   const menuHandler = () => {
     dispatch(globalStateActions.setMobileMenu(true));
   };
@@ -31,7 +40,17 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="block sm:hidden">
         <MobileDrawer isOpen={isMobMenu} close={menuHandlerClose} />
       </div>
-      <div className="cus-container mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
+      <div className="cus-container relative mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
+        {/* cart model */}
+        {showCart && (
+          <div
+            ref={cartRef}
+            className="absolute top-[30px] right-[10px] z-50 w-full max-w-[320px] sm:top-[60px]"
+          >
+            <CartPanel />
+          </div>
+        )}
+
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">
           <Link href={`/`} className="block text-inherit no-underline">
@@ -52,6 +71,8 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
           </Link>
           <Image
+            onMouseEnter={() => setShowCart(true)}
+            onMouseLeave={() => setShowCart(false)}
             width={32}
             height={32}
             src={basket}
@@ -88,14 +109,17 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => (
             <Image
+              onMouseEnter={() => index === 1 && setShowCart(true)}
+              onMouseLeave={() => index === 1 && setShowCart(false)}
               key={`user-menu-${index}`}
               src={icon}
               alt={`User menu icon ${index}`}
-              className="h-8 w-8"
+              className="h-8 w-8 cursor-pointer"
             />
           ))}
         </div>
       </div>
+      {addToCartModel && <AddToCard />}
     </nav>
   );
 };

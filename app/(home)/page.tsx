@@ -38,7 +38,6 @@ export default function Home() {
   return (
     <div>
       <CategoryList />
-
       <DiscountStripsBanner />
       <BannerSlider slides={bannerData} />
 

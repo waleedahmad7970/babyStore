@@ -14,6 +14,8 @@ import {
 
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/store/hooks";
+import { cartAction } from "@/store/slices/cart.slice";
 
 interface ProductData {
   id: number;
@@ -30,8 +32,11 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const redirectToCart = (path: any) => {
-    router.push(path);
+    // router.push(path);
+    dispatch(cartAction.setAddToCartModel(true));
   };
   return (
     <div
@@ -57,7 +62,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             }}
             className="absolute top-[15px] right-[14px] flex h-8 w-8 items-center justify-center rounded-full border-1"
           >
-            <Image height={20} width={20} src={wishlist} alt="heart" />
+            <Image
+              height={20}
+              width={20}
+              src={wishlist}
+              alt="heart"
+              className="cursor-pointer"
+            />
           </button>
         </div>
 
@@ -93,7 +104,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 background: "rgba(248, 45, 139, 0.04)",
                 borderColor: "rgba(248, 45, 139, 0.10)",
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border-1"
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-1"
             >
               <Image height={20} width={20} src={redBag} alt="heart" />
             </button>
