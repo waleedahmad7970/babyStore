@@ -25,7 +25,6 @@ import ReviewSection from "../reviews/product-reviews";
 
 export default function ProductDetails({ product = productData }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState(product.images[0]);
 
   return (
     <div className="cus-container mx-auto mt-3 rounded-lg md:mt-10">
@@ -56,27 +55,6 @@ export default function ProductDetails({ product = productData }) {
           </div>
 
           <ProductPagingSlider />
-          {/* <div className="h-[375px] overflow-hidden rounded-[10px] border border-[#00000033] md:h-[839px] lg:max-w-[839px]">
-            <Image
-              src={product.image}
-              alt={product.name}
-              className="h-full w-full object-cover"
-            />
-          </div> */}
-
-          {/* <div className="mt-4 hidden space-x-2 md:flex">
-            {product.images.map((img, index) => (
-              <Image
-                key={index}
-                src={img}
-                alt={`Thumbnail ${index}`}
-                className={`h-[124px] w-[124px] cursor-pointer overflow-hidden rounded-lg object-cover ${
-                  selectedImage === img ? "border-primaryColor border-2" : ""
-                }`}
-                onClick={() => setSelectedImage(img)}
-              />
-            ))}
-          </div> */}
         </div>
         <div className="mx-auto w-full md:max-w-[469px]">
           <h1 className="font-inter tracking-0 text-[14px] leading-[16.94px] font-normal text-[#1F1F1F] md:text-[20px] md:leading-[24px]">
@@ -164,7 +142,7 @@ export default function ProductDetails({ product = productData }) {
           </div>
           {/* cart and qunaity buttons for mobile view make fix or sticky */}
           <div className="fixed right-0 bottom-[60px] left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
-            <div className="flex justify-between gap-1 py-2">
+            <div className="flex justify-between gap-1 px-[10px] py-2">
               <button
                 style={{
                   background:
