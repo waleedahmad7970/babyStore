@@ -20,6 +20,7 @@ export { default as left_right_arrow } from "../icons/left_right_arrow.svg";
 // rating
 export { default as full_star } from "../icons/full_star.svg";
 export { default as half_star } from "../icons/half_star.svg";
+export { default as grey_star } from "../icons/grey_star.svg";
 
 // deatils icon
 export { default as kwik } from "../icons/kwik.svg";

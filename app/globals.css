@@ -92,12 +92,42 @@
     opacity: 0;
   }
 }
-
+/* 
 .slide-left {
-  animation: slideLeft 0.4s linear forwards;
+  animation: slideLeft 0.3s linear forwards;
 }
 .slide-right {
-  animation: slideRight 0.4s linear forwards;
+  animation: slideRight 0.3s linear forwards;
+} */
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(20%); /* Starts 20% from the right */
+    opacity: 1; /* Fully visible from the start */
+  }
+  100% {
+    transform: translateX(0); /* Ends at normal position */
+    opacity: 1; /* Remains fully visible */
+  }
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    transform: translateX(-20%); /* Starts 20% from the left */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: translateX(0); /* Ends at normal position */
+    opacity: 1;
+  }
+}
+
+.slide-left {
+  animation: slide-in-from-right 0.3s ease-out forwards;
+}
+
+.slide-right {
+  animation: slide-in-from-left 0.3s ease-out forwards;
 }
 
 @keyframes slideLeft {

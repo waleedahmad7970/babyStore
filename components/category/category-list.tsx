@@ -133,7 +133,6 @@ export default function CategoryList() {
   const [animationDirection, setAnimationDirection] = useState<string>("");
 
   // ds
-  const [hoveredInitail, setHoveredInitail] = useState<boolean | null>(null);
 
   const handleHover = (id: number) => {
     if (id !== hoveredId) {
@@ -146,11 +145,10 @@ export default function CategoryList() {
       setHoveredId(id);
     }
   };
+
+  console.log("hover id", hoveredId);
   return (
-    <div
-      onMouseEnter={() => setHoveredInitail(true)}
-      className="group relative mb-0 hidden w-full px-4 md:block md:px-0 md:pb-6"
-    >
+    <div className="group relative mb-0 hidden w-full px-4 md:block md:px-0 md:pb-6">
       {/* {hoveredId !== null && (
         <div
           onMouseEnter={() => {
@@ -199,38 +197,89 @@ export default function CategoryList() {
           {hoveredId && (
             <div
               key={hoveredId}
-              className={`hiddenbg-white top-[20px] right-0 left-0 z-30 mx-auto px-[41px] py-6 md:block ${animationDirection}`}
+              className={`top-[20px] right-0 left-0 z-30 mx-auto hidden bg-white px-[41px] py-6 md:block ${animationDirection}`}
             >
-              <div className="flex w-full flex-col justify-between gap-[33px] lg:flex-row">
-                <div className="grid grid-cols-3 gap-[36.88px]">
-                  {[0, 1, 2].map((colIndex) => (
-                    <div
-                      key={colIndex}
-                      className="flex w-full max-w-[232.81px] flex-col gap-6"
-                    >
-                      {sections
-                        .slice(colIndex * 3, colIndex * 3 + 3)
-                        .map((section, i) => (
-                          <div key={i} className="w-[232px] max-w-[232px]">
-                            <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
-                              {section.title}
-                            </h2>
-                            <ul className="space-y-1 text-sm text-gray-600">
-                              {section.items.map((item: any, idx: number) => (
-                                <li
-                                  key={idx}
-                                  className="mb-0 cursor-pointer border-b border-[#F5F5F5] text-[12px] leading-[24px] text-[#1F1F1F] transition-all duration-200 hover:translate-x-3 hover:text-[#F82D8B99]"
-                                >
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                    </div>
-                  ))}
-                </div>
+              {hoveredId === 1 && (
+                <div className="flex w-full flex-col justify-between gap-[33px] lg:flex-row">
+                  <div className="grid grid-cols-3 gap-[36.88px]">
+                    {[0, 1, 2].map((colIndex) => (
+                      <div
+                        key={colIndex}
+                        className="flex w-full max-w-[232.81px] flex-col gap-6"
+                      >
+                        {sections
+                          .slice(colIndex * 3, colIndex * 3 + 3)
+                          .map((section, i) => (
+                            <div key={i} className="w-[232px] max-w-[232px]">
+                              <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
+                                {section.title}
+                              </h2>
+                              <ul className="space-y-1 text-sm text-gray-600">
+                                {section.items.map((item: any, idx: number) => (
+                                  <li
+                                    key={idx}
+                                    className="mb-0 cursor-pointer border-b border-[#F5F5F5] text-[12px] leading-[24px] text-[#1F1F1F] transition-all duration-200 hover:translate-x-3 hover:text-[#F82D8B99]"
+                                  >
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                      </div>
+                    ))}
+                  </div>
 
+                  <div className="flex w-full justify-between gap-[26.51px] lg:max-w-[483px]">
+                    <div className="flex flex-col gap-[12.35px]">
+                      {menuImages.map((menu, index) => {
+                        return <Image src={menu} alt="im" key={index} />;
+                      })}
+                    </div>
+                    <div className="flex flex-col gap-0">
+                      <p className="mb-0 text-[14px] leading-[24px] font-bold text-[#1F1F1F]">
+                        TOP BRANDS
+                      </p>
+                      {menuBrands?.map((brand, index) => (
+                        <Image src={brand} alt="im" key={index} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {hoveredId === 2 && (
+                <div className="flex w-full flex-col justify-between gap-[33px] lg:flex-row">
+                  <div className="grid grid-cols-3 gap-[36.88px]">
+                    {[0, 1, 2].map((colIndex) => (
+                      <div
+                        key={colIndex}
+                        className="flex w-full max-w-[232.81px] flex-col gap-6"
+                      >
+                        {sections
+                          .slice(colIndex * 3, colIndex * 3 + 3)
+                          .map((section, i) => (
+                            <div key={i} className="w-[232px] max-w-[232px]">
+                              <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
+                                {section.title}
+                              </h2>
+                              <ul className="space-y-1 text-sm text-gray-600">
+                                {section.items.map((item: any, idx: number) => (
+                                  <li
+                                    key={idx}
+                                    className="mb-0 cursor-pointer border-b border-[#F5F5F5] text-[12px] leading-[24px] text-[#1F1F1F] transition-all duration-200 hover:translate-x-3 hover:text-[#F82D8B99]"
+                                  >
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {hoveredId === 3 && (
                 <div className="flex w-full justify-between gap-[26.51px] lg:max-w-[483px]">
                   <div className="flex flex-col gap-[12.35px]">
                     {menuImages.map((menu, index) => {
@@ -246,7 +295,16 @@ export default function CategoryList() {
                     ))}
                   </div>
                 </div>
-              </div>
+              )}
+              {hoveredId === 4 && (
+                <div className="flex w-full justify-between gap-[26.51px] lg:max-w-[483px]">
+                  <div className="flex flex-col gap-[12.35px]">
+                    {menuImages.map((menu, index) => {
+                      return <Image src={menu} alt="im" key={index} />;
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -21,6 +21,7 @@ import { seperator } from "@/public/assets/icons";
 import ProductSwiperSlider from "../slider/product.swiper";
 import ProductPagingSlider from "../slider/product-pagging-slider";
 import Link from "next/link";
+import ReviewSection from "../reviews/product-reviews";
 
 export default function ProductDetails({ product = productData }) {
   const [quantity, setQuantity] = useState(1);
@@ -161,6 +162,35 @@ export default function ProductDetails({ product = productData }) {
               className="flex h-[50px] w-[50px] min-w-[50px] items-center justify-center rounded-full bg-[#F6F6F6] text-[17px] leading-[21px] font-bold"
             />
           </div>
+          {/* cart and qunaity buttons for mobile view make fix or sticky */}
+          <div className="fixed right-0 bottom-[60px] left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
+            <div className="flex justify-between gap-1 py-2">
+              <button
+                style={{
+                  background:
+                    "linear-gradient(180deg, #FE9132 0%, #FE9132 100%)",
+                  boxShadow: "0px -3px 0px 0px rgba(0, 0, 0, 0.10) inset",
+                }}
+                className="w-full rounded-[50px] border-r-[1px] border-b-[3px] border-l-[1px] bg-[#4F4F4F] px-10 py-4 text-[16px] leading-[16px] font-medium text-white md:my-0"
+              >
+                Add to Basket{" "}
+              </button>
+              <Button
+                handler={() => setQuantity((q) => Math.max(1, q - 1))}
+                text="-"
+                className="flex h-[50px] w-[50px] min-w-[50px] items-center justify-center rounded-full bg-[#F6F6F6] text-[17px] leading-[21px] font-bold"
+              />
+              <Button
+                text={quantity}
+                className="flex h-[50px] w-[50px] min-w-[50px] items-center justify-center rounded-full bg-[#F6F6F6] text-[17px] leading-[21px] font-bold"
+              />
+              <Button
+                handler={() => setQuantity((q) => Math.max(1, q + 1))}
+                text="+"
+                className="flex h-[50px] w-[50px] min-w-[50px] items-center justify-center rounded-full bg-[#F6F6F6] text-[17px] leading-[21px] font-bold"
+              />
+            </div>
+          </div>
 
           <button
             style={{
@@ -188,6 +218,7 @@ export default function ProductDetails({ product = productData }) {
           <Accordion items={accordionItems} />
         </div>
       </div>
+      <ReviewSection />
       <ProductSwiperSlider products={productsLIST1} />
       <ProductSwiperSlider products={productsLIST1} />
     </div>

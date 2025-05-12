@@ -1,17 +1,18 @@
 "use client";
 import React, { useRef, useState } from "react";
 
-import Image from "next/image";
-import { userMenu } from "@/static/static";
-import { basket, menu, search } from "@/public/assets/icons";
-import { logo } from "@/public/assets/brands";
-import MobileDrawer from "../drawer/mobile-menu";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { globalStateActions } from "@/store/slices/globalStates";
 import Link from "next/link";
-import AddToCard from "../model/add-to-card";
+import Image from "next/image";
 import CartPanel from "../cart/cart-panel";
+import AddToCard from "../model/add-to-card";
+import MobileDrawer from "../drawer/mobile-menu";
+import { logo } from "@/public/assets/brands";
+import { userMenu } from "@/static/static";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { globalStateActions } from "@/store/slices/globalStates";
+import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
+import { basket, menu, search } from "@/public/assets/icons";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 interface NavbarProps {
   categories?: string[];
@@ -20,21 +21,35 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   categories = ["All Categories", "Toys", "Clothing", "Accessories"],
 }) => {
-  const cartRef = useRef(null);
+  const cartRef = useRef<null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dispatch = useAppDispatch();
   const [showCart, setShowCart] = useState(false);
+  const [showCartMob, setShowCartMob] = useState(false);
   const { addToCartModel } = useAppSelector((state) => state.cart);
   const { isMobMenu } = useAppSelector((state) => state.globalStates);
+  usePreventBodyScroll(showCartMob);
   useClickOutside(cartRef, () => {
     setShowCart(false);
   });
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setShowCart(true);
+  };
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setShowCart(false);
+    }, 1000);
+  };
+  const handleToggleMobCart = () => {
+    setShowCartMob((prev) => !prev);
+  };
   const menuHandler = () => {
     dispatch(globalStateActions.setMobileMenu(true));
   };
   const menuHandlerClose = () => {
     dispatch(globalStateActions.setMobileMenu(false));
   };
-
   return (
     <nav className="mx-auto block py-[14px] md:py-7">
       <div className="block sm:hidden">
@@ -42,10 +57,22 @@ const Navbar: React.FC<NavbarProps> = ({
       </div>
       <div className="cus-container relative mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* cart model */}
+        <div
+          className={`fixed top-[84px] right-0 z-[100] h-full max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
+            showCartMob ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <CartPanel />
+        </div>
         {showCart && (
           <div
-            ref={cartRef}
-            className="absolute top-[30px] right-[10px] z-50 w-full max-w-[320px] sm:top-[60px]"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={() =>
+              (timeoutRef.current = setTimeout(() => {
+                setShowCart(false);
+              }, 300))
+            }
+            className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[320px] sm:top-[60px] sm:block"
           >
             <CartPanel />
           </div>
@@ -71,8 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
           </Link>
           <Image
-            onMouseEnter={() => setShowCart(true)}
-            onMouseLeave={() => setShowCart(false)}
+            onClick={handleToggleMobCart}
             width={32}
             height={32}
             src={basket}
@@ -109,8 +135,8 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => (
             <Image
-              onMouseEnter={() => index === 1 && setShowCart(true)}
-              onMouseLeave={() => index === 1 && setShowCart(false)}
+              onMouseEnter={() => index === 1 && handleMouseEnter()}
+              onMouseLeave={() => index === 1 && handleMouseLeave()}
               key={`user-menu-${index}`}
               src={icon}
               alt={`User menu icon ${index}`}
@@ -119,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({
           ))}
         </div>
       </div>
-      {addToCartModel && <AddToCard />}
+      {addToCartModel && <AddToCard addToCartModel={addToCartModel} />}
     </nav>
   );
 };

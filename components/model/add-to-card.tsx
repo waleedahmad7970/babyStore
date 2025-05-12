@@ -5,6 +5,7 @@ import Button from "../button/button";
 import { useAppDispatch } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
 import { useRouter } from "next/navigation";
+import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
 const data = {
   id: 1,
   name: "Lindale Outdoor Wooden Swing And Slide Playset...",
@@ -14,10 +15,14 @@ const data = {
 };
 export default function AddToCard({
   className = "relative p-6 rounded-[12px] bg-[#fff] w-full sm:max-w-[363px] ",
+  addToCartModel,
+}: {
+  className?: string;
+  addToCartModel: boolean;
 }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
-
+  usePreventBodyScroll(addToCartModel);
   const handleCloseModel = () => {
     dispatch(cartAction.setAddToCartModel(false));
   };
