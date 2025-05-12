@@ -96,9 +96,10 @@ const ReviewSection = () => {
           <h3 className="mb-[10px] text-[16px] leading-[165%] font-bold">
             User Reviews
           </h3>
+
           <div
-            className={`transform-gpu overflow-hidden transition-all duration-1000 ${
-              showAll ? "max-h-[1000px]" : "max-h-[500px] md:max-h-[320px]"
+            className={`transition-max-height transform-gpu overflow-hidden duration-500 ease-in-out ${
+              showAll ? "max-h-[1000px]" : "max-h-[320px] md:max-h-[250px]"
             }`}
           >
             {visibleReviews?.map((review, i) => (
