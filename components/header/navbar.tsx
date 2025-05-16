@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +13,15 @@ import { globalStateActions } from "@/store/slices/globalStates";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
 import { basket, menu, search } from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useRouter } from "next/navigation";
+import { dashboardAction } from "@/store/slices/dashboard.slice";
+import { algoliasearch } from "algoliasearch";
+import {
+  InstantSearch,
+  Highlight,
+  Hits,
+  useSearchBox,
+} from "react-instantsearch";
 
 interface NavbarProps {
   categories?: string[];
@@ -21,6 +30,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   categories = ["All Categories", "Toys", "Clothing", "Accessories"],
 }) => {
+  const router = useRouter();
   const cartRef = useRef<null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dispatch = useAppDispatch();
@@ -28,6 +38,16 @@ const Navbar: React.FC<NavbarProps> = ({
   const [showCartMob, setShowCartMob] = useState(false);
   const { addToCartModel } = useAppSelector((state) => state.cart);
   const { isMobMenu } = useAppSelector((state) => state.globalStates);
+  const searchClient = algoliasearch(
+    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
+    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY!,
+  );
+
+  // prefetch
+  useEffect(() => {
+    router.prefetch("/dashboard");
+  }, [router]);
+
   usePreventBodyScroll(showCartMob);
   useClickOutside(cartRef, () => {
     setShowCart(false);
@@ -49,6 +69,88 @@ const Navbar: React.FC<NavbarProps> = ({
   };
   const menuHandlerClose = () => {
     dispatch(globalStateActions.setMobileMenu(false));
+  };
+  const handleRedirectionUserMenu = (index: number) => {
+    if (index === 1) router.push("/dashboard");
+    return dispatch(dashboardAction.setActiveDashboardTab("Wishlist"));
+  };
+  const Hit = ({ hit }: any) => (
+    <div className="hit-item relative flex w-full justify-start gap-6 border-b-1 border-[#CDCDCD]/30 p-2">
+      <Image
+        src={hit?.thumbnail}
+        width={90}
+        height={90}
+        alt="s"
+        className="h-[90px] min-w-[90px] cursor-pointer rounded-[6px] border border-[#CDCDCD]"
+      />
+      <div className="flex w-full justify-between">
+        <div className="flex w-full cursor-pointer flex-col justify-start gap-1">
+          <h4 className="font-inter text-left text-[18px] leading-[18.73px] font-medium text-[#1A1718]">
+            {/* <Highlight
+              attribute="title"
+              hit={hit}
+              highlightedTagName="span"
+              classNames={{
+                highlighted: "text-pink-600 font-semibold",
+              }}
+            /> */}
+            {hit?.title}
+          </h4>
+          <h4 className="font-inter text-left text-[16px] leading-[18px] font-normal text-[#1A1718]">
+            {hit?.category}
+          </h4>
+          <h4 className="font-inter text-left text-[16px] leading-[18px] font-medium text-[#1F1F1F80]">
+            {hit?.price} AED
+          </h4>
+        </div>
+        <div className="flex justify-end gap-1">
+          {hit?.images?.map((img: string, index: number) => {
+            return (
+              <Image key={index} src={img} alt="img" width={80} height={80} />
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+  function CustomSearchInput() {
+    const { query, refine } = useSearchBox();
+
+    return (
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => refine(e.target.value)}
+        placeholder="What are you looking for?"
+        className="w-full bg-transparent pl-5 text-[14px] leading-[24px] font-medium text-black outline-none placeholder:text-[#1A171880]"
+        style={{
+          color: "rgba(26, 23, 24, 0.50)",
+        }}
+        aria-label="Search input"
+      />
+    );
+  }
+  const ConditionalHits = () => {
+    const { query } = useSearchBox();
+    const isTyping = query.trim().length > 0;
+    if (!isTyping) return null;
+
+    return (
+      <div className="no-scrollbar absolute top-14 right-0 left-0 z-40 mt-4 max-h-[440px] overflow-y-auto rounded-[8px] bg-white px-6 py-3 shadow-md">
+        <Hits hitComponent={Hit} />
+      </div>
+    );
+  };
+  const SearchBoxWithResults = () => {
+    return (
+      <InstantSearch
+        searchClient={searchClient}
+        indexName="algolia-demo-search"
+      >
+        <CustomSearchInput />
+        <ConditionalHits />
+      </InstantSearch>
+    );
   };
   return (
     <nav className="mx-auto block py-[14px] md:py-7">
@@ -119,15 +221,7 @@ const Navbar: React.FC<NavbarProps> = ({
               </option>
             ))}
           </select>
-          <input
-            style={{
-              color: "rgba(26, 23, 24, 0.50)",
-            }}
-            type="text"
-            placeholder="What are you looking for?"
-            className="w-full bg-transparent !ps-0 pl-5 text-[14px] leading-[24px] font-medium outline-none md:ps-0"
-            aria-label="Search input"
-          />
+          <SearchBoxWithResults />
           <Image src={search} alt="Search" className="h-8 w-8" />
         </div>
 
@@ -135,8 +229,9 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => (
             <Image
-              onMouseEnter={() => index === 1 && handleMouseEnter()}
-              onMouseLeave={() => index === 1 && handleMouseLeave()}
+              onMouseEnter={() => index === 2 && handleMouseEnter()}
+              onMouseLeave={() => index === 2 && handleMouseLeave()}
+              onClick={() => handleRedirectionUserMenu(index)}
               key={`user-menu-${index}`}
               src={icon}
               alt={`User menu icon ${index}`}

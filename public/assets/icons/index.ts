@@ -42,6 +42,7 @@ export { default as cash_back2 } from "../icons/cash_back2.svg";
 export { default as arrow_down } from "../icons/arrow_down.svg";
 export { default as seperator } from "../icons/seperator.svg";
 export { default as mob_down_arrow } from "../icons/mob_down_arrow.svg";
+export { default as arrows_sort } from "../icons/arrows-sort.svg";
 
 // footer
 

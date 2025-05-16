@@ -1,7 +1,9 @@
 "use client";
 
+import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
+import Icons from "@/public/assets/svg-component";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
@@ -10,7 +12,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 type TabType = {
   id: string;
-  icon: React.ReactNode;
+  icon: any;
   label: string;
   link: string;
 };
@@ -34,45 +36,37 @@ const BottomNavigation: React.FC = () => {
   useClickOutside(menuRef, () => {
     dispatch(globalStateActions.setFilter(""));
   });
-  useEffect(() => {
-    if (isFilter) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isFilter]);
+  usePreventBodyScroll(isFilter);
 
   const tabs: TabType[] = [
     {
       id: "Categories",
-      icon: <Image src={menu2} alt="icon" className="h-[24px] w-[24px]" />,
+      icon: Icons.CategoryIcon,
       label: "Categories",
       link: "/category",
     },
     {
       id: "Home",
-      icon: <Image src={home} alt="icon" className="h-[24px] w-[24px]" />,
+      icon: Icons.HomeIcon,
       label: "Home",
       link: "/",
     },
     {
       id: "Search",
-      icon: <Image src={Search} alt="icon" className="h-[24px] w-[24px]" />,
+      icon: Icons.SearchIcon,
       label: "Search",
       link: "/brand",
     },
     {
       id: "Bag",
-      icon: <Image src={bag} alt="icon" className="h-[24px] w-[24px]" />,
+      icon: Icons.CartIcon,
+
       label: "Bag",
       link: "/product",
     },
     {
       id: "Profile",
-      icon: <Image src={profile} alt="icon" className="h-[24px] w-[24px]" />,
+      icon: Icons.ProfileIcon,
       label: "Profile",
       link: "/profile",
     },
@@ -241,31 +235,35 @@ const BottomNavigation: React.FC = () => {
       )}
       {/* Bottom Tabs */}
       <div className="flex items-center justify-around px-5 py-[10px]">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabClick(tab.id, tab.link)}
-            className={`flex h-full w-full flex-col items-center justify-center transition-all duration-300 ${
-              activeTab === tab.id ? "text-[#F82D8B]" : "text-gray-500"
-            }`}
-            aria-label={tab.label}
-          >
-            <div
-              className={`transition-transform duration-300 ${
-                activeTab === tab.id ? "scale-110" : "scale-100"
+        {tabs.map((tab) => {
+          const Icon = tab.icon;
+
+          return (
+            <button
+              key={tab.id}
+              onClick={() => handleTabClick(tab.id, tab.link)}
+              className={`flex h-full w-full flex-col items-center justify-center transition-all duration-300 ${
+                activeTab === tab.id ? "text-[#F82D8B]" : "text-gray-500"
               }`}
+              aria-label={tab.label}
             >
-              {tab.icon}
-            </div>
-            <span
-              className={`mt-1 text-[10px] leading-[160%] font-normal ${
-                activeTab === tab.id ? "text-[#51545A]" : "text-[#C7CFDA]"
-              }`}
-            >
-              {tab.label}
-            </span>
-          </button>
-        ))}
+              <div
+                className={`transition-transform duration-300 ${
+                  activeTab === tab.id ? "scale-110" : "scale-100"
+                }`}
+              >
+                <Icon color={activeTab === tab.id ? "#51545A" : "#C7CFDA"} />
+              </div>
+              <span
+                className={`mt-1 text-[10px] leading-[160%] font-normal ${
+                  activeTab === tab.id ? "text-[#51545A]" : "text-[#C7CFDA]"
+                }`}
+              >
+                {tab.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </nav>
   );

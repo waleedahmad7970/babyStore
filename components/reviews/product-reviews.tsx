@@ -1,6 +1,11 @@
 "use client";
 
-import { full_star, grey_star, half_star } from "@/public/assets/icons";
+import {
+  arrows_sort,
+  full_star,
+  grey_star,
+  half_star,
+} from "@/public/assets/icons";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -47,8 +52,8 @@ const ReviewSection = () => {
   const [showAll, setShowAll] = useState(false);
   const visibleReviews = showAll ? reviews : reviews.slice(0, 3);
   return (
-    <div className="py-[40px] lg:space-y-6 lg:p-6 lg:py-0">
-      <h2 className="text-2xl font-bold">Reviews</h2>
+    <div className="py-[40px] lg:space-y-6 lg:p-6 lg:py-[100px]">
+      <h2 className="mb-10 text-2xl font-bold md:mb-0">Reviews</h2>
 
       <div className="flex flex-col justify-between gap-6 lg:flex-row">
         <div className="max-h-max w-full rounded-[16px] border border-[#E2E8F0] p-6 lg:max-w-[375px]">
@@ -93,9 +98,12 @@ const ReviewSection = () => {
         </div>
 
         <div className="w-full text-[#434343]">
-          <h3 className="mb-[10px] text-[16px] leading-[165%] font-bold">
-            User Reviews
-          </h3>
+          <div className="mb-[10px] flex items-center justify-between">
+            <h3 className="text-[16px] leading-[165%] font-bold">
+              User Reviews
+            </h3>
+            <Image src={arrows_sort} className="h-[24px] w-[24px]" alt="arr" />
+          </div>
 
           <div
             className={`transition-max-height transform-gpu overflow-hidden duration-500 ease-in-out ${

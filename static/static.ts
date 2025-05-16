@@ -146,7 +146,7 @@ import {
 } from "@/public/assets/banner";
 
 // nav
-export const userMenu = [user, basket, heart];
+export const userMenu = [user, heart, basket];
 // categoryData.js
 export const categories = [
   {

@@ -327,6 +327,145 @@ const TrackIcon = ({ color = "#473A3F" }: DashboardIconProps) => (
   </svg>
 );
 
+// menu mobile m=bottom bar iocns
+
+const HomeIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M20.1379 6.81969L14.3779 2.78969C12.8079 1.68969 10.3979 1.74969 8.88789 2.91969L3.87789 6.82969C2.87789 7.60969 2.08789 9.20969 2.08789 10.4697V17.3697C2.08789 19.9197 4.15789 21.9997 6.70789 21.9997H17.4879C20.0379 21.9997 22.1079 19.9297 22.1079 17.3797V10.5997C22.1079 9.24969 21.2379 7.58969 20.1379 6.81969ZM12.8479 17.9997C12.8479 18.4097 12.5079 18.7497 12.0979 18.7497C11.6879 18.7497 11.3479 18.4097 11.3479 17.9997V14.9997C11.3479 14.5897 11.6879 14.2497 12.0979 14.2497C12.5079 14.2497 12.8479 14.5897 12.8479 14.9997V17.9997Z"
+      fill={color}
+    />
+  </svg>
+);
+
+const SearchIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <circle
+      cx="12.6624"
+      cy="11.7669"
+      r="8.98856"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18.9141 18.4854L22.4381 22.0002"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const CartIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M8.19727 7.66952V6.69952C8.19727 4.44952 10.0073 2.23952 12.2573 2.02952C14.9373 1.76952 17.1973 3.87952 17.1973 6.50952V7.88952"
+      stroke={color}
+      stroke-width="1.5"
+      strokeMiterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M9.69807 22H15.6981C19.7181 22 20.4381 20.39 20.6481 18.43L21.3981 12.43C21.6681 9.99 20.9681 8 16.6981 8H8.69807C4.42807 8 3.72807 9.99 3.99807 12.43L4.74807 18.43C4.95807 20.39 5.67807 22 9.69807 22Z"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M16.1937 12H16.2027"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M9.19177 12H9.20075"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const ProfileIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M12.6566 10.87C12.5566 10.86 12.4366 10.86 12.3266 10.87C9.94664 10.79 8.05664 8.84 8.05664 6.44C8.05664 3.99 10.0366 2 12.4966 2C14.9466 2 16.9366 3.99 16.9366 6.44C16.9266 8.84 15.0366 10.79 12.6566 10.87Z"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M7.31109 13.3725C4.89109 14.9925 4.89109 17.6325 7.31109 19.2425C10.0611 21.0825 14.5711 21.0825 17.3211 19.2425C19.7411 17.6225 19.7411 14.9825 17.3211 13.3725C14.5811 11.5425 10.0711 11.5425 7.31109 13.3725Z"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const CategoryIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M4.29688 6H20.2969"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.29688 12H20.2969"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.29688 18H20.2969"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 const Icons = {
   DashboardIcon,
   OrderIcon,
@@ -337,6 +476,12 @@ const Icons = {
   CouponIcon,
   CashbackIcon,
   TrackIcon,
+  // menu mobile icons
+  CategoryIcon,
+  HomeIcon,
+  CartIcon,
+  SearchIcon,
+  ProfileIcon,
 };
 
 export default Icons;
