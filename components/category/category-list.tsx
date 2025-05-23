@@ -50,7 +50,6 @@ export default function CategoryList() {
       )} */}
       <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
         {(categories as any[]).map((category, catIndex) => {
-          console.log("category", category);
           return (
             <div
               key={catIndex}
