@@ -47,7 +47,7 @@ export default function ProductSwiperSlider({ products }: ProductSliderProps) {
         >
           <div className="flex justify-start gap-5">
             {products?.map((product) => {
-              return <ProductCard key={product.id} product={product} />;
+              return <ProductCard key={product.id} product={product as any} />;
             })}{" "}
           </div>
         </div>

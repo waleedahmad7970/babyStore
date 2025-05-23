@@ -21,14 +21,14 @@ import { toast } from "react-toastify";
 
 interface ProductData {
   id: number;
-  name: string;
+  name?: string;
   title: string;
   image: StaticImageData | string;
   price: number;
   oldPrice: number;
   discount: string;
   rating: number;
-  reviews: any[];
+  reviews?: any[];
   slug?: string | undefined | any;
 }
 interface ProductCardProps {

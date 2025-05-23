@@ -288,7 +288,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             showCartMob ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <CartPanel products={cartProducts} />
+          <CartPanel products={cartProducts as any} />
         </div>
         {showCart && cartProducts?.length > 0 && (
           <div
@@ -300,7 +300,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             }
             className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[320px] sm:top-[60px] sm:block"
           >
-            <CartPanel products={cartProducts} />
+            <CartPanel products={cartProducts as any} />
           </div>
         )}
 

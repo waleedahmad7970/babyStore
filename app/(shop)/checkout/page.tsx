@@ -4,7 +4,7 @@ import CartPanel from "@/components/cart/cart-panel";
 import FeatureCards from "@/components/cards/feature-card";
 import InputField from "@/components/fields/input-field";
 import { free_delivery } from "@/public/assets/icons";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; // Needed for the flags!
 import { useAppSelector } from "@/store/hooks";
@@ -191,7 +191,7 @@ export default function Page() {
               </button>
             </div>
           </div>
-          <CartPanel products={cartProducts} />
+          <CartPanel products={cartProducts as any} />
         </div>
       </div>
       {/* <FeatureCards /> */}

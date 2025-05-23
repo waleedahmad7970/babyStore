@@ -1,5 +1,5 @@
 import { checkout_1, cross } from "@/public/assets/icons";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 import Button from "../button/button";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -18,6 +18,13 @@ interface Product {
   image: string;
   price: number;
 }
+interface CartProduct {
+  title?: string;
+  image?: string | StaticImageData;
+  price?: number;
+  src?: string | StaticImageData;
+  // Add other properties you expect
+}
 export default function AddToCard({
   className = "relative p-6 rounded-[12px] bg-[#fff] w-full sm:max-w-[363px] ",
   addToCartModel,
@@ -29,7 +36,11 @@ export default function AddToCard({
   const dispatch = useAppDispatch();
   usePreventBodyScroll(addToCartModel);
   const { addCurrentAddedProduct = {} } = useAppSelector((state) => state.cart);
-  const { title = "", image = "", price = 0 } = addCurrentAddedProduct || {};
+  const {
+    title = "",
+    image = "",
+    price = 0,
+  } = (addCurrentAddedProduct as CartProduct) || {};
   const handleCloseModel = () => {
     dispatch(cartAction.setAddToCartModel(false));
   };
@@ -56,7 +67,11 @@ export default function AddToCard({
             className="absolute top-[5px] right-[5px] cursor-pointer"
           />
           <Image
-            src={image.src || data?.image}
+            src={
+              typeof image === "string"
+                ? image
+                : (image as StaticImageData)?.src || data?.image
+            }
             alt={"cart-data"}
             height={104}
             width={104}

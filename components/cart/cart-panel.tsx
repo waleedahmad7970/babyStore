@@ -13,10 +13,11 @@ import { QuantityControl } from "./quanity-controller";
 // Original product type (no quantity expected)
 interface Product {
   id: number;
-  name: string;
+  name?: string;
   price: number;
-  image: string | StaticImageData;
   title: string;
+  image: string | StaticImageData;
+  isAddedToCart?: boolean;
 }
 
 // Cart item with quantity added
