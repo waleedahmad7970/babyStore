@@ -20,13 +20,6 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
 }) => {
   return (
     <div className="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
-      {/* <Image
-        src={bannerImage}
-        width={100}
-        height={100}
-        className="cus-container hidden h-[236px] w-full object-cover sm:block md:h-full"
-        alt="banner"
-      /> */}
       <div className="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
         <Image
           src={bannerImage}
@@ -34,11 +27,6 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
           className="cus-container h-full w-full object-cover"
         />
       </div>
-      {/* <Image
-        src={bannerImageMob}
-        className="cus-container block h-[236px] w-full object-cover sm:hidden md:h-full"
-        alt="banner"
-      /> */}
       <div className="cus-container relative block w-full rounded-[8px] sm:hidden">
         <Image
           src={bannerImageMob}
@@ -46,7 +34,6 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
           className="h-full w-full object-cover"
         />
       </div>
-
       <div
         className={`cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between ${className}`}
       >
@@ -54,7 +41,6 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
           <Image key={index} className={ImgClass} src={item} alt={"product"} />
         ))}
       </div>
-
       <ProductSwiperSlider products={productsLIST1} />
     </div>
   );

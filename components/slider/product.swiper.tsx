@@ -4,16 +4,17 @@ import { StaticImageData } from "next/image";
 import ProductCard from "../product/cards/product-card";
 import { useScrollSlider } from "@/hooks/useScrollSlider";
 import SliderHeading from "../header-titles/slider-header";
-import { useRef } from "react";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 interface Product {
   id: number;
-  title: string;
+  name?: string;
   image: StaticImageData | string;
   price: number;
   oldPrice: number;
   discount: string;
   rating: number;
+  title: string | undefined;
+  reviews?: any;
 }
 interface ProductSliderProps {
   products: Product[];
@@ -45,9 +46,9 @@ export default function ProductSwiperSlider({ products }: ProductSliderProps) {
           className="no-scrollbar relative min-h-[310px] overflow-x-auto md:min-h-[410px]"
         >
           <div className="flex justify-start gap-5">
-            {products?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}{" "}
+            {products?.map((product) => {
+              return <ProductCard key={product.id} product={product} />;
+            })}{" "}
           </div>
         </div>
       </div>

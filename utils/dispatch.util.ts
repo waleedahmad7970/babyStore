@@ -1,6 +1,7 @@
-let appDispatch: () => void = () => {};
+import { AppDispatch } from "@/store/store";
 
-export const getDispatch = (): (() => void) => appDispatch;
-export const setDispatch = (dispatch: () => void): void => {
-  appDispatch = dispatch;
-};
+let appDispatch: AppDispatch;
+
+export const getDispatch = (): AppDispatch => appDispatch;
+export const setDispatch = (dispatch: AppDispatch): AppDispatch =>
+  (appDispatch = dispatch);

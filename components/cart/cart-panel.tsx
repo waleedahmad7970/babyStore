@@ -1,50 +1,40 @@
 "use client";
+
 import {
   checkout_1,
   checkout_2,
   checkout_3,
   cross,
-  minus,
-  plus,
 } from "@/public/assets/icons";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { QuantityControl } from "./quanity-controller";
 
-interface CartItem {
+// Original product type (no quantity expected)
+interface Product {
   id: number;
   name: string;
   price: number;
-  quantity: number;
   image: string | StaticImageData;
+  title: string;
 }
 
-const initialCart: CartItem[] = [
-  {
-    id: 1,
-    name: "Lindale Outdoor Wooden Swing And Slide Playset...",
-    price: 20081.25,
-    quantity: 3,
-    image: checkout_1,
-  },
-  {
-    id: 2,
-    name: "Fox 2 Complete Black/Black...",
-    price: 4287.94,
-    quantity: 1,
-    image: checkout_2,
-  },
-  {
-    id: 3,
-    name: "Evenflo-EveryStage LX All-In-One Car Seat...",
-    price: 1420.25,
-    quantity: 7,
-    image: checkout_3,
-  },
-];
+// Cart item with quantity added
+interface CartItem extends Product {
+  quantity: number;
+}
 
-export default function CartPanel() {
-  const [cartItems, setCartItems] = useState(initialCart);
+interface CartPanelProps {
+  products: Product[];
+}
+
+export default function CartPanel({ products }: CartPanelProps) {
+  const [cartItems, setCartItems] = useState<CartItem[]>(
+    products?.map((item) => ({
+      ...item,
+      quantity: 1, // Default quantity
+    })),
+  );
 
   const updateQuantity = (id: number, change: number) => {
     setCartItems((prev) =>
@@ -65,7 +55,7 @@ export default function CartPanel() {
     0,
   );
 
-  const tax = 30; // Fixed tax as per image
+  const tax = 30;
   const total = subtotal + tax;
 
   return (
@@ -76,54 +66,34 @@ export default function CartPanel() {
           className="relative flex h-[115px] justify-between gap-2 rounded-[7.6px] bg-[#FAFAFA] px-[5.4px] py-[5.4px] md:justify-start"
         >
           <Image
-            alt="cros"
+            alt="remove item"
             src={cross}
             onClick={() => removeItem(item.id)}
-            className="absolute top-[5px] right-[5px]"
+            className="absolute top-[5px] right-[5px] cursor-pointer"
           />
           <Image
-            src={item?.image}
-            alt={"cart-item"}
+            src={item.image}
+            alt="cart item"
             height={104}
             width={104}
             className="min-w-[104px] rounded-[5.67px] object-contain"
           />
           <div className="flex h-full w-full flex-col justify-between">
             <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
-              {item.name}
+              {item.name || item.title}
             </p>
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
-                <p className="text-[9.673px] leading-[9.673px] font-light text-[#1F1F1F]">
-                  AED
-                </p>
-                <p className="text-[14.882px] leading-[12.649px] font-semibold text-[#1F1F1F]">
+                <p className="text-[9.673px] font-light text-[#1F1F1F]">AED</p>
+                <p className="text-[14.882px] font-semibold text-[#1F1F1F]">
                   {item.price.toFixed(2)}
                 </p>
               </div>
-              {/* <div className="flex items-center rounded-[5.329px] border-[1.2px] border-[#E7448C] px-[10px] py-[5px]">
-                <Image
-                  src={minus}
-                  alt="min"
-                  onClick={() => updateQuantity(item.id, -1)}
-                  className="w-[10px]"
-                />
-
-                <span className="mx-[14px] text-[15.225px] leading-[19.031px] font-semibold text-[#201C1C]">
-                  {item.quantity}
-                </span>
-                <Image
-                  src={plus}
-                  alt="min"
-                  onClick={() => updateQuantity(item.id, 1)}
-                  className="w-[10px]"
-                />
-              </div> */}
               <QuantityControl
                 className="gap-4"
                 quantity={item.quantity}
-                onIncrease={() => updateQuantity(item.id, -1)}
-                onDecrease={() => updateQuantity(item.id, 1)}
+                onIncrease={() => updateQuantity(item.id, 1)}
+                onDecrease={() => updateQuantity(item.id, -1)}
               />
             </div>
           </div>
@@ -134,31 +104,31 @@ export default function CartPanel() {
 
       <div className="flex flex-col gap-[4.5px]">
         <div className="flex justify-between">
-          <span className="text-[13.05px] leading-[17.137px] font-normal text-[#A0A0A0]">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Sub Total:
           </span>
-          <span className="text-[13.05px] leading-[17.137px] font-normal text-[#A0A0A0]">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             <span className="text-[8.7px]">AED</span> {subtotal.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between">
-          <span className="text-[13.05px] leading-[17.137px] font-normal text-[#A0A0A0]">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Tax:
           </span>
-          <span className="text-[13.05px] leading-[17.137px] font-normal text-[#A0A0A0]">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             <span className="text-[8.7px]">AED</span> {tax.toFixed(2)}
           </span>
         </div>
-        <div className="flex justify-between text-[17.4px] leading-[17.137px] font-semibold text-[#636363]">
+        <div className="flex justify-between text-[17.4px] font-semibold text-[#636363]">
           <span>Total:</span>
-          <span className="">
+          <span>
             <span className="mr-[-2px] text-[10.875px]">AED</span>{" "}
             {total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </span>
         </div>
       </div>
 
-      <button className="mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] leading-[19.031px] font-semibold text-white transition hover:bg-green-700">
+      <button className="mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-green-700">
         Place Order
       </button>
     </div>

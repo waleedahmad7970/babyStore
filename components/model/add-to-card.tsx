@@ -2,7 +2,7 @@ import { checkout_1, cross } from "@/public/assets/icons";
 import Image from "next/image";
 import React from "react";
 import Button from "../button/button";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
 import { useRouter } from "next/navigation";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
@@ -13,6 +13,11 @@ const data = {
   quantity: 3,
   image: checkout_1,
 };
+interface Product {
+  title: string;
+  image: string;
+  price: number;
+}
 export default function AddToCard({
   className = "relative p-6 rounded-[12px] bg-[#fff] w-full sm:max-w-[363px] ",
   addToCartModel,
@@ -23,10 +28,11 @@ export default function AddToCard({
   const router = useRouter();
   const dispatch = useAppDispatch();
   usePreventBodyScroll(addToCartModel);
+  const { addCurrentAddedProduct = {} } = useAppSelector((state) => state.cart);
+  const { title = "", image = "", price = 0 } = addCurrentAddedProduct || {};
   const handleCloseModel = () => {
     dispatch(cartAction.setAddToCartModel(false));
   };
-
   const redirectToCart = (path: any) => {
     router.push(path);
   };
@@ -50,7 +56,7 @@ export default function AddToCard({
             className="absolute top-[5px] right-[5px] cursor-pointer"
           />
           <Image
-            src={data?.image}
+            src={image.src || data?.image}
             alt={"cart-data"}
             height={104}
             width={104}
@@ -59,7 +65,7 @@ export default function AddToCard({
           <div className="flex h-full w-full flex-col justify-between">
             <div>
               <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
-                {data.name}
+                {title || data.name}
               </p>
               <div className="flex items-center justify-start">
                 <div className="h-[14px] w-[14px] rounded-full bg-[#FFCD52]" />
@@ -84,7 +90,7 @@ export default function AddToCard({
                   AED
                 </p>
                 <p className="text-[14.882px] leading-[12.649px] font-semibold text-[#1F1F1F]">
-                  {data.price.toFixed(2)}
+                  {price?.toFixed(2) || data.price.toFixed(2)}
                 </p>
               </div>
             </div>

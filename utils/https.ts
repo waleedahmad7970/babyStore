@@ -9,6 +9,7 @@ import axios, {
 import { toast } from "react-toastify";
 import { getItemFromLS } from "@/utils/LS_STORAGE";
 import { getDispatch } from "@/utils/dispatch.util";
+import { promisify } from "./promisify.util";
 
 interface ApiResponse<T = any> {
   data?: T;
@@ -40,7 +41,7 @@ httpClient.interceptors.request.use(
 
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error),
 );
 
 // Response interceptor
@@ -89,38 +90,25 @@ httpClient.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 // HTTP methods with proper typing
+
 const http = {
-  get: <T = any>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> => httpClient.get<T>(url, config),
+  get: <T = any>(url = "", config: AxiosRequestConfig = {}) =>
+    promisify<T>(axios.get<T>(url, config)),
 
-  post: <T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> => httpClient.post<T>(url, data, config),
+  post: <T = any>(url = "", data = {}, config: AxiosRequestConfig = {}) =>
+    promisify<T>(axios.post<T>(url, data, config)),
 
-  put: <T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> => httpClient.put<T>(url, data, config),
+  put: <T = any>(url = "", data = {}, config: AxiosRequestConfig = {}) =>
+    promisify<T>(axios.put<T>(url, data, config)),
 
-  patch: <T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> => httpClient.patch<T>(url, data, config),
+  patch: <T = any>(url = "", data = {}, config: AxiosRequestConfig = {}) =>
+    promisify<T>(axios.patch<T>(url, data, config)),
 
-  delete: <T = any>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> => httpClient.delete<T>(url, config),
+  delete: <T = any>(url = "", config: AxiosRequestConfig = {}) =>
+    promisify<T>(axios.delete<T>(url, config)),
 };
-
 export default http;

@@ -8,6 +8,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/effect-fade";
 import "react-phone-input-2/lib/style.css";
+import { AppDispatch } from "@/components/AppDispatch";
+import ToastProvider from "@/components/Toastify/toastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ToastProvider>
+            <AppDispatch />
+            {children}
+          </ToastProvider>
+        </Providers>
       </body>
     </html>
   );

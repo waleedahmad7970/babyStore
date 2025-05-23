@@ -17,6 +17,7 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 import userSlice from "./slices/auth.slice";
 import cartSlice from "./slices/cart.slice";
+import productSlice from "./slices/products";
 import globalStateSlice from "./slices/globalStates";
 import dashboardSlice from "./slices/dashboard.slice";
 
@@ -36,6 +37,7 @@ const createNoopStorage = () => ({
 const rootReducer = combineReducers({
   user: userSlice,
   cart: cartSlice,
+  product: productSlice,
   dashboard: dashboardSlice,
   globalStates: globalStateSlice,
 });

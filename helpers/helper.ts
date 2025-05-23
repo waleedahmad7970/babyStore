@@ -9,3 +9,13 @@ export function debounce<T extends (...args: any[]) => void>(
     timer = setTimeout(() => func(...args), delay);
   };
 }
+
+export const calculateAverageRating = (reviews: { stars: string }[]) => {
+  if (!reviews || reviews.length === 0) return 0;
+
+  const totalStars = reviews.reduce((acc, curr) => {
+    return acc + parseInt(curr.stars, 10);
+  }, 0);
+
+  return +(totalStars / reviews.length).toFixed(1);
+};

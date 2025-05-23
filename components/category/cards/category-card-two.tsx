@@ -2,9 +2,8 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-interface CategoryCardProps {
+interface CategoryCardPropsTwo {
   name: string;
   image: string | StaticImageData;
   className?: string;
@@ -12,12 +11,13 @@ interface CategoryCardProps {
   ImgClass?: string;
   hoveredId?: number | null;
   categoryId?: number;
-  cat_image?: string | StaticImport;
+  cat_image?: string | any;
   slug?: any;
 }
-const CategoryCard: React.FC<CategoryCardProps> = ({
+const CategoryCardTwo: React.FC<CategoryCardPropsTwo> = ({
   cat_image,
   name,
+  image,
   className = "w-[99px] h-[99px] bg-[#FFF0F5]",
   paraClassName = "mt-[11.22px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[16px] md:leading-[19.36px]",
   ImgClass = "object-contain",
@@ -38,15 +38,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           onClick={() => router.push(slug)}
           height={99}
           width={99}
-          src={cat_image || ""}
+          src={cat_image}
           alt={name || "slug"}
           className={ImgClass}
           loading="lazy"
         />
       </div>
-      <p className={`${paraClassName}`}>{name}</p>
+      <p className={`${paraClassName}`}>{name || "Category name"}</p>
     </div>
   );
 };
 
-export default CategoryCard;
+export default CategoryCardTwo;

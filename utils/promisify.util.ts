@@ -1,11 +1,12 @@
-const promisify = async <T>(
-  promise: Promise<T>
-): Promise<[T | null, unknown]> => {
-  return new Promise((resolve) => {
-    promise
-      .then((data) => resolve([data, null]))
-      .catch((error) => resolve([null, error]));
-  });
-};
+import { AxiosResponse } from "axios";
 
-export default promisify;
+export async function promisify<T>(
+  promise: Promise<AxiosResponse<T>>,
+): Promise<[AxiosResponse<T> | null, any]> {
+  try {
+    const response = await promise;
+    return [response, null];
+  } catch (error) {
+    return [null, error];
+  }
+}

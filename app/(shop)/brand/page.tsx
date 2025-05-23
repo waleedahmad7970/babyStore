@@ -1,20 +1,20 @@
 "use client";
 
-import ProductCardTwo from "@/components/product/cards/product-card-two";
-import FilterSidebar from "@/components/sidebar/filter-sidebar";
+import React, { JSX, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { KidKraft } from "@/public/assets/brands";
+import { productsLIST1 } from "@/static/static";
+import { useAppDispatch } from "@/store/hooks";
+import { globalStateActions } from "@/store/slices/globalStates";
 import {
   angle_down,
   burger_menu,
   expendMore,
   funnel,
 } from "@/public/assets/icons";
-import { productsLIST1 } from "@/static/static";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { globalStateActions } from "@/store/slices/globalStates";
-import Image from "next/image";
-import React, { JSX, useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
+import FilterSidebar from "@/components/sidebar/filter-sidebar";
+import ProductCardTwo from "@/components/product/cards/product-card-two";
 
 type PageClickEvent = {
   selected: number;
@@ -52,7 +52,6 @@ export default function Page(): JSX.Element {
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
   };
-
   const start = currentPage * itemsPerPage;
   const end = start + itemsPerPage;
   const currentItems = productsLIST1.slice(start, end);

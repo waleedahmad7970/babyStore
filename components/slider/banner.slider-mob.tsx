@@ -11,14 +11,14 @@ interface Slide {
   id: number;
   alt: string;
   link?: string;
-  image: string | StaticImageData;
+  mobile_image: string | StaticImageData;
   mobileImg: string | StaticImageData;
   desktopImg: string | StaticImageData;
 }
 
-export default function BannerSlider({ slides }: { slides: Slide[] }) {
+export default function BannerSliderMob({ slides }: { slides: Slide[] }) {
   return (
-    <div className="relative w-full">
+    <div className="relative block w-full sm:hidden">
       <Swiper
         effect="fade"
         modules={[Pagination, Navigation, Autoplay, EffectFade]}
@@ -36,14 +36,15 @@ export default function BannerSlider({ slides }: { slides: Slide[] }) {
         {slides?.map((slide, index) => {
           return (
             <SwiperSlide key={index}>
-              {/*  aspect-[1440/466] to /300 */}
+              {/* Mobile Image (hidden on desktop) */}
               <a href={slide?.link} rel="noopener noreferrer">
-                <div className="relative hidden aspect-[1440/300] w-full sm:block">
+                <div className="relative aspect-[375/375] w-full">
                   <Image
-                    src={`${imageBaseUrl}/assets/sliders/${slide.image}`}
-                    alt={"banner_image"}
-                    className="h-auto w-full object-contain"
+                    src={`${imageBaseUrl}/assets/sliders/${slide?.mobile_image}`}
+                    alt={"banner-image-mob"}
+                    className="h-full w-full object-fill"
                     priority
+                    sizes="100vw"
                     fill
                   />
                 </div>
@@ -64,7 +65,6 @@ export default function BannerSlider({ slides }: { slides: Slide[] }) {
           />
         </button>
       </div>
-
       <div className="swiper-button-next absolute top-1/2 right-[60px] z-10 mr-4 hidden -translate-y-1/2 transform text-white after:hidden sm:block">
         <button className="flex h-[40px] w-[80px] min-w-[40px] items-center justify-center rounded-full bg-[#F470AB] transition-all duration-300 hover:scale-110 hover:bg-[#e05699] active:scale-90">
           <Image src={slider_right_arrow} alt="Next" width={24} height={24} />

@@ -24,8 +24,6 @@ import {
   Skincare,
   stationary,
   sub_baby_toy,
-  test,
-  test2,
   Toys,
   water_bottle,
 } from "@/public/assets/sections";
@@ -1342,16 +1340,16 @@ export const navigationsLinks = [
   {
     title: "Categories",
     links: [
-      { name: "Feeding", url: "#" },
-      { name: "Skincare", url: "#" },
-      { name: "Nursery", url: "#" },
-      { name: "Clothes", url: "#" },
-      { name: "Diapers", url: "#" },
-      { name: "Toys", url: "#" },
-      { name: "gear & Safety", url: "#" },
-      { name: "School", url: "#" },
-      { name: "Mommy", url: "#" },
-      { name: "Outdoor", url: "#" },
+      { name: "Feeding", url: "feeding" },
+      { name: "Skincare", url: "skincare" },
+      { name: "Nursery", url: "nursery" },
+      { name: "Clothes", url: "clothes" },
+      { name: "Diapers", url: "diapers" },
+      { name: "Toys", url: "toys" },
+      { name: "gear & Safety", url: "gears-safety" },
+      { name: "School", url: "school" },
+      { name: "Mommy", url: "mommy" },
+      { name: "Outdoor", url: "outdoor" },
     ],
   },
   {
@@ -1619,3 +1617,589 @@ export const orderColorPallte = {
   blue: "#59A8D4",
   yellow: "#FFC555",
 };
+
+// catgory sections
+
+export const sections: any[] = [
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+    ],
+  },
+  {
+    title: "Skin & Hair & Body",
+    items: [
+      "Lotions & Creams",
+      "Balms",
+      "Powders & Sprays",
+      "Baby Oil",
+      "Sun Care",
+      "Hair Care",
+      "Nail Care",
+      "Travel Kits",
+    ],
+  },
+  {
+    title: "Skin & Hair & Body",
+    items: [
+      "Lotions & Creams",
+      "Balms",
+      "Powders & Sprays",
+      "Baby Oil",
+      "Sun Care",
+      "Hair Care",
+      "Nail Care",
+      "Travel Kits",
+    ],
+  },
+  {
+    title: "Skin & Hair & Body",
+    items: [
+      "Lotions & Creams",
+      "Balms",
+      "Powders & Sprays",
+      "Baby Oil",
+      "Sun Care",
+      "Hair Care",
+      "Nail Care",
+      "Travel Kits",
+    ],
+  },
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+    ],
+  },
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+    ],
+  },
+  {
+    title: "Skin & Hair & Body",
+    items: [
+      "Lotions & Creams",
+      "Balms",
+      "Powders & Sprays",
+      "Baby Oil",
+      "Sun Care",
+      "Hair Care",
+      "Nail Care",
+      "Travel Kits",
+    ],
+  },
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+    ],
+  },
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+    ],
+  },
+];
+export const sections2 = [
+  {
+    title: "Baby Strollers & Prams",
+    items: [
+      "Strollers",
+      "Double Strollers",
+      "Travel Systems",
+      "Carry Cots & Footmuffs",
+      "Stroller Accessories",
+      "Stroller Toys",
+    ],
+  },
+  {
+    title: "Car Seats & Boosters",
+    items: ["Car Seats", "Booster Seats", "Car Seat Accessories"],
+  },
+  {
+    title: "Baby Gears",
+    items: ["Bouncers & Rockers", "Walkers", "Baby Carriers"],
+  },
+  {
+    title: "Travel Essentials",
+    items: ["Travel Bags - Suitcases"],
+  },
+  {
+    title: "Baby Essentials",
+    items: ["Baby Safety Products", "Baby Monitors", "Child Safety Essentials"],
+  },
+  {
+    title: "Medicines & First Aids",
+    items: [
+      "Health Accessories",
+      "Gates & Bed Rails",
+      "Bath Safety",
+      "Travel Safety",
+    ],
+  },
+];
+export const nursingSections = [
+  {
+    title: "Baby Room Furniture & Decors",
+    items: [
+      "Cribs & Bassinets",
+      "Mattress & Sheets",
+      "Sleeping Pods",
+      "Blankets & Bedding",
+      "Baby Furniture",
+      "Playpens",
+      "Nursery Centers",
+    ],
+  },
+  {
+    title: "Kids Room Furniture",
+    items: [
+      "Beds & Mattress",
+      "Blankets & Bedding",
+      "Kids Furniture",
+      "Storages & Organize",
+    ],
+  },
+  {
+    title: "Room Decor & Accessories",
+    items: [
+      "Decor",
+      "Lamps & Lighting",
+      "Rugs & Playmats",
+      "Wall Decor",
+      "Accessories",
+      "Canopy",
+    ],
+  },
+];
+export const foodingSections = [
+  {
+    title: "Bottle Feeding",
+    items: [
+      "Bottles",
+      "Teats & Accessories",
+      "Warmers & Sterilizers",
+      "Milk Powder Dispenser",
+      "Bottle Cleaning",
+      "Bottle Holders",
+      "Pacifiers & Holders",
+    ],
+  },
+  {
+    title: "Baby Food",
+    items: ["Formula", "Purees", "Snacks", "Cereals", "Drinks"],
+  },
+  {
+    title: "Meal-Time Essentials",
+    items: [
+      "Food Processors",
+      "Bibs",
+      "Dishes & Utensils",
+      "Food Containers",
+      "Sippers & Cups",
+      "High Chairs & Boosters",
+    ],
+  },
+  {
+    title: "Nursing Care",
+    items: [
+      "Pillows & Supports",
+      "Breast Feeding Accessories",
+      "Breast Pumps",
+      "Nursing Scarves & Burpies",
+      "Breast Milk Storage",
+    ],
+  },
+];
+export const diaperingSections = [
+  {
+    title: "Diapers",
+    items: [
+      "Disposable Diapers",
+      "Re-usable Diapers",
+      "Diaper Liners & Inserts",
+      "Diaper Rash Creams",
+      "Adult Diapers",
+    ],
+  },
+  {
+    title: "Shop by Age",
+    items: [
+      "Size 1 (Newborn)",
+      "Size 2 (Small)",
+      "Size 3 (Medium)",
+      "Size 4 (Large)",
+      "Size 5 (XL)",
+      "Size 6 (XXL)",
+    ],
+  },
+  {
+    title: "Changing Tables",
+    items: [
+      "Diaper Changing",
+      "Changing Tables",
+      "Reusable Changing Mats",
+      "Disposable Changing Mats",
+      "Diaper Bags",
+      "Diaper Caddy",
+    ],
+  },
+  {
+    title: "Shop by Brand",
+    items: [],
+  },
+  {
+    title: "Wipes",
+    items: ["Disposable Wipes", "Re-usable Wipes", "Wipe Cases"],
+  },
+  {
+    title: "Potty Training",
+    items: ["Potties", "Toilet Seat Covers", "Step Stools"],
+  },
+  {
+    title: "Diaper Disposal",
+    items: ["Diaper Bins & Disposal Systems", "Refills & Nappy bags"],
+  },
+];
+export const toySections = [
+  {
+    title: "Toddler & Kids Toys",
+    items: [
+      "Dolls & Accessories",
+      "Action Figures",
+      "Play Time",
+      "Tents & Teepees",
+      "Puppets",
+      "Soft Toys",
+      "Light & Musical Toys",
+      "Dollhouses & Accessories",
+    ],
+  },
+  {
+    title: "Baby Toys",
+    items: [
+      "Rattles",
+      "Teethers",
+      "Playmats & Gym",
+      "Crib Toys",
+      "Light & Musical Toys",
+      "Jumpers & Swings",
+      "Activity Center",
+      "Bath Toys",
+      "Play Fence",
+      "Squeeze Toys",
+    ],
+  },
+  {
+    title: "Push, Pull & Vehicles",
+    items: [
+      "Push-pull toys",
+      "Stacking & Sorting Toys",
+      "Guns & Action Toys",
+      "Vehicles",
+      "Playtables",
+    ],
+  },
+  {
+    title: "Art & Craft",
+    items: ["Doughs, Slimes & Sand"],
+  },
+  {
+    title: "Wooden & Building Toys",
+    items: [
+      "Wooden Toys",
+      "Building Sets & Blocks",
+      "Board Games & Puzzles",
+      "Blocks",
+    ],
+  },
+  {
+    title: "Educational & Activity Toys",
+    items: [
+      "Development Toys",
+      "Educational Toys",
+      "Activity Toys",
+      "Reward Charts",
+      "Science Games",
+      "Montessori & Early learning",
+      "Cause & Effect Toys",
+    ],
+  },
+  {
+    title: "Role Play",
+    items: [
+      "Costumes",
+      "Pretend Toys",
+      "Fashion & Beauty",
+      "Kitchen Toys",
+      "Work Bench Toys",
+    ],
+  },
+];
+export const skincareSections = [
+  {
+    title: "Bath",
+    items: [
+      "Towels & Accessories",
+      "Bath Tubs",
+      "Shampoos & Conditioners",
+      "Soaps & Body Wash",
+      "Oral Care",
+      "Bath Accessories",
+      "Sponges & Bath Mittens",
+    ],
+  },
+  {
+    title: "Baby Grooming & Hygiene",
+    items: [
+      "Skin & Hair & Body",
+      "Lotions & Creams",
+      "Balms",
+      "Powders & Sprays",
+      "Baby Oil",
+      "Sun Care",
+      "Travel Kits",
+      "Eczema Care",
+    ],
+  },
+];
+export const outdoorSections = [
+  {
+    title: "Electric Rideons",
+    items: [
+      "Electric Jeeps, Trucks & Buggies",
+      "Electric Quad Bikes",
+      "Electric Cars",
+      "Electric Motor Bikes",
+      "Go Karts & Drifters",
+    ],
+  },
+  {
+    title: "Manual Rideons",
+    items: ["Manual Ride-Ons", "Push Cars & Wagons"],
+  },
+  {
+    title: "Bikes",
+    items: [
+      "Balance Bikes",
+      "Bicycles",
+      "Helmets",
+      "Protective Gear",
+      "Accessories",
+    ],
+  },
+  {
+    title: "Trikes",
+    items: ["Trikes", "Tricycle", "Stroller Trike"],
+  },
+  {
+    title: "Scooters",
+    items: ["Manual Scooters", "Electric Scooters"],
+  },
+  {
+    title: "Backyard Playsets",
+    items: [
+      "Slides, Swings & Seesaws",
+      "Trampolines",
+      "Playhouses & Tents",
+      "Inflatables",
+    ],
+  },
+  {
+    title: "Water & Beach Play",
+    items: [
+      "Sandboxes & Water Playtables",
+      "Swimming Pools",
+      "Beach & Water Toys",
+      "Floats & Swim Rings",
+      "Swimming Aids",
+    ],
+  },
+  {
+    title: "Skating",
+    items: ["Roller Skates", "Skate Boards"],
+  },
+  {
+    title: "Outdoor Toys",
+    items: ["Outdoor Games", "Sports Toys", "Balls", "Outdoor Play Equipments"],
+  },
+];
+export const schoolEssentialsSections = [
+  {
+    title: "School Supplies",
+    items: [
+      "School Bags & Backpacks",
+      "Water Bottles",
+      "Lunch Box",
+      "Lunch Bags",
+      "Drawing & Coloring",
+      "Craft Activity",
+      "Art Table",
+    ],
+  },
+  {
+    title: "Books",
+    items: [
+      "Activity Books",
+      "Reading Books",
+      "Sticker Books",
+      "Learning Guides",
+      "Writing Books",
+      "Arabic Books",
+    ],
+  },
+];
+export const maternitySections = [
+  {
+    title: "Maternity Clothes",
+    items: [
+      "Maternity Dress",
+      "Maternity Tops",
+      "Maternity Bottom Wear",
+      "Maternity Lingerie",
+      "Maternity Swimwear",
+      "Shapewear",
+    ],
+  },
+  {
+    title: "Mommy Skincare",
+    items: ["Nipple Creams", "Stretch Mark Creams"],
+  },
+  {
+    title: "Mommy Bathcare & Hygiene",
+    items: [
+      "Shampoos & Conditioners",
+      "Body Wash & Shower Gel",
+      "Oral Care",
+      "Scrubs",
+      "Soaps",
+      "Face Wash & Masks",
+    ],
+  },
+  {
+    title: "Mommy Essentials",
+    items: ["Maternity Belts & Pillows"],
+  },
+];
+export const partySections = [
+  {
+    title: "Special Occasions",
+    items: [
+      "Christmas",
+      "Halloween",
+      "Ramadan",
+      "Mother's Day",
+      "Valentines Day",
+    ],
+  },
+  {
+    title: "Decorations",
+    items: [
+      "Balloons & Ribbons",
+      "Poppers",
+      "Confetti",
+      "Table Top Decorations",
+      "Banners & Garlands",
+      "Buntings",
+      "Wall decorations",
+      "Party Decorations",
+    ],
+  },
+  {
+    title: "Party Supplies",
+    items: [
+      "Party Accessories",
+      "Party Favors",
+      "Party Bags & Boxes",
+      "Games",
+      "Cards",
+      "Headware & Photo Booth Props",
+      "Candles & Lights",
+      "Cooking Accessories",
+    ],
+  },
+  {
+    title: "Tableware",
+    items: ["Cups", "Cutlery", "Table Covers", "Napkins", "Plates & Bowls"],
+  },
+  {
+    title: "Gifts",
+    items: [
+      "Baby Gifts",
+      "Toddler Gifts",
+      "Parents Gifts",
+      "Gift Wraps & Bags",
+    ],
+  },
+];
+export const clothingSections = [
+  {
+    title: "Baby (0-2yrs)",
+    items: [
+      "Onsies - Overalls - Rompers",
+      "Tops",
+      "Bottoms",
+      "Sets",
+      "Sleeping bags",
+      "Dresses",
+      "Swaddles",
+    ],
+  },
+  {
+    title: "Boy Clothes (3-8yrs)",
+    items: ["Shirts & T-Shirts", "Footwear", "Shoes", "Leg warmers & Socks"],
+  },
+  {
+    title: "Girl Clothes (3-8yrs)",
+    items: ["Dresses", "Tops & Tees", "Bottom Wear", "Night wear"],
+  },
+  {
+    title: "Swimwear",
+    items: ["Swim wear - Girls", "Swim wear - Boys", "Swim accessories"],
+  },
+  {
+    title: "Accessories",
+    items: [
+      "Gloves & Mittens",
+      "Head bands",
+      "Caps & Hats",
+      "Sunglasses",
+      "Watches",
+      "Knee Protectors",
+      "Belts & Ties",
+      "Hand Bags",
+      "Jewelry",
+      "Hair Accessories",
+      "Make Up",
+    ],
+  },
+];

@@ -11,6 +11,7 @@ import {
   WhatsappLogo,
 } from "../../public/assets/icons";
 import Image from "next/image";
+import Link from "next/link";
 
 interface FooterLink {
   name: string;
@@ -71,12 +72,13 @@ export default function Footer() {
                   <ul className="space-y-2">
                     {section.links.map((link: FooterLink, idx: number) => (
                       <li key={idx}>
-                        <a
+                        <Link
+                          prefetch
                           href={link.url}
                           className="font-inter text-[20px] leading-[24.2px] font-normal text-[#1C2A54] transition sm:text-[#fff]"
                         >
                           {link.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

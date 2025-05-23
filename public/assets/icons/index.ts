@@ -116,7 +116,10 @@ export { default as profile } from "../icons/profile.png";
 export { default as funnel } from "../icons/funnel.svg";
 export { default as Search } from "../icons/Search.png";
 export { default as redBag } from "../icons/bag.svg";
+export { default as whiteBag } from "../icons/whiteBag.svg";
+
 export { default as wishlist } from "../icons/wishlist.svg";
+export { default as wishedIcon } from "../icons/wishedIcon.svg";
 
 // checkout
 export { default as minus } from "../icons/minus.svg";

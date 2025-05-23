@@ -1,3 +1,4 @@
+"use client";
 import Banner from "@/components/banners/banner";
 import CategoryList from "@/components/category/category-list";
 import BannerSlider from "@/components/slider/banner.slider";
@@ -8,7 +9,7 @@ import DiscountStripsBanner from "@/components/banners/discount-strips";
 
 import {
   babySection,
-  bannerData,
+  // bannerData,
   clearanceSection,
   dualCateSection,
   dualSectionBannersBoyGirls,
@@ -33,14 +34,20 @@ import {
 
 import { summer_banner } from "@/public/assets/icons";
 import { school_banner, school_banner_mob } from "@/public/assets/sections";
+import { useAppSelector } from "@/store/hooks";
+import BannerSliderMob from "@/components/slider/banner.slider-mob";
 
 export default function Home() {
+  const { sliderImages = [], mobSliderImages = [] } = useAppSelector(
+    (state) => state.product,
+  );
+
   return (
     <div>
       <CategoryList />
       <DiscountStripsBanner />
-      <BannerSlider slides={bannerData} />
-
+      <BannerSlider slides={sliderImages} />
+      <BannerSliderMob slides={mobSliderImages} />
       {/* cate twp */}
       <CategoryListTwo />
       {/* section school */}
