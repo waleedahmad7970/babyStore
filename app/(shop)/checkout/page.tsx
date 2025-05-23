@@ -7,15 +7,17 @@ import { free_delivery } from "@/public/assets/icons";
 import Image from "next/image";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; // Needed for the flags!
+import { useAppSelector } from "@/store/hooks";
 
+const paymentData = [
+  { methodName: "PayPal" },
+  { methodName: "Credit/ Debit Card" },
+  { methodName: "Apple Pay" },
+  { methodName: "Cash on Delivery" },
+];
 export default function Page() {
   const [phone, setPhone] = useState("");
-  const paymentData = [
-    { methodName: "PayPal" },
-    { methodName: "Credit/ Debit Card" },
-    { methodName: "Apple Pay" },
-    { methodName: "Cash on Delivery" },
-  ];
+  const { cartProducts = [] } = useAppSelector((state) => state.cart);
 
   return (
     <div className="mx-auto w-full max-w-[1360px] px-[10px] py-10 lg:px-0">
@@ -189,7 +191,7 @@ export default function Page() {
               </button>
             </div>
           </div>
-          <CartPanel />
+          <CartPanel products={cartProducts} />
         </div>
       </div>
       {/* <FeatureCards /> */}
