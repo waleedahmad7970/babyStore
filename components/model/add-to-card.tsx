@@ -118,7 +118,7 @@ export default function AddToCard({
             className="w-full cursor-pointer rounded-[5px] border border-[#61B582] bg-[#fff] px-3 py-1 text-[14px] leading-[25px] font-semibold text-[#61B582] md:px-6 md:py-2 md:text-[14px]"
           />
           <Button
-            handler={() => redirectToCart("/product")}
+            handler={() => redirectToCart("/cart")}
             text={"View Cart"}
             className="w-full max-w-[127px] cursor-pointer rounded-[5px] bg-[#61B582] px-3 py-1 text-[14px] leading-[25px] font-semibold text-[#fff] underline md:px-6 md:py-2 md:text-[14px]"
           />

@@ -41,122 +41,33 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [showCart, setShowCart] = useState(false);
   const [showCartMob, setShowCartMob] = useState(false);
-  const storeSearchDataToAlgolia = async () => {
-    await productServices.storeSearchDataToAlgolia();
-  };
-  const getCategories = async () => {
-    const [res] = await productServices.getCategories();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setCategories(data));
-    }
-  };
-  const getHomeSlider = async () => {
-    const [res] = await productServices.getHomeSlider();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setSliderImages(data));
-    }
-  };
-  const getHomeMobSlider = async () => {
-    const [res] = await productServices.getHomeMobSlider();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setMobSliderImages(data));
-    }
-  };
-  const getSuggestedProducts = async () => {
-    const [res] = await productServices.getSuggestedProducts();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setSuggestedCategories(data));
-    }
-  };
-  const getTopBrandList = async () => {
-    await productServices.getTopBrandList();
-  };
-  const getMumzData = async () => {
-    await productServices.getMumzData();
-  };
-  const getYouAlsoLike = async () => {
-    await productServices.getYouAlsoLike();
-  };
-  const getTopProducts = async () => {
-    const [res] = await productServices.getTopProducts();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setTopProducts(data));
-    }
-  };
-  const getTrendingItem = async () => {
-    const [res] = await productServices.getTrendingItem();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setTrendingItems(data));
-    }
-  };
-  const getFlashSaleProducts = async () => {
-    const [res] = await productServices.getFlashSaleProducts();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setFlashSaleproducts(data));
-    }
-  };
-  const getUserLikedProducts = async () => {
-    const [res] = await productServices.getUserLikedProducts();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setUserLikeproducts(data));
-    }
-  };
-  const getMostWishedForProducts = async () => {
-    const [res] = await productServices.getMostWishedForProducts();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setMostWishedProducts(data));
-    }
-  };
-  const getFavouriteList = async () => {
-    const [res] = await productServices.getFavouriteList();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setTopCategories(data));
-    }
-  };
-  const getHomeDesktopSections = async () => {
-    const [res] = await productServices.getHomeDesktopSections();
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
-      dispatch(productAction.setDesktopSections(data));
-    }
-  };
+
   // prefetch
   useEffect(() => {
     router.prefetch("/dashboard");
   }, [router]);
   useEffect(() => {
-    getMumzData();
-    storeSearchDataToAlgolia();
-    getCategories();
-    getHomeSlider();
-    getHomeDesktopSections();
-    getHomeMobSlider();
-    getFavouriteList();
-
-    getTopBrandList();
-    getSuggestedProducts();
-    // products
-
-    getYouAlsoLike();
-    getTrendingItem();
-    getTopProducts();
-    getFlashSaleProducts();
-    getUserLikedProducts();
-    getMostWishedForProducts();
-    productServices.getAllProducts();
+    // home sliders
+    productServices.getMumzData();
+    productServices.getCategories();
     productServices.getHomeSlider();
+    productServices.getTopBrandList();
+    productServices.getFavouriteList();
+    productServices.getHomeMobSlider();
+    productServices.getSuggestedProducts();
+    productServices.getHomeDesktopSections();
+    productServices.storeSearchDataToAlgolia();
+    // products
+    productServices.getHomeSlider();
+    productServices.getYouAlsoLike();
+    productServices.getTopProducts();
+    productServices.getAllProducts();
     productServices.getbannerImage();
     productServices.getTopProducts();
+    productServices.getTrendingItem();
+    productServices.getFlashSaleProducts();
+    productServices.getUserLikedProducts();
+    productServices.getMostWishedForProducts();
     productServices.getCustomizedCategoryListUi();
   }, []);
   usePreventBodyScroll(showCartMob);

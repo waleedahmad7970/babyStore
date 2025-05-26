@@ -34,21 +34,16 @@ import {
 
 import { summer_banner } from "@/public/assets/icons";
 import { school_banner, school_banner_mob } from "@/public/assets/sections";
-import { useAppSelector } from "@/store/hooks";
 import BannerSliderMob from "@/components/slider/banner.slider-mob";
 
 export default function Home() {
-  const { sliderImages = [], mobSliderImages = [] } = useAppSelector(
-    (state) => state.product,
-  );
-
   return (
     <div>
       <CategoryList />
       <DiscountStripsBanner />
-      <BannerSlider slides={sliderImages} />
-      <BannerSliderMob slides={mobSliderImages} />
-      {/* cate twp */}
+      <BannerSlider />
+      <BannerSliderMob />
+      {/* category two */}
       <CategoryListTwo />
       {/* section school */}
       <CategorySection
@@ -72,10 +67,6 @@ export default function Home() {
 
       <div className="mb-10 w-full py-0 sm:mb-0 md:pb-[60px]">
         <Banner Img={mummy_banner} mobImg={mummy_banner_mob} />
-        {/* <Banner
-          Img={mummy_banner_mob}
-          className={"block min-h-[236px] w-full object-cover sm:hidden"}
-        /> */}
       </div>
 
       <CategorySection

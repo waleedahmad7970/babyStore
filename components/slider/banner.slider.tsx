@@ -1,22 +1,17 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Slide } from "../types/types";
+import { imageBaseUrl } from "@/config/config";
+import { useAppSelector } from "@/store/hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { slider_left_arrow, slider_right_arrow } from "@/public/assets/icons";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
-import { imageBaseUrl } from "@/config/config";
 
-interface Slide {
-  id: number;
-  alt: string;
-  link?: string;
-  image: string | StaticImageData;
-  mobileImg: string | StaticImageData;
-  desktopImg: string | StaticImageData;
-}
+export default function BannerSlider() {
+  const { sliderImages = [] } = useAppSelector((state) => state.product);
 
-export default function BannerSlider({ slides }: { slides: Slide[] }) {
   return (
     <div className="relative w-full">
       <Swiper
@@ -33,24 +28,25 @@ export default function BannerSlider({ slides }: { slides: Slide[] }) {
         speed={500}
         className="w-full"
       >
-        {slides?.map((slide, index) => {
-          return (
-            <SwiperSlide key={index}>
-              {/*  aspect-[1440/466] to /300 */}
-              <a href={slide?.link} rel="noopener noreferrer">
-                <div className="relative hidden aspect-[1440/300] w-full sm:block">
-                  <Image
-                    src={`${imageBaseUrl}/assets/sliders/${slide.image}`}
-                    alt={"banner_image"}
-                    className="h-auto w-full object-contain"
-                    priority
-                    fill
-                  />
-                </div>
-              </a>
-            </SwiperSlide>
-          );
-        })}
+        {sliderImages?.map((slide: Slide) => (
+          <SwiperSlide key={slide.id}>
+            <a href={slide.link} rel="noopener noreferrer">
+              <div className="relative hidden aspect-[1440/300] w-full sm:block">
+                <Image
+                  src={
+                    typeof slide.image === "string"
+                      ? `${imageBaseUrl}/assets/sliders/${slide.image}`
+                      : slide.image
+                  }
+                  alt={slide.alt || "banner_image"}
+                  className="h-auto w-full object-contain"
+                  priority
+                  fill
+                />
+              </div>
+            </a>
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       {/* Custom Navigation Arrows */}

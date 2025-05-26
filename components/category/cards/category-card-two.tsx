@@ -12,7 +12,7 @@ interface CategoryCardPropsTwo {
   hoveredId?: number | null;
   categoryId?: number;
   cat_image?: string | any;
-  slug?: any;
+  url?: any;
 }
 const CategoryCardTwo: React.FC<CategoryCardPropsTwo> = ({
   cat_image,
@@ -23,7 +23,7 @@ const CategoryCardTwo: React.FC<CategoryCardPropsTwo> = ({
   ImgClass = "object-contain",
   hoveredId,
   categoryId,
-  slug,
+  url,
 }) => {
   const router = useRouter();
   return (
@@ -35,7 +35,7 @@ const CategoryCardTwo: React.FC<CategoryCardPropsTwo> = ({
           <div className="absolute z-0 h-[99px] w-[99px] rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] bg-black/50 transition duration-300" />
         )} */}
         <Image
-          onClick={() => router.push(slug)}
+          onClick={() => url && router.push(url)}
           height={99}
           width={99}
           src={cat_image}
