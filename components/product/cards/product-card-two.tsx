@@ -19,6 +19,7 @@ import { StaticImageData } from "next/image";
 import { calculateAverageRating } from "@/helpers/helper";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { facllBackProduct } from "@/public/assets/products";
 
 interface ProductData {
   id: number;
@@ -103,7 +104,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
               className="relative min-h-[175px] overflow-hidden sm:min-h-[260px] sm:min-w-[260px]"
             >
               <Image
-                src={`https://www.babystore.ae/storage/${image}` || image}
+                src={
+                  `https://www.babystore.ae/storage/${image}` ||
+                  facllBackProduct
+                }
                 // src={image}
                 alt={"sw"}
                 fill
