@@ -1,7 +1,6 @@
 "use client";
 import { StaticImageData } from "next/image";
-
-import ProductCard from "../product/cards/product-card";
+import ProductCardTwo from "@/components/product/cards/product-card-two";
 import { useScrollSlider } from "@/hooks/useScrollSlider";
 import SliderHeading from "../header-titles/slider-header";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
@@ -52,8 +51,10 @@ export default function ProductSwiperSlider({
           className="no-scrollbar relative min-h-[310px] overflow-x-auto md:min-h-[410px]"
         >
           <div className="flex justify-start gap-5">
-            {products?.map((product) => {
-              return <ProductCard key={product.id} product={product as any} />;
+            {products?.map((product, index) => {
+              return <ProductCardTwo key={index} product={product as any} />;
+
+              // <ProductCardTwo key={product.id} product={product as any} />;
             })}{" "}
           </div>
         </div>

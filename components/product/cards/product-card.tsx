@@ -104,7 +104,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     dispatch(cartAction.setAddCurrentAddedProduct(cartPayload));
     dispatch(cartAction.setAddToCartModelProduct(cartPayload));
   };
-
+  console.log(
+    "image url",
+    `https:www.babystore.ae/storage/${image}`,
+    `https:www.babystore.ae/storage${image}`,
+  );
   return (
     <div
       style={{
