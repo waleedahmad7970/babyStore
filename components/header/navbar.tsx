@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -22,54 +22,31 @@ import {
   Highlight,
 } from "react-instantsearch";
 import { searchClient } from "@/config/config";
-import productServices from "@/services/product.service";
-import { productAction } from "@/store/slices/products";
 
 interface NavbarProps {
   categories?: string[];
 }
+type SearchBoxWithResultsProps = {
+  onFocus?: () => void;
+  onBlur?: () => void;
+};
 
 const Navbar: React.FC<NavbarProps> = ({}) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const cartRef = useRef<null>(null);
+  const [isFocused, setIsFocused] = useState(false);
+
   const { isMobMenu } = useAppSelector((state) => state.globalStates);
   const { wishList = [] } = useAppSelector((state) => state.user);
   const { cartProducts = [], addToCartModel } = useAppSelector(
     (state) => state.cart,
   );
+  const { isSearchBarOpen } = useAppSelector((state) => state.globalStates);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [showCart, setShowCart] = useState(false);
   const [showCartMob, setShowCartMob] = useState(false);
 
-  // prefetch
-  useEffect(() => {
-    router.prefetch("/dashboard");
-  }, [router]);
-  useEffect(() => {
-    // home sliders
-    productServices.getMumzData();
-    productServices.getCategories();
-    productServices.getHomeSlider();
-    productServices.getTopBrandList();
-    productServices.getFavouriteList();
-    productServices.getHomeMobSlider();
-    productServices.getSuggestedProducts();
-    productServices.getHomeDesktopSections();
-    productServices.storeSearchDataToAlgolia();
-    // products
-    productServices.getHomeSlider();
-    productServices.getYouAlsoLike();
-    productServices.getTopProducts();
-    productServices.getAllProducts();
-    productServices.getbannerImage();
-    productServices.getTopProducts();
-    productServices.getTrendingItem();
-    productServices.getFlashSaleProducts();
-    productServices.getUserLikedProducts();
-    productServices.getMostWishedForProducts();
-    productServices.getCustomizedCategoryListUi();
-  }, []);
   usePreventBodyScroll(showCartMob);
   useClickOutside(cartRef, () => {
     setShowCart(false);
@@ -91,6 +68,9 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   };
   const handleToggleMobCart = () => {
     setShowCartMob((prev) => !prev);
+  };
+  const naviageToProduct = (id: number) => {
+    router.push(`product/${id}`);
   };
   const Hit = ({ hit }: any) => (
     // custom made by me
@@ -131,8 +111,18 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="hit-item relative flex w-full cursor-pointer justify-start gap-6 border-b-1 border-[#CDCDCD]/30 p-2 hover:bg-[#FFF0F5]">
-      <h4 className="font-inter py-1 text-left text-[18px] leading-[18.73px] font-medium text-[#1A1718]">
+    <div className="hit-item relative flex w-full cursor-pointer justify-start gap-5 border-b-1 border-[#CDCDCD]/30 p-2 hover:bg-[#FFF0F5]">
+      <Image
+        width={24}
+        height={24}
+        src={search}
+        alt="Search"
+        className="relative h-6 w-6 min-w-6"
+      />
+      <h4
+        onClick={() => naviageToProduct(hit?.id)}
+        className="font-inter py-1 text-left text-[18px] leading-[18.73px] font-medium text-[#1A1718]"
+      >
         <Highlight
           attribute="title"
           hit={hit}
@@ -172,7 +162,10 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       </div>
     );
   };
-  const SearchBoxWithResults = () => {
+  const SearchBoxWithResults = ({
+    onFocus,
+    onBlur,
+  }: SearchBoxWithResultsProps) => {
     return (
       <InstantSearch
         searchClient={searchClient}
@@ -199,7 +192,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             showCartMob ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <CartPanel products={cartProducts as any} />
+          <CartPanel />
         </div>
         {showCart && cartProducts?.length > 0 && (
           <div
@@ -211,29 +204,29 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             }
             className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[320px] sm:top-[60px] sm:block"
           >
-            <CartPanel products={cartProducts as any} />
+            <CartPanel />
           </div>
         )}
 
         {/* Logo and Mobile Icons */}
         <div className="flex w-full justify-between md:w-auto md:items-center">
-          <Link href={`/`} className="block text-inherit no-underline">
-            <div className="flex items-center justify-between gap-5">
-              <Image
-                onClick={() => menuHandler()}
-                src={menu}
-                width={32}
-                height={32}
-                alt="Menu"
-                className="block md:hidden"
-              />
+          <div className="flex items-center justify-between gap-5">
+            <Image
+              onClick={() => menuHandler()}
+              src={menu}
+              width={32}
+              height={32}
+              alt="Menu"
+              className="block md:hidden"
+            />
+            <Link href={`/`} className="block text-inherit no-underline">
               <Image
                 src={logo}
                 alt="Logo"
                 className="h-[32px] w-[120px] md:h-[58px] md:w-[213px]"
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
           <Image
             onClick={handleToggleMobCart}
             width={32}
@@ -244,34 +237,43 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
           />
         </div>
 
-        {/* Search Bar */}
-        <div className="flex w-full max-w-[967px] items-center rounded-[50px] bg-[#FFF0F5] py-[9px] pr-[10px] pl-8 md:py-[14px] md:pr-[10px] md:pl-8">
-          <SearchBoxWithResults />
-          <Image src={search} alt="Search" className="h-8 w-8" />
+        {/* Search Bar old */}
+        <div className="relative z-50 w-full max-w-[967px]">
+          {/* Overlay */}
+          {isSearchBarOpen && (
+            <div
+              onClick={() => {
+                dispatch(globalStateActions.setSearchBarOpen(false));
+              }}
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition duration-300"
+            />
+          )}
+
+          {/* Search Bar */}
+          <div
+            className="relative z-50 flex w-full items-center rounded-[50px] bg-[#FFF0F5] py-[9px] pr-[10px] pl-8 md:py-[14px] md:pr-[10px] md:pl-8"
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch(globalStateActions.setSearchBarOpen(true));
+            }}
+          >
+            <SearchBoxWithResults
+              onBlur={() => {
+                dispatch(globalStateActions.setSearchBarOpen(false));
+              }}
+            />
+            <Image src={search} alt="Search" className="h-8 w-8" />
+          </div>
         </div>
 
         {/* Desktop User Menu */}
-        {/* <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
-          {userMenu.map((icon, index) => (
-            <Image
-              onMouseEnter={() => index === 2 && handleMouseEnter()}
-              onMouseLeave={() => index === 2 && handleMouseLeave()}
-              onClick={() => handleRedirectionUserMenu(index)}
-              key={`user-menu-${index}`}
-              src={icon || "icon"}
-              alt={`User menu icon ${index}`}
-              className="h-8 w-8 cursor-pointer"
-            />
-          ))}
-        </div> */}
+
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => {
             const isSecondLast = index === userMenu.length - 2;
             const isLast = index === userMenu.length - 1;
-
-            // Replace these with your actual dynamic counts
-            const badgeCountSecondLast = wishList?.length; // e.g., wishList.length
-            const badgeCountLast = cartProducts?.length; // e.g., cart.length
+            const badgeCountSecondLast = wishList?.length;
+            const badgeCountLast = cartProducts?.length;
 
             if (isSecondLast || isLast) {
               const badgeCount = isLast ? badgeCountLast : badgeCountSecondLast;

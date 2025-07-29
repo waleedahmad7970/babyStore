@@ -1,7 +1,10 @@
 "use client";
 import { arrow_down, copyClipboard, pink_arrow } from "@/public/assets/icons";
+import { useAppSelector } from "@/store/hooks";
+import moment from "moment";
 import Image from "next/image";
 import { FC, useState } from "react";
+import { toast } from "react-toastify";
 
 interface TrackingStep {
   label: string;
@@ -9,74 +12,131 @@ interface TrackingStep {
   completed: string;
 }
 
-const trackingSteps: TrackingStep[] = [
-  {
-    label: "Order received",
-    dateTime: "16 Jul 2020 - 08:00 PM",
-    completed: "completed",
-  },
-  {
-    label: "Processing",
-    dateTime: "16 Jul 2020 - 08:00 PM",
-    completed: "completed",
-  },
-  {
-    label: "Checking for quality assurance",
-    dateTime: "16 Jul 2020 - 08:00 PM",
-    completed: "completed",
-  },
-  {
-    label: "Out for delivery",
-    dateTime: "16 Jul 2020 - 08:00 PM",
-    completed: "",
-  },
-  {
-    label: "Delivered",
-    dateTime: "16 Jul 2020 - 08:00 PM",
-    completed: "not completed",
-  },
-  { label: "Review", dateTime: "", completed: "not completed" },
-];
-const orderInfo = [
-  { label: "Expected arrival", value: "Mon 07-Aug-2023" },
-  { label: "Ordered at", value: "04:08 PM" },
-  { label: "Order day", value: "03/08/2023" },
-  { label: "Status", value: "In delivery" },
-  { label: "Payment Method", value: "Cash on delivery (COD)" },
-  { label: "Payment Status", value: "Pending" },
-];
+const methodsDisplay = {
+  cash_on_delivery: "Cash on Delivery",
+} as const;
 
-const customerInfo = [
-  { label: "Full Name", value: "Hamyd Kahn" },
-  { label: "Phone", value: "+923249487463" },
-  { label: "Address", value: "88-F State Life Housing Society" },
-  { label: "City", value: "Lahore" },
-  { label: "State", value: "Punjab" },
-  { label: "Country", value: "PK" },
-];
-const subTotal = [
-  { label: "Sub Total", value: "20,203.43" },
-  { label: "Tax", value: "20,203.3" },
-  { label: "Order Total", value: "205,203,12.35" },
-];
+const paymentStatus = {
+  "un-paid": "Un Paid",
+} as const;
+
+type PaymentMethod = keyof typeof methodsDisplay;
+type PaymentStatus = keyof typeof paymentStatus;
+function getMappedValue<T extends Record<string, string>>(
+  map: T,
+  key: unknown,
+): string {
+  return typeof key === "string" && key in map ? map[key as keyof T] : "-";
+}
 
 export const OrderDetails: FC = () => {
   const [open, setOpen] = useState(true);
+  const { orderDetails = {} } = useAppSelector((state) => state.orders) as any;
+  const { billing_info = {}, order = {} } = orderDetails || {};
+
+  const {
+    first_name,
+    last_name,
+    address_1,
+    address_2,
+    country,
+    city,
+    phone,
+    postcode,
+    state,
+  } = billing_info || {};
+  const { id, payment_status, payment_method, delivery_status, created_at } =
+    order || {};
+
+  const customerInfo = [
+    {
+      label: "Full Name",
+      value: `${first_name ?? ""} ${last_name ?? ""}`.trim() || "-",
+    },
+    { label: "Phone", value: phone ?? "-" },
+    { label: "Address 1", value: address_1 ?? "-" },
+    { label: "Address 2", value: address_2 ?? "-" },
+    { label: "City", value: city ?? "-" },
+    { label: "State or Code", value: state || postcode || "-" },
+    { label: "Country", value: country ?? "-" },
+  ];
+  const orderInfo = [
+    { label: "Expected arrival", value: "-" },
+    { label: "Ordered at", value: moment(created_at).format("hh:mm A") ?? "-" },
+    {
+      label: "Order day",
+      value: moment(created_at).format("MM/DD/YYYY") ?? "-",
+    },
+    {
+      label: "Status",
+      value: delivery_status?.toUpperCase() || "-",
+    },
+    {
+      label: "Payment Method",
+      value: getMappedValue(methodsDisplay, payment_method),
+    },
+    {
+      label: "Payment Status",
+      value: getMappedValue(paymentStatus, payment_status),
+    },
+  ];
+  const trackingSteps: TrackingStep[] = [
+    {
+      label: "Order received",
+      dateTime: "16 Jul 2020 - 08:00 PM",
+      completed:
+        delivery_status === "delivered" ? "completed" : "not completed",
+    },
+    {
+      label: "Processing",
+      dateTime: "16 Jul 2020 - 08:00 PM",
+      completed:
+        delivery_status === "delivered" ? "completed" : "not completed",
+    },
+    {
+      label: "Checking for quality assurance",
+      dateTime: "16 Jul 2020 - 08:00 PM",
+      completed:
+        delivery_status === "delivered" ? "completed" : "not completed",
+    },
+    {
+      label: "Out for delivery",
+      dateTime: "16 Jul 2020 - 08:00 PM",
+      completed:
+        delivery_status === "delivered" ? "completed" : "not completed",
+    },
+    {
+      label: "Delivered",
+      dateTime: "16 Jul 2020 - 08:00 PM",
+      completed:
+        delivery_status === "delivered" ? "completed" : "not completed",
+    },
+    { label: "Review", dateTime: "", completed: "not completed" },
+  ];
+  const copyToClipboard = async (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard:");
+  };
 
   return (
     <div className="space-y-6 font-sans text-white">
       <div className="flex flex-col justify-between gap-5 md:flex-row">
-        <div className="block rounded-[8px] bg-[#F8F8F8] p-4 md:hidden">
-          <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
-            Order ID
-          </p>
-          <div className="flex items-center justify-between gap-2">
-            <p className="text-[20px] leading-[24px] font-normal text-[#473A3F]">
-              6428421100
+        {id && (
+          <div className="block rounded-[8px] bg-[#F8F8F8] p-4 md:hidden">
+            <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
+              Order ID
             </p>
-            <Image src={copyClipboard} alt="copy" className="h-6 min-w-6" />
+            <div
+              onClick={() => copyToClipboard(id)}
+              className="flex items-center justify-between gap-2"
+            >
+              <p className="text-[20px] leading-[24px] font-normal text-[#473A3F]">
+                {id}
+              </p>
+              <Image src={copyClipboard} alt="copy" className="h-6 min-w-6" />
+            </div>
           </div>
-        </div>
+        )}
         <div className="lg:min-w-[310px]">
           <h2 className="mb-2 text-[24px] leading-[24px] font-medium text-[#473A3F]">
             Order information
@@ -101,11 +161,14 @@ export const OrderDetails: FC = () => {
           </h2>
           <div className="space-y-1 text-sm text-gray-300">
             {customerInfo.map((item, idx) => (
-              <div key={idx} className="flex items-center justify-between">
+              <div
+                key={idx}
+                className="flex items-center justify-between gap-3"
+              >
                 <span className="font-Inter text-[16px] leading-[24px] font-medium text-[#473A3F]">
                   {item.label}
                 </span>
-                <span className="font-Inter text-[14px] leading-[24px] font-normal text-[#747B86]">
+                <span className="font-Inter line-clamp-1 text-[14px] leading-[24px] font-normal text-[#747B86]">
                   {item.value}
                 </span>
               </div>
@@ -113,17 +176,22 @@ export const OrderDetails: FC = () => {
           </div>
         </div>
       </div>
-      <div className="hidden max-w-max self-start rounded-[8px] bg-[#F8F8F8] p-4 md:block">
-        <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
-          Order ID
-        </p>
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-[20px] leading-[24px] font-normal text-[#473A3F]">
-            6428421100
+      {id && (
+        <div className="hidden max-w-max self-start rounded-[8px] bg-[#F8F8F8] p-4 md:block">
+          <p className="mb-1 text-[20px] leading-[24px] font-bold text-[#473A3F]">
+            Order ID
           </p>
-          <Image src={copyClipboard} alt="copy" className="h-6 min-w-6" />
+          <div
+            onClick={() => copyToClipboard(id)}
+            className="flex items-center justify-between gap-2"
+          >
+            <p className="text-[20px] leading-[24px] font-normal text-[#473A3F]">
+              {id}
+            </p>
+            <Image src={copyClipboard} alt="copy" className="h-6 min-w-6" />
+          </div>
         </div>
-      </div>
+      )}
       <div>
         <div
           onClick={() => setOpen(!open)}
@@ -167,7 +235,7 @@ export const OrderDetails: FC = () => {
                 </span>
               </div>
               <span className="text-[14px] leading-[24px] font-normal text-[#747B86]">
-                {step.dateTime || "Write a review"}
+                {/* {step.dateTime || "Write a review"} */}
               </span>
             </div>
           ))}
@@ -176,7 +244,16 @@ export const OrderDetails: FC = () => {
     </div>
   );
 };
-export const OrderDetailsTotal: FC = () => {
+interface TotalItem {
+  label: string;
+  value: string | number;
+}
+
+interface OrderDetailsTotalProps {
+  data: TotalItem[];
+}
+
+export const OrderDetailsTotal: FC<OrderDetailsTotalProps> = ({ data }) => {
   const [open, setOpen] = useState(true);
 
   return (
@@ -205,16 +282,16 @@ export const OrderDetailsTotal: FC = () => {
           } space-y-3`}
         >
           <div className="space-y-1">
-            {subTotal.map((item, idx) => (
+            {data?.map((item: any, idx: any) => (
               <div key={idx} className="flex items-center justify-between">
                 <span className="font-Inter text-[16px] leading-[24px] font-normal text-[#A0A0A0]">
-                  {item.label}
+                  {item?.label}
                 </span>
                 <span className="font-Inter text-[14px] leading-[24px] font-normal text-[#473A3F]">
                   <span className="mt-[-7px] mr-[-3px] text-[10px] leading-normal font-normal text-[#473A3F]">
                     AED
                   </span>{" "}
-                  {item.value}
+                  {item?.value ? Number(item?.value)?.toFixed(2) : 0}
                   <span className="text-[#473A3F]l align-top text-[10px] leading-normal font-normal">
                     .00
                   </span>

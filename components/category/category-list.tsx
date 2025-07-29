@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CategoryCard from "./cards/category-card";
 
 import { menu1, menu2 } from "@/public/assets/banner";
@@ -14,12 +14,15 @@ import {
 import { MegaMenuPanel } from "./components/MegaMenuPanel";
 import { useAppSelector } from "@/store/hooks";
 import { imageBaseUrl } from "@/config/config";
+import productServices from "@/services/product.service";
+import { useParams } from "next/navigation";
 
 export const menuImages = [menu1, menu2];
 export const menuBrands = [brand1, brand2, brand3, brand4, brand5, brand6];
 
 export default function CategoryList() {
   const { categories = [] } = useAppSelector((state) => state.product);
+  const params = useParams();
   const hoverTimer = useRef<NodeJS.Timeout | null>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [previousId, setPreviousId] = useState<number | null>(null);
@@ -73,7 +76,9 @@ export default function CategoryList() {
                 hoveredId={hoveredId}
                 categoryId={catIndex}
                 cat_image={`${imageBaseUrl}/assets/menu_category/${category.cat_image}`}
-                slug={category?.slug}
+                // slug={category?.slug}
+                slug={`category/${category?.id}`}
+                slugId={category?.id}
               />
             </div>
           );

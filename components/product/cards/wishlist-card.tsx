@@ -17,11 +17,12 @@ import { useRouter } from "next/navigation";
 
 interface WishlistData {
   id: number;
-  title: string;
+  title?: string;
+  name?: string;
   image: StaticImageData | string;
-  price: number;
-  oldPrice: number;
-  discount: string;
+  price?: number;
+  oldPrice?: number;
+  discount?: string;
   rating: number;
   delivery?: string | undefined;
 }
@@ -30,6 +31,7 @@ interface WishlistCardProps {
 }
 
 const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
+  console.log({ product });
   const router = useRouter();
   const redirectToCart = (path: any) => {
     router.push(path);
@@ -46,10 +48,14 @@ const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
       <div className={`w-full overflow-hidden rounded-[8px] bg-white`}>
         <div
           onClick={() => redirectToCart("/product")}
-          className="relative md:min-w-[212px]"
+          className="relative h-[212px] md:min-w-[212px]"
         >
           <Image
-            src={product?.image}
+            src={
+              `https://www.babystore.ae/storage/${product?.image}` ||
+              product?.image
+            }
+            fill
             alt={"sw"}
             className="h-full min-h-[212px] w-full rounded-lg object-cover"
           />
@@ -62,7 +68,7 @@ const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
           className="flex h-[120px] flex-col justify-between border-t-1 px-3 pt-2 pb-3"
         >
           <p className="font-inter line-clamp-2 text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
-            {product?.title}
+            {product?.name}
           </p>
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex flex-col gap-1">

@@ -8,10 +8,11 @@ import SliderHeading from "../header-titles/slider-header";
 import BlogCard from "../cards/blog-card";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useScrollSlider } from "@/hooks/useScrollSlider";
+import { useAppSelector } from "@/store/hooks";
 
 interface Blog {
   id: number;
-  image: StaticImageData | string;
+  image: string | StaticImageData;
   category: string;
   date: string;
   read_time: string;
@@ -23,9 +24,9 @@ interface BlogSliderProps {
   blogs: Blog[];
 }
 
-const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
+const BlogSlider: React.FC = ({}) => {
   const sliderRef = useRef<Slider | null>(null);
-
+  const { blogs = [] } = useAppSelector((state) => state.blogs);
   const next = () => sliderRef.current?.slickNext();
   const previous = () => sliderRef.current?.slickPrev();
 
@@ -78,6 +79,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
     <div className="cus-container relative w-full overflow-hidden !py-5 pl-[10px] md:py-10">
       <div className="relative mx-auto w-full pr-[10px]">
         <SliderHeading
+          title="Blogs - Babystore"
           onPrev={() => scrollBy("left")}
           onNext={() => scrollBy("right")}
         />
@@ -93,19 +95,19 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
           //  style={{ marginLeft: `${left}px` }}
           className="no-scrollbar relative flex snap-x snap-mandatory justify-start gap-[10px] overflow-x-auto scroll-smooth md:gap-4"
         >
-          {/* <div className=""> */}
-          {blogs.map((blog) => (
-            <BlogCard
-              key={blog.id}
-              image={blog.image}
-              category={blog.category}
-              date={blog.date}
-              readTime={blog.read_time}
-              title={blog.title}
-              description={blog.description}
-            />
-          ))}
-          {/* </div> */}
+          {blogs?.length > 0 &&
+            blogs.map((blog: any, index: number) => (
+              <BlogCard
+                key={index}
+                id={blog?.id}
+                image={blog?.image}
+                category={blog.category}
+                date={blog?.created_at}
+                readTime={blog?.created_at}
+                title={blog?.title}
+                description={blog.short_description}
+              />
+            ))}
         </div>
       </div>
     </div>

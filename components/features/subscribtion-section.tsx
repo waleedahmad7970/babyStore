@@ -1,9 +1,40 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { slider_right_arrow } from "../../public/assets/icons";
 import { app_store, google_play } from "../../public/assets/app";
+import { useAppSelector } from "@/store/hooks";
+import { useFormik } from "formik";
+import authService from "@/services/auth.service";
+import InputField from "../fields/input-field";
+import Button from "../button/button";
+import { validationSchemas } from "@/utils/validation";
 
+const initialValues = {
+  email: "",
+};
 export default function SubscribeSection() {
+  const { subscribe } = useAppSelector((state) => state.loader);
+
+  const onSubmit = async (values: any) => {
+    await authService.subscribe(values);
+  };
+  const formikProps = useFormik({
+    validateOnBlur: false,
+    initialValues,
+    validationSchema: validationSchemas.subscribe,
+    onSubmit: onSubmit,
+  });
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    touched,
+    handleBlur,
+    submitCount,
+  } = formikProps;
+  const isSubmitted = submitCount > 0;
   return (
     <div className="cus-container mx-auto flex flex-col justify-between py-[10px] md:py-10 lg:flex-row">
       <div className="my-5 flex justify-between gap-10 bg-[#FFF5FA] py-5 pr-[10px] pl-4 sm:hidden md:mx-4 md:my-0">
@@ -23,16 +54,30 @@ export default function SubscribeSection() {
           Get our latest offers & news straight in your inbox.
         </p>
 
-        <div className="mt-10 flex w-full items-center overflow-hidden rounded-[8px] bg-[#F7F8F7] p-[10px] lg:max-w-[637px]">
-          <input
-            type="email"
-            placeholder="Please Enter Your Email Address"
-            className="w-full bg-transparent px-4 py-2 text-[16px] font-normal text-[#1A1718] outline-none md:py-3"
+        <form
+          onSubmit={handleSubmit}
+          className="mt-10 flex w-full items-center overflow-hidden rounded-[8px] bg-[#F7F8F7] p-[10px] lg:max-w-[637px]"
+        >
+          <InputField
+            name="email"
+            value={values.email}
+            error={
+              isSubmitted && errors.email && touched.email ? errors.email : null
+            }
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="EMAIL"
+            className="input-no-autofill w-full bg-transparent px-4 py-2 text-[16px] font-normal text-[#1A1718] outline-none md:py-3"
           />
-          <button className="font-inter h-[40px] min-w-[120px] rounded-[6px] bg-[#F470AB] text-[16px] leading-[19.5px] font-bold text-white md:h-[69px] md:min-w-[200px] md:text-[24px] md:leading-[29.5px]">
-            Subscribe
-          </button>
-        </div>
+
+          <Button
+            size={20}
+            loading={subscribe}
+            type={"submit"}
+            text={"Subscribe"}
+            className="font-inter h-[40px] min-w-[120px] rounded-[6px] bg-[#F470AB] text-[16px] leading-[19.5px] font-bold text-white md:h-[69px] md:min-w-[200px] md:text-[24px] md:leading-[29.5px]"
+          />
+        </form>
       </div>
 
       <div className="mt-0 mb-[30px] md:px-4 lg:mb-0">

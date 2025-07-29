@@ -5,4 +5,5 @@ export interface AccordionItem {
 
 export interface AccordionProps {
   items: AccordionItem[];
+  description: string;
 }

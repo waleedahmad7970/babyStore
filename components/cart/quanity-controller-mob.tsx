@@ -3,8 +3,8 @@ import Image from "next/image";
 
 type Props = {
   quantity: number;
-  onIncrease: () => void;
-  onDecrease: () => void;
+  onIncrease?: () => void;
+  onDecrease?: () => void;
 };
 
 export const QuantityControlMob = ({

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @layer components {
@@ -25,7 +26,6 @@
 }
 
 /* scroll bar */
-
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -33,9 +33,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-/* slider css  */
-
+/* auto fill bg off  */
+.input-no-autofill:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s !important;
+}
 /* product slider  */
 .product-slider .slick-slide {
   width: 240px;
@@ -63,13 +64,6 @@
   background-blend-mode: multiply;
 }
 
-.product-card:last-child {
-  /* margin-right: 20px; */
-}
-
-/* .mySwiper .swiper-wrapper {
-  transition-timing-function: linear !important;
-} */
 @keyframes scaleIn {
   0% {
     transform: scale(0.9);
@@ -92,13 +86,6 @@
     opacity: 0;
   }
 }
-/* 
-.slide-left {
-  animation: slideLeft 0.3s linear forwards;
-}
-.slide-right {
-  animation: slideRight 0.3s linear forwards;
-} */
 
 @keyframes slide-in-from-right {
   0% {

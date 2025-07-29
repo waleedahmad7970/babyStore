@@ -5,6 +5,8 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
 import Icons from "@/public/assets/svg-component";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { brandAction } from "@/store/slices/brand.slice";
+import { categoriesAction } from "@/store/slices/categories.slice";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
@@ -22,17 +24,39 @@ type TabType2 = {
   options: string[];
 };
 
+type FilterOption = {
+  name?: string;
+  value?: string;
+  count?: number;
+};
+
 const BottomNavigation: React.FC = () => {
+  const pathname = usePathname();
+
   const [activeTab, setActiveTab] = useState<string>("Home");
   const [activeCategory, setActiveCategory] = useState("Color");
   const [dragStartY, setDragStartY] = useState<number | null>(null);
   const [dragDistance, setDragDistance] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const { isFilter = "" } = useAppSelector((state) => state.globalStates);
+  const [selectMobSort, setSelectMobSort] = useState<FilterOption | null>(null);
+  const { isFilter = "", isSearchBarOpen } = useAppSelector(
+    (state) => state.globalStates,
+  );
+
+  const {
+    selectedFilters = [],
+    CBSPageFiltersMob = [],
+    CBSTopFilters = [],
+    selectTopFilterValue = "",
+  } = useAppSelector((state) => state.brands);
   const router = useRouter();
-  const pathname = usePathname();
   const dispatch = useAppDispatch();
   const menuRef = useRef(null);
+
+  useEffect(() => {
+    setSelectedOptions(selectedFilters);
+  }, [selectedFilters]);
+
   useClickOutside(menuRef, () => {
     dispatch(globalStateActions.setFilter(""));
   });
@@ -55,60 +79,58 @@ const BottomNavigation: React.FC = () => {
       id: "Search",
       icon: Icons.SearchIcon,
       label: "Search",
-      link: "/brand",
+      link: "/search",
     },
     {
       id: "Bag",
       icon: Icons.CartIcon,
 
       label: "Bag",
-      link: "/product",
+      link: "/cart",
     },
     {
       id: "Profile",
       icon: Icons.ProfileIcon,
       label: "Profile",
-      link: "/profile",
+      link: "/dashboard",
     },
   ];
 
-  const sortOptions = [
-    { label: "Recommended", count: 120 },
-    { label: "Best Seller", count: 42 },
-    { label: "New Arrivals", count: 7 },
-    { label: "Discount", count: 5 },
-    { label: "Price : low to high", count: 32 },
-    { label: "Price : high to low", count: 32 },
-  ];
-
-  const filterCategories: TabType2[] = [
-    {
-      name: "Color",
-      options: ["Red", "Green", "Pink", "Yellow", "Purple"],
-    },
-    { name: "Gender", options: ["Men", "Women", "Unisex"] },
-    { name: "Type", options: ["T-Shirt", "Jeans", "Shoes"] },
-    { name: "Size", options: ["S", "M", "L", "XL"] },
-    { name: "Brands", options: ["Nike", "Adidas", "Puma"] },
-    { name: "Price", options: ["$0 - $50", "$50 - $100", "$100+"] },
-    { name: "Others", options: ["New Arrival", "Sale"] },
-  ];
-
-  const toggleOption = (option: string) => {
+  const toggleOption = (option: any) => {
     setSelectedOptions((prev) =>
       prev.includes(option)
         ? prev.filter((item) => item !== option)
         : [...prev, option],
     );
   };
-
+  const handleApplyFilter = () => {
+    dispatch(brandAction.setToggleSelectedFilterByArray(selectedOptions));
+    dispatch(globalStateActions.setFilter(""));
+  };
   const handleTabClick = (tabId: string, link?: string) => {
     setActiveTab(tabId);
+    if (isSearchBarOpen) {
+      return dispatch(globalStateActions.setSearchBarOpen(false));
+    }
+    if (link === "/category") {
+      return dispatch(globalStateActions.setMobileMenu(true));
+    }
+    if (link === "/search") {
+      return dispatch(globalStateActions.setSearchBarOpen(true));
+    }
     if (link) router.push(link);
   };
 
   const handleFilterOpen = (filter: string) => {
     dispatch(globalStateActions.setFilter(filter));
+  };
+
+  const handleSelectSortFilter = (option: any) => {
+    setSelectMobSort(option);
+  };
+  const handleApplySortFilter = () => {
+    dispatch(brandAction.setCBSTopFilterValue(selectMobSort));
+    dispatch(globalStateActions.setFilter(""));
   };
 
   return (
@@ -150,71 +172,84 @@ const BottomNavigation: React.FC = () => {
             Sort By
           </p>
           {isFilter === "sort" ? (
-            <div className="flex w-full flex-col justify-start border-t border-[#E5E5E5]">
-              {sortOptions.map((option, index) => (
+            <div
+              className={`flex w-full flex-col justify-start border-t border-[#E5E5E5] ${selectTopFilterValue?.value ? "bg-[rgba(248, 45, 139, 0.1)]" : ""}`}
+            >
+              {CBSTopFilters?.map((option: FilterOption, index: number) => (
                 <div
-                  onClick={() => dispatch(globalStateActions.setFilter(""))}
+                  onClick={() => handleSelectSortFilter(option)}
                   key={index}
-                  className="border-b border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal text-[#000]"
+                  className={`border-b border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal ${selectMobSort?.value === option?.value || selectTopFilterValue?.value === option?.value ? "text-[#fff]" : "text-[#000]"} `}
                 >
-                  {option.label}
+                  {option?.name}
                 </div>
               ))}
+              <div className="mt-14 w-full px-[5px] sm:px-0">
+                <button
+                  onClick={() => handleApplySortFilter()}
+                  style={{ background: "rgba(248, 45, 139, 0.60)" }}
+                  className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
+                >
+                  Apply
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="flex w-full justify-between gap-2 overflow-hidden rounded-[4px]">
-              {/* Sidebar */}
-              <div className="w-full max-w-[110px] overflow-hidden rounded-[4px] bg-[#F82D8B14]">
-                {filterCategories.map((category) => (
-                  <div
-                    key={category.name}
-                    className={`cursor-pointer px-3 py-[6.25px] text-[11px] font-normal ${
-                      activeCategory === category.name
-                        ? "bg-[#F82D8B33] font-semibold text-[#1F1F1F]"
-                        : ""
-                    }`}
-                    onClick={() => setActiveCategory(category.name)}
-                  >
-                    {category.name}
-                  </div>
-                ))}
-              </div>
+            <div className="flex w-full flex-col">
+              <div className="flex min-h-[205px] w-full justify-between gap-2 overflow-hidden rounded-[4px]">
+                {/* Sidebar */}
+                <div className="w-full max-w-[110px] overflow-hidden rounded-[4px] bg-[#F82D8B14]">
+                  {CBSPageFiltersMob?.map((category: any, index: number) => (
+                    <div
+                      key={index}
+                      className={`cursor-pointer px-3 py-[6.25px] text-[11px] font-normal ${
+                        activeCategory === category?.name
+                          ? "bg-[#F82D8B33] font-semibold text-[#1F1F1F]"
+                          : ""
+                      }`}
+                      onClick={() => setActiveCategory(category?.name)}
+                    >
+                      {category?.name}
+                    </div>
+                  ))}
+                </div>
 
-              {/* Filter Options */}
-              <div className="flex w-full flex-row flex-wrap gap-2">
-                {filterCategories
-                  .find((cat) => cat.name === activeCategory)
-                  ?.options.map((option) => (
+                {/* Filter Options */}
+                <div className="flex max-h-[300px] w-full flex-row flex-wrap gap-2 overflow-y-auto">
+                  {CBSPageFiltersMob?.find(
+                    (cat: any) => cat?.name === activeCategory,
+                  )?.options.map((option: any, index: number) => (
                     <button
-                      key={option}
+                      key={option?.label || option}
                       className={`font-Inter max-h-max rounded-[4px] p-[6px] text-[11px] font-normal ${
-                        selectedOptions.includes(option)
+                        // selectedFilters?.includes(option?.value || option) ||
+                        selectedOptions?.includes(option?.value || option)
                           ? "bg-[#F82D8B14] font-medium text-[#F82D8B]"
                           : "bg-[#0000000A] text-[#000]"
                       }`}
-                      onClick={() => toggleOption(option)}
+                      onClick={() => toggleOption(option?.value || option)}
                     >
-                      {option}
+                      {option?.label || option}
                     </button>
                   ))}
+                </div>
+              </div>
+              <div className="mt-14 w-full px-[5px] sm:px-0">
+                <button
+                  onClick={() => handleApplyFilter()}
+                  style={{ background: "rgba(248, 45, 139, 0.60)" }}
+                  className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
+                >
+                  Apply
+                </button>
               </div>
             </div>
           )}
-          <div className="w-full px-[5px] sm:px-0">
-            <button
-              onClick={() => {
-                handleFilterOpen("");
-              }}
-              style={{ background: "rgba(248, 45, 139, 0.60)" }}
-              className="flex h-[58px] w-full items-center justify-center rounded-[999px] text-[17px] leading-[24px] font-semibold text-white"
-            >
-              Apply
-            </button>
-          </div>
         </div>
       ) : (
         <>
-          {["/category", "/brand"].includes(pathname) && (
+          {(pathname.startsWith("/category") ||
+            pathname.startsWith("/brand")) && (
             <div className="absolute right-0 bottom-[88px] left-0 mx-auto flex max-w-[95px] items-center justify-around rounded-[10px] bg-[#FD71AF] px-[10px] py-[5px] text-white">
               <span
                 onClick={() => handleFilterOpen("sort")}

@@ -7,7 +7,7 @@ import { StaticImageData } from "next/image";
 interface Product {
   id: number;
   title: string;
-  image: StaticImageData | string;
+  image: string;
   price: number;
   oldPrice: number;
   discount: string;

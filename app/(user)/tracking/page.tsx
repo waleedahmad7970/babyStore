@@ -127,7 +127,7 @@ export default function page() {
                 </div>
               ))}
             </div>
-            <OrderDetailsTotal />
+            <OrderDetailsTotal data={[]} />
           </div>
         </div>
         <div className="mt-[54px] flex flex-col items-center justify-between gap-4 rounded-[8px] bg-[#FFD8EB] px-4 py-6 md:hidden">

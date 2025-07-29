@@ -348,7 +348,7 @@ export const productData = {
       title: "Cash Delivery",
     },
   ],
-  shareProduct: [share, left_right_arrow, fav],
+  shareProduct: [share, left_right_arrow],
   reviews: 80,
   image: detail_image,
   sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
@@ -374,6 +374,29 @@ export const productData = {
   specifications:
     "Scudo is the innovative car seat by Cam of the Group 0/1/2/3 that follows the growth of your child from birth...",
 };
+
+export const deliveryService = [
+  {
+    id: 1,
+    icon: truck,
+    title: "Free Shipping",
+  },
+  {
+    id: 2,
+    icon: cash_back,
+    title: "2x Cashback",
+  },
+  {
+    id: 3,
+    icon: headset,
+    title: "24/7 Support",
+  },
+  {
+    id: 4,
+    icon: packet,
+    title: "Cash Delivery",
+  },
+];
 // export const productsLIST1 = [
 //   {
 //     id: 1,
@@ -1336,6 +1359,7 @@ export const storeInfoServices = [
     Babystore.ae as an online baby shopping UAE site ensures that you have funfilled, comfortable, and an enjoyable shopping experience.`,
   },
 ];
+
 export const navigationsLinks = [
   {
     title: "Categories",
@@ -1368,11 +1392,11 @@ export const navigationsLinks = [
   {
     title: "Company Info",
     links: [
-      { name: "About Us", url: "#" },
-      { name: "Contact Us", url: "#" },
-      { name: "Our Brands", url: "#" },
-      { name: "Media & Press", url: "#" },
-      { name: "Blogs", url: "#" },
+      { name: "About Us", url: "/about" },
+      { name: "Contact Us", url: "/contact" },
+      { name: "Our Brands", url: "our-brands" },
+      { name: "Media & Press", url: "media-press" },
+      { name: "Blogs", url: "blog" },
     ],
   },
   {
@@ -1611,18 +1635,13 @@ export const blogDetailsData = {
     "From traditional swings to modern, high-tech options, a wide selection suits your needs and preferences. Plus, with the convenience of online shopping, you can browse and compare different models and brands from the comfort of your home. You can have the perfect swing delivered right to your doorstep with just a few clicks. So, don't wait any longer! Order a baby swing online today and give your little one the ultimate comfort and relaxation. Your little one will love it!",
 };
 
-export const orderColorPallte = {
-  purple: "#8A8CD9",
-  green: "#4AA785",
-  blue: "#59A8D4",
-  yellow: "#FFC555",
-};
-
 // catgory sections
 
 export const sections: any[] = [
   {
     title: "Bath",
+    image: "baby-food.png",
+
     items: [
       "Towels & Accessories",
       "Bath Tubs",
@@ -1634,6 +1653,8 @@ export const sections: any[] = [
   },
   {
     title: "Skin & Hair & Body",
+    image: "baby-food.png",
+
     items: [
       "Lotions & Creams",
       "Balms",
@@ -1647,6 +1668,8 @@ export const sections: any[] = [
   },
   {
     title: "Skin & Hair & Body",
+    image: "baby-food.png",
+
     items: [
       "Lotions & Creams",
       "Balms",
@@ -1660,6 +1683,8 @@ export const sections: any[] = [
   },
   {
     title: "Skin & Hair & Body",
+    image: "baby-food.png",
+
     items: [
       "Lotions & Creams",
       "Balms",
@@ -1673,6 +1698,8 @@ export const sections: any[] = [
   },
   {
     title: "Bath",
+    image: "baby-food.png",
+
     items: [
       "Towels & Accessories",
       "Bath Tubs",
@@ -1684,6 +1711,8 @@ export const sections: any[] = [
   },
   {
     title: "Bath",
+    image: "baby-food.png",
+
     items: [
       "Towels & Accessories",
       "Bath Tubs",
@@ -1695,6 +1724,8 @@ export const sections: any[] = [
   },
   {
     title: "Skin & Hair & Body",
+    image: "baby-food.png",
+
     items: [
       "Lotions & Creams",
       "Balms",
@@ -1708,6 +1739,8 @@ export const sections: any[] = [
   },
   {
     title: "Bath",
+    image: "baby-food.png",
+
     items: [
       "Towels & Accessories",
       "Bath Tubs",
@@ -1719,6 +1752,8 @@ export const sections: any[] = [
   },
   {
     title: "Bath",
+    image: "baby-food.png",
+
     items: [
       "Towels & Accessories",
       "Bath Tubs",
@@ -1732,474 +1767,714 @@ export const sections: any[] = [
 export const sections2 = [
   {
     title: "Baby Strollers & Prams",
+    id: 15,
+    image: "baby-food.png",
+
     items: [
-      "Strollers",
-      "Double Strollers",
-      "Travel Systems",
-      "Carry Cots & Footmuffs",
-      "Stroller Accessories",
-      "Stroller Toys",
+      { id: 78, name: "Strollers", image: "1676839334.jpg" },
+      { id: 79, name: "Double Strollers", image: "1676839365.jpg" },
+      { id: 80, name: "Travel Systems", image: "1676839412.jpg" },
+      { id: 81, name: "Carry Cots & Footmuffs", image: "1676839442.jpg" },
+      { id: 82, name: "Stroller Accessories", image: "1676839473.jpg" },
+      { id: 83, name: "Stroller Toys", image: "1676839503.jpg" },
     ],
   },
   {
+    id: 16,
+    image: "baby-food.png",
+
     title: "Car Seats & Boosters",
-    items: ["Car Seats", "Booster Seats", "Car Seat Accessories"],
-  },
-  {
-    title: "Baby Gears",
-    items: ["Bouncers & Rockers", "Walkers", "Baby Carriers"],
-  },
-  {
-    title: "Travel Essentials",
-    items: ["Travel Bags - Suitcases"],
-  },
-  {
-    title: "Baby Essentials",
-    items: ["Baby Safety Products", "Baby Monitors", "Child Safety Essentials"],
-  },
-  {
-    title: "Medicines & First Aids",
     items: [
-      "Health Accessories",
-      "Gates & Bed Rails",
-      "Bath Safety",
-      "Travel Safety",
+      { id: 84, name: "Car Seats", image: "1676839690.jpg" },
+      { id: 85, name: "Booster Seats", image: "1676839729.jpg" },
+      { id: 86, name: "Car Seat Accessories", image: "1676839895.jpg" },
+    ],
+  },
+  {
+    id: 17,
+    image: "baby-food.png",
+
+    title: "Baby Gears",
+    items: [
+      { id: 87, name: "Bouncers & Rockers", image: "1676843163.jpg" },
+      { id: 88, name: "Walkers", image: "1676843193.jpg" },
+      { id: 89, name: "Baby Carriers", image: "1676843236.jpg" },
+    ],
+  },
+  {
+    id: 18,
+    image: "baby-food.png",
+
+    title: "Travel Essentials",
+    items: [
+      { id: 90, name: "Travel Bags - Suitcases", image: "1676843324.jpg" },
+    ],
+  },
+  {
+    id: 19,
+    image: "baby-food.png",
+
+    title: "Baby Safety Products",
+    items: [
+      { id: 92, name: "Baby Monitors", image: "1676843392.jpg" },
+      { id: 93, name: "Child Safety Essentials", image: "1676843491.jpg" },
+      { id: 96, name: "Medicine & First Aid", image: "1677842186.jpg" },
+      { id: 97, name: "Health Accessories", image: "1677842212.jpg" },
+      { id: 98, name: "Gates & Bed Rails", image: "1677842240.jpg" },
+      { id: 99, name: "Bath Safety", image: "1677842274.jpg" },
+      { id: 100, name: "Travel Safety", image: "1677842298.jpg" },
     ],
   },
 ];
 export const nursingSections = [
   {
     title: "Baby Room Furniture & Decors",
+    id: 8,
+    image: "baby-food.png",
     items: [
-      "Cribs & Bassinets",
-      "Mattress & Sheets",
-      "Sleeping Pods",
-      "Blankets & Bedding",
-      "Baby Furniture",
-      "Playpens",
-      "Nursery Centers",
+      { id: 39, name: "Cribs & Bassinets", image: "1676675130.jpg" },
+      { id: 40, name: "Mattress & Sheets", image: "1676675199.jpg" },
+      { id: 41, name: "Sleeping Pods", image: "1676675223.jpg" },
+      { id: 42, name: "Blankets & Bedding", image: "1676675261.jpg" },
+      { id: 43, name: "Baby Furniture", image: "1676675291.jpg" },
+      { id: 44, name: "Playpens", image: "1676675328.jpg" },
+      { id: 45, name: "Nursery Centers", image: "1676675351.jpg" },
     ],
   },
   {
     title: "Kids Room Furniture",
+    id: 9,
+    image: "baby-food.png",
+
     items: [
-      "Beds & Mattress",
-      "Blankets & Bedding",
-      "Kids Furniture",
-      "Storages & Organize",
+      { id: 46, name: "Beds & Mattress", image: "1676675426.jpg" },
+      { id: 47, name: "Blankets & Bedding", image: "1676675485.jpg" },
+      { id: 48, name: "Kids Furniture", image: "1676675513.jpg" },
+      { id: 49, name: "Storages & Organize", image: "1676675541.jpg" },
     ],
   },
   {
     title: "Room Decor & Accessories",
+    id: 10,
+    image: "baby-food.png",
+
     items: [
-      "Decor",
-      "Lamps & Lighting",
-      "Rugs & Playmats",
-      "Wall Decor",
-      "Accessories",
-      "Canopy",
+      { id: null, name: "Decor", image: null },
+      { id: 50, name: "Lamps & Lighting", image: "1676675599.jpg" },
+      { id: 51, name: "Rugs & Playmats", image: "1676675634.jpg" },
+      { id: 52, name: "Wall Decor", image: "1676675690.jpg" },
+      { id: 53, name: "Accessories", image: "1676675723.jpg" },
+      { id: 54, name: "Canopy", image: "1676675739.jpg" },
     ],
   },
 ];
 export const foodingSections = [
   {
     title: "Bottle Feeding",
+    image: "bottle-feeding.png",
+    id: 4,
     items: [
-      "Bottles",
-      "Teats & Accessories",
-      "Warmers & Sterilizers",
-      "Milk Powder Dispenser",
-      "Bottle Cleaning",
-      "Bottle Holders",
-      "Pacifiers & Holders",
+      { id: 16, name: "Bottles", image: "1676672759.jpg" },
+      { id: 17, name: "Teats & Accessories", image: "1676672860.jpg" },
+      { id: 18, name: "Warmers & Sterilizers", image: "1676672966.jpg" },
+      { id: 19, name: "Milk Powder Dispenser", image: "1676673065.jpg" },
+      { id: 20, name: "Bottle Cleaning", image: "1676673094.jpg" },
+      { id: 21, name: "Bottle Holders", image: "1676673133.jpg" },
+      { id: null, name: "Pacifiers & Holders", image: null },
     ],
   },
   {
+    id: 6,
+    image: "baby-food.png",
+
     title: "Baby Food",
-    items: ["Formula", "Purees", "Snacks", "Cereals", "Drinks"],
+    items: [
+      { id: 28, name: "Formula", image: "1676673833.jpg" },
+      { id: 29, name: "Purees", image: "1676673860.jpg" },
+      { id: 30, name: "Snacks", image: "1676673880.jpg" },
+      { id: 31, name: "Cereals", image: "1676673905.jpg" },
+      { id: 32, name: "Drinks", image: "1676674021.jpg" },
+    ],
   },
   {
+    id: 5,
+    image: "meal-time-essentials.png",
+
     title: "Meal-Time Essentials",
     items: [
-      "Food Processors",
-      "Bibs",
-      "Dishes & Utensils",
-      "Food Containers",
-      "Sippers & Cups",
-      "High Chairs & Boosters",
+      { id: 22, name: "Bibs", image: "1676673387.jpg" },
+      { id: 23, name: "Dishes & Utensils", image: "1676673518.jpg" },
+      { id: 24, name: "Food Containers", image: "1676673632.jpg" },
+      { id: 25, name: "Sippers & Cups", image: "1676673663.jpg" },
+      { id: 1, name: "Food Processors", image: "1676673707.jpg" },
+      { id: 27, name: "High Chairs & Boosters", image: "1676673792.jpg" },
     ],
   },
   {
+    id: 7,
+    image: "baby-food.png",
+
     title: "Nursing Care",
     items: [
-      "Pillows & Supports",
-      "Breast Feeding Accessories",
-      "Breast Pumps",
-      "Nursing Scarves & Burpies",
-      "Breast Milk Storage",
+      { id: 33, name: "Pillows & Supports", image: "1676674072.jpg" },
+      { id: 34, name: "Breast Feeding Accessories", image: "1676674101.jpg" },
+      { id: 35, name: "Breast Pumps", image: "1676674131.jpg" },
+      { id: 36, name: "Nursing Scarves & Burpies", image: "1676674162.jpg" },
+      { id: 37, name: "Changing Tables", image: "1684013226.jpg" },
+      { id: 38, name: "Breast Milk Storage", image: "1676674285.jpg" },
     ],
   },
 ];
 export const diaperingSections = [
   {
     title: "Diapers",
+    id: 23,
+    image: "baby-food.png",
+
     items: [
-      "Disposable Diapers",
-      "Re-usable Diapers",
-      "Diaper Liners & Inserts",
-      "Diaper Rash Creams",
-      "Adult Diapers",
+      { id: 115, name: "Disposable Diapers", image: "1677847270.jpg" },
+      { id: 116, name: "Re-usable Diapers", image: "1677868409.jpg" },
+      { id: 117, name: "Diaper Liners & Inserts", image: "1677868441.jpg" },
+      { id: 118, name: "Diaper Rash Creams", image: "1677868471.jpg" },
+      { id: 119, name: "Adult Diapers", image: "1677868504.jpg" },
     ],
   },
   {
     title: "Shop by Age",
+    id: 24,
+    image: "baby-food.png",
+
     items: [
-      "Size 1 (Newborn)",
-      "Size 2 (Small)",
-      "Size 3 (Medium)",
-      "Size 4 (Large)",
-      "Size 5 (XL)",
-      "Size 6 (XXL)",
+      { id: 120, name: "Size 1 (Newborn)", image: "1677868552.jpg" },
+      { id: 121, name: "Size 2 (Small)", image: "1677868583.jpg" },
+      { id: 122, name: "Size 3 (Medium)", image: "1677868624.jpg" },
+      { id: 123, name: "Size 4 (Large)", image: "1677868661.jpg" },
+      { id: 124, name: "Size 5 (XL)", image: "1677868697.jpg" },
+      { id: 125, name: "Size 6 (XXL)", image: "1677868733.jpg" },
     ],
   },
   {
-    title: "Changing Tables",
+    title: "Changing Diapers",
+    id: 25,
+    image: "baby-food.png",
+
     items: [
-      "Diaper Changing",
-      "Changing Tables",
-      "Reusable Changing Mats",
-      "Disposable Changing Mats",
-      "Diaper Bags",
-      "Diaper Caddy",
+      { id: 126, name: "Diaper Changing", image: "1677868776.jpg" },
+      { id: 126, name: "Changing Tables", image: "1677868776.jpg" },
+      { id: 127, name: "Reusable Changing Mats", image: "1677868805.jpg" },
+      { id: 128, name: "Disposable Changing Mats", image: "1677868835.jpg" },
+      { id: 129, name: "Diaper Bags", image: "1677868864.jpg" },
+      { id: 316, name: "Diaper Caddy", image: "1677868776.jpg" },
     ],
   },
   {
     title: "Shop by Brand",
+    id: 26,
+    image: "baby-food.png",
+
     items: [],
   },
   {
     title: "Wipes",
-    items: ["Disposable Wipes", "Re-usable Wipes", "Wipe Cases"],
+    id: 27,
+    image: "baby-food.png",
+
+    items: [
+      { id: 137, name: "Disposable Wipes", image: "1677869881.jpg" },
+      { id: 138, name: "Re-usable Wipes", image: "1677869968.jpg" },
+      { id: 317, name: "Wipe Cases", image: "1677869968.jpg" },
+    ],
   },
   {
     title: "Potty Training",
-    items: ["Potties", "Toilet Seat Covers", "Step Stools"],
+    id: 28,
+    image: "baby-food.png",
+
+    items: [
+      { id: 139, name: "Potties", image: "1677869994.jpg" },
+      { id: 140, name: "Toilet Seat Covers", image: "1677870039.jpg" },
+      { id: 141, name: "Step Stools", image: "1677870065.jpg" },
+    ],
   },
   {
     title: "Diaper Disposal",
-    items: ["Diaper Bins & Disposal Systems", "Refills & Nappy bags"],
+    id: 29,
+    image: "baby-food.png",
+
+    items: [
+      {
+        id: 142,
+        name: "Diaper Bins & Disposal Systems",
+        image: "1677870106.jpg",
+      },
+      { id: 143, name: "Refills & Nappy bags", image: "1677870136.jpg" },
+    ],
   },
 ];
 export const toySections = [
   {
+    id: 32,
+    image: "baby-food.png",
     title: "Toddler & Kids Toys",
+
     items: [
-      "Dolls & Accessories",
-      "Action Figures",
-      "Play Time",
-      "Tents & Teepees",
-      "Puppets",
-      "Soft Toys",
-      "Light & Musical Toys",
-      "Dollhouses & Accessories",
+      { id: 154, name: "Dolls & Accessories", image: "1677870136.jpg" },
+      { id: 155, name: "Action Figures", image: "1677870136.jpg" },
+      { id: 156, name: "Play Time", image: "1677870136.jpg" },
+      { id: 157, name: "Tents & Teepees", image: "1677870136.jpg" },
+      { id: 158, name: "Puppets", image: "1677870136.jpg" },
+      { id: 159, name: "Soft Toys", image: "1677870136.jpg" },
+      { id: 160, name: "Light & Musical Toys", image: "1677870136.jpg" },
+      { id: 161, name: "Dollhouses & Accessories", image: "1677870136.jpg" },
+      { id: 166, name: "Playtables", image: "1677870136.jpg" },
     ],
   },
   {
+    id: 30,
+    image: "baby-food.png",
+
     title: "Baby Toys",
     items: [
-      "Rattles",
-      "Teethers",
-      "Playmats & Gym",
-      "Crib Toys",
-      "Light & Musical Toys",
-      "Jumpers & Swings",
-      "Activity Center",
-      "Bath Toys",
-      "Play Fence",
-      "Squeeze Toys",
+      { id: 144, name: "Rattles", image: "1677870136.jpg" },
+      { id: 145, name: "Teethers", image: "1677870136.jpg" },
+      { id: 146, name: "Playmats & Gym", image: "1677870136.jpg" },
+      { id: 147, name: "Crib Toys", image: "1677870136.jpg" },
+      { id: 148, name: "Light & Musical Toys", image: "1677870136.jpg" },
+      { id: 149, name: "Jumpers & Swings", image: "1677870136.jpg" },
+      { id: 150, name: "Activity Center", image: "1677870136.jpg" },
+      { id: 151, name: "Bath Toys", image: "1677870136.jpg" },
+      { id: 152, name: "Play Fence", image: "1677870136.jpg" },
+      { id: 153, name: "Squeeze Toys", image: "1677870136.jpg" },
     ],
   },
   {
-    title: "Push, Pull & Vehicles",
+    id: 33,
+    image: "baby-food.png",
+
+    title: "Building Set and Blocks",
     items: [
-      "Push-pull toys",
-      "Stacking & Sorting Toys",
-      "Guns & Action Toys",
-      "Vehicles",
-      "Playtables",
+      { id: 162, name: "Push-pull toys", image: "1677870136.jpg" },
+      { id: 163, name: "Stacking & Sorting Toys", image: "1677870136.jpg" },
+      { id: 164, name: "Guns & Action Toys", image: "1677870136.jpg" },
+      { id: 165, name: "Vehicles", image: "1677870136.jpg" },
+      { id: 166, name: "Playtables", image: "1677870136.jpg" },
     ],
   },
   {
+    id: 35,
+    image: "baby-food.png",
+
     title: "Art & Craft",
-    items: ["Doughs, Slimes & Sand"],
-  },
-  {
-    title: "Wooden & Building Toys",
     items: [
-      "Wooden Toys",
-      "Building Sets & Blocks",
-      "Board Games & Puzzles",
-      "Blocks",
+      { id: 176, name: "Doughs, Slimes & Sand", image: "1677870136.jpg" },
+    ],
+  },
+
+  {
+    id: 34,
+
+    title: "Development Toys",
+    image: "baby-food.png",
+
+    items: [
+      { id: 169, name: "Educational Toys", image: "1677870136.jpg" },
+      { id: 171, name: "Activity Toys", image: "1677870136.jpg" },
+      { id: 172, name: "Reward Charts", image: "1677870136.jpg" },
+      { id: 173, name: "Science Games", image: "1677870136.jpg" },
+      { id: 174, name: "Montessori & Early learning", image: "1677870136.jpg" },
+      { id: 175, name: "Cause & Effect Toys", image: "1677870136.jpg" },
     ],
   },
   {
-    title: "Educational & Activity Toys",
-    items: [
-      "Development Toys",
-      "Educational Toys",
-      "Activity Toys",
-      "Reward Charts",
-      "Science Games",
-      "Montessori & Early learning",
-      "Cause & Effect Toys",
-    ],
-  },
-  {
+    id: 36,
+    image: "baby-food.png",
+
     title: "Role Play",
     items: [
-      "Costumes",
-      "Pretend Toys",
-      "Fashion & Beauty",
-      "Kitchen Toys",
-      "Work Bench Toys",
+      { id: 177, name: "Costumes", image: "1677870136.jpg" },
+      { id: 178, name: "Pretend Toys", image: "1677870136.jpg" },
+      { id: 179, name: "Fashion & Beauty", image: "1677870136.jpg" },
+      { id: 180, name: "Kitchen Toys", image: "1677870136.jpg" },
+      { id: 181, name: "Work Bench Toys", image: "1677870136.jpg" },
     ],
   },
 ];
 export const skincareSections = [
   {
     title: "Bath",
+    id: 2,
+    image: "bath.png",
     items: [
-      "Towels & Accessories",
-      "Bath Tubs",
-      "Shampoos & Conditioners",
-      "Soaps & Body Wash",
-      "Oral Care",
-      "Bath Accessories",
-      "Sponges & Bath Mittens",
+      { id: 2, name: "Towels & Accessories", image: "1671907733.jpg" },
+      { id: 3, name: "Bath Tubs", image: "1671907780.jpg" },
+      { id: 4, name: "Shampoos & Conditioners", image: "1671907820.jpg" },
+      { id: 5, name: "Soaps & Body Wash", image: "1671907882.jpg" },
+      { id: 6, name: "Oral Care", image: "1671907918.jpg" },
+      { id: 7, name: "Bath Accessories", image: "1671907947.jpg" },
+      { id: 182, name: "Sponges & Bath Mittens", image: "1684008969.jpg" },
     ],
   },
   {
     title: "Baby Grooming & Hygiene",
+    id: 3,
+    image: "skin-hair-body.png",
+
     items: [
-      "Skin & Hair & Body",
-      "Lotions & Creams",
-      "Balms",
-      "Powders & Sprays",
-      "Baby Oil",
-      "Sun Care",
-      "Travel Kits",
-      "Eczema Care",
+      { id: 303, name: "Skin & Hair & Body", image: "1676673707.jpg" },
+      { id: 8, name: "Lotions & Creams", image: "1671908075.jpg" },
+      { id: 9, name: "Balms", image: "1671908106.jpg" },
+      { id: 10, name: "Powders & Sprays", image: "1671908142.jpg" },
+      { id: 11, name: "Baby Oil", image: "1671908171.jpg" },
+      { id: 12, name: "Sun Care", image: "1671908209.jpg" },
+      { id: 15, name: "Travel Kits", image: "1671908301.jpg" },
+      { id: 183, name: "Eczema Care", image: "1684009016.jpg" },
     ],
   },
 ];
 export const outdoorSections = [
   {
     title: "Electric Rideons",
+    image: "baby-food.png",
+
+    id: 60,
     items: [
-      "Electric Jeeps, Trucks & Buggies",
-      "Electric Quad Bikes",
-      "Electric Cars",
-      "Electric Motor Bikes",
-      "Go Karts & Drifters",
+      {
+        id: 318,
+        name: "Electric Jeeps, Trucks & Buggies",
+        image: "1676839037.jpg",
+      },
+      { id: 331, name: "Electric Quad Bikes", image: "1676839037.jpg" },
+      { id: 332, name: "Electric Cars", image: "1676839037.jpg" },
+      { id: 333, name: "Electric Motor Bikes", image: "1676839037.jpg" },
+      { id: 334, name: "Go Karts & Drifters", image: "1676839037.jpg" },
     ],
   },
   {
+    id: 61,
+    image: "baby-food.png",
+
     title: "Manual Rideons",
-    items: ["Manual Ride-Ons", "Push Cars & Wagons"],
+    items: [
+      { id: 335, name: "Manual Ride-Ons", image: "1676839037.jpg" },
+      { id: 336, name: "Push Cars & Wagons", image: "1676839037.jpg" },
+    ],
   },
   {
+    id: 62,
+    image: "baby-food.png",
+
     title: "Bikes",
     items: [
-      "Balance Bikes",
-      "Bicycles",
-      "Helmets",
-      "Protective Gear",
-      "Accessories",
+      { id: 319, name: "Balance Bikes", image: "1676839037.jpg" },
+      { id: 318, name: "Bicycles", image: "1676839037.jpg" },
+      { id: 320, name: "Helmets", image: "1676839037.jpg" },
+      { id: 321, name: "Protective Gear", image: "1676839037.jpg" },
+      { id: 322, name: "Accessories", image: "1676839037.jpg" },
     ],
   },
   {
+    id: 63,
+    image: "baby-food.png",
+
     title: "Trikes",
-    items: ["Trikes", "Tricycle", "Stroller Trike"],
+    items: [
+      { id: 338, name: "Trikes", image: "Trikes.jpg1748253615.jpg" },
+      { id: 323, name: "Tricycle", image: "1676839037.jpg" },
+      { id: 324, name: "Stroller Trike", image: "1676839037.jpg" },
+    ],
   },
   {
+    id: 67,
+    image: "baby-food.png",
+
     title: "Scooters",
-    items: ["Manual Scooters", "Electric Scooters"],
+    items: [
+      { id: 339, name: "Manual Scooters", image: "1676839037.jpg" },
+      { id: 325, name: "Electric Scooters", image: "1676839037.jpg" },
+    ],
   },
   {
+    id: 60,
+    image: "baby-food.png",
+
     title: "Backyard Playsets",
     items: [
-      "Slides, Swings & Seesaws",
-      "Trampolines",
-      "Playhouses & Tents",
-      "Inflatables",
+      { id: 65, name: "Slides, Swings & Seesaws", image: "1676676661.jpg" },
+      { id: 66, name: "Trampolines", image: "1676676686.jpg" },
+      { id: 67, name: "Playhouses & Tents", image: "1676676714.jpg" },
+      { id: 68, name: "Inflatables", image: "1676676749.jpg" },
     ],
   },
   {
+    id: 64,
+    image: "baby-food.png",
+
     title: "Water & Beach Play",
     items: [
-      "Sandboxes & Water Playtables",
-      "Swimming Pools",
-      "Beach & Water Toys",
-      "Floats & Swim Rings",
-      "Swimming Aids",
+      { id: 69, name: "Sandboxes & Water Playtables", image: "1676676815.jpg" },
+      { id: 73, name: "Swimming Pools", image: "1676838859.jpg" },
+      { id: 75, name: "Beach & Water Toys", image: "1676838923.jpg" },
+      { id: 74, name: "Floats & Swim Rings", image: "1676838890.jpg" },
+      { id: 77, name: "Swimming Aids", image: "1676839037.jpg" },
     ],
   },
   {
+    id: 65,
+    image: "baby-food.png",
+
     title: "Skating",
-    items: ["Roller Skates", "Skate Boards"],
+    items: [
+      { id: 340, name: "Roller Skates", image: "1676839037.jpg" },
+      { id: 341, name: "Skate Boards", image: "1676839037.jpg" },
+    ],
   },
   {
+    id: 66,
+    image: "baby-food.png",
+
     title: "Outdoor Toys",
-    items: ["Outdoor Games", "Sports Toys", "Balls", "Outdoor Play Equipments"],
+    items: [
+      { id: 327, name: "Outdoor Games", image: "1676839037.jpg" },
+      { id: 328, name: "Sports Toys", image: "1676839037.jpg" },
+      { id: 329, name: "Balls", image: "1676839037.jpg" },
+      { id: 330, name: "Outdoor Play Equipments", image: "1676839037.jpg" },
+    ],
   },
 ];
 export const schoolEssentialsSections = [
   {
     title: "School Supplies",
+    id: 20,
+    image: "baby-food.png",
+
     items: [
-      "School Bags & Backpacks",
-      "Water Bottles",
-      "Lunch Box",
-      "Lunch Bags",
-      "Drawing & Coloring",
-      "Craft Activity",
-      "Art Table",
+      { id: 101, name: "School Bags & Backpacks", image: "1677843185.jpg" },
+      { id: 102, name: "Water Bottles", image: "1677843221.jpg" },
+      { id: 103, name: "Lunch Box", image: "1677843306.jpg" },
+      { id: 104, name: "Lunch Bags", image: "1677843371.jpg" },
+      { id: 106, name: "Drawing & Coloring", image: "1677843441.jpg" },
+      { id: 107, name: "Craft Activity", image: "1677843470.jpg" },
+      { id: 108, name: "Art Table", image: "1677843517.jpg" },
     ],
   },
   {
     title: "Books",
+    id: 21,
+    image: "baby-food.png",
+
     items: [
-      "Activity Books",
-      "Reading Books",
-      "Sticker Books",
-      "Learning Guides",
-      "Writing Books",
-      "Arabic Books",
+      { id: 109, name: "Activity Books", image: "1677843655.jpg" },
+      { id: 110, name: "Reading Books", image: "1677843849.jpg" },
+      { id: 111, name: "Sticker Books", image: "1677843900.jpg" },
+      { id: 112, name: "Learning Guides", image: "1677843977.jpg" },
+      { id: 113, name: "Writing Books", image: "1677844006.jpg" },
+      { id: 114, name: "Arabic Books", image: "1677844031.jpg" },
     ],
   },
 ];
 export const maternitySections = [
   {
     title: "Maternity Clothes",
+    id: 38,
+    image: "baby-food.png",
+
     items: [
-      "Maternity Dress",
-      "Maternity Tops",
-      "Maternity Bottom Wear",
-      "Maternity Lingerie",
-      "Maternity Swimwear",
-      "Shapewear",
+      { id: 184, name: "Maternity Dress", image: "1676673707.jpg" },
+      { id: 185, name: "Maternity Tops", image: "1676673707.jpg" },
+      { id: 186, name: "Maternity Bottom Wear", image: "1676673707.jpg" },
+      { id: 187, name: "Maternity Lingerie", image: "1676673707.jpg" },
+      { id: 188, name: "Maternity Swimwear", image: "1676673707.jpg" },
+      { id: 191, name: "Shapewear", image: "1676673707.jpg" },
     ],
   },
   {
     title: "Mommy Skincare",
-    items: ["Nipple Creams", "Stretch Mark Creams"],
+    id: 39,
+    image: "baby-food.png",
+
+    items: [
+      { id: 192, name: "Nipple Creams", image: "1676673707.jpg" },
+      { id: 193, name: "Stretch Mark Creams", image: "1676673707.jpg" },
+    ],
   },
   {
     title: "Mommy Bathcare & Hygiene",
+    id: 40,
+    image: "baby-food.png",
+
     items: [
-      "Shampoos & Conditioners",
-      "Body Wash & Shower Gel",
-      "Oral Care",
-      "Scrubs",
-      "Soaps",
-      "Face Wash & Masks",
+      { id: 199, name: "Shampoos & Conditioners", image: "1676673707.jpg" },
+      { id: 200, name: "Body Wash & Shower Gel", image: "1676673707.jpg" },
+      { id: 202, name: "Oral Care", image: "1676673707.jpg" },
+      { id: 203, name: "Scrubs", image: "1676673707.jpg" },
+      { id: 204, name: "Soaps", image: "1676673707.jpg" },
+      { id: 205, name: "Face Wash & Masks", image: "1676673707.jpg" },
     ],
   },
   {
     title: "Mommy Essentials",
-    items: ["Maternity Belts & Pillows"],
+    id: 41,
+    image: "baby-food.png",
+
+    items: [
+      { id: 208, name: "Maternity Belts & Pillows", image: "1676673707.jpg" },
+    ],
   },
 ];
 export const partySections = [
   {
     title: "Special Occasions",
+    id: 43,
+    image: "baby-food.png",
+
     items: [
-      "Christmas",
-      "Halloween",
-      "Ramadan",
-      "Mother's Day",
-      "Valentines Day",
+      { id: 219, name: "Christmas", image: "1676673707.jpg" },
+      { id: 220, name: "Halloween", image: "1676673707.jpg" },
+      { id: 221, name: "Ramadan", image: "1676673707.jpg" },
+      { id: 222, name: "Mother's Day", image: "1676673707.jpg" },
+      { id: 223, name: "Valentines Day", image: "1676673707.jpg" },
     ],
   },
   {
     title: "Decorations",
+    id: 45,
+    image: "baby-food.png",
+
     items: [
-      "Balloons & Ribbons",
-      "Poppers",
-      "Confetti",
-      "Table Top Decorations",
-      "Banners & Garlands",
-      "Buntings",
-      "Wall decorations",
-      "Party Decorations",
+      { id: 224, name: "Balloons & Ribbons", image: "1676673707.jpg" },
+      { id: 225, name: "Poppers", image: "1676673707.jpg" },
+      { id: 226, name: "Confetti", image: "1676673707.jpg" },
+      { id: 227, name: "Table Top Decorations", image: "1676673707.jpg" },
+      { id: 228, name: "Banners & Garlands", image: "1676673707.jpg" },
+      { id: 229, name: "Buntings", image: "1676673707.jpg" },
+      { id: 230, name: "Wall decorations", image: "1676673707.jpg" },
+      { id: 231, name: "Party Decorations", image: "1676673707.jpg" },
     ],
   },
   {
     title: "Party Supplies",
+    id: 45,
+    image: "baby-food.png",
+
     items: [
-      "Party Accessories",
-      "Party Favors",
-      "Party Bags & Boxes",
-      "Games",
-      "Cards",
-      "Headware & Photo Booth Props",
-      "Candles & Lights",
-      "Cooking Accessories",
+      { id: 232, name: "Party Favors", image: "1676673707.jpg" },
+      { id: 233, name: "Party Bags & Boxes", image: "1676673707.jpg" },
+      { id: 234, name: "Games", image: "1676673707.jpg" },
+      { id: 235, name: "Cards", image: "1676673707.jpg" },
+      {
+        id: 236,
+        name: "Headware & Photo Booth Props",
+        image: "1676673707.jpg",
+      },
+      { id: 237, name: "Candles & Lights", image: "1676673707.jpg" },
+      { id: 238, name: "Cooking Accessories", image: "1676673707.jpg" },
+      { id: 239, name: "Costumes & Makeup", image: "1676673707.jpg" },
     ],
   },
   {
+    id: 46,
+    image: "baby-food.png",
+
     title: "Tableware",
-    items: ["Cups", "Cutlery", "Table Covers", "Napkins", "Plates & Bowls"],
+    items: [
+      { id: 240, name: "Cups", image: "1676673707.jpg" },
+      { id: 241, name: "Cutlery", image: "1676673707.jpg" },
+      { id: 242, name: "Table Covers", image: "1676673707.jpg" },
+      { id: 243, name: "Napkins", image: "1676673707.jpg" },
+      { id: 244, name: "Plates & Bowls", image: "1676673707.jpg" },
+    ],
   },
   {
     title: "Gifts",
+    id: 47,
+    image: "baby-food.png",
+
     items: [
-      "Baby Gifts",
-      "Toddler Gifts",
-      "Parents Gifts",
-      "Gift Wraps & Bags",
+      { id: 245, name: "Baby Gifts", image: "1676673707.jpg" },
+      { id: 246, name: "Toddler Gifts", image: "1676673707.jpg" },
+      { id: 247, name: "Parents Gifts", image: "1676673707.jpg" },
+      { id: 248, name: "Gift Wraps & Bags", image: "1676673707.jpg" },
     ],
   },
 ];
 export const clothingSections = [
   {
     title: "Baby (0-2yrs)",
+    id: 51,
+    image: "baby-food.png",
+
     items: [
-      "Onsies - Overalls - Rompers",
-      "Tops",
-      "Bottoms",
-      "Sets",
-      "Sleeping bags",
-      "Dresses",
-      "Swaddles",
+      { id: 273, name: "Onsies - Overalls - Rompers", image: "1676673707.jpg" },
+      { id: 274, name: "Tops", image: "1676673707.jpg" },
+      { id: 275, name: "Bottoms", image: "1676673707.jpg" },
+      { id: 276, name: "Sets", image: "1676673707.jpg" },
+      { id: 277, name: "Sleeping bags", image: "1676673707.jpg" },
+      { id: 278, name: "Dresses", image: "1676673707.jpg" },
+      { id: 279, name: "Swaddles", image: "1676673707.jpg" },
     ],
   },
   {
     title: "Boy Clothes (3-8yrs)",
-    items: ["Shirts & T-Shirts", "Footwear", "Shoes", "Leg warmers & Socks"],
+    id: 52,
+    image: "baby-food.png",
+
+    items: [
+      { id: 280, name: "Shirts & T-Shirts", image: "1676673707.jpg" },
+      { id: 281, name: "Footwear", image: "1676673707.jpg" },
+      { id: 190, name: "Shoes", image: "1676673707.jpg" },
+      { id: 282, name: "Leg warmers & Socks", image: "1676673707.jpg" },
+    ],
   },
   {
     title: "Girl Clothes (3-8yrs)",
-    items: ["Dresses", "Tops & Tees", "Bottom Wear", "Night wear"],
+    id: 54,
+    image: "baby-food.png",
+
+    items: [
+      { id: 283, name: "Dresses", image: "1676673707.jpg" },
+      { id: 284, name: "Tops & Tees", image: "1676673707.jpg" },
+      { id: 285, name: "Bottom Wear", image: "1676673707.jpg" },
+      { id: 286, name: "Night wear", image: "1676673707.jpg" },
+    ],
   },
   {
     title: "Swimwear",
-    items: ["Swim wear - Girls", "Swim wear - Boys", "Swim accessories"],
+    id: 55,
+    image: "baby-food.png",
+
+    items: [
+      { id: 287, name: "Swim wear - Girls", image: "1676673707.jpg" },
+      { id: 288, name: "Swim wear - Boys", image: "1676673707.jpg" },
+      { id: 289, name: "Swim accessories", image: "1676673707.jpg" },
+    ],
   },
   {
     title: "Accessories",
+    id: 56,
+    image: "baby-food.png",
+
     items: [
-      "Gloves & Mittens",
-      "Head bands",
-      "Caps & Hats",
-      "Sunglasses",
-      "Watches",
-      "Knee Protectors",
-      "Belts & Ties",
-      "Hand Bags",
-      "Jewelry",
-      "Hair Accessories",
-      "Make Up",
+      { id: 290, name: "Gloves & Mittens", image: "1676673707.jpg" },
+      { id: 291, name: "Head bands", image: "1676673707.jpg" },
+      { id: 292, name: "Caps & Hats", image: "1676673707.jpg" },
+      { id: 293, name: "Sunglasses", image: "1676673707.jpg" },
+      { id: 294, name: "Watches", image: "1676673707.jpg" },
+      { id: 295, name: "Knee Protectors", image: "1676673707.jpg" },
+      { id: 296, name: "Belts & Ties", image: "1676673707.jpg" },
+      { id: 297, name: "Hand Bags", image: "1676673707.jpg" },
+      { id: 298, name: "Jewelry", image: "1676673707.jpg" },
+      { id: 299, name: "Hair Accessories", image: "1676673707.jpg" },
+      { id: 300, name: "Make Up", image: "1676673707.jpg" },
     ],
   },
 ];
+
+export const orderColorPallte = {
+  green: "#34D399",
+  yellow: "#FBBF24",
+  blue: "#60A5FA",
+  red: "#F87171",
+  purple: "#A78BFA",
+} as const;
+
+export type OrderColorKey = keyof typeof orderColorPallte;

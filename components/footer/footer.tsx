@@ -12,10 +12,12 @@ import {
 } from "../../public/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useAppSelector } from "@/store/hooks";
 
 interface FooterLink {
   name: string;
-  url: string;
+  url?: string;
+  id?: string | number;
 }
 
 interface Email {
@@ -35,16 +37,24 @@ interface Section {
 
 export default function Footer() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
+  const { categories = [] } = useAppSelector((state) => state.product);
   const toggleSection = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  // Merge static data with dynamic categories from Redux
+  const mergedData = navigationsLinks?.map((section) => {
+    if (section.title === "Categories" && categories.length > 0) {
+      return { ...section, links: categories };
+    }
+    return section;
+  });
 
   return (
     <footer className="bg-[#FAFAFA] sm:bg-[#F470AB]">
       <div className="mx-auto w-full max-w-[1360px] py-8 text-white">
         <div className="mx-auto mb-10 flex w-full flex-col gap-0 md:flex-row md:justify-between md:gap-6">
-          {navigationsLinks.map((section: Section, index: number) => (
+          {mergedData.map((section: Section, index: number) => (
             <div
               key={index}
               className={`w-full ${index === 0 ? "border-t" : ""} border-b border-[#1C2A54] px-4 sm:border-none md:w-1/4 md:border-none md:px-0`}
@@ -74,7 +84,7 @@ export default function Footer() {
                       <li key={idx}>
                         <Link
                           prefetch
-                          href={link.url}
+                          href={link?.url || `/category/${link?.id}`}
                           className="font-inter text-[20px] leading-[24.2px] font-normal text-[#1C2A54] transition sm:text-[#fff]"
                         >
                           {link.name}

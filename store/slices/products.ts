@@ -16,6 +16,10 @@ const initialState = {
 
   // desktop_Sections
   desktopSections: [],
+  desktopSectionsTest: [],
+  // product details
+  productDetails: {},
+  relatedProducts: [],
 };
 
 export const productSlice = createSlice({
@@ -58,6 +62,15 @@ export const productSlice = createSlice({
     // desktop sections
     setDesktopSections: (state, action) => {
       state.desktopSections = action.payload;
+    },
+    setDesktopSectionsTest: (state, action) => {
+      state.desktopSectionsTest = action.payload;
+    },
+    setProductDetails: (state, action) => {
+      state.productDetails = action.payload;
+    },
+    setRelatedProducts: (state, action) => {
+      state.relatedProducts = action.payload;
     },
   },
 });

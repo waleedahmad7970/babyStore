@@ -9,6 +9,12 @@ import {
   twoX,
 } from "@/public/assets/icons";
 
+interface InstallationCardProps {
+  text?: string;
+  selected: boolean;
+  onClick?: () => void;
+}
+
 const CashbackCard = () => (
   <div className="mb-[6px] flex w-full items-center rounded-full bg-[#FFF0F5] px-[28px] py-[10px] md:px-5">
     <Image
@@ -84,12 +90,35 @@ const TabbyCard = () => (
   </div>
 );
 
-const DiscountCard = () => (
+const DiscountCard = ({
+  text = "CALL US TO RECEIVE YOUR PERSONALIZED DISCOUNT CODES",
+}) => (
   <div className="flex hidden w-full items-center justify-center rounded-full bg-[#DAF0DC] px-5 py-[18px] md:block md:justify-start">
     <p className="text-[12px] leading-[14px] font-semibold text-[#464646] uppercase">
-      CALL US TO RECEIVE YOUR PERSONALIZED DISCOUNT CODES
+      {text}
+    </p>
+  </div>
+);
+const InstallationCard: React.FC<InstallationCardProps> = ({
+  text = "Installation Card -",
+  selected,
+  onClick,
+}) => (
+  <div
+    onClick={onClick}
+    className={`flex w-full cursor-pointer items-center justify-center rounded-full border-t-1 border-r-1 border-b-2 border-l-1 border-[#DAF0DC] ${selected ? "bg-[#DAF0DC]" : "bg-[#DAF0DC]/20"} px-5 py-[18px] hover:bg-[#DAF0DC] md:justify-start`}
+  >
+    <p className="text-[12px] leading-[14px] font-semibold text-[#464646] uppercase">
+      {text}
     </p>
   </div>
 );
 
-export { CashbackCard, DeliveryCard, PriceMatchCard, TabbyCard, DiscountCard };
+export {
+  CashbackCard,
+  DeliveryCard,
+  PriceMatchCard,
+  TabbyCard,
+  DiscountCard,
+  InstallationCard,
+};

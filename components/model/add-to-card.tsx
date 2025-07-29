@@ -1,28 +1,20 @@
-import { checkout_1, cross } from "@/public/assets/icons";
-import Image, { StaticImageData } from "next/image";
+import { cross } from "@/public/assets/icons";
+import Image from "next/image";
 import React from "react";
 import Button from "../button/button";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
 import { useRouter } from "next/navigation";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
-const data = {
-  id: 1,
-  name: "Lindale Outdoor Wooden Swing And Slide Playset...",
-  price: 20081.25,
-  quantity: 3,
-  image: checkout_1,
-};
-interface Product {
-  title: string;
-  image: string;
-  price: number;
-}
+
 interface CartProduct {
-  title?: string;
-  image?: string | StaticImageData;
+  name?: string;
+  image?: string;
   price?: number;
-  src?: string | StaticImageData;
+  id?: number | string;
+  src?: string;
+  discount: number | string;
+  rating: number | string;
   // Add other properties you expect
 }
 export default function AddToCard({
@@ -36,11 +28,14 @@ export default function AddToCard({
   const dispatch = useAppDispatch();
   usePreventBodyScroll(addToCartModel);
   const { addCurrentAddedProduct = {} } = useAppSelector((state) => state.cart);
+  console.log({ addCurrentAddedProduct });
   const {
-    title = "",
+    id = "",
+    name = "",
     image = "",
     price = 0,
-  } = (addCurrentAddedProduct as CartProduct) || {};
+  } = addCurrentAddedProduct as CartProduct;
+
   const handleCloseModel = () => {
     dispatch(cartAction.setAddToCartModel(false));
   };
@@ -48,16 +43,18 @@ export default function AddToCard({
     router.push(path);
   };
   return (
-    <div
-      onClick={handleCloseModel}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className={`${className}`}>
         <div className="absolute top-[-15px] right-0 z-20 flex h-[30px] w-[30px] items-center justify-between rounded-[18px] border border-[#000000]/10 bg-[#FFF] p-2 sm:right-[-15px]">
-          <Image src={cross} className="cursor-pointer" alt="s" />
+          <Image
+            onClick={handleCloseModel}
+            src={cross}
+            className="cursor-pointer"
+            alt="s"
+          />
         </div>
         <div
-          key={data.id}
+          key={id}
           className="relative flex h-[115px] justify-between gap-2 rounded-[7.6px] bg-[#FAFAFA] px-[5.4px] py-[5.4px] md:justify-start"
         >
           <Image
@@ -67,11 +64,7 @@ export default function AddToCard({
             className="absolute top-[5px] right-[5px] cursor-pointer"
           />
           <Image
-            src={
-              typeof image === "string"
-                ? image
-                : (image as StaticImageData)?.src || data?.image
-            }
+            src={`https://www.babystore.ae/storage/${image}`}
             alt={"cart-data"}
             height={104}
             width={104}
@@ -80,9 +73,9 @@ export default function AddToCard({
           <div className="flex h-full w-full flex-col justify-between">
             <div>
               <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
-                {title || data.name}
+                {name}
               </p>
-              <div className="flex items-center justify-start">
+              {/* <div className="flex items-center justify-start">
                 <div className="h-[14px] w-[14px] rounded-full bg-[#FFCD52]" />
                 <div className="mx-2 h-3 w-[1px] border-r-1 border-[#1F1F1F]" />
                 <p className="mb-0 text-[10px] leading-[20px] font-normal text-[#A0A0A0]">
@@ -96,7 +89,7 @@ export default function AddToCard({
                 <p className="mb-0 text-[10px] leading-[20px] font-normal text-[#A0A0A0]">
                   30kg
                 </p>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex items-center justify-between">
@@ -105,7 +98,7 @@ export default function AddToCard({
                   AED
                 </p>
                 <p className="text-[14.882px] leading-[12.649px] font-semibold text-[#1F1F1F]">
-                  {price?.toFixed(2) || data.price.toFixed(2)}
+                  {price?.toFixed(2)}
                 </p>
               </div>
             </div>
@@ -113,7 +106,7 @@ export default function AddToCard({
         </div>
         <div className="mt-2 flex items-center justify-between gap-2">
           <Button
-            handler={handleCloseModel}
+            handler={() => handleCloseModel()}
             text={"Continue Shopping"}
             className="w-full cursor-pointer rounded-[5px] border border-[#61B582] bg-[#fff] px-3 py-1 text-[14px] leading-[25px] font-semibold text-[#61B582] md:px-6 md:py-2 md:text-[14px]"
           />

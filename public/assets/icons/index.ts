@@ -98,7 +98,7 @@ export { default as order_customer } from "../icons/order_customer.svg";
 // pngs  blogs ucons
 
 export { default as men } from "../icons/men.png";
-export { default as comments } from "../icons/comments.png";
+// export { default as comments } from "../icons/comments.png";
 export { default as strong_calendar } from "../icons/strong_calendar.png";
 export { default as white_arrow_right } from "../icons/white_arrow_right.png";
 
@@ -133,3 +133,5 @@ export { default as checkout_3 } from "../icons/checkout_3.png";
 export { default as FreeShipping } from "../icons/FreeShipping.svg";
 export { default as Cashback2x } from "../icons/2xCashback.svg";
 export { default as Support7 } from "../icons/7Support.svg";
+export { default as conformTick } from "../icons/confirm-tick.svg";
+export { default as comments } from "../icons/comments.svg";

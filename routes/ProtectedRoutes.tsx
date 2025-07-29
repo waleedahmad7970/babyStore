@@ -2,10 +2,14 @@ import { isAuthenticated } from "@/utils/protect.auth.util";
 import { redirect, usePathname } from "next/navigation";
 import { ReactElement, ComponentType } from "react";
 
-const protectedRoutes: Array<string> = [];
+const protectedRoutes: Array<string> = [
+  "/checkout",
+  "/checkout/order-success",
+  "/dashboard",
+];
 const publicRoutes: Array<string> = [
-  "/sign-in",
-  "/sign-up",
+  "/login",
+  "/signup",
   "/email-sent",
   "/sign-up-sso",
   "/reset-password",
@@ -24,10 +28,10 @@ export default function ProtectedComp(Component: ComponentType<Props>) {
     const isPublicRoutes = publicRoutes.includes(pathname);
 
     if (isProtectedRoute && !isAuthenticated()) {
-      redirect("/sign-in");
+      redirect("/login");
       return null;
     } else if (isPublicRoutes && isAuthenticated()) {
-      redirect("/dashboard");
+      redirect("/");
       return null;
     }
 

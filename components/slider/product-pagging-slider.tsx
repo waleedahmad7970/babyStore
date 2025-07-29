@@ -8,11 +8,14 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/pagination";
+interface ProductPagingSliderProps {
+  sliderImages: string[];
+}
 
-const ProductPagingSlider: React.FC = () => {
-  const { images = [] } = productData;
+const ProductPagingSlider: React.FC<ProductPagingSliderProps> = ({
+  sliderImages,
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-
   return (
     <div className="slider-container">
       <div className="overflow-hidden rounded-[10px] border border-[#00000033]">
@@ -21,21 +24,22 @@ const ProductPagingSlider: React.FC = () => {
           modules={[Pagination, Thumbs]}
           pagination={{ clickable: true }}
           thumbs={{ swiper: thumbsSwiper }}
-          // modules={[Thumbs]}j
           className="w-full"
         >
-          {images.map((img, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative h-[375px] md:h-[839px]">
-                <Image
-                  src={img}
-                  alt={`Image ${index}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {sliderImages?.map((img: string, index: number) => {
+            return (
+              <SwiperSlide key={index}>
+                <div className="relative h-[375px] md:h-[839px]">
+                  <Image
+                    src={`https://www.babystore.ae/storage/${img}`}
+                    alt={`Image ${index}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
       <Swiper
@@ -47,15 +51,16 @@ const ProductPagingSlider: React.FC = () => {
         modules={[FreeMode, Thumbs]}
         className="mt-4 hidden justify-start md:flex"
       >
-        {images.map((img, index) => (
+        {sliderImages?.map((img: string, index: number) => (
           <SwiperSlide
             key={index}
-            className="h-[124px] max-w-[124px] overflow-hidden rounded-[8px] border border-[#00000033]"
+            className="h-[124px] min-h-[92px] max-w-[124px] overflow-hidden rounded-[8px] border border-[#00000033] sm:max-h-[124px] sm:min-h-[124px]"
           >
             {/* <div className=""> */}
             <Image
-              src={img}
+              src={`https://www.babystore.ae/storage/${img}`}
               alt={`Thumbnail ${index}`}
+              fill
               className="h-full w-full cursor-pointer object-cover"
             />
             {/* </div> */}

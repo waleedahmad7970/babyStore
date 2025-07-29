@@ -466,6 +466,34 @@ const CategoryIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
   </svg>
 );
 
+const FavIcon = ({ color = "#C7CFDA" }: DashboardIconProps) => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_5478_3426)">
+      <path
+        d="M20 35C20 35 3.75 26.25 3.75 15.9375C3.75 13.6997 4.63895 11.5536 6.22129 9.97129C7.80363 8.38895 9.94974 7.5 12.1875 7.5C15.7172 7.5 18.7406 9.42344 20 12.5C21.2594 9.42344 24.2828 7.5 27.8125 7.5C30.0503 7.5 32.1964 8.38895 33.7787 9.97129C35.3611 11.5536 36.25 13.6997 36.25 15.9375C36.25 26.25 20 35 20 35Z"
+        fill={color}
+      />
+      <path
+        d="M20 35C20 35 3.75 26.25 3.75 15.9375C3.75 13.6997 4.63895 11.5536 6.22129 9.97129C7.80362 8.38895 9.94974 7.5 12.1875 7.5C15.7172 7.5 18.7406 9.42344 20 12.5C21.2594 9.42344 24.2828 7.5 27.8125 7.5C30.0503 7.5 32.1964 8.38895 33.7787 9.97129C35.3611 11.5536 36.25 13.6997 36.25 15.9375C36.25 26.25 20 35 20 35Z"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_5478_3426">
+        <rect width="40" height="40" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
 const Icons = {
   DashboardIcon,
   OrderIcon,
@@ -482,6 +510,7 @@ const Icons = {
   CartIcon,
   SearchIcon,
   ProfileIcon,
+  FavIcon,
 };
 
 export default Icons;

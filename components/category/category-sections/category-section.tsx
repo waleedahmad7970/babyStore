@@ -41,7 +41,7 @@ const CategorySection: React.FC<CategorSectiondProps> = ({
           <Image key={index} className={ImgClass} src={item} alt={"product"} />
         ))}
       </div>
-      <ProductSwiperSlider products={productsLIST1} />
+      {/* <ProductSwiperSlider products={productsLIST1} /> */}
     </div>
   );
 };

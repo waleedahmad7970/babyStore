@@ -4,8 +4,9 @@ interface DashboardState {
   activeDashboardTab: string;
 }
 
-const initialState: DashboardState = {
+const initialState = {
   activeDashboardTab: "Dashboard",
+  userReviews: [],
 };
 
 const dashboardSlice = createSlice({
@@ -14,6 +15,9 @@ const dashboardSlice = createSlice({
   reducers: {
     setActiveDashboardTab: (state, action: PayloadAction<string>) => {
       state.activeDashboardTab = action.payload;
+    },
+    setUserReviews: (state, action) => {
+      state.userReviews = action.payload;
     },
   },
 });

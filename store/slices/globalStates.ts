@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isFilter: "",
   isMobMenu: false,
+  isSearchBarOpen: false,
 };
 
 export const globalStateSlice = createSlice({
@@ -14,6 +15,9 @@ export const globalStateSlice = createSlice({
     },
     setMobileMenu: (state, action) => {
       state.isMobMenu = action.payload;
+    },
+    setSearchBarOpen: (state, action) => {
+      state.isSearchBarOpen = action.payload;
     },
   },
 });

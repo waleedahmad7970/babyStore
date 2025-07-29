@@ -15,6 +15,7 @@ import BreadcrumbOne from "@/components/bread-crum/bread-crum-one";
 import DeliveryService from "@/components/features/delivery-services";
 import StoreInfoSection from "@/components/features/store-info-section";
 import SubscribeSection from "@/components/features/subscribtion-section";
+import Footer from "@/components/footer/footer";
 
 export default function ShopLayout({
   children,
@@ -29,11 +30,11 @@ export default function ShopLayout({
       <BreadcrumbOne />
       {children}
       <ReviewSlider reviews={reviews} />
-      <BlogSlider blogs={blogs} />
+      <BlogSlider />
       <StoreInfoSection />
       <SubscribeSection />
       <DeliveryService />
-      <FooterTwo />
+      <Footer />
     </Fragment>
   );
 }

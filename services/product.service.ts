@@ -35,8 +35,8 @@ const productServices = {
     const [res, error] = await http.get(
       `https://www.babystore.ae/api/fetch_categories`,
     );
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    const { data = [] } = res?.data || [];
+    if (res?.data?.success && data) {
       dispatch(productAction.setCategories(data));
     }
     return [res, error];
@@ -47,8 +47,9 @@ const productServices = {
     const [res, error] = await http.get(
       `https://www.babystore.ae/api/home_slider`,
     );
-    const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    const { data = [] } = res?.data || [];
+
+    if (res?.data?.success && data) {
       dispatch(productAction.setSliderImages(data));
     }
 
@@ -61,7 +62,7 @@ const productServices = {
       `https://www.babystore.ae/api/mobile_slider`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setMobSliderImages(data));
     }
 
@@ -75,8 +76,21 @@ const productServices = {
       `https://www.babystore.ae/api/home_desktop_sections`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setDesktopSections(data));
+    }
+
+    return [res, error];
+  },
+  async getHomeDesktopSectionsTest() {
+    const dispatch = getDispatch();
+
+    const [res, error] = await http.get(
+      `https://www.babystore.ae/api/home_desktop_sections_test`,
+    );
+    const { data = [] } = res?.data;
+    if (res?.data?.success && data) {
+      dispatch(productAction.setDesktopSectionsTest(data));
     }
 
     return [res, error];
@@ -106,7 +120,7 @@ const productServices = {
       `https://www.babystore.ae/api/get_suggesstion`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setSuggestedCategories(data));
     }
 
@@ -133,7 +147,7 @@ const productServices = {
       `https://www.babystore.ae/api/get_fav_list`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setTopCategories(data));
     }
 
@@ -146,7 +160,7 @@ const productServices = {
       `https://www.babystore.ae/api/you_may_also_like`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setYouMayAlosLike(data));
     }
     return [res, error];
@@ -158,7 +172,7 @@ const productServices = {
       `https://www.babystore.ae/api/top_products`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setTopProducts(data));
     }
     return [res, error];
@@ -170,7 +184,7 @@ const productServices = {
       `https://www.babystore.ae/api/get_trending_item`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setTrendingItems(data));
     }
     return [res, error];
@@ -182,7 +196,7 @@ const productServices = {
       `https://www.babystore.ae/api/get_flash_sale_products`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setFlashSaleproducts(data));
     }
     return [res, error];
@@ -194,7 +208,7 @@ const productServices = {
       `https://www.babystore.ae/api/get_likes_products`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setUserLikeproducts(data));
     }
     return [res, error];
@@ -206,8 +220,38 @@ const productServices = {
       `https://www.babystore.ae/api/most_wished_for`,
     );
     const { data = [] } = res?.data;
-    if (res?.data?.success) {
+    if (res?.data?.success && data) {
       dispatch(productAction.setMostWishedProducts(data));
+    }
+
+    return [res, error];
+  },
+  // product details page apis
+  async getProductDetails(id: any) {
+    const dispatch = getDispatch();
+
+    const [res, error] = await http.get(
+      `https://www.babystore.ae/api/fetch_product/${id}`,
+    );
+
+    const { data = {} } = res?.data || {};
+    if (res?.data?.success && data) {
+      dispatch(productAction.setProductDetails(data));
+      this.getRelatedProducts(id);
+    }
+
+    return [res, error];
+  },
+  async getRelatedProducts(id: any) {
+    const dispatch = getDispatch();
+
+    const [res, error] = await http.get(
+      `https://www.babystore.ae/api/related_items/${id}`,
+    );
+
+    const { data = [] } = res?.data;
+    if (res?.data?.success && data) {
+      dispatch(productAction.setRelatedProducts(data));
     }
 
     return [res, error];

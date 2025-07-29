@@ -17,9 +17,14 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 import userSlice from "./slices/auth.slice";
 import cartSlice from "./slices/cart.slice";
+import brandSlice from "./slices/brand.slice";
+import blogsSlice from "./slices/blogs.slice";
+import ordersSlice from "./slices/orders.slice";
+import loaderSlice from "./slices/loader.slice";
 import productSlice from "./slices/products";
-import globalStateSlice from "./slices/globalStates";
 import dashboardSlice from "./slices/dashboard.slice";
+import categoriesSlice from "./slices/categories.slice";
+import globalStateSlice from "./slices/globalStates";
 
 // Create noop storage for server-side
 const createNoopStorage = () => ({
@@ -37,8 +42,13 @@ const createNoopStorage = () => ({
 const rootReducer = combineReducers({
   user: userSlice,
   cart: cartSlice,
+  blogs: blogsSlice,
+  orders: ordersSlice,
+  loader: loaderSlice,
+  brands: brandSlice,
   product: productSlice,
   dashboard: dashboardSlice,
+  categories: categoriesSlice,
   globalStates: globalStateSlice,
 });
 const isServer = typeof window === "undefined";
@@ -47,8 +57,7 @@ const storage = isServer ? createNoopStorage() : createWebStorage("local");
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"],
-  blacklist: [],
+  whitelist: ["user", "cart", "blogs"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

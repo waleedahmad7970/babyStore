@@ -239,7 +239,7 @@ export default function Page(): JSX.Element {
             </div>
 
             <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
-              {currentItems.map((product) => {
+              {currentItems.map((product: any) => {
                 return (
                   <div
                     key={product.id}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { arrow_down } from "@/public/assets/icons";
 import { AccordionProps } from ".";
 
-const Accordion: React.FC<AccordionProps> = ({ items }) => {
+const Accordion: React.FC<AccordionProps> = ({ items, description }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {

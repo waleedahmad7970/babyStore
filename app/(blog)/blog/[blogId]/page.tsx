@@ -1,9 +1,12 @@
-import { blog_detail_1, blogmain } from "@/public/assets/blogs";
+"use client";
+import blogService from "@/services/blogs.service";
 import { blogDetailsData } from "@/static/static";
 import Image from "next/image";
-import React from "react";
+import { useParams } from "next/navigation";
+import React, { useEffect } from "react";
 
-export default function page() {
+export default function Page() {
+  const params = useParams();
   const {
     date,
     title,
@@ -17,6 +20,10 @@ export default function page() {
     conclusionTitle,
     conclusionDescription,
   } = blogDetailsData;
+
+  useEffect(() => {
+    if (params?.blogId) blogService.getBlogDetails(Number(params?.blogId));
+  }, [params?.blogId]);
   return (
     <div className="mx-auto w-full max-w-[1178px] px-[18px] py-10 lg:px-0">
       <div className="mb-[10px] flex md:mb-0">
@@ -97,7 +104,7 @@ export default function page() {
         <h1 className="max-w-[222px] text-[18px] leading-[23px] font-bold text-[#000] md:max-w-[510px] md:text-[38px] md:leading-[46.996px]">
           {sectionTwo.title}
         </h1>
-        <p className="mt-5 w-full text-[10px] leading-[12px] font-normal text-[#747474] md:mt-0 md:mt-[10px] md:max-w-[562px] md:text-[18px] md:leading-normal">
+        <p className="text-[#747474]md:mt-[10px] mt-5 w-full text-[10px] leading-[12px] font-normal md:max-w-[562px] md:text-[18px] md:leading-normal">
           {sectionTwo.description}
         </p>
         <div className="flex w-full flex-col gap-6 pt-5 md:gap-[82px] md:pl-[45px]">

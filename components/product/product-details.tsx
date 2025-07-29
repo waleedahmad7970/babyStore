@@ -22,10 +22,37 @@ import ProductSwiperSlider from "../slider/product.swiper";
 import ProductPagingSlider from "../slider/product-pagging-slider";
 import Link from "next/link";
 import ReviewSection from "../reviews/product-reviews";
+import { useAppSelector } from "@/store/hooks";
 
 export default function ProductDetails({ product = productData }) {
   const [quantity, setQuantity] = useState(1);
+  const { productDetails = {}, relatedProducts = [] } =
+    useAppSelector((state) => state.product) || {};
+  const {
+    brand_name,
+    category_id,
+    cost_price,
+    description,
+    features,
+    gallery,
+    google_product_category,
+    google_product_type,
+    hover_image,
+    image,
+    is_kwik,
+    min_quantity,
+    name,
+    office_stock,
+    no_of_sales,
+    price,
+    promo_cost_price,
+    reviews,
+    short_description,
+    slug,
+  } = productDetails || ({} as any);
 
+  const sliderImages = gallery && JSON.parse(gallery);
+  const productFeature = features && JSON.parse(features);
   return (
     <div className="cus-container mx-auto mt-3 rounded-lg md:mt-10">
       <div className="flex flex-col justify-between gap-4 xl:flex-row">
@@ -54,11 +81,11 @@ export default function ProductDetails({ product = productData }) {
             </div>
           </div>
 
-          <ProductPagingSlider />
+          <ProductPagingSlider sliderImages={sliderImages} />
         </div>
         <div className="mx-auto w-full md:max-w-[469px]">
           <h1 className="font-inter tracking-0 text-[14px] leading-[16.94px] font-normal text-[#1F1F1F] md:text-[20px] md:leading-[24px]">
-            {product.name}
+            {name || product.name}
           </h1>
           <p className="font-inter flex gap-[2px] text-[11px] leading-[13px] font-semibold text-[#858585]">
             View all{" "}
@@ -68,7 +95,7 @@ export default function ProductDetails({ product = productData }) {
             >
               <span className="font-inter mr-[2px] text-[11px] font-semibold text-[#6A94FF] underline">
                 {" "}
-                {product.brand}{" "}
+                {brand_name || product.brand}{" "}
               </span>
             </Link>
             products.
@@ -76,7 +103,7 @@ export default function ProductDetails({ product = productData }) {
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center space-x-2">
               <span className="text-[22px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
-                AED {product.price}
+                AED {price?.toFixed(2) || product.price}
               </span>
 
               {/* <span className="rounded-md bg-green-100 px-2 py-1 text-xs text-green-600">
@@ -193,12 +220,12 @@ export default function ProductDetails({ product = productData }) {
             ))}
           </div>
           {/* accordian */}
-          <Accordion items={accordionItems} />
+          <Accordion items={accordionItems} description={description} />
         </div>
       </div>
-      <ReviewSection />
-      <ProductSwiperSlider products={productsLIST1} />
-      <ProductSwiperSlider products={productsLIST1} />
+      <ReviewSection reviews={reviews} />
+      <ProductSwiperSlider products={relatedProducts} />
+      <ProductSwiperSlider products={relatedProducts} />
     </div>
   );
 }

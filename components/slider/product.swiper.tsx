@@ -18,18 +18,24 @@ interface Product {
 }
 interface ProductSliderProps {
   products: Product[];
+  title?: string;
 }
 
-export default function ProductSwiperSlider({ products }: ProductSliderProps) {
+export default function ProductSwiperSlider({
+  products,
+  title,
+}: ProductSliderProps) {
   const { width } = useWindowDimensions();
   const { scrollRef, scrollBy } = useScrollSlider();
   let left = (width - 1360) / 2 - 10;
   if (left < 0) left = 0;
+  console.log("products", products);
 
   return (
     <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">
       <div className="relative mx-auto w-full max-w-[1360px] pr-[10px]">
         <SliderHeading
+          title={title}
           onPrev={() => scrollBy("left")}
           onNext={() => scrollBy("right")}
         />

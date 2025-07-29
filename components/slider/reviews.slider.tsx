@@ -65,6 +65,7 @@ const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
     <div className="cus-container relative w-full overflow-hidden !py-5 pl-[10px] md:py-10">
       <div className="relative mx-auto w-full pr-[10px]">
         <SliderHeading
+          title="Reviews"
           onPrev={() => scrollBy("left")}
           onNext={() => scrollBy("right")}
         />

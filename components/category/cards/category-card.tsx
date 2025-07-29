@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface CategoryCardProps {
@@ -14,6 +14,7 @@ interface CategoryCardProps {
   categoryId?: number;
   cat_image?: string | StaticImport;
   slug?: any;
+  slugId?: any;
 }
 const CategoryCard: React.FC<CategoryCardProps> = ({
   cat_image,
@@ -24,8 +25,19 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   hoveredId,
   categoryId,
   slug,
+  slugId,
 }) => {
   const router = useRouter();
+  const pathname = usePathname();
+
+  const handleRedirect = () => {
+    const targetPath = `/category/${slugId}`;
+    if (pathname === targetPath) {
+      router.replace(targetPath); // Re-triggers internal state
+    } else {
+      router.push(targetPath);
+    }
+  };
   return (
     <div className="flex flex-col items-center text-center">
       <div
@@ -35,7 +47,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           <div className="absolute z-0 h-[99px] w-[99px] rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] bg-black/50 transition duration-300" />
         )} */}
         <Image
-          onClick={() => router.push(slug)}
+          onClick={handleRedirect}
           height={99}
           width={99}
           src={cat_image || ""}

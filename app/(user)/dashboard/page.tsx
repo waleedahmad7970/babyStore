@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Icons from "@/public/assets/svg-component";
 import AddressPage from "./address-page";
+import authService from "@/services/auth.service";
 import DasboardPage from "./dasboard-page";
 import CashbackPage from "./cashback-page";
 import DashboardWallet from "./dashboard-wallet";
@@ -9,9 +10,11 @@ import DashboardWishlist from "./wishlist-dashboard";
 import DashboardOrderPage from "./order-page";
 import DashboardReviewCards from "@/components/cards/dashboard-review-card";
 import DashboardTrackingPage from "./tracking-page";
+
+import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { DashboardCouponList } from "@/components/cards/dasboard-coupon-card";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { dashboardAction } from "@/store/slices/dashboard.slice";
+import orderServices from "@/services/order.service";
 
 const dashboardOptions = [
   { icon: Icons.DashboardIcon, label: "Dashboard" },
@@ -19,15 +22,27 @@ const dashboardOptions = [
   { icon: Icons.WishlistIcon, label: "Wishlist" },
   { icon: Icons.MapIcon, label: "Address List" },
   { icon: Icons.ReviewsIcon, label: "Reviews" },
-  { icon: Icons.WalletIcon, label: "Wallet" },
-  { icon: Icons.CouponIcon, label: "Coupons" },
+  // { icon: Icons.WalletIcon, label: "Wallet" },
+  // { icon: Icons.CouponIcon, label: "Coupons" },
   { icon: Icons.CashbackIcon, label: "Cashback" },
   { icon: Icons.TrackIcon, label: "Track order" },
 ];
 
 export default function Page() {
   const dispatch = useAppDispatch();
+  const { registerSessionId } = useAppSelector((state) => state.user);
   const { activeDashboardTab } = useAppSelector((state) => state.dashboard);
+
+  useEffect(() => {
+    if (registerSessionId) {
+      orderServices.getOrders(registerSessionId);
+      orderServices.getUserReviews(Number(registerSessionId));
+      authService.getUserCashBack(registerSessionId);
+      authService.getUserProfile(registerSessionId);
+      authService.getDefaultAddress(registerSessionId);
+      authService.getSavedAddresses(registerSessionId);
+    }
+  }, [registerSessionId]);
 
   return (
     <div className="cus-container mx-auto">
@@ -53,7 +68,6 @@ export default function Page() {
             );
           })}
         </div>
-
         <div className="w-full">
           <div className="hidden w-full text-[32px] font-bold text-[#473A3F] md:block">
             {activeDashboardTab}
@@ -61,12 +75,13 @@ export default function Page() {
           {activeDashboardTab === "Dashboard" && <DasboardPage />}
           {activeDashboardTab === "Orders" && <DashboardOrderPage />}
           {activeDashboardTab === "Wishlist" && <DashboardWishlist />}
-          {activeDashboardTab === "Wallet" && <DashboardWallet />}
           {activeDashboardTab === "Address List" && <AddressPage />}
           {activeDashboardTab === "Reviews" && <DashboardReviewCards />}
-          {activeDashboardTab === "Coupons" && <DashboardCouponList />}
           {activeDashboardTab === "Cashback" && <CashbackPage />}
           {activeDashboardTab === "Track order" && <DashboardTrackingPage />}
+
+          {activeDashboardTab === "Coupons" && <DashboardCouponList />}
+          {activeDashboardTab === "Wallet" && <DashboardWallet />}
         </div>
       </div>
     </div>

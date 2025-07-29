@@ -13,40 +13,54 @@ import {
   skincareSections,
   toySections,
 } from "@/static/static";
+import { useRouter } from "next/navigation";
 
 type SectionType = {
   title: string;
   items: string[];
 };
-type MenuConfigItem = {
-  data: SectionType[];
-  columns: number;
-  itemsPerCol: number;
+interface MenuItem {
+  id: number;
+  title: string;
+  image: string;
+  items: {
+    id: number | null;
+    name: string;
+    image: string | null;
+  }[];
+}
+
+interface MenuConfigItem {
+  data: MenuItem[];
+  columns?: number;
+  itemsPerCol?: number;
   showImages?: boolean;
   showBrands?: boolean;
-};
+}
 
 const menuConfig: Record<number, MenuConfigItem> = {
   0: {
-    data: sections2,
+    data: foodingSections,
     columns: 3,
-    itemsPerCol: 3,
+    itemsPerCol: 2,
     showImages: true,
     showBrands: true,
   },
-  1: { data: nursingSections, columns: 3, itemsPerCol: 2 },
-  2: { data: foodingSections, columns: 3, itemsPerCol: 2 },
+  1: { data: skincareSections, columns: 3, itemsPerCol: 1 },
+  2: { data: nursingSections, columns: 3, itemsPerCol: 2 },
   3: { data: diaperingSections, columns: 4, itemsPerCol: 2 },
-  4: { data: toySections, columns: 3, itemsPerCol: 2 },
-  5: { data: skincareSections, columns: 3, itemsPerCol: 1 },
-  6: { data: outdoorSections, columns: 3, itemsPerCol: 2 },
+  4: { data: sections2, columns: 3, itemsPerCol: 3 },
+  5: { data: toySections, columns: 3, itemsPerCol: 2 },
+  6: { data: outdoorSections, columns: 4, itemsPerCol: 2 },
   7: { data: schoolEssentialsSections, columns: 5, itemsPerCol: 2 },
   8: { data: maternitySections, columns: 5, itemsPerCol: 2 },
-  9: { data: partySections, columns: 3, itemsPerCol: 2 },
-  10: { data: clothingSections, columns: 3, itemsPerCol: 2 },
+  9: { data: [], columns: 3, itemsPerCol: 2 },
+  10: { data: partySections, columns: 3, itemsPerCol: 2 },
+  11: { data: clothingSections, columns: 3, itemsPerCol: 2 },
 };
 export const MegaMenuPanel = ({ hoveredId }: { hoveredId: number }) => {
-  const config = menuConfig[hoveredId];
+  const router = useRouter();
+  const config = menuConfig[hoveredId] as any;
   if (!config) return null;
 
   const { data, columns, itemsPerCol, showImages, showBrands } = config;
@@ -66,16 +80,22 @@ export const MegaMenuPanel = ({ hoveredId }: { hoveredId: number }) => {
               )
               .map((section: any, i: number) => (
                 <div key={i} className="w-[232px] max-w-[232px]">
-                  <h2 className="mb-[13px] max-w-[831.3px] text-[15px] leading-[24px] font-medium text-[#1F1F1F]">
+                  <h2
+                    onClick={() => router.push(`/sub-category/${section?.id}`)}
+                    className="mb-[13px] max-w-[831.3px] cursor-pointer text-[15px] leading-[24px] font-medium text-[#1F1F1F] hover:text-[#F82D8B99]"
+                  >
                     {section.title}
                   </h2>
                   <ul className="space-y-1 text-sm text-gray-600">
                     {section.items.map((item: any, idx: number) => (
                       <li
+                        onClick={() =>
+                          router.push(`/sub-sub-category/${item?.id}`)
+                        }
                         key={idx}
                         className="mb-0 cursor-pointer border-b border-[#F5F5F5] text-[12px] leading-[24px] text-[#1F1F1F] transition-all duration-200 hover:translate-x-3 hover:text-[#F82D8B99]"
                       >
-                        {item}
+                        {item?.name || item}
                       </li>
                     ))}
                   </ul>

@@ -1,54 +1,52 @@
 "use client";
-import { useState } from "react";
 import { CartItem } from "@/components/cart/cart-item";
 import { CartSummary } from "@/components/cart/cart-summary";
-import { detail_image_1 } from "@/public/assets/products";
 import { CartItemMob } from "@/components/cart/cart-item-mob";
-
-const initialProducts = [
-  {
-    id: 1,
-    title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    price: 155,
-    quantity: 1,
-    image: detail_image_1,
-  },
-  {
-    id: 2,
-    title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    price: 155,
-    quantity: 1,
-    image: detail_image_1,
-  },
-  {
-    id: 3,
-    title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    price: 155,
-    quantity: 1,
-    image: detail_image_1,
-  },
-  {
-    id: 4,
-    title: "Lindale Outdoor Wooden Swing & Slide Playset",
-    price: 155,
-    quantity: 1,
-    image: detail_image_1,
-  },
-];
-
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { cartAction } from "@/store/slices/cart.slice";
+import { useRouter } from "next/navigation";
+import Button from "@/components/button/button";
+import { useMemo } from "react";
+import { toast } from "react-toastify";
+interface AppliedCoupon {
+  discount?: number | string;
+}
 export default function Page() {
-  const [cart, setCart] = useState(initialProducts);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { cartProducts = [] } = useAppSelector((state) => state.cart);
+  const { appliedCoupon = {} } = useAppSelector((state) => state.user);
 
-  const updateQuantity = (id: number, quantity: number) => {
-    setCart(
-      cart.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
+  const { subtotal, discountAmount, tax, total } = useMemo(() => {
+    const subtotal = cartProducts
+      ?.filter((item: any) => item.isCheckoutProduct)
+      ?.reduce(
+        (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 1),
+        0,
+      );
+
+    const discountPercentage =
+      Number((appliedCoupon as AppliedCoupon)?.discount) || 0;
+
+    const discountAmount = (subtotal * discountPercentage) / 100;
+    const discountedSubtotal = subtotal - discountAmount;
+
+    const tax = discountedSubtotal * 0.05;
+    const total = discountedSubtotal + tax;
+
+    return { subtotal, discountAmount, tax, total };
+  }, [cartProducts, appliedCoupon]);
+
+  const handleCheckout = () => {
+    const isAnyItemSelcted =
+      cartProducts?.filter((item) => item?.isCheckoutProduct === true).length >
+      0;
+    if (!isAnyItemSelcted)
+      return toast.warn("Please Select atleast one product before checkout");
+    else {
+      router.push("/checkout");
+    }
   };
-
-  const removeItem = (id: number) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
-
   return (
     <div className="mx-auto w-full max-w-[1360px]">
       <div className="px-[10px] py-10">
@@ -58,26 +56,30 @@ export default function Page() {
             Shop for AED 12.20 more to avail{" "}
             <span className="font-bold"> FREE SHIPPING.</span>
           </div>
-          <div className="max-w-max rounded-[50px] border-none bg-[#61B482] px-5 py-[10px] text-[16px] font-semibold text-white uppercase">
-            Shop More{" "}
-          </div>
-          <div
+          <Button
+            text={"Shop More"}
+            handler={() => router.push("/")}
+            className="max-w-max cursor-pointer rounded-[50px] border-none bg-[#61B482] px-5 py-[10px] text-[16px] font-semibold text-white uppercase"
+          />
+
+          <button
+            onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
             style={{
               background: "rgba(0, 0, 0, 0.04)",
               borderColor: "rgba(0, 0, 0, 0.10)",
               color: "rgba(0, 0, 0, 0.20)",
             }}
-            className="hidden rounded-[50px] border-1 px-5 py-[10px] text-[16px] font-bold md:block"
+            className="hidden cursor-pointer rounded-[50px] border-1 px-5 py-[10px] text-[16px] font-bold md:block"
           >
             Remove Selected{" "}
-          </div>
+          </button>
         </div>
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1 rounded-[6px] border-1 border-[#E0E0E0] p-[10px] md:p-6">
             <div className="flex items-center justify-start gap-6 md:hidden">
               <div className="h-6 min-w-6 rounded-[3px] border border-[#E0E0E0] bg-white"></div>
-
-              <div
+              <button
+                onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
                 style={{
                   background: "rgba(0, 0, 0, 0.04)",
                   borderColor: "rgba(0, 0, 0, 0.10)",
@@ -86,17 +88,17 @@ export default function Page() {
                 className="rounded-[50px] border-1 px-5 py-[10px] text-[16px] font-bold"
               >
                 Remove Selected{" "}
-              </div>
+              </button>
             </div>
             <div className="hidden items-center justify-between md:flex">
               <p className="font-Inter w-full max-w-[354px] text-center text-[16px] font-semibold text-[#000]">
                 Product
               </p>
-              <p className="font-Inter w-full max-w-[103px] text-center text-[16px] font-semibold text-[#000]">
-                Unit Price
-              </p>
               <p className="font-Inter w-full max-w-[112px] text-center text-[16px] font-semibold text-[#000]">
                 Quantity
+              </p>
+              <p className="font-Inter w-full max-w-[103px] text-center text-[16px] font-semibold text-[#000]">
+                Unit Price
               </p>
               <p className="font-Inter w-full max-w-[112px] text-center text-[16px] font-semibold text-[#000]">
                 Subtotal
@@ -106,33 +108,29 @@ export default function Page() {
               </p>
             </div>
             <div className="hidden md:block">
-              {cart.map((product, index) => (
+              {cartProducts?.map((product: any, index) => (
                 <div key={index} className="">
-                  <CartItem
-                    key={product.id}
-                    product={product}
-                    onRemove={() => removeItem(product.id)}
-                    onQuantityChange={(qty) => updateQuantity(product.id, qty)}
-                  />
+                  <CartItem key={product?.id} product={product} />
                   <div className="my-4 h-[1px] w-full bg-[#D9D9D9]" />
                 </div>
               ))}
             </div>
             <div className="block md:hidden">
-              {cart.map((product, index) => (
+              {cartProducts?.map((product: any, index) => (
                 <div key={index} className="">
-                  <CartItemMob
-                    key={product.id}
-                    product={product}
-                    onRemove={() => removeItem(product.id)}
-                    onQuantityChange={(qty) => updateQuantity(product.id, qty)}
-                  />
+                  <CartItemMob key={product?.id} product={product} />
                   <div className="my-4 h-[1px] w-full bg-[#D9D9D9]" />
                 </div>
               ))}
             </div>
           </div>
-          <CartSummary />
+          <CartSummary
+            handleCheckout={() => handleCheckout()}
+            total={total}
+            tax={tax}
+            subtotal={subtotal}
+            discount={discountAmount}
+          />
         </div>
       </div>
     </div>

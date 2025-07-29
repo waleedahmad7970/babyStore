@@ -5,12 +5,14 @@ interface InputFieldProps {
   name?: string;
   type?: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | any;
   className?: string;
   required?: boolean;
   disabled?: boolean;
-  error?: string;
+  error?: any;
+  rest?: any;
+  onBlur?: any;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -20,6 +22,8 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder = "",
   value,
   error,
+  onBlur,
+  rest,
   onChange,
   className = `rounded-md border px-4 py-2 text-sm shadow-sm transition outline-none ${error ? "" : ""} focus:border-pink-500 focus:ring-2 focus:ring-pink-500 disabled:bg-gray-100`,
   required = false,
@@ -33,6 +37,8 @@ const InputField: React.FC<InputFieldProps> = ({
         </label>
       )}
       <input
+        {...rest}
+        onBlur={onBlur}
         id={name}
         name={name}
         type={type}

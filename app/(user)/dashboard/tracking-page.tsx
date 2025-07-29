@@ -1,3 +1,4 @@
+import Button from "@/components/button/button";
 import InputField from "@/components/fields/input-field";
 import {
   OrderDetails,
@@ -9,8 +10,11 @@ import {
   checkout_2,
   checkout_3,
 } from "@/public/assets/icons";
+import orderServices from "@/services/order.service";
+import { useAppSelector } from "@/store/hooks";
 import Image, { StaticImageData } from "next/image";
-import React from "react";
+import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 interface CartItem {
   id: number;
   name: string;
@@ -43,6 +47,33 @@ const initialCart: CartItem[] = [
   },
 ];
 export default function DashboardTrackingPage() {
+  const { id } = useParams() as { id?: string };
+  const [orderCode, setOrderCode] = useState("");
+
+  const { orderDetails = {} } = useAppSelector((state) => state.orders) as any;
+  const { order = {}, order_details = [] } = orderDetails || {};
+  const totalPrice = order_details?.reduce((sum: number, item: any) => {
+    const quantity = item?.quantity ?? 1;
+    return sum + (item?.price ?? 0) * quantity;
+  }, 0);
+
+  const taxAmount = Number(order?.tax) ?? 0;
+  const orderTotal = totalPrice + taxAmount;
+
+  const subTotal = [
+    { label: "Sub Total", value: totalPrice.toFixed(2) },
+    { label: "Tax", value: taxAmount ? taxAmount.toFixed(2) : 0 },
+    { label: "Order Total", value: orderTotal ? orderTotal.toFixed(2) : 0 },
+  ];
+
+  useEffect(() => {
+    if (id) orderServices.getOrderDetails(Number(id));
+    setOrderCode(id ?? "");
+  }, [id]);
+  const handleTrack = async () => {
+    await orderServices.getOrderDetails(Number(orderCode));
+  };
+
   return (
     <div className="w-full">
       <div className="w-full sm:max-w-[420px]">
@@ -53,18 +84,22 @@ export default function DashboardTrackingPage() {
           Track your order status!
         </p>
         <InputField
-          value=""
+          type="number"
+          value={orderCode || ""}
+          onChange={(e) => setOrderCode(e.target.value)}
           placeholder="Order Code"
           className="mb-4 w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
         />
-        <InputField
+        {/* <InputField
           value=""
           placeholder="Email Address"
           className="mb-8 w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
+        /> */}
+        <Button
+          handler={() => handleTrack()}
+          className="mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[18px] leading-[19.031px] font-medium text-white transition hover:bg-green-700"
+          text={"Track Order"}
         />
-        <button className="mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[18px] leading-[19.031px] font-medium text-white transition hover:bg-green-700">
-          Track Order
-        </button>
       </div>
       <div className="flex w-full flex-col justify-between gap-[28px] pt-[80px] xl:flex-row">
         <div className="w-full xl:max-w-[70%]">
@@ -92,13 +127,13 @@ export default function DashboardTrackingPage() {
             Order Details
           </h2>
           <div className="flex w-full flex-col gap-2">
-            {initialCart.map((item) => (
+            {order_details?.map((item: any) => (
               <div
-                key={item.id}
+                key={item?.id}
                 className="relative flex h-[115px] justify-between gap-2 rounded-[7.6px] bg-[#FAFAFA] px-[5.4px] py-[5.4px] md:justify-start"
               >
                 <Image
-                  src={item?.image}
+                  src={item?.image || checkout_1}
                   alt={"cart-item"}
                   height={104}
                   width={104}
@@ -106,7 +141,7 @@ export default function DashboardTrackingPage() {
                 />
                 <div className="flex h-full w-full flex-col justify-between">
                   <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
-                    {item.name}
+                    {item?.product_name}
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col">
@@ -114,7 +149,7 @@ export default function DashboardTrackingPage() {
                         AED
                       </p>
                       <p className="text-[14.882px] leading-[12.649px] font-semibold text-[#1F1F1F]">
-                        {item.price.toFixed(2)}
+                        {item?.price?.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -122,7 +157,7 @@ export default function DashboardTrackingPage() {
               </div>
             ))}
           </div>
-          <OrderDetailsTotal />
+          <OrderDetailsTotal data={subTotal} />
         </div>
       </div>
       <div className="mt-[54px] flex flex-col items-center justify-between gap-4 rounded-[8px] bg-[#FFD8EB] px-4 py-6 md:hidden">

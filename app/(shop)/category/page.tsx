@@ -9,9 +9,10 @@ import {
   funnel,
 } from "@/public/assets/icons";
 import { productsLIST1 } from "@/static/static";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import React, { JSX, useState } from "react";
 import ReactPaginate from "react-paginate";
 
@@ -30,6 +31,8 @@ export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 12;
   const dispatch = useAppDispatch();
+  const searchParams = useSearchParams();
+  const categorySlug = searchParams.get("category");
 
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -200,7 +203,7 @@ export default function Page(): JSX.Element {
               })}
             </div> */}
             <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
-              {currentItems.map((product) => {
+              {currentItems.map((product: any) => {
                 return (
                   <div
                     key={product.id}

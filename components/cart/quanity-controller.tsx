@@ -20,10 +20,20 @@ export const QuantityControl = ({
     }}
     className={`flex items-center justify-between rounded-[8px] border p-2 ${className}`}
   >
-    <Image onClick={onDecrease} src={decrement} alt="min" className="h-6 w-6" />
+    <Image
+      onClick={onDecrease}
+      src={decrement}
+      alt="min"
+      className="h-6 w-6 cursor-pointer"
+    />
 
     <span className="text-[14px] font-medium text-[#191818]">{quantity}</span>
 
-    <Image onClick={onIncrease} src={increment} alt="min" className="h-6 w-6" />
+    <Image
+      onClick={onIncrease}
+      src={increment}
+      alt="min"
+      className="h-6 w-6 cursor-pointer"
+    />
   </div>
 );

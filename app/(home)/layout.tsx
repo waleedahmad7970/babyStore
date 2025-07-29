@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { Fragment } from "react";
-import { blogs, reviews } from "@/static/static";
+import { reviews } from "@/static/static";
 
 import Footer from "@/components/footer/footer";
 import Navbar from "@/components/header/navbar";
@@ -25,7 +25,7 @@ export default function HomePageLayout({
       <Navbar />
       {children}
       <ReviewSlider reviews={reviews} />
-      <BlogSlider blogs={blogs} />
+      <BlogSlider />
       <StoreInfoSection />
       <SubscribeSection />
       <DeliveryService />
