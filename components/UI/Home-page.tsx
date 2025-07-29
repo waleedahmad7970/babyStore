@@ -273,7 +273,7 @@ const HomePage = () => {
       const root = createRoot(sliderContainer);
       root.render(
         <Provider store={store}>
-          <ProductSwiperSlider products={section.products} />
+          <ProductSwiperSlider products={section?.products} />
         </Provider>,
       );
       cleanupFunctions.push(() => {

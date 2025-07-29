@@ -260,6 +260,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
 import { userActions } from "@/store/slices/auth.slice";
 import { calculateAverageRating } from "@/helpers/helper";
+import { logo } from "@/public/assets/brands";
 
 interface ProductData {
   id: number;
@@ -361,7 +362,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <div className="relative min-h-[240px] min-w-[240px] overflow-hidden">
               <Image
-                src={`https:www.babystore.ae/storage/${image}` || image}
+                src={`https:www.babystore.ae/storage/${image}` || logo}
                 alt={"sw"}
                 fill
                 className="h-full w-full cursor-pointer object-cover transition duration-500 hover:scale-125 hover:rotate-3"

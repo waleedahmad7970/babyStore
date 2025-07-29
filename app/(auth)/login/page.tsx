@@ -12,7 +12,6 @@ import { validationSchemas } from "@/utils/validation";
 import Link from "next/link";
 
 import { signIn, useSession } from "next-auth/react";
-import ProtectedComp from "@/routes/ProtectedRoutes";
 
 const initialValues = {
   email: "",
@@ -35,8 +34,8 @@ const Login = () => {
     try {
       // Redirect to provider login page
       await signIn(provider, {
-        // callbackUrl: "/", // Redirect to home after successful login
-        redirect: false, // We'll handle the redirect manually
+        callbackUrl: "/", // Redirect to home after successful login
+        // redirect: false, // We'll handle the redirect manually
       });
     } catch (error) {
       console.error("Social login error:", error);
