@@ -19,7 +19,7 @@ import { StaticImageData } from "next/image";
 import { calculateAverageRating } from "@/helpers/helper";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import { facllBackProduct } from "@/public/assets/products";
+import { fallBackImage } from "@/public/assets/products";
 
 interface ProductData {
   id: number;
@@ -105,8 +105,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             >
               <Image
                 src={
-                  `https://www.babystore.ae/storage/${image}` ||
-                  facllBackProduct
+                  `https://www.babystore.ae/storage/${image}` || fallBackImage
                 }
                 // src={image}
                 alt={"sw"}

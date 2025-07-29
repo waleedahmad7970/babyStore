@@ -34,4 +34,4 @@ export { default as rockers } from "../products/rockers.png";
 export { default as seats } from "../products/seats.png";
 export { default as stollers } from "../products/stollers.png";
 
-export { default as facllBackProduct } from "../products/fall-back-product.png";
+export { default as fallBackImage } from "../products/fall-back-product.png";

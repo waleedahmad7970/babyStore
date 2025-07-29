@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 import {
@@ -18,13 +18,13 @@ import { cartAction } from "@/store/slices/cart.slice";
 import { userActions } from "@/store/slices/auth.slice";
 import { calculateAverageRating } from "@/helpers/helper";
 import { logo } from "@/public/assets/brands";
-import { facllBackProduct } from "@/public/assets/products";
+import { fallBackImage } from "@/public/assets/products";
 
 interface ProductData {
   id: number;
   name?: string;
   title: string;
-  image: string;
+  image: string | StaticImageData;
   price: number;
   oldPrice: number;
   discount: string;
@@ -121,9 +121,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="relative min-h-[240px] min-w-[240px] overflow-hidden">
               <Image
                 src={
-                  `https:www.babystore.ae/storage/${image}` || facllBackProduct
+                  `https:www.babystore.ae/storage/${image}` ||
+                  `https:www.babystore.ae/storage${image}` ||
+                  fallBackImage
                 }
-                alt={image || "sw"}
+                alt={"product-image"}
                 fill
                 className="h-full w-full cursor-pointer object-cover transition duration-500 hover:scale-125 hover:rotate-3"
               />
