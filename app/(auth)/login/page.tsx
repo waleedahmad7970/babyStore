@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { validationSchemas } from "@/utils/validation";
 import Link from "next/link";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "@greatsumini/react-facebook-login";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -80,6 +80,7 @@ const Login = () => {
     ].join(" "),
   });
   const responseFacebook = async (response: any) => {
+    console.log({ response });
     if (response.accessToken) {
       const { name, email, userID, picture, accessToken } = response;
 
@@ -110,12 +111,17 @@ const Login = () => {
         appId="2009538322910108"
         autoLoad={false}
         fields="name,email,picture"
-        callback={(res) => {
-          console.log("Raw FB login response:", res);
-          responseFacebook(res);
-        }}
-        textButton="Continue with facebook"
-        cssClass="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
+        onSuccess={responseFacebook}
+        onFail={(error) => console.error("Facebook login failed:", error)}
+        onProfileSuccess={responseFacebook}
+        render={({ onClick }) => (
+          <button
+            onClick={onClick}
+            className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
+          >
+            Continue with Facebook
+          </button>
+        )}
       />
 
       <Button

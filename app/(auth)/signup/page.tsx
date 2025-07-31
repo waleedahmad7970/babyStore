@@ -10,10 +10,10 @@ import { validationSchemas } from "@/utils/validation";
 import { useAppSelector } from "@/store/hooks";
 import Link from "next/link";
 
-import ReactFacebookLogin from "react-facebook-login";
 import { toast } from "react-toastify";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import FacebookLogin from "@greatsumini/react-facebook-login";
 
 const initialValues = {
   name: "",
@@ -119,16 +119,21 @@ const Signup = () => {
     <div className="mx-auto max-w-[500px] px-[10px] py-[50px] sm:py-[100px] md:px-0">
       <Image src={logo} alt="logo" className="mx-auto mb-5" />
 
-      <ReactFacebookLogin
+      <FacebookLogin
         appId="2009538322910108"
         autoLoad={false}
         fields="name,email,picture"
-        callback={(res) => {
-          console.log("Raw FB login response:", res);
-          responseFacebook(res);
-        }}
-        textButton="Continue with facebook"
-        cssClass="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
+        onSuccess={responseFacebook}
+        onFail={(error) => console.error("Facebook login failed:", error)}
+        onProfileSuccess={responseFacebook}
+        render={({ onClick }) => (
+          <button
+            onClick={onClick}
+            className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
+          >
+            Continue with Facebook
+          </button>
+        )}
       />
 
       <Button
