@@ -4,6 +4,7 @@ import ProductCardTwo from "@/components/product/cards/product-card-two";
 import { useScrollSlider } from "@/hooks/useScrollSlider";
 import SliderHeading from "../header-titles/slider-header";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import ProductCard from "../product/cards/product-card";
 interface Product {
   id: number;
   name?: string;
@@ -52,7 +53,7 @@ export default function ProductSwiperSlider({
         >
           <div className="flex justify-start gap-5">
             {products?.map((product, index) => {
-              return <ProductCardTwo key={index} product={product as any} />;
+              return <ProductCard key={index} product={product as any} />;
 
               // <ProductCardTwo key={product.id} product={product as any} />;
             })}{" "}
