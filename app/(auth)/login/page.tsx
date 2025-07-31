@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/button/button";
 import InputField from "@/components/fields/input-field";
@@ -7,11 +6,13 @@ import authService from "@/services/auth.service";
 import { logo } from "@/public/assets/brands";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/store/hooks";
 import { validationSchemas } from "@/utils/validation";
 import Link from "next/link";
+import FacebookLogin from "react-facebook-login";
 
-import { signIn, useSession } from "next-auth/react";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -19,59 +20,6 @@ const initialValues = {
 };
 const Login = () => {
   const router = useRouter();
-  const hasStoredData = useRef(false);
-  const [loginProvider, setLoginProvider] = useState<
-    "google" | "facebook" | null
-  >(null);
-
-  const { data: session, status } = useSession();
-  const { registerSessionId = "" } = useAppSelector((state) => state.user);
-
-  const { login } = useAppSelector((state) => state.loader);
-
-  const storeSocialUser = async (provider: "google" | "facebook") => {
-    setLoginProvider(provider);
-    try {
-      // Redirect to provider login page
-      await signIn(provider, {
-        callbackUrl: "/", // Redirect to home after successful login
-        // redirect: false, // We'll handle the redirect manually
-      });
-    } catch (error) {
-      console.error("Social login error:", error);
-    }
-  };
-
-  useEffect(() => {
-    const handleSocialLogin = async () => {
-      if (
-        status === "authenticated" &&
-        session &&
-        loginProvider &&
-        !registerSessionId &&
-        !hasStoredData.current
-      ) {
-        try {
-          const data = {
-            name: session.user?.name || "",
-            email: session.user?.email || "",
-            image: session.user?.image || "",
-            id: session.accessToken || "",
-            expires: session.expires || "",
-            provider: loginProvider,
-          };
-
-          hasStoredData.current = true;
-          await authService.socialLogin(data, router);
-        } catch (error) {
-          console.error("Error storing social user data:", error);
-        } finally {
-        }
-      }
-    };
-
-    handleSocialLogin();
-  }, [session, status, loginProvider, registerSessionId, router]);
 
   const onSubmit = async (values: any) => {
     await authService.loginMobileUser(values, router);
@@ -92,23 +40,87 @@ const Login = () => {
     submitCount,
   } = formikProps;
   const isSubmitted = submitCount > 0;
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: async (credentialResponse) => {
+      try {
+        const accessToken = credentialResponse.access_token;
+        const { data: userInfo } = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        const data = {
+          name: userInfo?.name || "",
+          email: userInfo?.email || "",
+          image: userInfo?.picture || "",
+          id: userInfo.sub || "",
+          sub: userInfo.sub || "",
+          accessToken: accessToken,
+          provider: "google",
+        };
+        const [res, error] = await authService.socialLogin(data, router);
+        if (res?.data?.user) {
+          router.push("/");
+        }
+      } catch (error) {
+        console.error("Error fetching user info or saving:", error);
+      }
+    },
+    onError: (error) => {
+      toast.error(error.error_description || "Google login failed");
+    },
+    scope: [
+      "openid",
+      "profile",
+      "email",
+      "https://www.googleapis.com/auth/user.phonenumbers.read",
+    ].join(" "),
+  });
+  const responseFacebook = async (response: any) => {
+    if (response.accessToken) {
+      const { name, email, userID, picture, accessToken } = response;
+
+      const data = {
+        name: name || "",
+        email: email || "",
+        image: picture?.data?.url || "",
+        id: userID || "",
+        accessToken: accessToken,
+        provider: "facebook",
+      };
+      try {
+        const [res, error] = await authService.socialLogin(data, router);
+        if (res?.data?.user) {
+          router.push("/");
+        }
+      } catch (error) {
+        console.error("Error saving Facebook user:", error);
+      }
+    }
+  };
 
   return (
     <div className="mx-auto max-w-[500px] px-[10px] py-[50px] sm:py-[100px] md:px-0">
       <Image src={logo} alt="logo" className="mx-auto mb-5" />
 
-      <Button
-        loading={login}
-        size={30}
-        handler={() => storeSocialUser("facebook")}
-        type={"submit"}
-        text={"Sign in with Facebook"}
-        className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
+      <FacebookLogin
+        appId="2009538322910108"
+        autoLoad={false}
+        fields="name,email,picture"
+        callback={(res) => {
+          console.log("Raw FB login response:", res);
+          responseFacebook(res);
+        }}
+        textButton="Continue with facebook"
+        cssClass="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
       />
+
       <Button
-        loading={login}
         size={30}
-        handler={() => storeSocialUser("google")}
+        handler={() => loginWithGoogle()}
         type={"submit"}
         text={"Continue with Google"}
         className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#F470AB] py-4 text-[17px] font-semibold text-white shadow-md transition"
@@ -118,7 +130,6 @@ const Login = () => {
           OR
         </div>
       </div>
-
       <p className="font-inter mt-5 min-h-[32px] text-center text-[16px] leading-[18px] font-normal text-[#A0A0A0]">
         Dont have an account?{" "}
         <Link href={"/signup"} className="font-semibold text-[#F470AB]">
@@ -126,7 +137,6 @@ const Login = () => {
           Create Here{" "}
         </Link>
       </p>
-
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <InputField
           name="email"
@@ -156,13 +166,11 @@ const Login = () => {
 
         <Button
           size={30}
-          loading={login}
           type={"submit"}
           text={"Login"}
           className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-4 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#F470AB]"
         />
       </form>
-
       <div className="flex items-center justify-between">
         <p className="font-inter mt-5 min-h-[32px] text-center text-[16px] leading-[18px] font-normal text-[#A0A0A0]">
           Remember me

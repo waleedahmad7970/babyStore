@@ -252,7 +252,7 @@ const Checkout = () => {
               <div className="">
                 <PhoneInput
                   country="ae"
-                  value={values.phone}
+                  // value={values.phone}
                   onChange={(val) => setFieldValue("phone", val)}
                   inputClass="!ps-10 !w-full !rounded-[7px] !bg-[#FAFAFA] !border-none !px-4 !py-3 !h-[48px] !text-[14px] !leading-[24px] !text-[#ADADAD]"
                   containerClass="!w-full !bg-[#FAFAFA] !border-none !rounded-[7px]"

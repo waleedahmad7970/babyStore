@@ -135,3 +135,8 @@ export { default as Cashback2x } from "../icons/2xCashback.svg";
 export { default as Support7 } from "../icons/7Support.svg";
 export { default as conformTick } from "../icons/confirm-tick.svg";
 export { default as comments } from "../icons/comments.svg";
+
+// icon of saocila
+
+export { default as facebook } from "../icons/facebook.svg";
+export { default as google } from "../icons/google.svg";
