@@ -19,6 +19,7 @@ import { userActions } from "@/store/slices/auth.slice";
 import { calculateAverageRating } from "@/helpers/helper";
 import { logo } from "@/public/assets/brands";
 import { fallBackImage } from "@/public/assets/products";
+import { useRouter } from "next/router";
 
 interface ProductData {
   id: number;
@@ -54,7 +55,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     is_promo,
     promo_price,
   } = product;
-
   const dispatch = useAppDispatch();
   const { wishList = [] } = useAppSelector((state) => state.user);
   const { cartProducts = [] } = useAppSelector((state) => state.cart);
@@ -155,9 +155,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }}
           className="flex h-[170px] flex-col justify-between border-t-1 px-3 pt-2 pb-3"
         >
-          <p className="font-inter line-clamp-2 min-h-[32px] text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
-            {name}
-          </p>
+          <Link href={`/product/${id}`}>
+            <p className="font-inter line-clamp-2 min-h-[32px] text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
+              {name}
+            </p>
+          </Link>
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex min-h-[32px] flex-col gap-1">
               {is_promo && promo_price ? (

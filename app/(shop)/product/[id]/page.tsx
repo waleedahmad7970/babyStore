@@ -91,8 +91,8 @@ export default function Page() {
     is_promo,
   } = (productDetails as any) || {};
 
-  console.log("s", { productDetails });
   const averageRating = calculateAverageRating(reviews || []);
+  console.log("s", { productDetails }, reviews, averageRating);
 
   const discountPercentage =
     is_promo && promo_price ? ((price - promo_price) / price) * 100 : 0;
@@ -100,7 +100,7 @@ export default function Page() {
   const productFeature = features && JSON.parse(features);
 
   const currentProductDetails = cartProducts?.find(
-    (item) => Number(item.id) === Number(params?.id),
+    (item) => Number(item?.id) === Number(params?.id),
   );
   const { quantity } = currentProductDetails || {};
 
@@ -175,6 +175,7 @@ export default function Page() {
   const wishedProduct = wishList?.find(
     (product) => product?.id === id && product?.wished === true,
   );
+  console.log({ currentProductDetails });
   const addToWishlist = () => {
     dispatch(
       userActions.addToUserWishList({ id, name, title: name, image, price }),
@@ -185,15 +186,13 @@ export default function Page() {
     router.push(`/brand/${brand_id}`);
   };
 
-  console.log({ currentProductDetails });
-
   return (
     <div className="cus-container mx-auto mt-3 rounded-lg md:mt-10">
       {loader && <FullScreenLoader isLoading={loader} />}
       <div className="flex flex-col justify-between gap-4 xl:flex-row">
         <div className="relative mx-auto w-full md:max-w-[839px]">
           <div className="absolute top-3 right-3 z-10 flex flex-col gap-5 md:top-7 md:right-[33px] md:gap-2">
-            {[share, left_right_arrow]?.map((item, index) => (
+            {[share]?.map((item, index) => (
               <Image
                 key={index}
                 src={item}
@@ -261,11 +260,11 @@ export default function Page() {
                 </>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <span className="text-[22px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
+                  <span className="text-[26px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
                     AED {finalPrice.toFixed(2)}
                   </span>
                   {/* Optional: strike-through if you want to fake discount */}
-                  <span className="text-[14px] leading-[24px] font-semibold text-[#929391] line-through">
+                  <span className="text-[16px] leading-[24px] font-semibold text-[#929391] line-through">
                     AED {originalPrice.toFixed(2)}
                   </span>
                 </div>
@@ -305,7 +304,7 @@ export default function Page() {
                 );
               })()}
               <span className="ml-[2px] text-[12px] leading-[14.88px] font-normal text-[#5D5E5C]">
-                {reviews ?? "Reviews"}
+                {reviews?.length > 0 ? `(${reviews.length})` : "(No reviews)"}
               </span>
             </div>
           </div>
@@ -357,7 +356,7 @@ export default function Page() {
             <SizeSelector />
           </div>
           {/* interactions buttons */}
-          <div className="flex justify-between gap-1">
+          <div className="hidden justify-between gap-1 sm:flex">
             <button
               onClick={() => {
                 dispatch(
@@ -421,6 +420,34 @@ export default function Page() {
           <div className="fixed right-0 bottom-[60px] left-0 z-50 block border-t border-gray-100 bg-white sm:hidden">
             <div className="flex justify-between gap-1 px-[10px] py-2">
               <button
+                onClick={() => {
+                  dispatch(
+                    cartAction.setAddToCartModelProductCart({
+                      id,
+                      name,
+                      image,
+                      price: finalPrice,
+                      insatllmentPrice: selectedPrice,
+                      rating: averageRating ?? 0,
+                      discount: discountPercentage ?? 0,
+                      quantity: initalQuanity,
+                      update: true,
+                    }),
+                  );
+                  dispatch(
+                    cartAction.setAddCurrentAddedProduct({
+                      id,
+                      name,
+                      image,
+                      price: finalPrice,
+                      quantity: initalQuanity,
+
+                      insatllmentPrice: selectedPrice,
+                      rating: averageRating ?? 0,
+                      discount: discountPercentage ?? 0,
+                    }),
+                  );
+                }}
                 style={{
                   background:
                     "linear-gradient(180deg, #FE9132 0%, #FE9132 100%)",

@@ -81,6 +81,17 @@ export const validationSchemas = {
     phone: Yup.string().required("Required"),
     additionalInfo: Yup.string(),
   }),
+  checkoutshipping: Yup.object({
+    firstName: Yup.string().required("Required"),
+    lastName: Yup.string().required("Required"),
+    country: Yup.string().required("Required"),
+    city: Yup.string().required("Required"),
+    address1: Yup.string().required("Required"),
+    address2: Yup.string(),
+    phone: Yup.string().required("Required"),
+    zip: Yup.string().required("Required"),
+  }),
+
   // dashnoard
   accountInfo: Yup.object({
     first_name: Yup.string()

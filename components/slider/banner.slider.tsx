@@ -51,20 +51,41 @@ export default function BannerSlider() {
 
       {/* Custom Navigation Arrows */}
       <div className="swiper-button-prev absolute top-1/2 left-[60px] z-10 ml-4 hidden -translate-y-1/2 transform text-white after:hidden sm:block">
-        <button className="flex h-[40px] w-[80px] min-w-[40px] items-center justify-center rounded-full bg-[#F470AB] transition-all duration-300 hover:scale-110 hover:bg-[#e05699] active:scale-90">
+        {/* <button className="flex h-[40px] w-[80px] min-w-[40px] items-center justify-center rounded-full bg-[#F470AB] transition-all duration-300 hover:scale-110 hover:bg-[#e05699] active:scale-90">
           <Image
             src={slider_left_arrow}
             alt="Previous"
             width={24}
             height={24}
           />
-        </button>
+        
+        </button> */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 27 44"
+          className="h-full w-full"
+        >
+          <path
+            d="M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
 
       <div className="swiper-button-next absolute top-1/2 right-[60px] z-10 mr-4 hidden -translate-y-1/2 transform text-white after:hidden sm:block">
-        <button className="flex h-[40px] w-[80px] min-w-[40px] items-center justify-center rounded-full bg-[#F470AB] transition-all duration-300 hover:scale-110 hover:bg-[#e05699] active:scale-90">
+        {/* <button className="flex h-[40px] w-[80px] min-w-[40px] items-center justify-center rounded-full bg-[#F470AB] transition-all duration-300 hover:scale-110 hover:bg-[#e05699] active:scale-90">
           <Image src={slider_right_arrow} alt="Next" width={24} height={24} />
-        </button>
+          </button> */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 27 44"
+          className="h-full w-full"
+        >
+          <path
+            d="M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
     </div>
   );

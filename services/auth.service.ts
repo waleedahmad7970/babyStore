@@ -33,24 +33,6 @@ const authService = {
     );
     dispatch(loaderAction.stopLoading("login"));
 
-    const message = res?.data?.message;
-    const result = res?.data?.result;
-    if (error?.response?.data?.message) {
-      toast.error(error.response.data.message);
-      return;
-    }
-
-    if (message) {
-      toast[result === 0 ? "error" : "success"](message);
-
-      if (result !== 0) {
-        dispatch(userActions.setRegisterSessionId(res?.data?.result));
-        setItemInLS("token", res?.data?.result);
-        router.push("/");
-      }
-
-      return;
-    }
     return [res, error];
   },
   // User register

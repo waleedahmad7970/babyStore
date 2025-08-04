@@ -43,7 +43,7 @@ export default function CartPanel() {
     const discountAmount = (subtotal * discountPercentage) / 100;
     const discountedSubtotal = subtotal - discountAmount;
 
-    const tax = discountedSubtotal * 0.05;
+    const tax = discountedSubtotal * 0.015;
     const total = discountedSubtotal + tax;
 
     return { subtotal, discountAmount, tax, total };
@@ -120,17 +120,15 @@ export default function CartPanel() {
             <span className="text-[8.7px]">AED</span> {tax?.toFixed(2)}
           </span>
         </div>
-        {discountAmount && (
-          <div className="flex justify-between">
-            <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-              Discount:
-            </span>
-            <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-              <span className="text-[8.7px]">AED</span>{" "}
-              {discountAmount?.toFixed(2)}
-            </span>
-          </div>
-        )}
+        <div className="flex justify-between">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
+            Discount:
+          </span>
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
+            <span className="text-[8.7px]">AED</span>{" "}
+            {discountAmount?.toFixed(2)}
+          </span>
+        </div>
         <div className="flex justify-between text-[17.4px] font-semibold text-[#636363]">
           <span>Total:</span>
           <span>
@@ -139,12 +137,18 @@ export default function CartPanel() {
           </span>
         </div>
       </div>
-
-      <Button
-        text={"Place Order"}
-        handler={() => router.push("/cart")}
-        className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-[#61B582]/80"
-      />
+      <div className="flex justify-between gap-2">
+        <Button
+          text={"Place Order"}
+          handler={() => router.push("/cart")}
+          className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-[#61B582]/80"
+        />
+        <Button
+          text={"Checkout"}
+          handler={() => router.push("/checkout")}
+          className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-[#61B582]/80"
+        />
+      </div>
     </div>
   );
 }

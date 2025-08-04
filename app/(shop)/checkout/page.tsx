@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartPanel from "@/components/cart/cart-panel";
 import FeatureCards from "@/components/cards/feature-card";
 import InputField from "@/components/fields/input-field";
@@ -15,35 +15,82 @@ import Button from "@/components/button/button";
 import orderServices from "@/services/order.service";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import ProtectedComp from "@/routes/ProtectedRoutes";
 import { useDispatch } from "react-redux";
 import { userActions } from "@/store/slices/auth.slice";
+import { withAuth } from "@/routes/ProtectedRoutes";
+import { checkoutAction } from "@/store/slices/checkout.slice";
+import * as Yup from "yup";
 
 const paymentData = [
   { value: "cod", methodName: "Cash on Delivery" },
   { value: "telr", methodName: "Credit/ Debit Card" },
-  // { value:"Apple",methodName: "PayPal" },
-  // { value:"Apple",methodName: "Apple Pay" },
 ];
 
 const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  country: "",
-  city: "",
-  address1: "",
-  address2: "",
-  phone: "",
-  additionalInfo: "",
+  billing: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    country: "",
+    city: "",
+    address1: "",
+    address2: "",
+    phone: "",
+    additionalInfo: "",
+  },
+  shipping: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    country: "",
+    city: "",
+    address1: "",
+    address2: "",
+    phone: "",
+    additionalInfo: "",
+  },
   shipToSameAddress: true,
   payment_method: "cod",
 };
+const checkoutSchema = Yup.object({
+  shipToSameAddress: Yup.boolean().required(),
+  billing: Yup.object({
+    firstName: Yup.string().required("First name is required"),
+    lastName: Yup.string().required("Last name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    country: Yup.string().required("Country is required"),
+    city: Yup.string().required("City is required"),
+    address1: Yup.string().required("Address is required"),
+    address2: Yup.string(),
+    phone: Yup.string().required("Phone is required"),
+    additionalInfo: Yup.string(),
+  }),
+  shipping: Yup.object().when(
+    "shipToSameAddress",
+    (shipToSameAddress, schema) => {
+      console.log({ shipToSameAddress });
+      return shipToSameAddress?.[0]
+        ? schema.strip()
+        : Yup.object({
+            firstName: Yup.string().required("First name is required"),
+            lastName: Yup.string().required("Last name is required"),
+            country: Yup.string().required("Country is required"),
+            city: Yup.string().required("City is required"),
+            address1: Yup.string().required("Address is required"),
+            address2: Yup.string(),
+            phone: Yup.string().required("Phone is required"),
+          });
+    },
+  ),
+  payment_method: Yup.string().required("Payment method is required"),
+});
 
 const Checkout = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
+  const token = localStorage.getItem("token");
   const [couponValue, setCouponValue] = useState("");
   const { cartProducts = [] } = useAppSelector((state) => state.cart);
   const { placeOrder } = useAppSelector((state) => state.loader);
@@ -53,6 +100,14 @@ const Checkout = () => {
     discountCouponDetails = {},
     appliedCoupon = {},
   } = useAppSelector((state) => state.user) as any;
+
+  const { isCheckoutVisited = false } = useAppSelector(
+    (state) => state.checkout,
+  );
+
+  useEffect(() => {
+    if (!token) dispatch(checkoutAction.setIscheckoutVisited(true));
+  }, [dispatch, token]);
 
   const id = (user as { id?: number })?.id ?? null;
   const orderCart =
@@ -68,17 +123,17 @@ const Checkout = () => {
 
   const onSubmit = async (values: any) => {
     const data = {
-      first_name: values.firstName,
-      last_name: values.lastName,
-      address: values.address1,
-      address2: values.address1,
+      first_name: values.billing.firstName,
+      last_name: values.billing.lastName,
+      address: values.billing.address1,
+      address2: values.billing.address1,
       payment_type: values.payment_method,
       // payment_status: "paid",
       shipToSameAddress: values.shipToSameAddress,
-      additionalInfo: values.additionalInfo,
-      phone: values.phone,
-      city: values.city,
-      country: values.country,
+      additionalInfo: values.billing.additionalInfo,
+      phone: values.billing.phone,
+      city: values.billing.city,
+      country: values.billing.country,
       user_id: registerSessionId,
       cart: orderCart,
     };
@@ -92,7 +147,7 @@ const Checkout = () => {
   const formikProps = useFormik({
     validateOnBlur: false,
     initialValues,
-    validationSchema: validationSchemas.checkoutBilling,
+    validationSchema: checkoutSchema,
     onSubmit: onSubmit,
   });
 
@@ -107,16 +162,15 @@ const Checkout = () => {
     submitCount,
   } = formikProps;
 
-  const handleShipSameAddress = (value: boolean) => {
-    setFieldValue("shipToSameAddress", !value);
-  };
+  // const handleShipSameAddress = (value: boolean) => {
+  //   setFieldValue("shipToSameAddress", !value);
+  // };
 
   const selectPaymentMethod = (value: string) => {
     setFieldValue("payment_method", value);
   };
 
   const handleCoupon = () => {
-    console.log("helo coupon");
     if (couponValue === discountCouponDetails?.coupon_applied) {
       toast.success("Coupon Appplied Successfully");
       dispatch(
@@ -131,7 +185,41 @@ const Checkout = () => {
     }
   };
   const isSubmitted = submitCount > 0;
+  const handleBillingChange = (e: any) => {
+    const { name, value } = e.target;
+    setFieldValue(`billing.${name}`, value);
 
+    // Update shipping fields if "same address" is checked
+    if (values.shipToSameAddress) {
+      setFieldValue(`shipping.${name}`, value);
+    }
+  };
+
+  const handleShippingChange = (e: any) => {
+    const { name, value } = e.target;
+    setFieldValue(`shipping.${name}`, value);
+  };
+
+  // Fix the phone input handler
+  const handleBillingPhoneChange = (value: string) => {
+    setFieldValue("billing.phone", value);
+    if (values.shipToSameAddress) {
+      setFieldValue("shipping.phone", value);
+    }
+  };
+
+  // Fix the ship to same address toggle
+  const handleShipSameAddress = (checked: boolean) => {
+    setFieldValue("shipToSameAddress", !checked);
+    if (checked) {
+      // Copy all billing values to shipping
+      Object.entries(values.billing).forEach(([key, value]) => {
+        setFieldValue(`shipping.${key}`, value);
+      });
+    }
+  };
+
+  console.log({ values, errors });
   return (
     <div className="mx-auto w-full max-w-[1360px] px-[10px] py-10 lg:px-0">
       <p className="mb-[44px] text-[40px] leading-normal font-semibold text-[#000]">
@@ -154,143 +242,159 @@ const Checkout = () => {
             <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
               <InputField
                 name="firstName"
-                value={values.firstName}
+                value={values.billing.firstName}
                 error={
-                  isSubmitted && errors.firstName && touched.firstName
-                    ? errors.firstName
+                  isSubmitted &&
+                  errors.billing?.firstName &&
+                  touched.billing?.firstName
+                    ? errors.billing.firstName
                     : null
                 }
-                onChange={handleChange}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="First Name"
-                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none lg:max-w-[228px]"
+                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
               />
               <InputField
                 name="lastName"
-                value={values.lastName}
+                value={values.billing.lastName}
                 error={
-                  isSubmitted && errors.lastName && touched.lastName
-                    ? errors.lastName
+                  isSubmitted &&
+                  errors.billing?.lastName &&
+                  touched.billing?.lastName
+                    ? errors.billing.lastName
                     : null
                 }
-                onChange={handleChange}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="Last Name"
-                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none lg:max-w-[228px]"
+                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
               />
             </div>
             <InputField
               name="email"
-              value={values.email}
+              value={values.billing.email}
               error={
-                isSubmitted && errors.email && touched.email
-                  ? errors.email
+                isSubmitted && errors.billing?.email && touched.billing?.email
+                  ? errors.billing.email
                   : null
               }
-              onChange={handleChange}
+              onChange={handleBillingChange}
               onBlur={handleBlur}
               placeholder="Email address"
-              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
+              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
             />
             <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
               <InputField
                 name="country"
-                value={values.country}
+                value={values.billing.country}
                 error={
-                  isSubmitted && errors.country && touched.country
-                    ? errors.country
+                  isSubmitted &&
+                  errors.billing?.country &&
+                  touched.billing?.country
+                    ? errors.billing.country
                     : null
                 }
-                onChange={handleChange}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="Country"
-                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none lg:max-w-[228px]"
+                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
               />
               <InputField
                 name="city"
-                value={values.city}
+                value={values.billing.city}
                 error={
-                  isSubmitted && errors.city && touched.city
-                    ? errors.city
+                  isSubmitted && errors.billing?.city && touched.billing?.city
+                    ? errors.billing.city
                     : null
                 }
-                onChange={handleChange}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="City"
-                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none lg:max-w-[228px]"
+                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
               />
             </div>
 
             <InputField
               name="address1"
-              value={values.address1}
+              value={values.billing.address1}
               error={
-                isSubmitted && errors.address1 && touched.address1
-                  ? errors.address1
+                isSubmitted &&
+                errors.billing?.address1 &&
+                touched.billing?.address1
+                  ? errors.billing.address1
                   : null
               }
-              onChange={handleChange}
+              onChange={handleBillingChange}
               onBlur={handleBlur}
               placeholder="Address1"
-              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
+              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
             />
 
             <InputField
               name="address2"
-              value={values.address2}
+              value={values.billing.address2}
               error={
-                isSubmitted && errors.address2 && touched.address2
-                  ? errors.address2
+                isSubmitted &&
+                errors.billing?.address2 &&
+                touched.billing?.address2
+                  ? errors.billing.address2
                   : null
               }
-              onChange={handleChange}
+              onChange={handleBillingChange}
               onBlur={handleBlur}
               placeholder="Address2"
-              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
+              className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
             />
             <div className="flex flex-col items-baseline justify-between gap-2 outline-none md:flex-row">
               <div className="">
                 <PhoneInput
                   country="ae"
-                  // value={values.phone}
+                  // value={values.billing.phone}
                   onChange={(val) => setFieldValue("phone", val)}
                   inputClass="!ps-10 !w-full !rounded-[7px] !bg-[#FAFAFA] !border-none !px-4 !py-3 !h-[48px] !text-[14px] !leading-[24px] !text-[#ADADAD]"
                   containerClass="!w-full !bg-[#FAFAFA] !border-none !rounded-[7px]"
                   buttonClass="!bg-[#FAFAFA] !border-none !rounded-[7px]"
                   specialLabel=""
                 />
-                {isSubmitted && errors.phone && touched.phone && (
-                  <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                )}
+                {isSubmitted &&
+                  errors?.billing?.phone &&
+                  touched?.billing?.phone && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors?.billing?.phone}
+                    </p>
+                  )}
               </div>
               <InputField
                 name="phone"
-                value={values.phone}
+                value={values.billing.phone}
                 error={
-                  isSubmitted && errors.phone && touched.phone
-                    ? errors.phone
+                  isSubmitted &&
+                  errors?.billing?.phone &&
+                  touched?.billing?.phone
+                    ? errors?.billing?.phone
                     : null
                 }
-                onChange={handleChange}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="phone"
-                className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#ADADAD] outline-none"
+                className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
               />
             </div>
             <div>
               <textarea
                 name="additionalInfo"
-                value={values.additionalInfo}
-                onChange={handleChange}
+                value={values.billing.additionalInfo}
+                onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="Enter additional information"
                 className="mb-2 w-full rounded-[8px] border border-[#F1F1F5] bg-[#FDFDFD] px-4 py-3 text-[14px] leading-[24px] text-[#000] outline-none placeholder:text-[#ADADAD]"
               />
               {isSubmitted &&
-                errors.additionalInfo &&
-                touched.additionalInfo && (
+                errors?.billing?.additionalInfo &&
+                touched?.billing?.additionalInfo && (
                   <p className="mt-1 text-sm text-red-500">
-                    {errors.additionalInfo}
+                    {errors?.billing?.additionalInfo}
                   </p>
                 )}
             </div>
@@ -298,6 +402,7 @@ const Checkout = () => {
           <div className="flex items-center justify-start gap-3">
             <Button
               text={""}
+              type={"button"}
               handler={() => handleShipSameAddress(values?.shipToSameAddress)}
               className={`h-5 w-5 rounded-[2px] border-[2px] border-[#CDCDCD] ${values?.shipToSameAddress ? "bg-[#FF6AAF]" : "bg-white"} `}
             />
@@ -305,8 +410,143 @@ const Checkout = () => {
               Ship to same address.
             </p>
           </div>
-        </div>
+          {!values?.shipToSameAddress && (
+            <div className="flex w-full flex-col gap-2 lg:max-w-[425px]">
+              <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
+                <InputField
+                  name="firstName"
+                  value={values.shipping.firstName}
+                  error={
+                    isSubmitted &&
+                    errors.shipping?.firstName &&
+                    touched.shipping?.firstName
+                      ? errors.shipping.firstName
+                      : null
+                  }
+                  onChange={handleShippingChange}
+                  onBlur={handleBlur}
+                  placeholder="First Name"
+                  className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                />
+                <InputField
+                  name="lastName"
+                  value={values.shipping.lastName}
+                  error={
+                    isSubmitted &&
+                    errors.shipping?.lastName &&
+                    touched.shipping?.lastName
+                      ? errors.shipping.lastName
+                      : null
+                  }
+                  onChange={handleShippingChange}
+                  onBlur={handleBlur}
+                  placeholder="Last Name"
+                  className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                />
+              </div>
 
+              <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
+                <InputField
+                  name="country"
+                  value={values.shipping.country}
+                  error={
+                    isSubmitted &&
+                    errors.shipping?.country &&
+                    touched.shipping?.country
+                      ? errors.shipping.country
+                      : null
+                  }
+                  onChange={handleShippingChange}
+                  onBlur={handleBlur}
+                  placeholder="Country"
+                  className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                />
+                <InputField
+                  name="city"
+                  value={values.shipping.city}
+                  error={
+                    isSubmitted &&
+                    errors.shipping?.city &&
+                    touched.shipping?.city
+                      ? errors.shipping.city
+                      : null
+                  }
+                  onChange={handleShippingChange}
+                  onBlur={handleBlur}
+                  placeholder="City"
+                  className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                />
+              </div>
+
+              <InputField
+                name="address1"
+                value={values.shipping.address1}
+                error={
+                  isSubmitted &&
+                  errors.shipping?.address1 &&
+                  touched.shipping?.address1
+                    ? errors.shipping.address1
+                    : null
+                }
+                onChange={handleShippingChange}
+                onBlur={handleBlur}
+                placeholder="Address1"
+                className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
+              />
+
+              <InputField
+                name="address2"
+                value={values.shipping.address2}
+                error={
+                  isSubmitted &&
+                  errors.shipping?.address2 &&
+                  touched.shipping?.address2
+                    ? errors.shipping.address2
+                    : null
+                }
+                onChange={handleShippingChange}
+                onBlur={handleBlur}
+                placeholder="Address2"
+                className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
+              />
+              <div className="flex flex-col items-baseline justify-between gap-2 outline-none md:flex-row">
+                <div className="">
+                  <PhoneInput
+                    country="ae"
+                    // value={values.billing.phone}
+                    onChange={(val) => setFieldValue("phone", val)}
+                    inputClass="!ps-10 !w-full !rounded-[7px] !bg-[#FAFAFA] !border-none !px-4 !py-3 !h-[48px] !text-[14px] !leading-[24px] !text-[#ADADAD]"
+                    containerClass="!w-full !bg-[#FAFAFA] !border-none !rounded-[7px]"
+                    buttonClass="!bg-[#FAFAFA] !border-none !rounded-[7px]"
+                    specialLabel=""
+                  />
+                  {isSubmitted &&
+                    errors?.shipping?.phone &&
+                    touched?.shipping?.phone && (
+                      <p className="mt-1 text-sm text-red-500">
+                        {errors?.shipping?.phone}
+                      </p>
+                    )}
+                </div>
+                <InputField
+                  name="phone"
+                  value={values.shipping.phone}
+                  error={
+                    isSubmitted &&
+                    errors?.shipping?.phone &&
+                    touched?.shipping?.phone
+                      ? errors?.shipping?.phone
+                      : null
+                  }
+                  onChange={handleShippingChange}
+                  onBlur={handleBlur}
+                  placeholder="phone"
+                  className="rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD]"
+                />
+              </div>
+            </div>
+          )}
+        </div>
         <div className="flex w-full flex-col gap-2 lg:max-w-[425px]">
           <div className="mb-3 flex items-center justify-between gap-1">
             <h1 className="max-wmax text-[24px] leading-[20px] font-semibold text-[#201C1C]">
@@ -362,6 +602,7 @@ const Checkout = () => {
             })}
           </div>
         </div>
+
         <div className="flex w-full flex-col gap-2 lg:max-w-[425px]">
           <div className="mb-3 flex items-center justify-between gap-1">
             <h1 className="max-wmax text-[24px] leading-[20px] font-semibold text-[#201C1C]">
@@ -382,9 +623,9 @@ const Checkout = () => {
             </p>
             <div
               style={{
-                borderColor: "rgba(0, 0, 0, 0.2)",
+                borderColor: ` ${appliedCoupon?.coupon ? "#E7448C " : "rgba(0, 0, 0, 0.2)"}`,
               }}
-              className={`flex justify-between rounded-[8px] border ${appliedCoupon?.coupon ? "bg-gray-50" : ""}`}
+              className={`flex justify-between overflow-hidden rounded-[8px] border ${appliedCoupon?.coupon ? "bg-[#FFF0F5] text-[#E7448C]" : ""}`}
             >
               <input
                 value={appliedCoupon?.couponValue || couponValue}
@@ -394,12 +635,13 @@ const Checkout = () => {
               />
 
               <button
+                disabled={appliedCoupon?.coupon}
                 onClick={() => handleCoupon()}
                 type="button"
                 style={{
                   borderColor: "rgba(0, 0, 0, 0.2)",
                 }}
-                className="border-l px-5 text-[16px] leading-[22px] font-semibold text-[#E7448C] outline-none"
+                className={`cursor-pointer border-l px-5 text-[16px] leading-[22px] font-semibold text-[#E7448C] outline-none ${appliedCoupon?.coupon ? "bg-[#E7448C] text-[#fff]" : ""} hover:bg-[#E7448C] hover:text-white`}
               >
                 Apply
               </button>
@@ -419,4 +661,5 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default withAuth(Checkout);
+// export default Checkout;

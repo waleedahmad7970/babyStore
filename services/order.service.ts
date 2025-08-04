@@ -3,6 +3,7 @@ import { getDispatch } from "@/utils/dispatch.util";
 import { orderAction } from "@/store/slices/orders.slice";
 import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { loaderAction } from "@/store/slices/loader.slice";
+import { toast } from "react-toastify";
 
 const orderServices = {
   async getOrders(id: number | string) {
@@ -103,7 +104,10 @@ const orderServices = {
       return router.push(payment_url?.original?.payment_url);
     }
     if (order_id) {
+      toast.success("Order placed successfully");
       router.push(`/checkout/order-success/${order_id}`);
+    } else {
+      toast.error("There is something wrong while placing the order.");
     }
     return [res, error];
   },

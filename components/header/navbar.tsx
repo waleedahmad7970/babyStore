@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,7 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { globalStateActions } from "@/store/slices/globalStates";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
-import { basket, menu, search } from "@/public/assets/icons";
+import { basket, cart, heart, menu, search, user } from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   InstantSearch,
@@ -22,6 +22,10 @@ import {
   Highlight,
 } from "react-instantsearch";
 import { searchClient } from "@/config/config";
+import TrackVisitedRoutes from "../visitedPath/store..visited";
+import Button from "../button/button";
+import { userActions } from "@/store/slices/auth.slice";
+import authService from "@/services/auth.service";
 
 interface NavbarProps {
   categories?: string[];
@@ -35,21 +39,39 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const cartRef = useRef<null>(null);
-  const [isFocused, setIsFocused] = useState(false);
+  const loginRef = useRef<null>(null);
 
   const { isMobMenu } = useAppSelector((state) => state.globalStates);
-  const { wishList = [] } = useAppSelector((state) => state.user);
+  const { wishList = [], registerSessionId } = useAppSelector(
+    (state) => state.user,
+  );
   const { cartProducts = [], addToCartModel } = useAppSelector(
     (state) => state.cart,
   );
   const { isSearchBarOpen } = useAppSelector((state) => state.globalStates);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [showCart, setShowCart] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [showCartMob, setShowCartMob] = useState(false);
+
+  useEffect(() => {
+    authService.getUserProfile(registerSessionId);
+  }, [registerSessionId]);
+
+  useEffect(() => {
+    router.prefetch("/cart");
+    router.prefetch("/checkout");
+    router.prefetch("/signup");
+    router.prefetch("/login");
+    router.prefetch("/dashboard");
+  });
 
   usePreventBodyScroll(showCartMob);
   useClickOutside(cartRef, () => {
     setShowCart(false);
+  });
+  useClickOutside(loginRef, () => {
+    setShowLogin(false);
   });
   const menuHandler = () => {
     dispatch(globalStateActions.setMobileMenu(true));
@@ -58,12 +80,23 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
     dispatch(globalStateActions.setMobileMenu(false));
   };
   const handleMouseEnter = () => {
+    setShowLogin(false);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setShowCart(true);
   };
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setShowCart(false);
+    }, 1000);
+  };
+  const handleMouseEnterLogin = () => {
+    setShowCart(false);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setShowLogin(true);
+  };
+  const handleMouseLeaveLogin = () => {
+    timeoutRef.current = setTimeout(() => {
+      setShowLogin(false);
     }, 1000);
   };
   const handleToggleMobCart = () => {
@@ -176,12 +209,16 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       </InstantSearch>
     );
   };
-  const handleRedirectionUserMenu = (index: number) => {
-    if (index === 1) router.push("/dashboard");
-    return dispatch(dashboardAction.setActiveDashboardTab("Wishlist"));
+
+  const handleLogout = () => {
+    dispatch(userActions.clearUser());
+    dispatch(userActions.setRegisterSessionId(""));
+    router.push("/");
   };
+
   return (
     <nav className="mx-auto block py-[14px] md:py-7">
+      <TrackVisitedRoutes />
       <div className="block sm:hidden">
         <MobileDrawer isOpen={isMobMenu} close={menuHandlerClose} />
       </div>
@@ -194,6 +231,50 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         >
           <CartPanel />
         </div>
+        {showLogin && (
+          <div
+            onMouseEnter={handleMouseEnterLogin}
+            onMouseLeave={() =>
+              (timeoutRef.current = setTimeout(() => {
+                setShowLogin(false);
+              }, 300))
+            }
+            className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[320px] sm:top-[60px] sm:block"
+          >
+            {!registerSessionId ? (
+              <div className="relative w-full max-w-[320px] rounded-[6px] bg-white p-5">
+                {/* <div className="absolute top-0 right-0 left-0 h-0 w-0 border-r-[20px] border-b-[15px] border-l-[20px] border-r-transparent border-b-amber-400 border-l-transparent"></div> */}
+
+                <Button
+                  size={30}
+                  type={"submit"}
+                  text={"Login"}
+                  handler={() => router.push("/login")}
+                  className="w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                />
+                <Button
+                  size={30}
+                  type={"submit"}
+                  text={"Sign up"}
+                  handler={() => router.push("/signup")}
+                  className="mt-3 w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                />
+              </div>
+            ) : (
+              <div className="relative w-full max-w-[320px] rounded-[6px] bg-white p-5">
+                {/* <div className="absolute top-0 right-0 left-0 h-0 w-0 border-r-[20px] border-b-[15px] border-l-[20px] border-r-transparent border-b-amber-400 border-l-transparent"></div> */}
+
+                <Button
+                  size={30}
+                  type={"submit"}
+                  text={"Logout"}
+                  handler={() => handleLogout()}
+                  className="mt-3 w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                />
+              </div>
+            )}
+          </div>
+        )}
         {showCart && cartProducts?.length > 0 && (
           <div
             onMouseEnter={handleMouseEnter}
@@ -267,8 +348,45 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         </div>
 
         {/* Desktop User Menu */}
-
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
+          <div className="relative">
+            <Image
+              onMouseEnter={() => handleMouseEnterLogin()}
+              onMouseLeave={() => handleMouseLeaveLogin()}
+              src={user}
+              alt={`User`}
+              className="h-8 w-8 cursor-pointer"
+            />
+          </div>
+          <div className="relative">
+            <Image
+              src={heart}
+              alt={`User`}
+              className="h-8 w-8 cursor-pointer"
+            />
+            {wishList?.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#F82D8B] text-[10px] font-bold text-white">
+                {wishList?.length}
+              </span>
+            )}
+          </div>
+          <div className="relative">
+            <Image
+              onMouseEnter={() => handleMouseEnter()}
+              onMouseLeave={() => handleMouseLeave()}
+              src={basket}
+              alt={`User`}
+              className="h-8 w-8 cursor-pointer"
+            />
+            {cartProducts?.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#F82D8B] text-[10px] font-bold text-white">
+                {cartProducts?.length}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => {
             const isSecondLast = index === userMenu.length - 2;
             const isLast = index === userMenu.length - 1;
@@ -309,7 +427,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               />
             );
           })}
-        </div>
+        </div> */}
       </div>
       {addToCartModel && <AddToCard addToCartModel={addToCartModel} />}
     </nav>

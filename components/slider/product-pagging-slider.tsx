@@ -13,7 +13,7 @@ interface ProductPagingSliderProps {
 }
 
 const ProductPagingSlider: React.FC<ProductPagingSliderProps> = ({
-  sliderImages,
+  sliderImages = [],
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   return (

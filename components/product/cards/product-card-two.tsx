@@ -51,7 +51,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     slug,
   },
 }) => {
-  // const router = useRouter();
   const dispatch = useAppDispatch();
   const { wishList = [] } = useAppSelector((state) => state.user);
   const { cartProducts = [] } = useAppSelector((state) => state.cart);
@@ -99,10 +98,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             href={`/product/${id}`}
             className="block text-inherit no-underline"
           >
-            <div
-              // onClick={() => slug && redirectToCart(slug)}
-              className="relative min-h-[175px] overflow-hidden sm:min-h-[260px] sm:min-w-[260px]"
-            >
+            <div className="relative min-h-[175px] overflow-hidden sm:min-h-[260px] sm:min-w-[260px]">
               <Image
                 src={
                   `https://www.babystore.ae/storage/${image}` || fallBackImage
@@ -139,9 +135,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
           className="flex h-[170px] flex-col justify-between border-t-1 px-3 pt-2 pb-3"
         >
-          <p className="font-inter line-clamp-2 min-h-[32px] text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
-            {name}
-          </p>
+          <Link href={`/product/${id}`}>
+            <p className="font-inter line-clamp-2 min-h-[32px] text-left text-[13px] leading-[15.73px] font-normal text-[#1A1718]">
+              {name}
+            </p>
+          </Link>
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex flex-col gap-1">
               <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">

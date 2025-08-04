@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/button/button";
 import { call_icon_white, conformTick } from "@/public/assets/icons";
+import { withAuth } from "@/routes/ProtectedRoutes";
 import orderServices from "@/services/order.service";
 import { useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
@@ -20,7 +21,7 @@ const returnStatuses: Record<number, string> = {
   9: "4-5 weeks",
   10: "no return available",
 };
-export default function Page() {
+const OrderSuccess = () => {
   const { id } = useParams();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ export default function Page() {
               return (
                 <div key={key} className="flex items-center justify-between">
                   <span
-                    className={`font-Inter line-clamp-1 max-w-max text-left text-[16px] leading-[24px] font-normal text-[#1F1F1F]`}
+                    className={`font-Inter line-clamp-1 max-w-[60%] text-left text-[16px] leading-[24px] font-normal text-[#1F1F1F]`}
                   >
                     {order?.product?.name || "Product Name"}
                   </span>
@@ -252,4 +253,7 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};
+
+// export default withAuth(OrderSuccess);
+export default OrderSuccess;

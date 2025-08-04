@@ -54,7 +54,7 @@ export default function CartPanelCheckout({ products }: CartPanelProps) {
     const discountAmount = (subtotal * discountPercentage) / 100;
     const discountedSubtotal = subtotal - discountAmount;
 
-    const tax = discountedSubtotal * 0.05;
+    const tax = discountedSubtotal * 0.015;
     const total = discountedSubtotal + tax;
 
     return { subtotal, discountAmount, tax, total };
@@ -125,17 +125,15 @@ export default function CartPanelCheckout({ products }: CartPanelProps) {
             <span className="text-[8.7px]">AED</span> {tax.toFixed(2)}
           </span>
         </div>
-        {discountAmount && (
-          <div className="flex justify-between">
-            <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-              Discount:
-            </span>
-            <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-              <span className="text-[8.7px]">AED</span>{" "}
-              {discountAmount?.toFixed(2)}
-            </span>
-          </div>
-        )}
+        <div className="flex justify-between">
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
+            Discount:
+          </span>
+          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
+            <span className="text-[8.7px]">AED</span>{" "}
+            {discountAmount?.toFixed(2)}
+          </span>
+        </div>
         <div className="flex justify-between text-[17.4px] font-semibold text-[#636363]">
           <span>Total:</span>
           <span>

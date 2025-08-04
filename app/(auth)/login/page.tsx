@@ -5,7 +5,7 @@ import InputField from "@/components/fields/input-field";
 import authService from "@/services/auth.service";
 import { logo } from "@/public/assets/brands";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { validationSchemas } from "@/utils/validation";
 import Link from "next/link";
 import FacebookLogin from "@greatsumini/react-facebook-login";
@@ -13,6 +13,10 @@ import FacebookLogin from "@greatsumini/react-facebook-login";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { withAuth } from "@/routes/ProtectedRoutes";
+import { userActions } from "@/store/slices/auth.slice";
+import { useDispatch } from "react-redux";
+import { setItemInLS } from "@/utils/LS_STORAGE";
 
 const initialValues = {
   email: "",
@@ -20,9 +24,38 @@ const initialValues = {
 };
 const Login = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/";
 
+  const lastVisitPaths = localStorage.getItem("visited-paths");
   const onSubmit = async (values: any) => {
-    await authService.loginMobileUser(values, router);
+    const [res, error] = await authService.loginMobileUser(values, router);
+    const message = res?.data?.message;
+    const result = res?.data?.result;
+    if (error?.response?.data?.message) {
+      toast.error(error.response.data.message);
+      return;
+    }
+
+    if (message) {
+      toast[result === 0 ? "error" : "success"](message);
+
+      if (result !== 0) {
+        dispatch(userActions.setRegisterSessionId(res?.data?.result));
+        setItemInLS("token", res?.data?.result);
+
+        const visitedPaths = JSON.parse(
+          localStorage.getItem("visited-paths") || "[]",
+        );
+
+        if (res?.data?.result) {
+          router.push(redirect);
+        }
+      }
+
+      return;
+    }
   };
   const formikProps = useFormik({
     validateOnBlur: false,
@@ -63,7 +96,16 @@ const Login = () => {
         };
         const [res, error] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
-          router.push("/");
+          const visitedPaths = JSON.parse(
+            localStorage.getItem("visited-paths") || "[]",
+          );
+
+          if (res?.data?.user) {
+            const lastPath = visitedPaths?.[visitedPaths?.length - 1];
+            if (lastPath === "/checkout") {
+              return router.push("/checkout");
+            } else router.push("/");
+          }
         }
       } catch (error) {
         console.error("Error fetching user info or saving:", error);
@@ -95,7 +137,16 @@ const Login = () => {
       try {
         const [res, error] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
-          router.push("/");
+          const visitedPaths = JSON.parse(
+            localStorage.getItem("visited-paths") || "[]",
+          );
+
+          if (res?.data?.user) {
+            const lastPath = visitedPaths?.[visitedPaths?.length - 1];
+            if (lastPath === "/checkout") {
+              return router.push("/checkout");
+            } else router.push("/");
+          }
         }
       } catch (error) {
         console.error("Error saving Facebook user:", error);
@@ -202,4 +253,5 @@ const Login = () => {
   );
 };
 
+// export default withAuth(Login);
 export default Login;

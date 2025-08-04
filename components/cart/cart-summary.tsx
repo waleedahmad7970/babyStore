@@ -80,9 +80,9 @@ export const CartSummary = ({
         </p>
         <div
           style={{
-            borderColor: "rgba(0, 0, 0, 0.2)",
+            borderColor: ` ${appliedCoupon?.coupon ? "#E7448C " : "rgba(0, 0, 0, 0.2)"}`,
           }}
-          className={`flex justify-between rounded-[8px] border ${appliedCoupon?.coupon ? "bg-gray-50" : ""}`}
+          className={`flex justify-between overflow-hidden rounded-[8px] border ${appliedCoupon?.coupon ? "bg-[#FFF0F5] text-[#E7448C]" : ""}`}
         >
           <input
             value={appliedCoupon?.couponValue || couponValue}
@@ -90,13 +90,15 @@ export const CartSummary = ({
             disabled={appliedCoupon?.coupon}
             className={`py-[10px] ps-4 text-[16px] font-normal outline-none`}
           />
+
           <button
+            disabled={appliedCoupon?.coupon}
+            onClick={() => handleCoupon()}
+            type="button"
             style={{
               borderColor: "rgba(0, 0, 0, 0.2)",
             }}
-            type="button"
-            onClick={() => handleCoupon()}
-            className="border-l px-5 text-[16px] leading-[22px] font-semibold text-[#E7448C] outline-none"
+            className={`cursor-pointer border-l px-5 text-[16px] leading-[22px] font-semibold text-[#E7448C] outline-none ${appliedCoupon?.coupon ? "bg-[#E7448C] text-[#fff]" : ""} hover:bg-[#E7448C] hover:text-white`}
           >
             Apply
           </button>

@@ -19,11 +19,23 @@ export function debounce<T extends (...args: any[]) => void>(
     timer = setTimeout(() => func(...args), delay);
   };
 }
-export const calculateAverageRating = (reviews: { rating: number }[]) => {
+// export const calculateAverageRating = (reviews: { rating: number }[]) => {
+//   if (!reviews || reviews.length === 0) return 0;
+
+//   const total = reviews?.reduce((sum, curr) => sum + curr.rating, 0);
+//   return +(total / reviews.length).toFixed(1);
+// };
+export const calculateAverageRating = (reviews: any[]) => {
   if (!reviews || reviews.length === 0) return 0;
 
-  const total = reviews.reduce((sum, curr) => sum + curr.rating, 0);
-  return +(total / reviews.length).toFixed(1);
+  const validRatings = reviews
+    .map((r) => Number(r.stars)) // convert "stars" string to number
+    .filter((r) => !isNaN(r));
+
+  if (validRatings.length === 0) return 0;
+
+  const total = validRatings.reduce((sum, r) => sum + r, 0);
+  return +(total / validRatings.length).toFixed(1);
 };
 
 interface Review {

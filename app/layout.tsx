@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/effect-fade";
 import "react-phone-input-2/lib/style.css";
+// slick css
 import { AppDispatch } from "@/components/AppDispatch";
 import ToastProvider from "@/components/Toastify/toastProvider";
 

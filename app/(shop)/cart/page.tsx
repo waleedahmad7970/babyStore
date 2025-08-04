@@ -31,7 +31,7 @@ export default function Page() {
     const discountAmount = (subtotal * discountPercentage) / 100;
     const discountedSubtotal = subtotal - discountAmount;
 
-    const tax = discountedSubtotal * 0.05;
+    const tax = discountedSubtotal * 0.015;
     const total = discountedSubtotal + tax;
 
     return { subtotal, discountAmount, tax, total };
