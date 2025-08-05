@@ -321,14 +321,21 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               />
             </Link>
           </div>
-          <Image
-            onClick={handleToggleMobCart}
-            width={32}
-            height={32}
-            src={basket}
-            alt="Basket"
-            className="block md:hidden"
-          />
+          <div className="relative">
+            <Image
+              onClick={handleToggleMobCart}
+              width={32}
+              height={32}
+              src={basketBag}
+              alt="Basket"
+              className="block md:hidden"
+            />
+            {cartProducts?.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
+                {cartProducts?.length}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Search Bar old */}
