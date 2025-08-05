@@ -45,6 +45,7 @@ const installationPrices = {
   "*Hatta,  RAK, FUJ, UAQ and other Northern & Western emirates +315 aed": 315,
   "No Installation/Delivery required": 0,
 };
+
 // export default function ProductDetails({ product = productData }) {
 export default function Page() {
   const router = useRouter();
@@ -92,7 +93,6 @@ export default function Page() {
   } = (productDetails as any) || {};
 
   const averageRating = calculateAverageRating(reviews || []);
-  console.log("s", { productDetails }, reviews, averageRating);
 
   const discountPercentage =
     is_promo && promo_price ? ((price - promo_price) / price) * 100 : 0;
@@ -191,7 +191,7 @@ export default function Page() {
       {loader && <FullScreenLoader isLoading={loader} />}
       <div className="flex flex-col justify-between gap-4 xl:flex-row">
         <div className="relative mx-auto w-full md:max-w-[839px]">
-          <div className="absolute top-3 right-3 z-10 flex flex-col gap-5 md:top-7 md:right-[33px] md:gap-2">
+          <div className="absolute top-3 right-3 z-10 flex cursor-pointer flex-col gap-5 md:top-7 md:right-[33px] md:gap-2">
             {[share]?.map((item, index) => (
               <Image
                 key={index}
@@ -202,7 +202,7 @@ export default function Page() {
             ))}
             <button onClick={addToWishlist}>
               <Icons.FavIcon
-                color={wishedProduct?.wished ? "#E2E0DE " : "#F82D8B"}
+                color={wishedProduct?.wished ? "#F82D8B" : "#E2E0DE"}
               />
             </button>
           </div>
@@ -215,11 +215,11 @@ export default function Page() {
                 </span>
               </p>
             </div>
-            {/* {discount && ( */}
-            <div className="mb-0 max-w-max rounded-[50px] bg-[#FFEEF6] px-2 py-[5px] text-[10.471px] leading-none font-bold text-[#00AE42] md:px-4 md:py-[10px] md:text-[16.795px]">
-              {discount || "25% Off"}
-            </div>
-            {/* )} */}
+            {discountPercentage > 0 && (
+              <div className="mb-0 max-w-max rounded-[50px] bg-[#FFEEF6] px-2 py-[5px] text-[10.471px] leading-none font-bold text-[#00AE42] md:px-4 md:py-[10px] md:text-[16.795px]">
+                {`${discountPercentage}% Off` || "0 % Off"}
+              </div>
+            )}
           </div>
 
           <ProductPagingSlider sliderImages={sliderImages} />
@@ -248,24 +248,24 @@ export default function Page() {
                   <p className="flex items-baseline text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
                     AED{" "}
                     <span className="ml-[3px] text-[16px] font-bold">
-                      {finalPrice.toFixed(2)}
+                      {finalPrice?.toFixed(2)}
                     </span>
                   </p>
                   <p className="flex items-baseline text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1F1F1F80] line-through">
                     AED{" "}
                     <span className="ml-[3px] text-[14px] font-medium">
-                      {originalPrice.toFixed(2)}
+                      {originalPrice?.toFixed(2)}
                     </span>
                   </p>
                 </>
               ) : (
                 <div className="flex items-center space-x-2">
                   <span className="text-[26px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
-                    AED {finalPrice.toFixed(2)}
+                    AED {finalPrice?.toFixed(2)}
                   </span>
                   {/* Optional: strike-through if you want to fake discount */}
                   <span className="text-[16px] leading-[24px] font-semibold text-[#929391] line-through">
-                    AED {originalPrice.toFixed(2)}
+                    AED {originalPrice?.toFixed(2)}
                   </span>
                 </div>
               )}
@@ -312,7 +312,7 @@ export default function Page() {
             <DiscountCard />
             <TabbyCard />
             <PriceMatchCard />
-            <DeliveryCard />
+            {/* <DeliveryCard /> */}
             <CashbackCard />
           </div>
 

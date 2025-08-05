@@ -21,8 +21,9 @@ export default function CategoryListTwo() {
     autoplay: true,
     arrows: false,
     centerMode: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
+    speed: 1000,
+    pauseOnHover: true,
+    autoplaySpeed: 0,
     cssEase: "linear",
     responsive: [
       {
@@ -45,7 +46,6 @@ export default function CategoryListTwo() {
         settings: {
           slidesToShow: 3,
           centerPadding: "40px",
-
           slidesToScroll: 1,
         },
       },

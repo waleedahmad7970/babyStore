@@ -8,12 +8,26 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/button/button";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
+import { useTypewriter } from "@/hooks/typeWritter";
 interface AppliedCoupon {
   discount?: number | string;
 }
 export default function Page() {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const typed = useTypewriter(
+    [
+      [
+        { text: "Shop for AED 12.20 more to avail " },
+        { text: "FREE SHIPPING.", bold: true },
+      ],
+      [
+        { text: "Shop for AED 12.20 more to avail " },
+        { text: "FREE SHIPPING.", bold: true },
+      ],
+    ],
+    { typingSpeed: 50, deletingSpeed: 30, pauseTime: 1500, leaveChars: 5 },
+  );
   const { cartProducts = [] } = useAppSelector((state) => state.cart);
   const { appliedCoupon = {} } = useAppSelector((state) => state.user);
 
@@ -31,7 +45,7 @@ export default function Page() {
     const discountAmount = (subtotal * discountPercentage) / 100;
     const discountedSubtotal = subtotal - discountAmount;
 
-    const tax = discountedSubtotal * 0.015;
+    const tax = discountedSubtotal * 0.015; //1.05 , total/ 1.05
     const total = discountedSubtotal + tax;
 
     return { subtotal, discountAmount, tax, total };
@@ -52,10 +66,14 @@ export default function Page() {
       <div className="px-[10px] py-10">
         <h1 className="text-[40px] font-semibold text-[#000]"> My Cart</h1>
         <div className="flex flex-col justify-start gap-4 py-6 md:flex-row md:items-center">
-          <div className="rounded-[40px] bg-[#F6D3A2] px-5 py-[10px] text-[16px] font-medium text-[#E77027] md:rounded-[24px]">
-            Shop for AED 12.20 more to avail{" "}
-            <span className="font-bold"> FREE SHIPPING.</span>
+          <div className="min-h-[46px] rounded-[40px] bg-[#F6D3A2] px-5 py-[10px] text-[16px] font-medium text-[#E77027] md:min-w-[420px] md:rounded-[24px]">
+            {typed.map((seg, i) => (
+              <span key={i} className={seg.bold ? "font-bold" : ""}>
+                {seg.text}
+              </span>
+            ))}
           </div>
+
           <Button
             text={"Shop More"}
             handler={() => router.push("/")}
@@ -64,12 +82,7 @@ export default function Page() {
 
           <button
             onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
-            style={{
-              background: "rgba(0, 0, 0, 0.04)",
-              borderColor: "rgba(0, 0, 0, 0.10)",
-              color: "rgba(0, 0, 0, 0.20)",
-            }}
-            className="hidden cursor-pointer rounded-[50px] border-1 px-5 py-[10px] text-[16px] font-bold md:block"
+            className="text cursor-pointer rounded-[50px] border-1 border-[#E7448C] bg-[#FFF0F5] px-5 py-[10px] text-[16px] font-bold text-[#E7448C]/50 hover:border-white hover:bg-[#E7448C] hover:text-white"
           >
             Remove Selected{" "}
           </button>
@@ -80,12 +93,8 @@ export default function Page() {
               <div className="h-6 min-w-6 rounded-[3px] border border-[#E0E0E0] bg-white"></div>
               <button
                 onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
-                style={{
-                  background: "rgba(0, 0, 0, 0.04)",
-                  borderColor: "rgba(0, 0, 0, 0.10)",
-                  color: "rgba(0, 0, 0, 0.20)",
-                }}
-                className="rounded-[50px] border-1 px-5 py-[10px] text-[16px] font-bold"
+                style={{}}
+                className="text cursor-pointer rounded-[50px] border-1 border-[#E7448C] bg-[#FFF0F5] px-5 py-[10px] text-[16px] font-bold text-[#E7448C]/50 hover:border-white hover:bg-[#E7448C] hover:text-white"
               >
                 Remove Selected{" "}
               </button>

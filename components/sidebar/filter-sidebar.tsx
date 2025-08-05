@@ -47,29 +47,135 @@ export default function FilterSidebar() {
     selectTopFilterValue = "",
   } = useAppSelector((state) => state.brands);
 
+  // const filteredProducts = useMemo(() => {
+  //   const filtered = CBSPageProducts?.filter((product: any) => {
+  //     const attributeArray = product?.attribute_array || {};
+  //     const selectedValues = Array.from(selectedFilters);
+
+  //     // ✅ 1) Attribute filter
+  //     const matchesFilters =
+  //       selectedValues.length === 0 ||
+  //       selectedValues.every((value) =>
+  //         Object.values(attributeArray).includes(value),
+  //       );
+  //     if (!matchesFilters) return false;
+
+  //     // ✅ 2) Top filter — only if it’s NOT a price sort option
+  //     if (
+  //       selectTopFilterValue?.value &&
+  //       !["lowToHigh", "highToLow"].includes(selectTopFilterValue.value)
+  //     ) {
+  //       const selectedKey = selectTopFilterValue.value;
+  //       if (!product[selectedKey]) return false;
+  //     }
+
+  //     // ✅ 3) Price range filter
+  //     const price = parseFloat(product?.price);
+  //     const lowestRaw = priceRange?.lowestPrice;
+  //     const highestRaw = priceRange?.highestPrice;
+
+  //     const hasLowest = !!lowestRaw && Number(lowestRaw) > 0;
+  //     const hasHighest = !!highestRaw && Number(highestRaw) > 0;
+
+  //     if (hasLowest || hasHighest) {
+  //       if (!isFinite(price)) return false;
+  //       const lowest = hasLowest ? Number(lowestRaw) : -Infinity;
+  //       const highest = hasHighest ? Number(highestRaw) : Infinity;
+  //       if (price < lowest || price > highest) return false;
+  //     }
+
+  //     return true;
+  //   });
+
+  //   // ✅ 4) Sort by price IF the selectedTopFilterValue is a sort option
+  //   const sorted = [...filtered];
+  //   if (selectTopFilterValue?.value === "lowToHigh") {
+  //     sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+  //   } else if (selectTopFilterValue?.value === "highToLow") {
+  //     sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+  //   }
+
+  //   return sorted;
+  // }, [CBSPageProducts, selectedFilters, priceRange, selectTopFilterValue]);
+
+  // const filteredProducts = useMemo(() => {
+  //   const selectedValues = Array.from(selectedFilters);
+
+  //   const filtered = CBSPageProducts?.filter((product: any) => {
+  //     const attributeArray = product?.attribute_array || {};
+  //     const productAttributes = Object.values(attributeArray);
+
+  //     // ✅ 1) OR logic for selected filters (Color, Size, etc.)
+  //     const matchesAttributeFilters =
+  //       selectedValues.length === 0 ||
+  //       selectedValues.some((value) => productAttributes.includes(value));
+
+  //     if (!matchesAttributeFilters) return false;
+
+  //     // ✅ 2) Include brand/status filter if selected (not sort options)
+  //     if (
+  //       selectTopFilterValue?.value &&
+  //       !["lowToHigh", "highToLow"].includes(selectTopFilterValue.value)
+  //     ) {
+  //       const selectedKey = selectTopFilterValue.value;
+  //       const brandMatches = product[selectedKey];
+
+  //       // ⛔ If product doesn't match brand, but attribute matches — still include
+  //       if (!brandMatches && selectedValues.length === 0) return false;
+  //     }
+
+  //     // ✅ 3) Price range filtering
+  //     const price = parseFloat(product?.price);
+  //     const lowestRaw = priceRange?.lowestPrice;
+  //     const highestRaw = priceRange?.highestPrice;
+
+  //     const hasLowest = !!lowestRaw && Number(lowestRaw) > 0;
+  //     const hasHighest = !!highestRaw && Number(highestRaw) > 0;
+
+  //     if (hasLowest || hasHighest) {
+  //       if (!isFinite(price)) return false;
+  //       const lowest = hasLowest ? Number(lowestRaw) : -Infinity;
+  //       const highest = hasHighest ? Number(highestRaw) : Infinity;
+  //       if (price < lowest || price > highest) return false;
+  //     }
+
+  //     return true;
+  //   });
+
+  //   // ✅ 4) Sorting if price sort selected
+  //   const sorted = [...filtered];
+  //   if (selectTopFilterValue?.value === "lowToHigh") {
+  //     sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+  //   } else if (selectTopFilterValue?.value === "highToLow") {
+  //     sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+  //   }
+
+  //   return sorted;
+  // }, [CBSPageProducts, selectedFilters, priceRange, selectTopFilterValue]);
+
   const filteredProducts = useMemo(() => {
+    const selectedValues = Array.from(selectedFilters);
+
+    const hasTopFilter =
+      selectTopFilterValue?.value &&
+      !["lowToHigh", "highToLow"].includes(selectTopFilterValue.value);
+    const topFilterKey = hasTopFilter ? selectTopFilterValue.value : null;
+
     const filtered = CBSPageProducts?.filter((product: any) => {
       const attributeArray = product?.attribute_array || {};
-      const selectedValues = Array.from(selectedFilters);
+      const productAttributes = Object.values(attributeArray);
 
-      // ✅ 1) Attribute filter
-      const matchesFilters =
+      const matchesAttribute =
         selectedValues.length === 0 ||
-        selectedValues.every((value) =>
-          Object.values(attributeArray).includes(value),
-        );
-      if (!matchesFilters) return false;
+        selectedValues.some((value) => productAttributes.includes(value));
 
-      // ✅ 2) Top filter — only if it’s NOT a price sort option
-      if (
-        selectTopFilterValue?.value &&
-        !["lowToHigh", "highToLow"].includes(selectTopFilterValue.value)
-      ) {
-        const selectedKey = selectTopFilterValue.value;
-        if (!product[selectedKey]) return false;
-      }
+      const matchesTopFilter =
+        !topFilterKey || product[topFilterKey] !== undefined;
 
-      // ✅ 3) Price range filter
+      const passesFilters = matchesAttribute && matchesTopFilter;
+      if (!passesFilters) return false;
+
+      // ✅ Price filtering
       const price = parseFloat(product?.price);
       const lowestRaw = priceRange?.lowestPrice;
       const highestRaw = priceRange?.highestPrice;
@@ -87,7 +193,7 @@ export default function FilterSidebar() {
       return true;
     });
 
-    // ✅ 4) Sort by price IF the selectedTopFilterValue is a sort option
+    // ✅ Sorting
     const sorted = [...filtered];
     if (selectTopFilterValue?.value === "lowToHigh") {
       sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -98,6 +204,7 @@ export default function FilterSidebar() {
     return sorted;
   }, [CBSPageProducts, selectedFilters, priceRange, selectTopFilterValue]);
 
+  console.log({ filteredProducts });
   useEffect(() => {
     dispatch(brandAction.setCBSFilteredProducts(filteredProducts));
   }, [dispatch, filteredProducts]);
@@ -137,7 +244,7 @@ export default function FilterSidebar() {
       lowest: priceRange.lowest || "",
       highest: priceRange.highest || "",
     },
-    validationSchema: validationSchemas.priceRange(20, 100),
+    validationSchema: validationSchemas.priceRange(),
     onSubmit: onSubmit,
   });
 
@@ -248,14 +355,15 @@ export default function FilterSidebar() {
 
                       {opt?.children && (
                         <div className="flex items-center justify-between gap-1">
-                          {filter?.showCount && (
+                          {/* comment out because we collecting all catgeory no nested so  */}
+                          {/* {filter?.showCount && (
                             <p
                               style={{ color: "rgba(31, 31, 31, 0.40)" }}
                               className="mb-0 text-[12px] font-normal"
                             >
                               ({opt?.children?.length})
                             </p>
-                          )}
+                          )} */}
                           <Image
                             src={angle_down}
                             alt="arrow"
@@ -311,14 +419,14 @@ export default function FilterSidebar() {
                                   toggleOptionExpand(child?.value);
                                 }}
                               >
-                                {child?.children2.length && (
+                                {/* {child?.children2?.length && (
                                   <p
                                     style={{ color: "rgba(31, 31, 31, 0.40)" }}
                                     className="mb-0 text-[12px] font-normal"
                                   >
-                                    ({child?.children2.length})
+                                    ({child?.children2?.length})
                                   </p>
-                                )}
+                                )} */}
                                 <Image
                                   src={angle_down}
                                   alt="arrow"
@@ -425,11 +533,11 @@ export default function FilterSidebar() {
                     handler={() => onSubmit}
                     text={"Apply"}
                     type="submit"
-                    className="w-full rounded-[8px] bg-[#FD71AF] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] underline md:px-6 md:py-2 md:text-[18px]"
+                    className="w-full cursor-pointer rounded-[8px] bg-[#FD71AF] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] underline hover:bg-[#FD71AF]/85 md:px-6 md:py-2 md:text-[18px]"
                   />
                   <Button
                     text={"Reset"}
-                    className="w-full rounded-[8px] bg-[#61B582] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] md:px-6 md:py-2 md:text-[18px]"
+                    className="w-full cursor-pointer rounded-[8px] bg-[#61B582] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] hover:bg-[#61B582]/85 md:px-6 md:py-2 md:text-[18px]"
                   />
                 </div>
               </form>

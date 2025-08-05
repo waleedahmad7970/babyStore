@@ -50,7 +50,7 @@ export const validationSchemas = {
       .min(10, "Description must be at least 10 characters")
       .required("Description is required"),
   }),
-  priceRange: (minLimit: number = 0, maxLimit: number = 10000) =>
+  priceRange: (minLimit: number = 0, maxLimit: number = 100000) =>
     Yup.object({
       lowest: Yup.number()
         .min(minLimit, `Minimum price is ${minLimit}`)

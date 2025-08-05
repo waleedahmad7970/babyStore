@@ -124,7 +124,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <div className="relative min-h-[240px] min-w-[240px] overflow-hidden">
               <Image
-                src={`https:www.babystore.ae/storage/${image}` || fallBackImage}
+                src={
+                  `https://www.babystore.ae/storage/${image}` || fallBackImage
+                }
                 alt={"product-image"}
                 fill
                 className="h-full w-full cursor-pointer object-cover transition duration-500 hover:scale-125 hover:rotate-3"

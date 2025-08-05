@@ -13,7 +13,15 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { globalStateActions } from "@/store/slices/globalStates";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
-import { basket, cart, heart, menu, search, user } from "@/public/assets/icons";
+import {
+  basket,
+  basketBag,
+  cart,
+  heart,
+  menu,
+  search,
+  user,
+} from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   InstantSearch,
@@ -26,6 +34,7 @@ import TrackVisitedRoutes from "../visitedPath/store..visited";
 import Button from "../button/button";
 import { userActions } from "@/store/slices/auth.slice";
 import authService from "@/services/auth.service";
+import productServices from "@/services/product.service";
 
 interface NavbarProps {
   categories?: string[];
@@ -55,6 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   const [showCartMob, setShowCartMob] = useState(false);
 
   useEffect(() => {
+    productServices.getCategories();
     authService.getUserProfile(registerSessionId);
   }, [registerSessionId]);
 
@@ -144,7 +154,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="hit-item relative flex w-full cursor-pointer justify-start gap-5 border-b-1 border-[#CDCDCD]/30 p-2 hover:bg-[#FFF0F5]">
+    <div className="hit-item relative flex w-full cursor-pointer justify-start gap-2 border-b-1 border-[#CDCDCD]/30 p-2 hover:bg-[#FFF0F5]">
       <Image
         width={24}
         height={24}
@@ -154,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       />
       <h4
         onClick={() => naviageToProduct(hit?.id)}
-        className="font-inter py-1 text-left text-[18px] leading-[18.73px] font-medium text-[#1A1718]"
+        className="font-inter py-1 text-left text-[14px] leading-[18.73px] font-medium text-[#1A1718]"
       >
         <Highlight
           attribute="title"
@@ -239,26 +249,29 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                 setShowLogin(false);
               }, 300))
             }
-            className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[320px] sm:top-[60px] sm:block"
+            className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[170px] sm:top-[60px] sm:block"
           >
             {!registerSessionId ? (
-              <div className="relative w-full max-w-[320px] rounded-[6px] bg-white p-5">
+              <div className="relative w-full max-w-[150px] rounded-[6px] bg-white p-3">
                 {/* <div className="absolute top-0 right-0 left-0 h-0 w-0 border-r-[20px] border-b-[15px] border-l-[20px] border-r-transparent border-b-amber-400 border-l-transparent"></div> */}
-
-                <Button
-                  size={30}
-                  type={"submit"}
-                  text={"Login"}
-                  handler={() => router.push("/login")}
-                  className="w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
-                />
-                <Button
-                  size={30}
-                  type={"submit"}
-                  text={"Sign up"}
-                  handler={() => router.push("/signup")}
-                  className="mt-3 w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
-                />
+                <div className="flex items-center justify-between rounded-[10px] bg-white">
+                  <Button
+                    size={30}
+                    type={"submit"}
+                    text={"Login"}
+                    handler={() => router.push("/login")}
+                    className="] w-full cursor-pointer rounded-full bg-[#61B582] py-1 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                  />
+                </div>
+                <div className="flex items-center justify-between rounded-[10px] bg-white">
+                  <Button
+                    size={30}
+                    type={"submit"}
+                    text={"Sign up"}
+                    handler={() => router.push("/signup")}
+                    className="] mt-3 w-full cursor-pointer rounded-full bg-[#61B582] py-1 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                  />
+                </div>
               </div>
             ) : (
               <div className="relative w-full max-w-[320px] rounded-[6px] bg-white p-5">
@@ -374,12 +387,12 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             <Image
               onMouseEnter={() => handleMouseEnter()}
               onMouseLeave={() => handleMouseLeave()}
-              src={basket}
+              src={basketBag}
               alt={`User`}
               className="h-8 w-8 cursor-pointer"
             />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#F82D8B] text-[10px] font-bold text-white">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
                 {cartProducts?.length}
               </span>
             )}

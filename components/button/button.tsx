@@ -2,7 +2,7 @@ import React from "react";
 import { ClipLoader } from "react-spinners";
 
 interface ButtonProps {
-  text?: string | number;
+  text?: string | number | any;
   handler?: () => void;
   className?: string;
   type?: any;

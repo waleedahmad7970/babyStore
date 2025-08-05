@@ -77,7 +77,10 @@ const OrderSuccess = () => {
           <div className="space-y-1">
             {order_details?.map((order: any, key: number) => {
               return (
-                <div key={key} className="flex items-center justify-between">
+                <div
+                  key={key}
+                  className="flex items-center justify-between border-b-1 border-gray-200"
+                >
                   <span
                     className={`font-Inter line-clamp-1 max-w-[60%] text-left text-[16px] leading-[24px] font-normal text-[#1F1F1F]`}
                   >
@@ -91,7 +94,7 @@ const OrderSuccess = () => {
                     >
                       AED
                     </span>{" "}
-                    {order?.price * order?.qty || "0.00"}
+                    {(order?.price * order?.qty)?.toFixed(2) || "0.00"}
                   </span>
                 </div>
               );
