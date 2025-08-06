@@ -41,6 +41,10 @@ export default function Page(): JSX.Element {
 
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const start = currentPage * itemsPerPage;

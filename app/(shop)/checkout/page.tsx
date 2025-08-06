@@ -222,7 +222,7 @@ const Checkout = () => {
   console.log({ values, errors });
   return (
     <div className="mx-auto w-full max-w-[1360px] px-[10px] py-10 lg:px-0">
-      <p className="mb-[44px] text-[40px] leading-normal font-semibold text-[#000]">
+      <p className="mb-[22px] text-[40px] leading-normal font-semibold text-[#000] sm:mb-[44px]">
         Checkout
       </p>
       <form
@@ -234,7 +234,7 @@ const Checkout = () => {
             <h1 className="max-w-max text-[24px] leading-[20px] font-semibold text-[#201C1C]">
               Billing Information{" "}
             </h1>
-            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FF6AAF] text-[12px] leading-[9.818px] font-semibold text-white">
+            <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#FF6AAF] text-[14px] leading-[9.818px] font-semibold text-white sm:h-[40px] sm:w-[40px] sm:text-[16px]">
               1
             </div>
           </div>
@@ -552,7 +552,7 @@ const Checkout = () => {
             <h1 className="max-wmax text-[24px] leading-[20px] font-semibold text-[#201C1C]">
               Shipping Method{" "}
             </h1>
-            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FF6AAF] text-[12px] leading-[9.818px] font-semibold text-white">
+            <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#FF6AAF] text-[14px] leading-[9.818px] font-semibold text-white sm:h-[40px] sm:w-[40px] sm:text-[16px]">
               2
             </div>
           </div>
@@ -578,7 +578,7 @@ const Checkout = () => {
             <h1 className="max-wmax text-[24px] leading-[20px] font-semibold text-[#201C1C]">
               Payment Method
             </h1>
-            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FF6AAF] text-[12px] leading-[9.818px] font-semibold text-white">
+            <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#FF6AAF] text-[14px] leading-[9.818px] font-semibold text-white sm:h-[40px] sm:w-[40px] sm:text-[16px]">
               3
             </div>
           </div>
@@ -608,7 +608,7 @@ const Checkout = () => {
             <h1 className="max-wmax text-[24px] leading-[20px] font-semibold text-[#201C1C]">
               Shipping Method{" "}
             </h1>
-            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FF6AAF] text-[12px] leading-[9.818px] font-semibold text-white">
+            <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#FF6AAF] text-[14px] leading-[9.818px] font-semibold text-white sm:h-[40px] sm:w-[40px] sm:text-[16px]">
               4
             </div>
           </div>
@@ -648,10 +648,11 @@ const Checkout = () => {
             </div>
           </div>
           <CartPanelCheckout products={cartProducts as any} />
+
           <Button
             loading={placeOrder}
             type={"submit"}
-            className="mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-green-700"
+            className="fixed right-0 bottom-[64px] left-0 z-[200] mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-green-700 sm:relative sm:top-0 sm:z-0 sm:w-full"
             text={"Place Order"}
           />
         </div>

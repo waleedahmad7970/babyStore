@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/button/button";
-import { call_icon_white, conformTick } from "@/public/assets/icons";
+import { aedIcon, call_icon_white, conformTick } from "@/public/assets/icons";
 import { withAuth } from "@/routes/ProtectedRoutes";
 import orderServices from "@/services/order.service";
 import { useAppSelector } from "@/store/hooks";
@@ -82,17 +82,21 @@ const OrderSuccess = () => {
                   className="flex items-center justify-between border-b-1 border-gray-200"
                 >
                   <span
-                    className={`font-Inter line-clamp-1 max-w-[60%] text-left text-[16px] leading-[24px] font-normal text-[#1F1F1F]`}
+                    className={`font-Inter line-clamp-1 max-w-[70%] text-left text-[13px] leading-[24px] font-normal text-[#1F1F1F]`}
                   >
                     {order?.product?.name || "Product Name"}
                   </span>
                   <span
-                    className={`font-Inter text-[14px] leading-[24px] font-normal text-[#1F1F1F]`}
+                    className={`font-Inter flex items-center justify-between gap-1 text-[14px] leading-[24px] font-normal text-[#1F1F1F]`}
                   >
                     <span
-                      className={`text-[10px] leading-normal font-normal text-[#1F1F1F]`}
+                      className={`item-center flex justify-between text-[10px] leading-normal font-normal text-[#1F1F1F]`}
                     >
-                      AED
+                      <Image
+                        src={aedIcon}
+                        className="h-[12px] w-[12px]"
+                        alt="curr"
+                      />{" "}
                     </span>{" "}
                     {(order?.price * order?.qty)?.toFixed(2) || "0.00"}
                   </span>
@@ -107,12 +111,16 @@ const OrderSuccess = () => {
                 Sub Total
               </span>
               <span
-                className={`font-Inter text-[14px] leading-[24px] font-normal text-[#999999]`}
+                className={`font-Inter flex items-center justify-between gap-1 text-[14px] leading-[24px] font-normal text-[#999999]`}
               >
                 <span
-                  className={`text-[10px] leading-normal font-normal text-[#999999]`}
+                  className={`item-center flex justify-between text-[10px] leading-normal font-normal text-[#999999]`}
                 >
-                  AED
+                  <Image
+                    src={aedIcon}
+                    className="h-[12px] w-[12px]"
+                    alt="curr"
+                  />{" "}
                 </span>{" "}
                 {totalPrice?.toFixed(2)}
               </span>
@@ -124,12 +132,16 @@ const OrderSuccess = () => {
                 Tax
               </span>
               <span
-                className={`font-Inter text-[14px] leading-[24px] font-normal text-[#999999]`}
+                className={`font-Inter flex items-center justify-between gap-1 text-[14px] leading-[24px] font-normal text-[#999999]`}
               >
                 <span
-                  className={`text-[10px] leading-normal font-normal text-[#999999]`}
+                  className={`item-center flex justify-between text-[10px] leading-normal font-normal text-[#999999]`}
                 >
-                  AED
+                  <Image
+                    src={aedIcon}
+                    className="h-[12px] w-[12px]"
+                    alt="curr"
+                  />{" "}
                 </span>{" "}
                 {taxAmount?.toFixed(2) || 0}
               </span>
@@ -165,24 +177,28 @@ const OrderSuccess = () => {
             </div>
             <div className="flex items-center justify-between border-t-2 border-b-2 border-[#ddd]">
               <span
-                className={`font-Inter ] text-[16px] leading-[24px] font-semibold text-[#1F1F1F]`}
+                className={`font-Inter ] flex items-center justify-between text-[16px] leading-[24px] font-semibold text-[#1F1F1F]`}
               >
                 Total Amount
               </span>
               <span
-                className={`font-Inter text-[14px] leading-[24px] font-semibold text-[#1F1F1F]`}
+                className={`font-Inter flex items-center justify-between gap-1 text-[14px] leading-[24px] font-semibold text-[#1F1F1F]`}
               >
                 <span
-                  className={`text-[10px] leading-normal font-normal text-[#1F1F1F]`}
+                  className={`gap-1 text-[10px] leading-normal font-normal text-[#1F1F1F]`}
                 >
-                  AED
+                  <Image
+                    src={aedIcon}
+                    className="h-[12px] w-[12px]"
+                    alt="curr"
+                  />{" "}
                 </span>{" "}
                 {orderTotal?.toFixed(2) || 0}
               </span>
             </div>
           </div>
         </div>
-        <p className="my-3 mb-0 text-[28px] leading-[34px] font-medium">
+        <p className="mb-0 py-3 text-[28px] leading-[34px] font-medium">
           Your Details
         </p>
         <div className="bg-white p-4 text-start">

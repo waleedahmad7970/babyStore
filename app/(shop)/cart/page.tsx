@@ -15,19 +15,6 @@ interface AppliedCoupon {
 export default function Page() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const typed = useTypewriter(
-    [
-      [
-        { text: "Shop for AED 12.20 more to avail " },
-        { text: "FREE SHIPPING.", bold: true },
-      ],
-      [
-        { text: "Shop for AED 12.20 more to avail " },
-        { text: "FREE SHIPPING.", bold: true },
-      ],
-    ],
-    { typingSpeed: 50, deletingSpeed: 30, pauseTime: 1500, leaveChars: 5 },
-  );
   const { cartProducts = [] } = useAppSelector((state) => state.cart);
   const { appliedCoupon = {} } = useAppSelector((state) => state.user);
 
@@ -50,6 +37,19 @@ export default function Page() {
 
     return { subtotal, discountAmount, tax, total };
   }, [cartProducts, appliedCoupon]);
+  const freeShippingRemanaingAmount = total - 100;
+  const message =
+    total > 100
+      ? `You’re all set! Enjoy `
+      : `Shop for AED ${freeShippingRemanaingAmount <= 0 ? 100 : freeShippingRemanaingAmount} more to avail `;
+
+  const typed = useTypewriter(
+    [
+      [{ text: message }, { text: "FREE SHIPPING.", bold: true }],
+      [{ text: message }, { text: "FREE SHIPPING.", bold: true }],
+    ],
+    { typingSpeed: 50, deletingSpeed: 30, pauseTime: 1500, leaveChars: 5 },
+  );
 
   const handleCheckout = () => {
     const isAnyItemSelcted =
@@ -77,28 +77,33 @@ export default function Page() {
           <Button
             text={"Shop More"}
             handler={() => router.push("/")}
-            className="max-w-max cursor-pointer rounded-[50px] border-none bg-[#61B482] px-5 py-[10px] text-[16px] font-semibold text-white uppercase"
+            className="w-full min-w-[150px] cursor-pointer rounded-[50px] border-none bg-[#61B482] px-5 py-[10px] text-[16px] font-semibold text-white uppercase sm:max-w-max"
           />
-
-          <button
-            onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
-            className="text cursor-pointer rounded-[50px] border-1 border-[#E7448C] bg-[#FFF0F5] px-5 py-[10px] text-[16px] font-bold text-[#E7448C]/50 hover:border-white hover:bg-[#E7448C] hover:text-white"
-          >
-            Remove Selected{" "}
-          </button>
+          <div className="flex w-full items-center justify-between gap-2 sm:justify-start">
+            <Button
+              text={"Remove Selected"}
+              handler={() => dispatch(cartAction.clearAllCheckoutProducts())}
+              className="text w-full cursor-pointer rounded-[50px] border-1 border-[#E7448C] bg-[#FFF0F5] px-5 py-[10px] text-[16px] font-bold text-[#E7448C]/50 uppercase hover:border-white hover:bg-[#E7448C] hover:text-white sm:max-w-max"
+            />
+            <Button
+              text={"Select All"}
+              handler={() => dispatch(cartAction.selectAllCheckoutProducts())}
+              className="text w-full cursor-pointer rounded-[50px] border-1 border-[#61B482] bg-[#61B482] px-5 py-[10px] text-[16px] font-bold text-[#fff] uppercase hover:border-white hover:bg-[#61B482]/50 hover:text-white sm:max-w-max"
+            />
+          </div>
         </div>
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1 rounded-[6px] border-1 border-[#E0E0E0] p-[10px] md:p-6">
-            <div className="flex items-center justify-start gap-6 md:hidden">
+            {/* <div className="flex items-center justify-start gap-6 md:hidden">
               <div className="h-6 min-w-6 rounded-[3px] border border-[#E0E0E0] bg-white"></div>
               <button
-                onClick={() => dispatch(cartAction.clearAllCheckoutProducts())}
+                onClick={() => dispatch(cartAction.selectAllCheckoutProducts())}
                 style={{}}
                 className="text cursor-pointer rounded-[50px] border-1 border-[#E7448C] bg-[#FFF0F5] px-5 py-[10px] text-[16px] font-bold text-[#E7448C]/50 hover:border-white hover:bg-[#E7448C] hover:text-white"
               >
                 Remove Selected{" "}
               </button>
-            </div>
+            </div> */}
             <div className="hidden items-center justify-between md:flex">
               <p className="font-Inter w-full max-w-[354px] text-center text-[16px] font-semibold text-[#000]">
                 Product

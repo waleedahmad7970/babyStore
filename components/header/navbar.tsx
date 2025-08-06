@@ -116,44 +116,6 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
     router.push(`product/${id}`);
   };
   const Hit = ({ hit }: any) => (
-    // custom made by me
-    // <div className="hit-item relative flex w-full justify-start gap-6 border-b-1 border-[#CDCDCD]/30 p-2">
-    //   <Image
-    //     src={hit?.thumbnail}
-    //     width={90}
-    //     height={90}
-    //     alt="s"
-    //     className="h-[90px] min-w-[90px] cursor-pointer rounded-[6px] border border-[#CDCDCD]"
-    //   />
-    //   <div className="flex w-full justify-between">
-    //     <div className="flex w-full cursor-pointer flex-col justify-start gap-1">
-    //       <h4 className="font-inter text-left text-[18px] leading-[18.73px] font-medium text-[#1A1718]">
-    //         {/* <Highlight
-    //           attribute="title"
-    //           hit={hit}
-    //           highlightedTagName="span"
-    //           classNames={{
-    //             highlighted: "text-pink-600 font-semibold",
-    //           }}
-    //         /> */}
-    //         {hit?.title}
-    //       </h4>
-    //       <h4 className="font-inter text-left text-[16px] leading-[18px] font-normal text-[#1A1718]">
-    //         {hit?.category}
-    //       </h4>
-    //       <h4 className="font-inter text-left text-[16px] leading-[18px] font-medium text-[#1F1F1F80]">
-    //         {hit?.price} AED
-    //       </h4>
-    //     </div>
-    //     <div className="flex justify-end gap-1">
-    //       {hit?.images?.map((img: string, index: number) => {
-    //         return (
-    //           <Image key={index} src={img} alt="img" width={80} height={80} />
-    //         );
-    //       })}
-    //     </div>
-    //   </div>
-    // </div>
     <div className="hit-item relative flex w-full cursor-pointer justify-start gap-2 border-b-1 border-[#CDCDCD]/30 p-2 hover:bg-[#FFF0F5]">
       <Image
         width={24}
@@ -235,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       <div className="cus-container relative mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* cart model */}
         <div
-          className={`fixed top-[84px] right-0 z-[100] h-full max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
+          className={`fixed top-[84px] right-0 z-[100] max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
             showCartMob ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -249,42 +211,99 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                 setShowLogin(false);
               }, 300))
             }
-            className="absolute top-[30px] right-[0px] z-50 hidden w-full max-w-[170px] sm:top-[60px] sm:block"
+            className="absolute top-[30px] right-[90px] z-50 hidden w-full max-w-[200px] sm:top-[70px] sm:block"
           >
             {!registerSessionId ? (
-              <div className="relative w-full max-w-[150px] rounded-[6px] bg-white p-3">
+              <div className="rounded-[6px relative w-full">
                 {/* <div className="absolute top-0 right-0 left-0 h-0 w-0 border-r-[20px] border-b-[15px] border-l-[20px] border-r-transparent border-b-amber-400 border-l-transparent"></div> */}
-                <div className="flex items-center justify-between rounded-[10px] bg-white">
+                <div className="flex items-center justify-center rounded-[10px] bg-white">
                   <Button
                     size={30}
                     type={"submit"}
-                    text={"Login"}
+                    text={
+                      <div className="flex items-center justify-center gap-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-log-in-icon lucide-log-in"
+                        >
+                          <path d="m10 17 5-5-5-5" />
+                          <path d="M15 12H3" />
+                          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        </svg>
+                        Login
+                      </div>
+                    }
                     handler={() => router.push("/login")}
-                    className="] w-full cursor-pointer rounded-full bg-[#61B582] py-1 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                    className="w-full cursor-pointer rounded-full bg-[#E7448C] py-3 text-[17px] font-semibold text-white shadow-md transition-all duration-300 ease-in-out hover:text-[20px]"
                   />
                 </div>
                 <div className="flex items-center justify-between rounded-[10px] bg-white">
                   <Button
                     size={30}
                     type={"submit"}
-                    text={"Sign up"}
+                    text={
+                      <div className="flex items-center justify-center gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-user-round-plus-icon lucide-user-round-plus"
+                        >
+                          <path d="M2 21a8 8 0 0 1 13.292-6" />
+                          <circle cx="10" cy="8" r="5" />
+                          <path d="M19 16v6" />
+                          <path d="M22 19h-6" />
+                        </svg>
+                        Sign up
+                      </div>
+                    }
                     handler={() => router.push("/signup")}
-                    className="] mt-3 w-full cursor-pointer rounded-full bg-[#61B582] py-1 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
+                    className="mt-2 w-full cursor-pointer rounded-full bg-[#E7448C] py-3 text-[17px] font-semibold text-white shadow-md transition-all duration-300 ease-in-out hover:text-[20px]"
                   />
                 </div>
               </div>
             ) : (
-              <div className="relative w-full max-w-[320px] rounded-[6px] bg-white p-5">
-                {/* <div className="absolute top-0 right-0 left-0 h-0 w-0 border-r-[20px] border-b-[15px] border-l-[20px] border-r-transparent border-b-amber-400 border-l-transparent"></div> */}
-
-                <Button
-                  size={30}
-                  type={"submit"}
-                  text={"Logout"}
-                  handler={() => handleLogout()}
-                  className="mt-3 w-full cursor-pointer rounded-[4.9px] bg-[#61B582] py-3 text-[17px] font-semibold text-white shadow-md transition hover:bg-[#61B582]/90"
-                />
-              </div>
+              <Button
+                size={30}
+                type={"submit"}
+                text={
+                  <div className="flex items-center justify-center gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-log-in-icon lucide-log-in rotate-180"
+                    >
+                      <path d="m10 17 5-5-5-5" />
+                      <path d="M15 12H3" />
+                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                    </svg>
+                    Logout
+                  </div>
+                }
+                handler={() => handleLogout()}
+                className="w-full cursor-pointer rounded-full bg-[#E7448C] py-3 text-[17px] font-semibold text-white shadow-md transition-all duration-300 ease-in-out hover:text-[20px]"
+              />
             )}
           </div>
         )}
@@ -331,7 +350,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               className="block md:hidden"
             />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white md:hidden">
                 {cartProducts?.length}
               </span>
             )}

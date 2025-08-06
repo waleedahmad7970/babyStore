@@ -9,6 +9,7 @@ import {
   redBag,
   wishedIcon,
   whiteBag,
+  aedIcon,
 } from "../../../public/assets/icons";
 
 import { useRouter } from "next/navigation";
@@ -143,14 +144,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex flex-col gap-1">
               <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
-                AED{" "}
+                <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
                 <span className="ml-[3px] text-left text-[16px] font-bold">
                   {price?.toFixed(2)}
                 </span>
               </p>
               {oldPrice && (
                 <p className="flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1F1F1F80] line-through">
-                  AED
+                  <Image
+                    src={aedIcon}
+                    className="h-[12px] w-[12px]"
+                    alt="curr"
+                  />
                   <span className="ml-[3px] text-left text-[14px] leading-[10px] font-medium text-[#1F1F1F80]">
                     {oldPrice?.toLocaleString()}
                   </span>

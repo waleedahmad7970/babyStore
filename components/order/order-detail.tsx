@@ -1,5 +1,10 @@
 "use client";
-import { arrow_down, copyClipboard, pink_arrow } from "@/public/assets/icons";
+import {
+  aedIcon,
+  arrow_down,
+  copyClipboard,
+  pink_arrow,
+} from "@/public/assets/icons";
 import { useAppSelector } from "@/store/hooks";
 import moment from "moment";
 import Image from "next/image";
@@ -287,10 +292,12 @@ export const OrderDetailsTotal: FC<OrderDetailsTotalProps> = ({ data }) => {
                 <span className="font-Inter text-[16px] leading-[24px] font-normal text-[#A0A0A0]">
                   {item?.label}
                 </span>
-                <span className="font-Inter text-[14px] leading-[24px] font-normal text-[#473A3F]">
-                  <span className="mt-[-7px] mr-[-3px] text-[10px] leading-normal font-normal text-[#473A3F]">
-                    AED
-                  </span>{" "}
+                <span className="font-Inter flex items-center justify-between gap-1 text-[14px] leading-[24px] font-normal text-[#473A3F]">
+                  <Image
+                    src={aedIcon}
+                    className="h-[12px] w-[12px]"
+                    alt="curr"
+                  />{" "}
                   {item?.value ? Number(item?.value)?.toFixed(2) : 0}
                   <span className="text-[#473A3F]l align-top text-[10px] leading-normal font-normal">
                     .00

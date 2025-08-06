@@ -1,6 +1,6 @@
 "use client";
 
-import { cross } from "@/public/assets/icons";
+import { aedIcon, cross } from "@/public/assets/icons";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { QuantityControl } from "./quanity-controller";
@@ -51,56 +51,59 @@ export default function CartPanel() {
 
   return (
     <div className="flex flex-col gap-[10px] rounded-[7.6px] bg-white px-[5.4px] py-[5.4px]">
-      {cartProducts
-        ?.filter((item) => item.isCheckoutProduct)
-        ?.map((item, index) => (
-          <div
-            key={index}
-            className="relative flex h-[115px] justify-between gap-2 rounded-[7.6px] bg-[#FAFAFA] px-[5.4px] py-[5.4px] md:justify-start"
-          >
-            <Image
-              alt="remove item"
-              src={cross}
-              onClick={() =>
-                dispatch(cartAction.removeCartItem(Number(item.id)))
-              }
-              className="absolute top-[5px] right-[5px] cursor-pointer"
-            />
-            <Image
-              src={`https://www.babystore.ae/storage/${item?.image}`}
-              alt="cart item"
-              height={104}
-              width={104}
-              className="min-w-[104px] rounded-[5.67px] object-contain"
-            />
-            <div className="flex h-full w-full flex-col justify-between">
-              <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
-                {item?.name || item?.title}
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <p className="text-[9.673px] font-light text-[#1F1F1F]">
-                    AED
-                  </p>
-                  <p className="text-[14.882px] font-semibold text-[#1F1F1F]">
-                    {item?.price?.toFixed(2)}
-                  </p>
+      <div className="flex max-h-[400px] flex-col gap-[10px] overflow-y-auto">
+        {cartProducts
+          ?.filter((item) => item.isCheckoutProduct)
+          ?.map((item, index) => (
+            <div
+              key={index}
+              className="relative flex h-[115px] justify-between gap-2 rounded-[7.6px] bg-[#FAFAFA] px-[5.4px] py-[5.4px] md:justify-start"
+            >
+              <Image
+                alt="remove item"
+                src={cross}
+                onClick={() =>
+                  dispatch(cartAction.removeCartItem(Number(item.id)))
+                }
+                className="absolute top-[5px] right-[5px] cursor-pointer"
+              />
+              <Image
+                src={`https://www.babystore.ae/storage/${item?.image}`}
+                alt="cart item"
+                height={104}
+                width={104}
+                className="min-w-[104px] rounded-[5.67px] object-contain"
+              />
+              <div className="flex h-full w-full flex-col justify-between">
+                <p className="line-clamp-2 w-[95%] text-[13px] leading-[17.2px] font-medium text-[#1F1F1F]">
+                  {item?.name || item?.title}
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />
+                    <p className="text-[14.882px] font-semibold text-[#1F1F1F]">
+                      {item?.price?.toFixed(2)}
+                    </p>
+                  </div>
+                  <QuantityControl
+                    className="gap-4"
+                    quantity={item?.quantity || 1}
+                    onIncrease={() =>
+                      dispatch(cartAction.incrementQuantity(item?.id))
+                    }
+                    onDecrease={() =>
+                      dispatch(cartAction.decrementQuantity(item?.id))
+                    }
+                  />
                 </div>
-                <QuantityControl
-                  className="gap-4"
-                  quantity={item?.quantity || 1}
-                  onIncrease={() =>
-                    dispatch(cartAction.incrementQuantity(item?.id))
-                  }
-                  onDecrease={() =>
-                    dispatch(cartAction.decrementQuantity(item?.id))
-                  }
-                />
               </div>
             </div>
-          </div>
-        ))}
-
+          ))}
+      </div>
       <div className="h-[1px] bg-[#F7F7F7]" />
 
       <div className="flex flex-col gap-[4.5px]">
@@ -108,31 +111,33 @@ export default function CartPanel() {
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Sub Total:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span> {subtotal?.toFixed(2)}
+          <span className="flex items-center justify-between gap-1 text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
+            {subtotal?.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Tax:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span> {tax?.toFixed(2)}
+          <span className="flex items-center justify-between gap-1 text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
+            {tax?.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Discount:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span>{" "}
+          <span className="gap1 flex items-center justify-between text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
             {discountAmount?.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between text-[17.4px] font-semibold text-[#636363]">
           <span>Total:</span>
-          <span>
-            <span className="mr-[-2px] text-[10.875px]">AED</span>{" "}
+          <span className="flex items-center justify-between">
+            <Image src={aedIcon} className="h-[16px] w-[16px]" alt="curr" />{" "}
             {total?.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </span>
         </div>

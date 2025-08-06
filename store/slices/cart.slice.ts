@@ -157,6 +157,12 @@ export const cartSlice = createSlice({
         isCheckoutProduct: false,
       }));
     },
+    selectAllCheckoutProducts: (state) => {
+      state.cartProducts = state.cartProducts.map((product) => ({
+        ...product,
+        isCheckoutProduct: true,
+      }));
+    },
     emptyCart: (state) => {
       state.cartProducts = [];
     },

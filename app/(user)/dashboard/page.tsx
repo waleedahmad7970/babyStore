@@ -15,6 +15,8 @@ import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { DashboardCouponList } from "@/components/cards/dasboard-coupon-card";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import orderServices from "@/services/order.service";
+import { userActions } from "@/store/slices/auth.slice";
+import { useRouter } from "next/navigation";
 
 const dashboardOptions = [
   { icon: Icons.DashboardIcon, label: "Dashboard" },
@@ -29,6 +31,7 @@ const dashboardOptions = [
 ];
 
 export default function Page() {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { registerSessionId } = useAppSelector((state) => state.user);
   const { activeDashboardTab } = useAppSelector((state) => state.dashboard);
@@ -43,6 +46,12 @@ export default function Page() {
       authService.getSavedAddresses(registerSessionId);
     }
   }, [registerSessionId]);
+
+  const handleLogout = () => {
+    dispatch(userActions.clearUser());
+    dispatch(userActions.setRegisterSessionId(""));
+    router.push("/");
+  };
 
   return (
     <div className="cus-container mx-auto">
@@ -67,6 +76,31 @@ export default function Page() {
               </div>
             );
           })}
+          <div
+            onClick={() => handleLogout()}
+            className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-[8px] bg-[#FD71AF] px-4 py-2 text-white transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#FD71AF] hover:text-white md:px-2 md:px-4 md:py-3`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-log-in-icon lucide-log-in rotate-180"
+            >
+              <path d="m10 17 5-5-5-5" />
+              <path d="M15 12H3" />
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            </svg>
+
+            <p className="font-Inter w-max text-[14px] leading-[150%] font-normal md:text-[18px]">
+              Logout
+            </p>
+          </div>
         </div>
         <div className="w-full">
           <div className="hidden w-full text-[32px] font-bold text-[#473A3F] md:block">

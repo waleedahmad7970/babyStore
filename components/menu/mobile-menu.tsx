@@ -49,6 +49,8 @@ const BottomNavigation: React.FC = () => {
     CBSTopFilters = [],
     selectTopFilterValue = "",
   } = useAppSelector((state) => state.brands);
+
+  const { cartProducts = [] } = useAppSelector((state) => state.cart);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const menuRef = useRef(null);
@@ -126,7 +128,8 @@ const BottomNavigation: React.FC = () => {
   };
 
   const handleSelectSortFilter = (option: any) => {
-    setSelectMobSort(option);
+    if (option.value === selectMobSort?.value) setSelectMobSort({});
+    else setSelectMobSort(option);
   };
   const handleApplySortFilter = () => {
     dispatch(brandAction.setCBSTopFilterValue(selectMobSort));
@@ -179,7 +182,7 @@ const BottomNavigation: React.FC = () => {
                 <div
                   onClick={() => handleSelectSortFilter(option)}
                   key={index}
-                  className={`border-b border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal ${selectMobSort?.value === option?.value || selectTopFilterValue?.value === option?.value ? "text-[#fff]" : "text-[#000]"} `}
+                  className={`border-b border-[#E5E5E5] py-2 text-[15px] leading-[20px] font-normal ${selectMobSort?.value === option?.value || selectTopFilterValue?.value === option?.value ? "text-[#E7448C]" : "text-[#000]"} `}
                 >
                   {option?.name}
                 </div>
@@ -283,10 +286,17 @@ const BottomNavigation: React.FC = () => {
               aria-label={tab.label}
             >
               <div
-                className={`transition-transform duration-300 ${
+                className={`relative transition-transform duration-300 ${
                   activeTab === tab.id ? "scale-110" : "scale-100"
                 }`}
               >
+                {tab?.id === "Bag" && (
+                  <div className="absolute top-[-3px] right-[-3px] flex h-[12px] w-[12px] items-center justify-center rounded-full bg-red-500 text-[5px] text-white">
+                    <p className="mb-0 pt-[1px] pl-[0.5px] text-[5px]">
+                      {cartProducts?.length > 0 ? cartProducts?.length : 0}
+                    </p>
+                  </div>
+                )}
                 <Icon color={activeTab === tab.id ? "#51545A" : "#C7CFDA"} />
               </div>
               <span

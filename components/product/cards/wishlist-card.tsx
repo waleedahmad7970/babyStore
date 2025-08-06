@@ -10,6 +10,7 @@ import {
   matched,
   wishlist,
   redBag,
+  aedIcon,
 } from "../../../public/assets/icons";
 
 import { StaticImageData } from "next/image";
@@ -22,7 +23,7 @@ interface WishlistData {
   image: StaticImageData | string;
   price?: number;
   oldPrice?: number;
-  discount?: string;
+  discount?: string | number;
   rating: number;
   delivery?: string | undefined;
 }
@@ -73,7 +74,7 @@ const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
           <div className="flex flex-row items-center justify-between space-x-2">
             <div className="flex flex-col gap-1">
               <p className="text-dark flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
-                AED{" "}
+                <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
                 <span className="ml-[3px] text-left text-[16px] font-bold">
                   {product?.price?.toLocaleString()}
                 </span>
@@ -81,13 +82,17 @@ const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
               <div className="flex">
                 {product?.oldPrice && (
                   <p className="flex items-baseline justify-start text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1F1F1F80] line-through">
-                    AED
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />{" "}
                     <span className="ml-[3px] text-left text-[14px] leading-[10px] font-medium text-[#1F1F1F80]">
                       {product?.oldPrice?.toLocaleString()}
                     </span>
                   </p>
                 )}
-                {product?.discount && (
+                {Number(product.discount) > 0 && (
                   <p className="mt-[-2px] ml-3 text-[12px] leading-[14.52px] font-bold text-[#2AA136]">
                     {product?.discount}
                   </p>

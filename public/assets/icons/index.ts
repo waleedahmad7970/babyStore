@@ -142,3 +142,6 @@ export { default as comments } from "../icons/comments.svg";
 
 export { default as facebook } from "../icons/facebook.svg";
 export { default as google } from "../icons/google.svg";
+
+// curen
+export { default as aedIcon } from "../icons/uae-dirham.svg";

@@ -5,6 +5,7 @@ import {
   OrderDetailsTotal,
 } from "@/components/order/order-detail";
 import {
+  aedIcon,
   call_icon_white,
   checkout_1,
   checkout_2,
@@ -146,7 +147,11 @@ export default function DashboardTrackingPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col">
                       <p className="text-[9.673px] leading-[9.673px] font-light text-[#1F1F1F]">
-                        AED
+                        <Image
+                          src={aedIcon}
+                          className="h-[12px] w-[12px]"
+                          alt="curr"
+                        />{" "}
                       </p>
                       <p className="text-[14.882px] leading-[12.649px] font-semibold text-[#1F1F1F]">
                         {item?.price?.toFixed(2)}

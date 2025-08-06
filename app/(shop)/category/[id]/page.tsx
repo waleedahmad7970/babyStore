@@ -11,13 +11,14 @@ import {
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
-import React, { JSX, useEffect, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { notFound, useParams } from "next/navigation";
 import categoryServices from "@/services/UI/category.service";
 import productServices from "@/services/product.service";
 import FullScreenLoader from "@/components/Loader/fullscreen-loader";
 import { brandAction } from "@/store/slices/brand.slice";
+import { scrollToTop } from "@/hooks/scrollToTop";
 
 type PageClickEvent = {
   selected: number;
@@ -27,6 +28,8 @@ type CategoryTopFilter = { name: string; count: number; value: string };
 export default function Page(): JSX.Element {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const scrollRefToStart = useRef<HTMLDivElement>(null);
+
   const [isOpen, setIsOpen] = useState(false);
   const [categoryPageLoader, setCategoryPageLoader] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -41,6 +44,10 @@ export default function Page(): JSX.Element {
 
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const start = currentPage * itemsPerPage;
@@ -233,7 +240,10 @@ export default function Page(): JSX.Element {
                 );
               })}
             </div> */}
-            <div className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]">
+            <div
+              ref={scrollRefToStart}
+              className="grid grid-cols-2 gap-1 sm:flex sm:flex-wrap sm:justify-between md:min-h-[1104px] md:justify-start md:gap-[22px]"
+            >
               {currentItems.map((product: any) => {
                 return (
                   <div

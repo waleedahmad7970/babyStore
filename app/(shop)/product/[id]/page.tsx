@@ -17,6 +17,7 @@ import {
   InstallationCard,
 } from "@/components/cards/card-info-components";
 import {
+  aedIcon,
   full_star,
   grey_star,
   half_star,
@@ -217,7 +218,7 @@ export default function Page() {
             </div>
             {discountPercentage > 0 && (
               <div className="mb-0 max-w-max rounded-[50px] bg-[#FFEEF6] px-2 py-[5px] text-[10.471px] leading-none font-bold text-[#00AE42] md:px-4 md:py-[10px] md:text-[16.795px]">
-                {`${discountPercentage}% Off` || "0 % Off"}
+                {`${discountPercentage.toFixed(0)}% Off` || "0 % Off"}
               </div>
             )}
           </div>
@@ -246,13 +247,21 @@ export default function Page() {
               {hasPromo ? (
                 <>
                   <p className="flex items-baseline text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
-                    AED{" "}
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />{" "}
                     <span className="ml-[3px] text-[16px] font-bold">
                       {finalPrice?.toFixed(2)}
                     </span>
                   </p>
                   <p className="flex items-baseline text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1F1F1F80] line-through">
-                    AED{" "}
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />{" "}
                     <span className="ml-[3px] text-[14px] font-medium">
                       {originalPrice?.toFixed(2)}
                     </span>
@@ -261,11 +270,21 @@ export default function Page() {
               ) : (
                 <div className="flex items-center space-x-2">
                   <span className="text-[26px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
-                    AED {finalPrice?.toFixed(2)}
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />{" "}
+                    {finalPrice?.toFixed(2)}
                   </span>
                   {/* Optional: strike-through if you want to fake discount */}
                   <span className="text-[16px] leading-[24px] font-semibold text-[#929391] line-through">
-                    AED {originalPrice?.toFixed(2)}
+                    <Image
+                      src={aedIcon}
+                      className="h-[12px] w-[12px]"
+                      alt="curr"
+                    />{" "}
+                    {originalPrice?.toFixed(2)}
                   </span>
                 </div>
               )}

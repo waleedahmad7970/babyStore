@@ -26,7 +26,7 @@ type PageClickEvent = {
 
 export default function Page(): JSX.Element {
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
-  const itemsPerPage = 12;
+  const itemsPerPage = 40;
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
@@ -67,6 +67,10 @@ export default function Page(): JSX.Element {
   };
   const handlePageClick = ({ selected }: PageClickEvent): void => {
     setCurrentPage(selected);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   const toggleText = () => setIsExpanded(!isExpanded);
 
@@ -266,25 +270,35 @@ export default function Page(): JSX.Element {
                 );
               })}
             </div>
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel={
-                <Image src={angle_down} alt="angl" className="-rotate-90" />
-              }
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
-              marginPagesDisplayed={1}
-              pageCount={Math.ceil(items.length / itemsPerPage)}
-              previousLabel={
-                <Image src={angle_down} alt="angl" className="rotate-90" />
-              }
-              containerClassName="flex gap-[5px] justify-center pt-8 pb-4"
-              pageClassName=" rounded-full h-[30px] w-[30px] flex text-[#1F1F1F80] justify-center items-center border-1 !border-[#1F1F1F80]"
-              activeClassName="!bg-[#FF6AAF] border-none  text-white"
-              previousClassName="h-[30px] w-[30px]  rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0 "
-              nextClassName="h-[30px] w-[30px] rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0 "
-              breakClassName="text-[#1F1F1F80]"
-            />
+            {filteredProducts.length > itemsPerPage && (
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel={
+                  <Image
+                    src={angle_down}
+                    alt="angl"
+                    className="-rotate-90 cursor-pointer"
+                  />
+                }
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={1}
+                pageCount={Math.ceil(filteredProducts.length / itemsPerPage)}
+                previousLabel={
+                  <Image
+                    src={angle_down}
+                    alt="angl"
+                    className="rotate-90 cursor-pointer"
+                  />
+                }
+                containerClassName="flex gap-[5px] justify-center pt-8 pb-4 "
+                pageClassName="cursor-pointer cu rounded-full h-[30px] w-[30px] flex text-[#1F1F1F80] justify-center items-center border-1 !border-[#1F1F1F80]"
+                activeClassName="cursor-pointer !bg-[#FF6AAF] border-none text-white"
+                previousClassName="cursor-pointer h-[30px] w-[30px] rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0"
+                nextClassName=" cursor-pointer h-[30px] w-[30px] rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0"
+                breakClassName="text-[#1F1F1F80]"
+              />
+            )}
           </div>
         </div>
       </div>

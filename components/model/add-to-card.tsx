@@ -18,7 +18,7 @@ interface CartProduct {
   // Add other properties you expect
 }
 export default function AddToCard({
-  className = "relative p-6 rounded-[12px] bg-[#fff] w-full sm:max-w-[363px] ",
+  className = "relative p-6 rounded-[12px] bg-[#fff] w-full max-w-[80%] sm:max-w-[363px] ",
   addToCartModel,
 }: {
   className?: string;

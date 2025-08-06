@@ -45,7 +45,7 @@ export default function DashboardWishlist() {
           );
         })}
       </div>
-      {wishList?.length > itemsPerPage ? (
+      {wishList?.length > itemsPerPage && (
         <ReactPaginate
           breakLabel="..."
           nextLabel={
@@ -65,10 +65,6 @@ export default function DashboardWishlist() {
           nextClassName="h-[30px] w-[30px] rounded-full flex justify-center items-center border-1 border-[#1F1F1F80] px-0 py-0 "
           breakClassName="text-[#1F1F1F80]"
         />
-      ) : (
-        <p className="font-Inter w-max text-[14px] leading-[150%] font-normal md:text-[18px]">
-          Not yet! - Add Products to your wishlist
-        </p>
       )}
     </div>
   );

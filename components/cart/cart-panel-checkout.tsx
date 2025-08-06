@@ -1,6 +1,6 @@
 "use client";
 
-import { cross } from "@/public/assets/icons";
+import { aedIcon, cross } from "@/public/assets/icons";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { QuantityControl } from "./quanity-controller";
@@ -113,31 +113,33 @@ export default function CartPanelCheckout({ products }: CartPanelProps) {
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Sub Total:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span> {subtotal.toFixed(2)}
+          <span className="flex items-center justify-between gap-1 text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
+            {subtotal.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Tax:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span> {tax.toFixed(2)}
+          <span className="flex items-center justify-between gap-1 text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
+            {tax.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-[13.05px] font-normal text-[#A0A0A0]">
             Discount:
           </span>
-          <span className="text-[13.05px] font-normal text-[#A0A0A0]">
-            <span className="text-[8.7px]">AED</span>{" "}
+          <span className="flex items-center justify-between gap-1 text-[13.05px] font-normal text-[#A0A0A0]">
+            <Image src={aedIcon} className="h-[12px] w-[12px]" alt="curr" />{" "}
             {discountAmount?.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between text-[17.4px] font-semibold text-[#636363]">
           <span>Total:</span>
-          <span>
-            <span className="mr-[-2px] text-[10.875px]">AED</span>{" "}
+          <span className="flex items-center justify-between">
+            <Image src={aedIcon} className="h-[16px] w-[16px]" alt="curr" />{" "}
             {total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </span>
         </div>
