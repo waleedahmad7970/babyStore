@@ -21,9 +21,9 @@ export default function CategoryListTwo() {
     autoplay: true,
     arrows: false,
     centerMode: true,
-    speed: 1000,
+    speed: 2000,
     pauseOnHover: true,
-    autoplaySpeed: 0,
+    autoplaySpeed: 200,
     cssEase: "linear",
     responsive: [
       {
@@ -31,6 +31,7 @@ export default function CategoryListTwo() {
         settings: {
           slidesToShow: 7,
           slidesToScroll: 3,
+          pauseOnHover: true,
         },
       },
       {
@@ -38,6 +39,8 @@ export default function CategoryListTwo() {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 2,
+          pauseOnHover: true,
+
           initialSlide: 2,
         },
       },
@@ -45,7 +48,9 @@ export default function CategoryListTwo() {
         breakpoint: 480,
         settings: {
           slidesToShow: 3,
-          centerPadding: "40px",
+          centerPadding: "60px",
+          pauseOnHover: true,
+
           slidesToScroll: 1,
         },
       },
