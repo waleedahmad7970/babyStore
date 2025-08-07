@@ -124,12 +124,7 @@ const DiscountStripsBanner = () => {
   return (
     <div className="flex h-10 w-full items-center justify-center overflow-hidden bg-[#F82D8B] shadow-2xs md:h-[60px]">
       {/* <div className="striped-bg flex h-10 w-full items-center justify-center overflow-hidden bg-[black] md:h-[60px]"> */}
-      <p
-        style={{
-          textShadow: "1px 1px 0 #121212, 2px 2px 0 #333",
-        }}
-        className="text-shadow-lg flex gap-2 font-sans text-[16px] font-extrabold text-white md:text-[32px]"
-      >
+      <p className="text-shadow-lg flex gap-2 font-sans text-[18px] font-extrabold text-white md:text-[32px]">
         {words.map((word, i) => (
           <span
             key={i}

@@ -48,7 +48,7 @@ export default function CategoryListTwo() {
         breakpoint: 480,
         settings: {
           slidesToShow: 3,
-          centerPadding: "60px",
+          centerPadding: "40px",
           pauseOnHover: true,
 
           slidesToScroll: 1,
