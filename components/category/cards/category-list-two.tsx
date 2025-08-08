@@ -50,7 +50,7 @@ export default function CategoryListTwo() {
   };
 
   return (
-    <div className="cus-container flex w-full flex-col justify-start gap-4 !py-5 md:!pt-[70px] md:pb-[20px]">
+    <div className="cus-container flex w-full flex-col justify-start gap-4 overflow-hidden !py-5 md:!pt-[70px] md:pb-[20px]">
       <div className="text-center text-[18px] font-medium text-[#1A1718] md:text-[24px]">
         Top Categories
       </div>

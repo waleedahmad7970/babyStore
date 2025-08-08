@@ -369,7 +369,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               className="block h-[30px] w-[24px] md:hidden"
             />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-1 right-[6px] flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white md:hidden">
+              <span className="absolute -top-1 right-[-6px] flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white md:hidden">
                 {totalQuantity || 0}
               </span>
             )}
