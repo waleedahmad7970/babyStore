@@ -2,7 +2,14 @@
 
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { bag, home, menu2, profile, Search } from "@/public/assets/icons";
+import {
+  aedIcon,
+  bag,
+  home,
+  menu2,
+  profile,
+  Search,
+} from "@/public/assets/icons";
 import Icons from "@/public/assets/svg-component";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { brandAction } from "@/store/slices/brand.slice";
@@ -11,7 +18,8 @@ import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 type TabType = {
   id: string;
   icon: any;
@@ -43,6 +51,11 @@ const BottomNavigation: React.FC = () => {
     (state) => state.globalStates,
   );
 
+  const [range, setRange] = useState<[number, number]>([0, 1000]); // [start, end]
+
+  const handleRangeChange = (values: number[]) => {
+    setRange([values[0], values[1]]);
+  };
   const {
     selectedFilters = [],
     CBSPageFiltersMob = [],
@@ -54,6 +67,10 @@ const BottomNavigation: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const menuRef = useRef(null);
+  const totalQuantity = cartProducts?.reduce(
+    (sum: any, item: any) => sum + item?.quantity,
+    0,
+  );
 
   useEffect(() => {
     setSelectedOptions(selectedFilters);
@@ -107,6 +124,12 @@ const BottomNavigation: React.FC = () => {
   };
   const handleApplyFilter = () => {
     dispatch(brandAction.setToggleSelectedFilterByArray(selectedOptions));
+    dispatch(
+      brandAction.setPriceRange({
+        lowestPrice: range[0],
+        highestPrice: range[1],
+      }),
+    );
     dispatch(globalStateActions.setFilter(""));
   };
   const handleTabClick = (tabId: string, link?: string) => {
@@ -215,26 +238,83 @@ const BottomNavigation: React.FC = () => {
                       {category?.name}
                     </div>
                   ))}
+                  <div
+                    className={`cursor-pointer px-3 py-[6.25px] text-[11px] font-normal ${
+                      activeCategory === "Price"
+                        ? "bg-[#F82D8B33] font-semibold text-[#1F1F1F]"
+                        : ""
+                    }`}
+                    onClick={() => setActiveCategory("Price")}
+                  >
+                    Price
+                  </div>
                 </div>
 
                 {/* Filter Options */}
-                <div className="flex max-h-[300px] w-full flex-row flex-wrap gap-2 overflow-y-auto">
-                  {CBSPageFiltersMob?.find(
-                    (cat: any) => cat?.name === activeCategory,
-                  )?.options.map((option: any, index: number) => (
-                    <button
-                      key={option?.label || option}
-                      className={`font-Inter max-h-max rounded-[4px] p-[6px] text-[11px] font-normal ${
-                        // selectedFilters?.includes(option?.value || option) ||
-                        selectedOptions?.includes(option?.value || option)
-                          ? "bg-[#F82D8B14] font-medium text-[#F82D8B]"
-                          : "bg-[#0000000A] text-[#000]"
-                      }`}
-                      onClick={() => toggleOption(option?.value || option)}
-                    >
-                      {option?.label || option}
-                    </button>
-                  ))}
+                <div className="flex max-h-max w-full flex-row flex-wrap justify-start gap-2 overflow-y-auto">
+                  {activeCategory === "Price" ? (
+                    <div className="w-full px-2 py-4">
+                      <div className="mb-5 flex items-center justify-between">
+                        <div className="font-Inter text-[10px] font-normal text-[#000000]">
+                          <p className="mb-0 text-[#979797]">Min amount</p>
+                          <p className="mb-0 flex items-center justify-start gap-2 text-[#979797]">
+                            <Image
+                              src={aedIcon}
+                              className="h-[12px] w-[12px]"
+                              alt="curr"
+                            />
+                            <span className="font-semibold text-[#000000]">
+                              {range[0]}
+                            </span>
+                          </p>
+                        </div>
+                        <div className="font-Inter text-[10px] font-normal text-[#000000]">
+                          <p className="mb-0 text-[#979797]">Max amount</p>
+                          <p className="mb-0 flex items-center justify-start gap-2 text-[#979797]">
+                            <Image
+                              src={aedIcon}
+                              className="h-[12px] w-[12px]"
+                              alt="curr"
+                            />
+                            <span className="font-semibold text-[#000000]">
+                              {range[1]}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                      <RangeSlider
+                        min={0}
+                        max={10000}
+                        step={10}
+                        defaultValue={range}
+                        onInput={handleRangeChange}
+                        className="custom-slider !h-[4px] !bg-[#E7448C] !text-[#E7448C]"
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      {CBSPageFiltersMob?.find(
+                        (cat: any) => cat?.name === activeCategory,
+                      )?.options.map((option: any, index: number) => {
+                        return (
+                          <button
+                            key={option?.label || option}
+                            className={`font-Inter max-h-max rounded-[4px] p-[6px] text-[11px] font-normal ${
+                              // selectedFilters?.includes(option?.value || option) ||
+                              selectedOptions?.includes(option?.value || option)
+                                ? "bg-[#F82D8B14] font-medium text-[#F82D8B]"
+                                : "bg-[#0000000A] text-[#000]"
+                            }`}
+                            onClick={() =>
+                              toggleOption(option?.value || option)
+                            }
+                          >
+                            {option?.label || option}
+                          </button>
+                        );
+                      })}
+                    </>
+                  )}
                 </div>
               </div>
               <div className="mt-14 w-full px-[5px] sm:px-0">
@@ -291,9 +371,9 @@ const BottomNavigation: React.FC = () => {
                 }`}
               >
                 {tab?.id === "Bag" && (
-                  <div className="absolute top-[-3px] right-[-3px] flex h-[12px] w-[12px] items-center justify-center rounded-full bg-red-500 text-[5px] text-white">
-                    <p className="mb-0 pt-[1px] pl-[0.5px] text-[5px]">
-                      {cartProducts?.length > 0 ? cartProducts?.length : 0}
+                  <div className="absolute top-[-3px] right-[-3px] flex h-[14px] w-[14px] items-center justify-center rounded-full bg-red-500 text-[9px] text-white">
+                    <p className="mb-0 pl-[0.5px] text-[7px] font-bold">
+                      {cartProducts?.length > 0 ? totalQuantity : 0}
                     </p>
                   </div>
                 )}

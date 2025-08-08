@@ -100,7 +100,7 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
             return (
               <div key={rowIndex} className="flex flex-col gap-5">
                 <div className="mx-[5px] mt-4 grid grid-cols-4 gap-[7px]">
-                  {row.map((item: any, index: number) => {
+                  {row?.map((item: any, index: number) => {
                     const actualIndex = startIndex + index;
                     return (
                       <div
@@ -138,7 +138,7 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
 
                         <div className="relative h-full w-full overflow-hidden rounded-[8.795px]">
                           <Image
-                            src={`${imageBaseUrl}/assets/menu_category/${item.cat_image}`}
+                            src={`${imageBaseUrl}/assets/menu_category/${item?.cat_image}`}
                             quality={100}
                             width={86}
                             height={114}
@@ -154,10 +154,12 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                           >
                             <p
                               onClick={() => {
-                                router.push(`/category/${item?.id}`);
-                                close();
+                                if (selectedIconIndexOne === actualIndex) {
+                                  router.push(`/category/${item?.id}`);
+                                  close();
+                                }
                               }}
-                              className="text-[12px] leading-[9px] font-bold text-white underline"
+                              className="absolute text-[12px] leading-[9px] font-bold text-white underline"
                             >
                               VIEW ALL
                             </p>
@@ -176,30 +178,25 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                     className="mx-[5px] my-[14px] flex flex-col gap-[10px] rounded-[8px] bg-white px-5 py-[15px]"
                   >
                     {data?.map((cat: any, idx: number) => {
-                      console.log(
-                        cat,
-                        "imag",
-                        `https://www.babystore.ae/storage/back/assets/subcategory/${cat.image}`,
-                      );
                       return (
                         <ExpandableCategoryItem
                           key={idx}
-                          title={cat.title}
+                          title={cat?.title}
                           icon={
                             `https://www.babystore.ae/storage/back/assets/subcategory/${cat.image}` ||
                             "/default-icon.png"
                           }
                           isOpen={openCategory === idx}
                           onToggle={() => handleCategoryToggle(idx)}
-                          parentId={cat.id}
+                          parentId={cat?.id}
                         >
-                          {(cat.items || []).map((item: any) => (
+                          {(cat?.items || []).map((item: any) => (
                             <p
                               key={item.id}
                               data-id={item.id}
                               className="text-[12px] font-bold text-[#434343]"
                             >
-                              {item.name}
+                              {item?.name}
                             </p>
                           ))}
                         </ExpandableCategoryItem>

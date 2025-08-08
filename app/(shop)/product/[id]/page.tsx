@@ -246,7 +246,7 @@ export default function Page() {
             <div className="flex items-center space-x-2">
               {hasPromo ? (
                 <>
-                  <p className="flex items-baseline text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
+                  <p className="flex items-baseline justify-between text-[10px] leading-[12px] font-normal tracking-[-0.4px] text-[#1A1718]">
                     <Image
                       src={aedIcon}
                       className="h-[12px] w-[12px]"
@@ -269,19 +269,19 @@ export default function Page() {
                 </>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <span className="text-[26px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
+                  <span className="flex items-center justify-between gap-1 text-[26px] leading-[24px] font-semibold tracking-[-0.66px] text-[#1F1F1F]">
                     <Image
                       src={aedIcon}
-                      className="h-[12px] w-[12px]"
+                      className="h-[18px] w-[18px]"
                       alt="curr"
                     />{" "}
                     {finalPrice?.toFixed(2)}
                   </span>
                   {/* Optional: strike-through if you want to fake discount */}
-                  <span className="text-[16px] leading-[24px] font-semibold text-[#929391] line-through">
+                  <span className="flex items-center justify-between gap-1 text-[16px] leading-[24px] font-semibold text-[#929391] line-through">
                     <Image
                       src={aedIcon}
-                      className="h-[12px] w-[12px]"
+                      className="h-[18px] w-[18px]"
                       alt="curr"
                     />{" "}
                     {originalPrice?.toFixed(2)}
@@ -364,7 +364,7 @@ export default function Page() {
           {/* size */}
 
           <div className="py-3">
-            <div className="flex items-center justify-start gap-[10px] pb-3">
+            {/* <div className="flex items-center justify-start gap-[10px] pb-3">
               <p className="text-[14px] leading-[14.88px] font-medium text-[#1F1F1F]">
                 Size{" "}
               </p>
@@ -372,7 +372,7 @@ export default function Page() {
                 Size Guide
               </p>
             </div>
-            <SizeSelector />
+            <SizeSelector /> */}
           </div>
           {/* interactions buttons */}
           <div className="hidden justify-between gap-1 sm:flex">

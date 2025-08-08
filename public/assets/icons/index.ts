@@ -112,7 +112,7 @@ export { default as expendMore } from "../icons/expand-more.png";
 export { default as home } from "../icons/home.png";
 export { default as menu2 } from "../icons/menu-2.png";
 export { default as bag } from "../icons/bag.png";
-export { default as basketBag } from "../icons/bag.png";
+export { default as basketBag } from "../icons/basketBag.svg";
 export { default as cartIcon } from "../icons/cartIcon.svg";
 export { default as profile } from "../icons/profile.png";
 export { default as funnel } from "../icons/funnel.svg";

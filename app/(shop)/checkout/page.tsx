@@ -652,7 +652,7 @@ const Checkout = () => {
           <Button
             loading={placeOrder}
             type={"submit"}
-            className="fixed right-0 bottom-[64px] left-0 z-[200] mt-3 w-full rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-green-700 sm:relative sm:top-0 sm:z-0 sm:w-full"
+            className="fixed right-0 bottom-[64px] left-0 z-[99] mt-3 w-full bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-green-700 sm:relative sm:top-0 sm:z-0 sm:w-full sm:rounded-[5.3px]"
             text={"Place Order"}
           />
         </div>

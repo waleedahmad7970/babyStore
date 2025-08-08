@@ -217,10 +217,11 @@ const categoryServices = {
         },
 
         // From priceRanges
-        {
-          name: "Price",
-          options: priceRanges.map((price) => price.label),
-        },
+        // {
+        //   name: "Price",
+        //   // options: priceRanges.map((price) => price.label),
+        //   options: [],
+        // },
       ];
       dispatch(brandAction.setCBSPageFiltersMob(filterCategories));
       // dispatch(categoriesAction.setCategoryPageFiltersMob(filterCategories));

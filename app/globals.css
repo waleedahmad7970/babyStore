@@ -120,6 +120,20 @@
   background-blend-mode: multiply;
 }
 
+/* price rnage */
+
+.range-slider__thumb {
+  height: 14px !important ;
+  width: 14px !important;
+  background-color: #e7448c !important;
+}
+.range-slider {
+  background-color: #e7448c !important;
+}
+.range-slider__range {
+  background-color: #e7448c !important;
+}
+
 @keyframes scaleIn {
   0% {
     transform: scale(0.9);

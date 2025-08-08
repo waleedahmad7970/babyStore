@@ -26,12 +26,12 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
   const router = useRouter();
   const dispatch = useDispatch();
   const handleTitleClick = () => {
-    router.push(`/sub-category/${parentId}`);
+    if (parentId) router.push(`/sub-category/${parentId}`);
     dispatch(globalStateActions.setMobileMenu(false));
   };
 
   const handleChildClick = (id: number) => {
-    router.push(`/sub-sub-category/${id}`);
+    if (id) router.push(`/sub-sub-category/${id}`);
     dispatch(globalStateActions.setMobileMenu(false));
   };
 
@@ -61,7 +61,7 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
             </p>
             <p
               className={`font-Inter mb-0 min-w-[71px] cursor-pointer rounded-[20px] px-[10px] text-center text-[10px] leading-[29px] font-semibold text-[#434343] underline transition-all duration-300 ${
-                isOpen && React.Children.count(children) > 0
+                isOpen && React?.Children?.count(children) > 0
                   ? "bg-[#FAFAFA]"
                   : "bg-[#F3F3F3]"
               }`}
@@ -75,14 +75,14 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
 
       <div
         className={`grid transition-all duration-300 ease-in-out ${
-          isOpen && React.Children.count(children) > 0
+          isOpen && React?.Children?.count(children) > 0
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">
           <div className="flex flex-col items-end gap-[10px] pt-[10px]">
-            {React.Children.map(children, (child: any) => (
+            {React?.Children?.map(children, (child: any) => (
               <div
                 onClick={() => {
                   const id = child?.props?.["data-id"];

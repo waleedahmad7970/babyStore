@@ -62,6 +62,10 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   const [showCart, setShowCart] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showCartMob, setShowCartMob] = useState(false);
+  const totalQuantity = cartProducts?.reduce(
+    (sum: any, item: any) => sum + item?.quantity,
+    0,
+  );
 
   useEffect(() => {
     productServices.getCategories();
@@ -77,8 +81,11 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   });
 
   usePreventBodyScroll(showCartMob);
+  // useClickOutside(cartRef, () => {
+  //   setShowCart(false);
+  // });
   useClickOutside(cartRef, () => {
-    setShowCart(false);
+    setShowCartMob(false);
   });
   useClickOutside(loginRef, () => {
     setShowLogin(false);
@@ -196,12 +203,24 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       </div>
       <div className="cus-container relative mx-auto flex flex-col items-center justify-between gap-[13px] md:flex-row md:gap-2 lg:gap-5">
         {/* cart model */}
-        <div
-          className={`fixed top-[84px] right-0 z-[100] max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
+        {/* <div
+          className={`fixed top-[84px] right-0 z-[100] h-full max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
             showCartMob ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <CartPanel />
+        </div> */}
+        <div
+          className={`blcok fixed top-0 right-0 bottom-0 left-0 z-[100] flex w-full transform justify-end bg-transparent shadow-lg transition-transform duration-300 sm:hidden ${showCartMob ? "translate-x-0" : "translate-x-full"} `}
+        >
+          <div
+            ref={cartRef}
+            className={`right-0 z-[100] mt-[84px] max-h-[530px] w-full max-w-[320px] transform bg-white shadow-lg transition-transform duration-300 sm:hidden ${
+              showCartMob ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <CartPanel />
+          </div>
         </div>
         {showLogin && (
           <div
@@ -347,11 +366,11 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               height={32}
               src={basketBag}
               alt="Basket"
-              className="block md:hidden"
+              className="block h-[30px] w-[24px] md:hidden"
             />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white md:hidden">
-                {cartProducts?.length}
+              <span className="absolute -top-1 right-[6px] flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white md:hidden">
+                {totalQuantity || 0}
               </span>
             )}
           </div>
@@ -418,8 +437,8 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
               className="h-8 w-8 cursor-pointer"
             />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
-                {cartProducts?.length}
+              <span className="absolute -top-1 right-[-5px] flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
+                {totalQuantity || 0}
               </span>
             )}
           </div>

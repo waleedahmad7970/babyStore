@@ -144,11 +144,13 @@ export default function CartPanel() {
       </div>
       <div className="flex justify-between gap-2">
         <Button
+          type={"button"}
           text={"View Cart"}
           handler={() => router.push("/cart")}
           className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-[#61B582]/80"
         />
         <Button
+          type={"button"}
           text={"Checkout"}
           handler={() => router.push("/checkout")}
           className="mt-3 w-full cursor-pointer rounded-[5.3px] bg-[#61B582] py-3 text-[15.225px] font-semibold text-white transition hover:bg-[#61B582]/80"
