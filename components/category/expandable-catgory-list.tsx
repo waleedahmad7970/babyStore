@@ -54,7 +54,7 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
           />
           <div className="flex w-full items-center justify-between gap-3">
             <p
-              onClick={handleTitleClick}
+              onClick={onToggle}
               className="font-Inter mb-0 cursor-pointer text-[12px] leading-[17px] font-normal text-[#434343]"
             >
               {title}
@@ -65,7 +65,7 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
                   ? "bg-[#FAFAFA]"
                   : "bg-[#F3F3F3]"
               }`}
-              onClick={onToggle}
+              onClick={handleTitleClick}
             >
               VIEW ALL
             </p>

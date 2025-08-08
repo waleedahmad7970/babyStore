@@ -32,10 +32,10 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/kG50kbSh/1440x400px-1.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="https://i.postimg.cc/YCNdzSG4/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/nhd0PP2Z/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/RFtdqVBV/600x750px-3.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/yxYDtvv4/600x750px-4.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/YCNdzSG4/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/nhd0PP2Z/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/RFtdqVBV/600x750px-3.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/yxYDtvv4/600x750px-4.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
     <div id="section-1"></div>
@@ -49,10 +49,10 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/hGtVQLkG/image.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="https://i.postimg.cc/J431Zbqj/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/DfjHS6RS/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/xd2Fw4N4/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/qMtBmjKK/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/J431Zbqj/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/DfjHS6RS/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/xd2Fw4N4/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/qMtBmjKK/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
     <div id="section-2"></div>
@@ -66,12 +66,12 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/FFw1XMNp/image.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[14px]">
-      <img src="https://i.postimg.cc/Y05MJLL7/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-      <img src="https://i.postimg.cc/Y9VHWL3F/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="https://i.postimg.cc/Jhz03JbY/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="https://i.postimg.cc/PqY34pTZ/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="https://i.postimg.cc/tJCBpBPt/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="https://i.postimg.cc/QMQm72JJ/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+      <img src="https://i.postimg.cc/Y05MJLL7/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+      <img src="https://i.postimg.cc/Y9VHWL3F/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="https://i.postimg.cc/Jhz03JbY/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="https://i.postimg.cc/PqY34pTZ/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="https://i.postimg.cc/tJCBpBPt/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="https://i.postimg.cc/QMQm72JJ/image.png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
       </div>
     </div>
     <div id="section-3"></div>
@@ -101,10 +101,10 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/wBwtnFqd/image.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-      <img src="https://i.postimg.cc/h46y7WkN/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover">
-      <img src="https://i.postimg.cc/xCWvqYXR/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover">
-        <img src="https://i.postimg.cc/gc8R4CwC/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover">
-        <img src="https://i.postimg.cc/4dtKLc36/image.png" alt="Product" class="w-[162px] h-[225px] lg:w-[324px] lg:h-[421px] object-cover">
+      <img src="https://i.postimg.cc/h46y7WkN/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+      <img src="https://i.postimg.cc/xCWvqYXR/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+        <img src="https://i.postimg.cc/gc8R4CwC/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+        <img src="https://i.postimg.cc/4dtKLc36/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
       </div>
     </div>
     
@@ -118,10 +118,10 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/VNZWtpGJ/image.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="https://i.postimg.cc/26B9SCkk/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/BQ37JWd3/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/2ykWXxXs/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/Yq402VgX/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/26B9SCkk/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/BQ37JWd3/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/2ykWXxXs/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/Yq402VgX/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
 
@@ -134,10 +134,10 @@ const HomePage = () => {
         <img src="https://i.postimg.cc/6QCzkYYq/image.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="https://i.postimg.cc/hG8byht7/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/7h5zkLw9/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/W1gMztrf/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="https://i.postimg.cc/44jPxDqy/image.png" alt="Product" class="w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/hG8byht7/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/7h5zkLw9/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/W1gMztrf/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="https://i.postimg.cc/44jPxDqy/image.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
 
@@ -173,12 +173,12 @@ const HomePage = () => {
   </div>
 
   <div class="cus-container flex flex-wrap justify-center gap-[10px] md:justify-between md:gap-[5px]">
-    <img src="https://i.postimg.cc/DzYjd8jd/image.png" alt="product-1" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="https://i.postimg.cc/DyBqbRY1/image.png" alt="product-2" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="https://i.postimg.cc/3wDpVNrZ/image.png" alt="product-3" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="https://i.postimg.cc/G3jDZZR6/image.png" alt="product-3" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="https://i.postimg.cc/T3B5Vxj5/image.png" alt="product-3" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="https://i.postimg.cc/cJXyqxDr/image.png" alt="product-3" class="w-[162px] h-[201px] lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/DzYjd8jd/image.png" alt="product-1" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/DyBqbRY1/image.png" alt="product-2" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/3wDpVNrZ/image.png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/G3jDZZR6/image.png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/T3B5Vxj5/image.png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="https://i.postimg.cc/cJXyqxDr/image.png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
   </div>
 </div>
   `);

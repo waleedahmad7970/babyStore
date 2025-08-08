@@ -49,7 +49,10 @@ export default function Page(): JSX.Element {
 
   const start = currentPage * itemsPerPage;
   const end = start + itemsPerPage;
-  const currentItems = filteredProducts?.slice(start, end);
+  const currentItems = filteredProducts
+    ?.slice(start, end)
+    ?.sort((a: any, b: any) => a?.price - b?.price);
+
   const handleFilterOpen = (filter: string) => {
     dispatch(globalStateActions.setFilter(filter));
   };

@@ -204,7 +204,6 @@ export default function FilterSidebar() {
     return sorted;
   }, [CBSPageProducts, selectedFilters, priceRange, selectTopFilterValue]);
 
-  console.log({ filteredProducts });
   useEffect(() => {
     dispatch(brandAction.setCBSFilteredProducts(filteredProducts));
   }, [dispatch, filteredProducts]);
@@ -536,6 +535,15 @@ export default function FilterSidebar() {
                     className="w-full cursor-pointer rounded-[8px] bg-[#FD71AF] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] underline hover:bg-[#FD71AF]/85 md:px-6 md:py-2 md:text-[18px]"
                   />
                   <Button
+                    handler={() => {
+                      formikProps.resetForm();
+                      dispatch(
+                        brandAction.setPriceRange({
+                          lowestPrice: 0,
+                          highestPrice: 0,
+                        }),
+                      );
+                    }}
                     text={"Reset"}
                     className="w-full cursor-pointer rounded-[8px] bg-[#61B582] px-3 py-1 text-[14px] leading-[25px] font-normal text-[#fff] hover:bg-[#61B582]/85 md:px-6 md:py-2 md:text-[18px]"
                   />
