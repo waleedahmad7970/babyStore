@@ -34,7 +34,7 @@ export default function InitialRequest() {
           productServices.getHomeMobSlider(),
           productServices.getSuggestedProducts(),
           // productServices.getHomeDesktopSections(), dsta will come form here of home page
-          // productServices.getHomeDesktopSectionsTest(),
+          productServices.getHomeDesktopSectionsTest(),
           productServices.storeSearchDataToAlgolia(),
           productServices.getAllProducts(),
           productServices.getbannerImage(),
