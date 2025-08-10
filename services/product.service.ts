@@ -96,13 +96,13 @@ const productServices = {
     return [res, error];
   },
   // mumz data list needs to update for updated deisgn Rehan/5/24/25 commented
-  async getMumzData() {
-    const [res, error] = await http.get(
-      `https://www.babystore.ae/api/get_mumz_data`,
-    );
+  // async getMumzData() {
+  //   const [res, error] = await http.get(
+  //     `https://www.babystore.ae/api/get_mumz_data`,
+  //   );
 
-    return [res, error];
-  },
+  //   return [res, error];
+  // },
   // home page un knwo apis ( need placement not in figma)
 
   // top_brand list
@@ -126,13 +126,13 @@ const productServices = {
 
     return [res, error];
   },
-  async getCustomizedCategoryListUi() {
-    const [res, error] = await http.get(
-      `https://www.babystore.ae/api/get_customize_categories_list`,
-    );
+  // async getCustomizedCategoryListUi() {
+  //   const [res, error] = await http.get(
+  //     `https://www.babystore.ae/api/get_customize_categories_list`,
+  //   );
 
-    return [res, error];
-  },
+  //   return [res, error];
+  // },
   async getbannerImage() {
     const [res, error] = await http.get(
       `https://www.babystore.ae/api/banner_image`,

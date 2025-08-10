@@ -2,21 +2,13 @@
 
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import {
-  aedIcon,
-  bag,
-  home,
-  menu2,
-  profile,
-  Search,
-} from "@/public/assets/icons";
+import { aedIcon } from "@/public/assets/icons";
 import Icons from "@/public/assets/svg-component";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { brandAction } from "@/store/slices/brand.slice";
-import { categoriesAction } from "@/store/slices/categories.slice";
 import { globalStateActions } from "@/store/slices/globalStates";
 import Image from "next/image";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
@@ -25,11 +17,6 @@ type TabType = {
   icon: any;
   label: string;
   link: string;
-};
-
-type TabType2 = {
-  name: string;
-  options: string[];
 };
 
 type FilterOption = {
@@ -295,7 +282,7 @@ const BottomNavigation: React.FC = () => {
                     <>
                       {CBSPageFiltersMob?.find(
                         (cat: any) => cat?.name === activeCategory,
-                      )?.options.map((option: any, index: number) => {
+                      )?.options.map((option: any) => {
                         return (
                           <button
                             key={option?.label || option}

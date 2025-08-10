@@ -7,21 +7,11 @@ import CartPanel from "../cart/cart-panel";
 import AddToCard from "../model/add-to-card";
 import MobileDrawer from "../drawer/mobile-menu";
 import { logo } from "@/public/assets/brands";
-import { userMenu } from "@/static/static";
 import { useRouter } from "next/navigation";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { globalStateActions } from "@/store/slices/globalStates";
 import { usePreventBodyScroll } from "@/hooks/preventBodyScroll";
-import {
-  basket,
-  basketBag,
-  cart,
-  heart,
-  menu,
-  search,
-  user,
-} from "@/public/assets/icons";
+import { basketBag, heart, menu, search, user } from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   InstantSearch,
@@ -174,10 +164,12 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       </div>
     );
   };
-  const SearchBoxWithResults = ({
-    onFocus,
-    onBlur,
-  }: SearchBoxWithResultsProps) => {
+  const SearchBoxWithResults = (
+    {
+      // onFocus,
+      // onBlur,
+    }: SearchBoxWithResultsProps,
+  ) => {
     return (
       <InstantSearch
         searchClient={searchClient}
@@ -443,49 +435,6 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             )}
           </div>
         </div>
-
-        {/* <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
-          {userMenu.map((icon, index) => {
-            const isSecondLast = index === userMenu.length - 2;
-            const isLast = index === userMenu.length - 1;
-            const badgeCountSecondLast = wishList?.length;
-            const badgeCountLast = cartProducts?.length;
-
-            if (isSecondLast || isLast) {
-              const badgeCount = isLast ? badgeCountLast : badgeCountSecondLast;
-
-              return (
-                <div key={`user-menu-${index}`} className="relative">
-                  <Image
-                    onMouseEnter={() => index === 2 && handleMouseEnter()}
-                    onMouseLeave={() => index === 2 && handleMouseLeave()}
-                    onClick={() => handleRedirectionUserMenu(index)}
-                    src={icon || "icon"}
-                    alt={`User menu icon ${index}`}
-                    className="h-8 w-8 cursor-pointer"
-                  />
-                  {badgeCount > 0 && (
-                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#F82D8B] text-[10px] font-bold text-white">
-                      {badgeCount}
-                    </span>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <Image
-                key={`user-menu-${index}`}
-                onMouseEnter={() => index === 2 && handleMouseEnter()}
-                onMouseLeave={() => index === 2 && handleMouseLeave()}
-                onClick={() => handleRedirectionUserMenu(index)}
-                src={icon || "icon"}
-                alt={`User menu icon ${index}`}
-                className="h-8 w-8 cursor-pointer"
-              />
-            );
-          })}
-        </div> */}
       </div>
       {addToCartModel && <AddToCard addToCartModel={addToCartModel} />}
     </nav>

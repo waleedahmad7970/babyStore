@@ -227,19 +227,7 @@ const UnAuthNavbar: React.FC<NavbarProps> = ({}) => {
         </div>
 
         {/* Desktop User Menu */}
-        {/* <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
-          {userMenu.map((icon, index) => (
-            <Image
-              onMouseEnter={() => index === 2 && handleMouseEnter()}
-              onMouseLeave={() => index === 2 && handleMouseLeave()}
-              onClick={() => handleRedirectionUserMenu(index)}
-              key={`user-menu-${index}`}
-              src={icon || "icon"}
-              alt={`User menu icon ${index}`}
-              className="h-8 w-8 cursor-pointer"
-            />
-          ))}
-        </div> */}
+
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           {userMenu.map((icon, index) => {
             const isSecondLast = index === userMenu.length - 2;

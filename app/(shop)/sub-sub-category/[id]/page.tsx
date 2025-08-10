@@ -22,7 +22,6 @@ import { brandAction } from "@/store/slices/brand.slice";
 type PageClickEvent = {
   selected: number;
 };
-type CategoryTopFilter = { name: string; count: number; value: string };
 
 export default function Page(): JSX.Element {
   const { id } = useParams();
@@ -30,7 +29,6 @@ export default function Page(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [categoryPageLoader, setCategoryPageLoader] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 40;
 
   const {

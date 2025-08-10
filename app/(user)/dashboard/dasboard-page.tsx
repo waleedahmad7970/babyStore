@@ -1,17 +1,13 @@
 import Button from "@/components/button/button";
 import InputField from "@/components/fields/input-field";
-import OrderTable from "@/components/tables/order-table";
 import RecentOrderTable from "@/components/tables/order-table-recent";
 import authService from "@/services/auth.service";
 
 import { useAppSelector } from "@/store/hooks";
-import { dashboardAction } from "@/store/slices/dashboard.slice";
 import { validationSchemas } from "@/utils/validation";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function DasboardPage() {
-  const dispatch = useDispatch();
   const { defaultAddress = {}, registerSessionId = "" } = useAppSelector(
     (state) => state.user,
   );

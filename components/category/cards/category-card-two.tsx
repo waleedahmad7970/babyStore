@@ -17,12 +17,12 @@ interface CategoryCardPropsTwo {
 const CategoryCardTwo: React.FC<CategoryCardPropsTwo> = ({
   cat_image,
   name,
-  image,
+  // image,
   className = "w-[99px] h-[99px] bg-[#FFF0F5]",
   paraClassName = "mt-[11.22px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[16px] md:leading-[19.36px]",
   ImgClass = "object-contain",
-  hoveredId,
-  categoryId,
+  // hoveredId,
+  // categoryId,
   url,
 }) => {
   const router = useRouter();

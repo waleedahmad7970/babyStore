@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -18,9 +18,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
 import { userActions } from "@/store/slices/auth.slice";
 import { calculateAverageRating } from "@/helpers/helper";
-import { logo } from "@/public/assets/brands";
 import { fallBackImage } from "@/public/assets/products";
-import { useRouter } from "next/router";
 
 interface ProductData {
   id: number;
@@ -48,11 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     title,
     image,
     price,
-    oldPrice,
-    discount,
     reviews = [],
-    rating,
-    slug,
     is_promo,
     promo_price,
   } = product;
@@ -72,7 +66,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const hasPromo = is_promo && promo_price;
 
   const finalPrice = hasPromo ? Number(promo_price) : price;
-  const originalPrice = price;
 
   const addToWishlist = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

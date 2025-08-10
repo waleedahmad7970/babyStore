@@ -4,49 +4,13 @@ import {
   OrderDetails,
   OrderDetailsTotal,
 } from "@/components/order/order-detail";
-import {
-  aedIcon,
-  call_icon_white,
-  checkout_1,
-  checkout_2,
-  checkout_3,
-} from "@/public/assets/icons";
+import { aedIcon, call_icon_white, checkout_1 } from "@/public/assets/icons";
 import orderServices from "@/services/order.service";
 import { useAppSelector } from "@/store/hooks";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string | StaticImageData;
-}
 
-const initialCart: CartItem[] = [
-  {
-    id: 1,
-    name: "Lindale Outdoor Wooden Swing And Slide Playset...",
-    price: 20081.25,
-    quantity: 3,
-    image: checkout_1,
-  },
-  {
-    id: 2,
-    name: "Fox 2 Complete Black/Black...",
-    price: 4287.94,
-    quantity: 1,
-    image: checkout_2,
-  },
-  {
-    id: 3,
-    name: "Evenflo-EveryStage LX All-In-One Car Seat...",
-    price: 1420.25,
-    quantity: 7,
-    image: checkout_3,
-  },
-];
 export default function DashboardTrackingPage() {
   const { id } = useParams() as { id?: string };
   const [orderCode, setOrderCode] = useState("");

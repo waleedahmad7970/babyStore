@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs, FreeMode, Pagination } from "swiper/modules";
-import { productData } from "@/static/static";
 
 import "swiper/css";
 import "swiper/css/free-mode";

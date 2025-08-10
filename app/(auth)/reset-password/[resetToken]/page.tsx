@@ -6,14 +6,13 @@ import InputField from "@/components/fields/input-field";
 import authService from "@/services/auth.service";
 import { logo } from "@/public/assets/brands";
 import { useFormik } from "formik";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { validationSchemas } from "@/utils/validation";
 import { useAppSelector } from "@/store/hooks";
 import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
-  const { resetToken } = useParams();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
   const { signup } = useAppSelector((state) => state.loader);

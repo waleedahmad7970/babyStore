@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import {
-  connection,
   kwik,
   mini_whatsapp,
   price_match,
@@ -93,7 +92,7 @@ const TabbyCard = () => (
 const DiscountCard = ({
   text = "CALL US TO RECEIVE YOUR PERSONALIZED DISCOUNT CODES",
 }) => (
-  <div className="flex hidden w-full items-center justify-center rounded-full bg-[#DAF0DC] px-5 py-[18px] md:block md:justify-start">
+  <div className="hidden w-full items-center justify-center rounded-full bg-[#DAF0DC] px-5 py-[18px] md:block md:justify-start">
     <p className="text-[12px] leading-[14px] font-semibold text-[#464646] uppercase">
       {text}
     </p>

@@ -5,7 +5,7 @@ import Button from "../button/button";
 import { angle_down, close } from "@/public/assets/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { brandAction } from "@/store/slices/brand.slice";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import InputField from "../fields/input-field";
 import { useFormik } from "formik";
 import { validationSchemas } from "@/utils/validation";
@@ -26,11 +26,6 @@ type FilterSection = {
   options: FilterOption[];
   isPriceFilter?: any;
 };
-
-interface FilterSidebarProps {
-  selected: string[];
-  setSelected: Dispatch<SetStateAction<string[]>>;
-}
 
 export default function FilterSidebar() {
   const dispatch = useAppDispatch();

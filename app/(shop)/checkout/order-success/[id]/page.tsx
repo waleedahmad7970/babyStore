@@ -1,7 +1,6 @@
 "use client";
 import Button from "@/components/button/button";
-import { aedIcon, call_icon_white, conformTick } from "@/public/assets/icons";
-import { withAuth } from "@/routes/ProtectedRoutes";
+import { aedIcon, conformTick } from "@/public/assets/icons";
 import orderServices from "@/services/order.service";
 import { useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
@@ -33,7 +32,7 @@ const OrderSuccess = () => {
   useEffect(() => {
     if (id) orderServices.getOrderDetails(Number(id));
     dispatch(cartAction.emptyCart());
-  }, []);
+  }, [dispatch, id]);
   const totalPrice = order_details?.reduce((sum: number, item: any) => {
     const quantity = item?.qty ?? 1;
     return sum + (item?.price ?? 0) * quantity;
@@ -41,11 +40,6 @@ const OrderSuccess = () => {
 
   const taxAmount = Number(order?.tax) ?? 0;
   const orderTotal = totalPrice + taxAmount + Number(order?.shipping);
-  const subTotal = [
-    { label: "Sub Total", value: totalPrice?.toFixed(2) },
-    { label: "Tax", value: taxAmount ? taxAmount?.toFixed(2) : 0 },
-    { label: "Order Total", value: orderTotal ? orderTotal?.toFixed(2) : 0 },
-  ];
 
   return (
     <div className="cus-container mx-auto flex flex-col items-center justify-center">

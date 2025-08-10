@@ -3,10 +3,9 @@ import "../globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { blogs, reviews } from "@/static/static";
+import { reviews } from "@/static/static";
 
 import Navbar from "@/components/header/navbar";
-import FooterTwo from "@/components/footer/footertwo";
 import BlogSlider from "@/components/slider/blogs.slider";
 import FreeShipping from "@/components/banners/freeShipping";
 import ReviewSlider from "@/components/slider/reviews.slider";

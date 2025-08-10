@@ -1,7 +1,4 @@
-import Button from "@/components/button/button";
 import OrderTable from "@/components/tables/order-table";
-import { arrow_down } from "@/public/assets/icons";
-import Image from "next/image";
 import React, { useState } from "react";
 const OrdersStatus = [
   { label: "Unpaid", value: "pending" },

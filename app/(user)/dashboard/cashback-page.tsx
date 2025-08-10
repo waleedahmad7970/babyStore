@@ -1,22 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import OrderTable from "@/components/tables/order-table";
 import {
   Cashback_Points,
   walletArrowDown,
   walletArrowLeft,
-  walletCheck,
 } from "@/public/assets/dashboard";
-import Button from "@/components/button/button";
 import OrderTableTwo from "@/components/tables/order-table-two";
-import OrderTableThree from "@/components/tables/order-table-three";
 import { useAppSelector } from "@/store/hooks";
-const cashback = [
-  { label: "Cashback Points", icon: Cashback_Points, cash: "00" },
-  { label: "Total Cashback", icon: walletCheck, cash: "00" },
-  { label: "Pending Cashback", icon: walletArrowDown, cash: "00" },
-  { label: "Transfer to Wallet", icon: walletArrowLeft, cash: "00" },
-];
 
 const CashStatCard = ({ cash, label, icon }: any) => {
   return (
@@ -34,7 +24,7 @@ const CashStatCard = ({ cash, label, icon }: any) => {
 
 export default function CashbackPage() {
   const { userCashback = {} } = useAppSelector((state) => state.user) as any;
-  const { data = [], summary = {} } = userCashback || {};
+  const { summary = {} } = userCashback || {};
   return (
     <div className="w-full pt-8">
       <div className="flex flex-col items-center justify-between gap-4 md:flex-row md:gap-2">

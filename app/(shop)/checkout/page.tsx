@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import CartPanel from "@/components/cart/cart-panel";
-import FeatureCards from "@/components/cards/feature-card";
+
 import InputField from "@/components/fields/input-field";
 import { free_delivery } from "@/public/assets/icons";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; // Needed for the flags!
 import { useAppSelector } from "@/store/hooks";
-import { validationSchemas } from "@/utils/validation";
 import { useFormik } from "formik";
 import CartPanelCheckout from "@/components/cart/cart-panel-checkout";
 import Button from "@/components/button/button";
@@ -101,10 +99,6 @@ const Checkout = () => {
     appliedCoupon = {},
   } = useAppSelector((state) => state.user) as any;
 
-  const { isCheckoutVisited = false } = useAppSelector(
-    (state) => state.checkout,
-  );
-
   useEffect(() => {
     if (!token) dispatch(checkoutAction.setIscheckoutVisited(true));
   }, [dispatch, token]);
@@ -153,7 +147,6 @@ const Checkout = () => {
 
   const {
     values,
-    handleChange,
     handleSubmit,
     errors,
     touched,
@@ -201,12 +194,6 @@ const Checkout = () => {
   };
 
   // Fix the phone input handler
-  const handleBillingPhoneChange = (value: string) => {
-    setFieldValue("billing.phone", value);
-    if (values.shipToSameAddress) {
-      setFieldValue("shipping.phone", value);
-    }
-  };
 
   // Fix the ship to same address toggle
   const handleShipSameAddress = (checked: boolean) => {

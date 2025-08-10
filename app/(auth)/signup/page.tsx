@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import FacebookLogin from "@greatsumini/react-facebook-login";
-import { withAuth } from "@/routes/ProtectedRoutes";
 
 const initialValues = {
   name: "",
@@ -76,7 +75,7 @@ const Signup = () => {
           accessToken: accessToken,
           provider: "google",
         };
-        const [res, error] = await authService.socialLogin(data, router);
+        const [res] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
           router.push("/");
         }
@@ -107,7 +106,7 @@ const Signup = () => {
         provider: "facebook",
       };
       try {
-        const [res, error] = await authService.socialLogin(data, router);
+        const [res] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
           router.push("/");
         }

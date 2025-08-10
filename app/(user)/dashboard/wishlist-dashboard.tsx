@@ -1,9 +1,7 @@
 "use client";
-import Button from "@/components/button/button";
-import ProductCard from "@/components/product/cards/product-card";
+
 import WishlistCard from "@/components/product/cards/wishlist-card";
 import { angle_down, arrow_down } from "@/public/assets/icons";
-import { wishLIST1 } from "@/static/static";
 import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
 import React, { useState } from "react";

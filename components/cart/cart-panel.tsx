@@ -2,7 +2,7 @@
 
 import { aedIcon, cross } from "@/public/assets/icons";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { QuantityControl } from "./quanity-controller";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
@@ -10,15 +10,7 @@ import { useRouter } from "next/navigation";
 import Button from "../button/button";
 
 // Original product type (no quantity expected)
-interface Product {
-  id: number;
-  name?: string;
-  price: number;
-  title: string;
-  image: string;
-  isAddedToCart?: boolean;
-  quantity?: number;
-}
+
 interface AppliedCoupon {
   discount?: number | string;
 }

@@ -80,14 +80,14 @@ const categoryServices = {
       );
 
       // Price ranges - keep as is or calculate dynamically
-      const priceRanges = [
-        "0 - 50",
-        "51 - 100",
-        "101 - 250",
-        "251 - 500",
-        "501 - 1000",
-        "1000+",
-      ].map((range) => ({ label: range, value: range }));
+      // const priceRanges = [
+      //   "0 - 50",
+      //   "51 - 100",
+      //   "101 - 250",
+      //   "251 - 500",
+      //   "501 - 1000",
+      //   "1000+",
+      // ].map((range) => ({ label: range, value: range }));
 
       const prices = data
         .map((item: any) => item.price)

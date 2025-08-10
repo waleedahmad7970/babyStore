@@ -15,14 +15,8 @@ interface SectionData {
   fetched?: any;
 }
 
-interface ApiResponse {
-  data?: {
-    data?: any[]; // Replace 'any' with your actual type
-  };
-}
-
 const HomePage = () => {
-  const [htmlContent, setHtmlContent] = useState(`
+  const [htmlContent] = useState(`
     <!-- school section -->
     <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">

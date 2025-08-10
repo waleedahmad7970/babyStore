@@ -1,6 +1,5 @@
 "use client";
 import { StaticImageData } from "next/image";
-import ProductCardTwo from "@/components/product/cards/product-card-two";
 import { useScrollSlider } from "@/hooks/useScrollSlider";
 import SliderHeading from "../header-titles/slider-header";
 import useWindowDimensions from "@/hooks/useWindowDimensions";

@@ -78,7 +78,7 @@ export default function Page() {
           })}
           <div
             onClick={() => handleLogout()}
-            className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-[8px] bg-[#FD71AF] px-4 py-2 text-white transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#FD71AF] hover:text-white md:px-2 md:px-4 md:py-3`}
+            className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-[8px] bg-[#FD71AF] px-4 py-2 text-white transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#FD71AF] hover:text-white md:px-2 md:py-3`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

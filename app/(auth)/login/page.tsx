@@ -13,7 +13,6 @@ import FacebookLogin from "@greatsumini/react-facebook-login";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { withAuth } from "@/routes/ProtectedRoutes";
 import { userActions } from "@/store/slices/auth.slice";
 import { useDispatch } from "react-redux";
 import { setItemInLS } from "@/utils/LS_STORAGE";
@@ -28,7 +27,6 @@ const Login = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
 
-  const lastVisitPaths = localStorage.getItem("visited-paths");
   const onSubmit = async (values: any) => {
     const [res, error] = await authService.loginMobileUser(values, router);
     const message = res?.data?.message;
@@ -44,10 +42,6 @@ const Login = () => {
       if (result !== 0) {
         dispatch(userActions.setRegisterSessionId(res?.data?.result));
         setItemInLS("token", res?.data?.result);
-
-        const visitedPaths = JSON.parse(
-          localStorage.getItem("visited-paths") || "[]",
-        );
 
         if (res?.data?.result) {
           router.push(redirect);
@@ -94,7 +88,7 @@ const Login = () => {
           accessToken: accessToken,
           provider: "google",
         };
-        const [res, error] = await authService.socialLogin(data, router);
+        const [res] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
           const visitedPaths = JSON.parse(
             localStorage.getItem("visited-paths") || "[]",
@@ -135,7 +129,7 @@ const Login = () => {
         provider: "facebook",
       };
       try {
-        const [res, error] = await authService.socialLogin(data, router);
+        const [res] = await authService.socialLogin(data, router);
         if (res?.data?.user) {
           const visitedPaths = JSON.parse(
             localStorage.getItem("visited-paths") || "[]",

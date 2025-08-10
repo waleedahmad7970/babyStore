@@ -1,6 +1,5 @@
 "use client";
 
-import { blogmain } from "@/public/assets/blogs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import {

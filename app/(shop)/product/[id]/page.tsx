@@ -4,7 +4,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import Button from "@/components/button/button";
-import SizeSelector from "@/components/button/size-select-btn";
 import DeliveryServiceCard from "@/components/cards/delivery-services";
 import Cookies from "js-cookie";
 import Icons from "@/public/assets/svg-component";
@@ -12,7 +11,6 @@ import {
   TabbyCard,
   DiscountCard,
   CashbackCard,
-  DeliveryCard,
   PriceMatchCard,
   InstallationCard,
 } from "@/components/cards/card-info-components";
@@ -21,7 +19,6 @@ import {
   full_star,
   grey_star,
   half_star,
-  left_right_arrow,
   seperator,
   share,
 } from "@/public/assets/icons";
@@ -30,7 +27,7 @@ import ProductSwiperSlider from "@/components/slider/product.swiper";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import ReviewSection from "@/components/reviews/product-reviews";
 import ProductPagingSlider from "@/components/slider/product-pagging-slider";
-import { deliveryService, productData } from "@/static/static";
+import { deliveryService } from "@/static/static";
 import { useParams, useRouter } from "next/navigation";
 import productServices from "@/services/product.service";
 import HighlightsAccordion from "@/components/Accordian/hightlight-accordian";
@@ -40,12 +37,6 @@ import FullScreenLoader from "@/components/Loader/fullscreen-loader";
 import { userActions } from "@/store/slices/auth.slice";
 import { cartAction } from "@/store/slices/cart.slice";
 import { calculateAverageRating } from "@/helpers/helper";
-const installationPrices = {
-  "Dubai, Abu Dhabi, Al Ain, Sharjah & Ajman (within city limits) – FREE": 0,
-  "*Abu Dhabi, & Sharjah( Outside City Limits) +315 AED": 315,
-  "*Hatta,  RAK, FUJ, UAQ and other Northern & Western emirates +315 aed": 315,
-  "No Installation/Delivery required": 0,
-};
 
 // export default function ProductDetails({ product = productData }) {
 export default function Page() {
@@ -72,14 +63,12 @@ export default function Page() {
     features,
     gallery,
     image,
-    is_kwik,
-    min_quantity,
+
     name,
     price,
     reviews,
     recommended_age,
     dimensions,
-    discount,
     weight,
     sku,
     return_id,
@@ -171,7 +160,7 @@ export default function Page() {
 
   useEffect(() => {
     setSelectedInstallation(installation_attribute_array?.[0]);
-  }, []);
+  }, [installation_attribute_array]);
 
   const wishedProduct = wishList?.find(
     (product) => product?.id === id && product?.wished === true,

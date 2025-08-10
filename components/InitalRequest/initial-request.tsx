@@ -26,19 +26,19 @@ export default function InitialRequest() {
     const fetchInitialData = async () => {
       try {
         await Promise.all([
-          productServices.getMumzData(),
+          // productServices.getMumzData(), no using because not using any iyts data
           productServices.getCategories(),
           productServices.getHomeSlider(),
-          productServices.getTopBrandList(),
+          // productServices.getTopBrandList(), not using i nay app
           productServices.getFavouriteList(),
           productServices.getHomeMobSlider(),
           productServices.getSuggestedProducts(),
-          productServices.getHomeDesktopSections(),
-          productServices.getHomeDesktopSectionsTest(),
+          // productServices.getHomeDesktopSections(), dsta will come form here of home page
+          // productServices.getHomeDesktopSectionsTest(),
           productServices.storeSearchDataToAlgolia(),
           productServices.getAllProducts(),
           productServices.getbannerImage(),
-          productServices.getCustomizedCategoryListUi(),
+          // productServices.getCustomizedCategoryListUi(), no data coming no reason for api
           // get user profile
           authService.getUserProfile(registerSessionId),
           authService.getDiscountCoupon(),

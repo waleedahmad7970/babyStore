@@ -25,7 +25,6 @@ type PageClickEvent = {
 };
 
 export default function Page(): JSX.Element {
-  const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const itemsPerPage = 40;
   const { id } = useParams();
   const dispatch = useAppDispatch();
