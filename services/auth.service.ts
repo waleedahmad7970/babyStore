@@ -101,9 +101,7 @@ const authService = {
       body,
     );
 
-    console.log({ res, error });
     if (res?.data?.user) {
-      console.log("B", res?.data);
       dispatch(userActions.setUser(res?.data?.user));
       dispatch(userActions.setRegisterSessionId(res?.data?.user?.id));
       setItemInLS("token", res?.data?.user?.id);
@@ -150,7 +148,6 @@ const authService = {
       body,
     );
     if (res?.data?.success) {
-      console.log("ddddd", res);
       dispatch(userActions.defaultAddress(res?.data?.changed_fields));
     }
     return [res, error];
@@ -224,7 +221,6 @@ const authService = {
 
     const { data = [], summary = {} } = res?.data || {};
 
-    console.log("cash", res, summary, data);
     if (res?.data?.success) {
       dispatch(userActions.setUserCashback({ data, summary }));
     }

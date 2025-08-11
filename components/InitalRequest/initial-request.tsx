@@ -26,23 +26,34 @@ export default function InitialRequest() {
     const fetchInitialData = async () => {
       try {
         await Promise.all([
-          // productServices.getMumzData(), no using because not using any iyts data
           productServices.getCategories(),
           productServices.getHomeSlider(),
-          // productServices.getTopBrandList(), not using i nay app
-          productServices.getFavouriteList(),
           productServices.getHomeMobSlider(),
-          productServices.getSuggestedProducts(),
-          // productServices.getHomeDesktopSections(), dsta will come form here of home page
+          productServices.getFavouriteList(),
+        ]);
+
+        await Promise.all([
+          // productServices.getSuggestedProducts(), not using in new deisgn anywehre
           productServices.getHomeDesktopSectionsTest(),
+        ]);
+
+        await Promise.all([
           productServices.storeSearchDataToAlgolia(),
-          productServices.getAllProducts(),
+          // productServices.getAllProducts(), search api of products
           productServices.getbannerImage(),
-          // productServices.getCustomizedCategoryListUi(), no data coming no reason for api
-          // get user profile
+        ]);
+
+        await Promise.all([
           authService.getUserProfile(registerSessionId),
           authService.getDiscountCoupon(),
-          //
+        ]);
+
+        await Promise.all([
+          // productServices.getMumzData(), no using because not using any iyts data
+          // productServices.getTopBrandList(), not using i nay app
+          // productServices.getHomeDesktopSections(), dsta will come form here of home page
+          // productServices.getCustomizedCategoryListUi(), no data coming no reason for api
+          // get user profile
         ]);
       } catch (error) {
         console.error("Error in critical requests:", error);

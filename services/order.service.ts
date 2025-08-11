@@ -25,7 +25,6 @@ const orderServices = {
       `https://www.babystore.ae/api/getOrderId/${id}`,
     );
 
-    console.log("details", res);
     const {
       billing_info = {},
       order = {},

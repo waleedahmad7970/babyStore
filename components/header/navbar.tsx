@@ -65,8 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   useEffect(() => {
     router.prefetch("/cart");
     router.prefetch("/checkout");
-    router.prefetch("/signup");
-    router.prefetch("/login");
+
     router.prefetch("/dashboard");
   });
 

@@ -14,8 +14,6 @@ interface Category {
 export default function CategoryListTwo() {
   const { topCategories = [] } = useAppSelector((state) => state.product);
   const settings = {
-    // className: "center",
-    // centerMode: true,
     infinite: true,
     centerPadding: "60px",
     slidesToShow: 7,
@@ -69,19 +67,6 @@ export default function CategoryListTwo() {
           ))}
         </Slider>
       </div>
-      {/* <div className="no-scrollbar flex w-full justify-center gap-2 overflow-x-auto md:gap-[9px]">
-        {topCategories.map((category: Category, index) => (
-          <div key={index} className="max-w-[162px] flex-shrink-0">
-            <CategoryCardTwo
-              cat_image={`${imageBaseUrl}/assets/favorite_category/${category.image}`}
-              paraClassName="mt-[18px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[20px] md:leading-normal"
-              ImgClass="object-contain max-w-[70px] md:max-w-[131px] max-h-[65px] md:max-h-[123px]"
-              className="h-[85px] w-[85px] !rounded-[35px] bg-[#FFF1E9] md:h-[162px] md:w-[162px] md:!rounded-[70px]"
-              {...category}
-            />
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 }

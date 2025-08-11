@@ -20,16 +20,16 @@ const HomePage = () => {
     <!-- school section -->
     <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/school/backtoScholl.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/school/backtoScholl.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/school/backtoschoolmob.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="assets/homepage/school/s2.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/school/s4.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/school/s1.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/school/s3.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/school/s1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/school/s1 (2).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/school/s1 (3).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/school/s1 (4).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
     <div id="section-1"></div>
@@ -37,16 +37,16 @@ const HomePage = () => {
     
     <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/travel/tarvelbanner.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/travel/tarvelbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/travel/travelmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-        <img src="assets/homepage/travel/t1.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/travel/t2.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/travel/t3.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/travel/t4.png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/travel/t1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/travel/t1 (2).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/travel/t1 (3).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/travel/t1 (4).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
     <div id="section-2"></div>
@@ -54,18 +54,18 @@ const HomePage = () => {
     <!-- summer section -->
       <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/summar/summarbanner.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/summar/summarbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/summar/summarmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[14px]">
-      <img src="assets/homepage/summar/s1 (7).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-      <img src="assets/homepage/summar/s1 (8).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="assets/homepage/summar/s1 (9).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="assets/homepage/summar/s1 (10).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="assets/homepage/summar/s1 (11).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
-        <img src="assets/homepage/summar/s1 (7).png" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+      <img src="assets/homepage/summar/s1 (1).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+      <img src="assets/homepage/summar/s1 (2).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="assets/homepage/summar/s1 (7).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="assets/homepage/summar/s1 (4).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="assets/homepage/summar/s1 (5).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
+        <img src="assets/homepage/summar/s1 (6).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
       </div>
     </div>
     <div id="section-3"></div>
@@ -75,7 +75,7 @@ const HomePage = () => {
           <div className="mb-10 w-full py-0 sm:mb-0 md:pb-[60px]">
           <div class="cus-container relative overflow-hidden rounded-[8px]">
           <div class="relative hidden aspect-[1148/436] max-h-[436px] w-full overflow-hidden rounded-[8px] sm:block">
-          <img src="assets/homepage/mummy/mummybanner.png" alt="Banner" class="h-full w-full object-cover">
+          <img src="assets/homepage/mummy/mummybanner.jpg" alt="Banner" class="h-full w-full object-cover">
           </div>
 
           <div class="relative block aspect-[640/236] min-h-[236px] w-full overflow-hidden rounded-[8px] sm:hidden">
@@ -89,16 +89,16 @@ const HomePage = () => {
     <!-- summer section -->
       <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/clearance/clerancebanner.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/clearance/clerancebanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/clearance/clearancemobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-      <img src="assets/homepage/clearance/c1 (1).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
-      <img src="assets/homepage/clearance/c1 (2).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
-        <img src="assets/homepage/clearance/c1 (3).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
-        <img src="assets/homepage/clearance/c1 (4).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+      <img src="assets/homepage/clearance/c1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+      <img src="assets/homepage/clearance/c1 (2).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+        <img src="assets/homepage/clearance/c1 (3).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
+        <img src="assets/homepage/clearance/c1 (4).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
       </div>
     </div>
     
@@ -106,32 +106,32 @@ const HomePage = () => {
     <!-- firstday section -->
     <div class="relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/firstday/firstdaybanner.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/firstday/firstdaybanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/firstday/firstdaymobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-      <img src="assets/homepage/firstday/fd1 (1).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-      <img src="assets/homepage/firstday/fd1 (2).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/firstday/fd1 (3).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/firstday/fd1 (4).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/firstday/fd1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/firstday/fd1 (2).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/firstday/fd1 (5).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/firstday/fd1 (4).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
 
     <!-- diaper section -->
     <div class=" relative mb-10 flex flex-col items-center gap-[10px] pb-5 text-center md:mb-0 md:gap-[30px] md:pb-[60px]">
       <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-        <img src="assets/homepage/moms/momsbanner.png" alt="Banner" class="cus-container h-full w-full object-cover">
+        <img src="assets/homepage/moms/momsbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
         <img src="assets/homepage/moms/momsmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
-      <img src="assets/homepage/moms/moms (1).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-      <img src="assets/homepage/moms/moms (2).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/moms/moms (3).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
-        <img src="assets/homepage/moms/moms (4).png" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/moms/moms (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+      <img src="assets/homepage/moms/moms (2).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/moms/moms (3).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
+        <img src="assets/homepage/moms/moms (4).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
       </div>
     </div>
 

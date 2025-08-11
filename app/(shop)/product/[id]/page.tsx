@@ -38,7 +38,6 @@ import { userActions } from "@/store/slices/auth.slice";
 import { cartAction } from "@/store/slices/cart.slice";
 import { calculateAverageRating } from "@/helpers/helper";
 
-// export default function ProductDetails({ product = productData }) {
 export default function Page() {
   const router = useRouter();
   const params = useParams();
@@ -165,7 +164,6 @@ export default function Page() {
   const wishedProduct = wishList?.find(
     (product) => product?.id === id && product?.wished === true,
   );
-  console.log({ currentProductDetails });
   const addToWishlist = () => {
     dispatch(
       userActions.addToUserWishList({ id, name, title: name, image, price }),

@@ -118,7 +118,6 @@ const RecentOrderTable = () => {
     orders: any[];
   };
 
-  console.log("orders", orders);
   const itemsPerPage = 12;
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
   const [currentPage, setCurrentPage] = useState<number>(0);

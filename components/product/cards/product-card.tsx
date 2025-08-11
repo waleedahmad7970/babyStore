@@ -98,11 +98,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     dispatch(cartAction.setAddCurrentAddedProduct(cartPayload));
     dispatch(cartAction.setAddToCartModelProduct(cartPayload));
   };
-  console.log(
-    "image url",
-    `https:www.babystore.ae/storage/${image}`,
-    `https:www.babystore.ae/storage${image}`,
-  );
+
   return (
     <div
       style={{
@@ -123,6 +119,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 }
                 alt={"product-image"}
                 fill
+                priority
                 className="h-full w-full cursor-pointer object-cover transition duration-500 hover:scale-125 hover:rotate-3"
               />
             </div>

@@ -28,7 +28,6 @@ export default function ProductSwiperSlider({
   const { scrollRef, scrollBy } = useScrollSlider();
   let left = (width - 1360) / 2 - 10;
   if (left < 0) left = 0;
-  console.log("products", products);
 
   return (
     <div className="relative w-full overflow-hidden py-5 pl-[10px] md:py-10">

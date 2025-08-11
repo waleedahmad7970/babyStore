@@ -12,13 +12,10 @@ import {
   aedIcon,
 } from "../../../public/assets/icons";
 
-import { useRouter } from "next/navigation";
 import { cartAction } from "@/store/slices/cart.slice";
 import { userActions } from "@/store/slices/auth.slice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { StaticImageData } from "next/image";
 import { calculateAverageRating } from "@/helpers/helper";
-import { toast } from "react-toastify";
 import Link from "next/link";
 import { fallBackImage } from "@/public/assets/products";
 

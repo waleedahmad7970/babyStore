@@ -68,7 +68,6 @@ const checkoutSchema = Yup.object({
   shipping: Yup.object().when(
     "shipToSameAddress",
     (shipToSameAddress, schema) => {
-      console.log({ shipToSameAddress });
       return shipToSameAddress?.[0]
         ? schema.strip()
         : Yup.object({
@@ -206,7 +205,6 @@ const Checkout = () => {
     }
   };
 
-  console.log({ values, errors });
   return (
     <div className="mx-auto w-full max-w-[1360px] px-[10px] py-10 lg:px-0">
       <p className="mb-[22px] text-[40px] leading-normal font-semibold text-[#000] sm:mb-[44px]">

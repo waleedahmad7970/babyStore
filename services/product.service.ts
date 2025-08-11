@@ -88,7 +88,7 @@ const productServices = {
     const [res, error] = await http.get(
       `https://www.babystore.ae/api/home_desktop_sections_test`,
     );
-    const { data = [] } = res?.data;
+    const { data = [] } = res?.data || {};
     if (res?.data?.success && data) {
       dispatch(productAction.setDesktopSectionsTest(data));
     }

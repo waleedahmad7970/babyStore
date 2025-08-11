@@ -28,7 +28,6 @@ export default function AddToCard({
   const dispatch = useAppDispatch();
   usePreventBodyScroll(addToCartModel);
   const { addCurrentAddedProduct = {} } = useAppSelector((state) => state.cart);
-  console.log({ addCurrentAddedProduct });
   const {
     id = "",
     name = "",

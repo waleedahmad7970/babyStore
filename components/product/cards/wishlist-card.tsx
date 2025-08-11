@@ -32,7 +32,6 @@ interface WishlistCardProps {
 }
 
 const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
-  console.log({ product });
   const router = useRouter();
   const redirectToCart = (path: any) => {
     router.push(path);

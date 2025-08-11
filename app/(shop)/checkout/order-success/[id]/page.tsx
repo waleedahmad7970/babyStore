@@ -28,7 +28,6 @@ const OrderSuccess = () => {
   const { order = {} } = orderDetails || {};
 
   const { order_details = [], billing_info = {} } = order || {};
-  console.log({ order_details, order });
   useEffect(() => {
     if (id) orderServices.getOrderDetails(Number(id));
     dispatch(cartAction.emptyCart());

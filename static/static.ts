@@ -17,8 +17,6 @@ import {
   packet,
   basket,
   headset,
-  full_star,
-  half_star,
   cash_back,
   truck2,
   headset2,
@@ -28,16 +26,9 @@ import {
   ApplePay,
   Mastercard,
   employee,
-  share,
-  left_right_arrow,
   Money,
 } from "../public/assets/icons";
 import {
-  detail_image,
-  detail_image_1,
-  detail_image_2,
-  detail_image_3,
-  detail_image_4,
   diaper,
   fashion,
   feeding,
@@ -56,24 +47,7 @@ import {
   toy,
   uutdoor,
 } from "../public/assets/products";
-import {
-  aed100,
-  aed200,
-  aed50,
-  toy_banner,
-  ban_desk_1,
-  ban_mob_1,
-  ban_desk_2,
-  ban_mob_2,
-  ban_desk_3,
-  ban_mob_3,
-  ban_desk_4,
-  ban_mob_4,
-  ban_desk_5,
-  ban_mob_5,
-  ban_desk_6,
-  ban_mob_6,
-} from "@/public/assets/banner";
+import { aed100, aed200, aed50, toy_banner } from "@/public/assets/banner";
 
 // nav
 export const userMenu = [user, heart, basket];
@@ -157,95 +131,6 @@ export const breadcrumbPathsBlog = [
   { name: "Home", link: "/" },
   { name: "How to choose the best baby swing?", link: "#" },
 ];
-// product data
-export const productData = {
-  id: 1,
-  name: "Ubeybi Shopping Trolley & High Chair Hygienic Cover - Black",
-  brand: "Kidkraft",
-  price: 165,
-  originalPrice: 199,
-  discount: "25% OFF",
-  coupon: "NEW15",
-  ratings: [
-    {
-      id: 1,
-      rating: 5,
-      count: 200,
-      icon: full_star,
-    },
-    {
-      id: 2,
-      rating: 4,
-      count: 150,
-      icon: full_star,
-    },
-    {
-      id: 3,
-      rating: 3,
-      count: 100,
-      icon: full_star,
-    },
-    {
-      id: 4,
-      rating: 2,
-      count: 50,
-      icon: full_star,
-    },
-    {
-      id: 5,
-      rating: 1,
-      count: 20,
-      icon: half_star,
-    },
-  ],
-  deliveryService: [
-    {
-      id: 1,
-      icon: truck,
-      title: "Free Shipping",
-    },
-    {
-      id: 2,
-      icon: cash_back,
-      title: "2x Cashback",
-    },
-    {
-      id: 3,
-      icon: headset,
-      title: "24/7 Support",
-    },
-    {
-      id: 4,
-      icon: packet,
-      title: "Cash Delivery",
-    },
-  ],
-  shareProduct: [share, left_right_arrow],
-  reviews: 80,
-  image: detail_image,
-  sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
-  images: [detail_image_1, detail_image_2, detail_image_3, detail_image_4],
-  highlights: [
-    "Recommended Age: 0 - 3 years",
-    "Returns: Eligible for refund within 7 days",
-    "Type: Car Seat",
-    "Color: Black",
-    "Dimensions: 80cm x 50cm x 5cm",
-    "Weight: 9.3kg",
-    "SKU: 103297",
-  ],
-  features: [
-    "Side impact protection for the head",
-    "Anatomical head hugger with back support",
-    "8 points belt",
-    "Padded shoulder straps and crotch strap",
-    "Practical height adjustment mechanism",
-    "Side display for correct use",
-    "Headrest adjustable in 7 heights",
-  ],
-  specifications:
-    "Scudo is the innovative car seat by Cam of the Group 0/1/2/3 that follows the growth of your child from birth...",
-};
 
 export const deliveryService = [
   {
@@ -490,45 +375,6 @@ export const productsLIST1 = [
     discount: "20% OFF",
     rating: 3.9,
     link: "/product",
-  },
-];
-
-export const bannerData = [
-  {
-    id: 1,
-    desktopImg: ban_desk_1,
-    mobileImg: ban_mob_1,
-    alt: "Banner 1 Description",
-  },
-  {
-    id: 2,
-    desktopImg: ban_desk_2,
-    mobileImg: ban_mob_2,
-    alt: "Banner 2 Description",
-  },
-  {
-    id: 3,
-    desktopImg: ban_desk_3,
-    mobileImg: ban_mob_3,
-    alt: "Banner 3 Description",
-  },
-  {
-    id: 4,
-    desktopImg: ban_desk_4,
-    mobileImg: ban_mob_4,
-    alt: "Banner 4 Description",
-  },
-  {
-    id: 5,
-    desktopImg: ban_desk_5,
-    mobileImg: ban_mob_5,
-    alt: "Banner 5 Description",
-  },
-  {
-    id: 6,
-    desktopImg: ban_desk_6,
-    mobileImg: ban_mob_6,
-    alt: "Banner 6 Description",
   },
 ];
 
@@ -793,69 +639,6 @@ export const footerBottomLinks = [
   { name: "Promotion", url: "/promotion" },
   { name: "Contact", url: "/contact" },
   { name: "Frequently Asked Questions", url: "/faq" },
-];
-
-export const babySwingCardsData = [
-  {
-    image: "/assets/baby-swing-1.jpg",
-    date: "12 Mar, 2023",
-    comments: 52,
-    title: "How to choose the best baby swing?",
-    description:
-      "We've tested dozens of baby swings so you don’t have to. tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to.tested dozens of baby swings so you don’t have to. From smart Bluetooth-enabled models to simple manual ones, here are the top picks that balance comfort, safety, and ease of use for busy parents.",
-    authorName: "Lionardo De Caprio",
-    authorImage: "/assets/authors/samantha.jpg",
-  },
-  {
-    image: "/assets/baby-swing-2.jpg",
-    date: "24 Feb, 2023",
-    comments: 136,
-    title: "How to Choose the Right Baby Swing",
-    description:
-      "Not all baby swings are made equal. This guide helps you understand the different types, features to prioritize like recline settings and noise levels, and how to match the swing to your baby's age and temperament.",
-    authorName: "Lionardo De Caprio",
-    authorImage: "/assets/authors/lionardo.jpg",
-  },
-  {
-    image: "/assets/baby-swing-3.jpg",
-    date: "03 Jan, 2023",
-    comments: 87,
-    title: "Swing Safety Tips Every Parent Should Know",
-    description:
-      "Even the best swing isn't safe if not used properly. Learn about essential safety practices including harnessing, placement, swing timing, and why it's important never to leave your baby unattended.",
-    authorName: "Emily Stone",
-    authorImage: "/assets/authors/emily.jpg",
-  },
-  {
-    image: "/assets/baby-swing-4.jpg",
-    date: "18 Dec, 2022",
-    comments: 64,
-    title: "Best Budget Baby Swings That Actually Work",
-    description:
-      "On a tight budget? We’ve reviewed swings under $100 that are still durable, reliable, and packed with useful features. Find out which ones are worth it and which to avoid.",
-    authorName: "Michael Sun",
-    authorImage: "/assets/authors/michael.jpg",
-  },
-  {
-    image: "/assets/baby-swing-5.jpg",
-    date: "06 Nov, 2022",
-    comments: 29,
-    title: "When to Start and Stop Using a Baby Swing",
-    description:
-      "Wondering when to introduce your baby to a swing? Or when it’s time to stop using it altogether? Our pediatric-backed advice breaks down age guidelines, developmental milestones, and weaning tips.",
-    authorName: "Isabella Blue",
-    authorImage: "/assets/authors/isabella.jpg",
-  },
-  {
-    image: "/assets/baby-swing-6.jpg",
-    date: "21 Oct, 2022",
-    comments: 111,
-    title: "Do Baby Swings Help with Sleep?",
-    description:
-      "Baby swings can be soothing—but are they safe for sleep? We explore what doctors recommend, how to use swings for short naps, and when it's time to transition to a crib for better sleep habits.",
-    authorName: "James Holloway",
-    authorImage: "/assets/authors/james.jpg",
-  },
 ];
 
 export const blogDetailsData = {

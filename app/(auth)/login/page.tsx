@@ -116,7 +116,6 @@ const Login = () => {
     ].join(" "),
   });
   const responseFacebook = async (response: any) => {
-    console.log({ response });
     if (response.accessToken) {
       const { name, email, userID, picture, accessToken } = response;
 

@@ -18,8 +18,6 @@ export default function AddressPage() {
     await authService.updateUserProfile(data);
   };
 
-  console.log({ defaultAddress });
-
   const {
     email,
     country,
@@ -62,8 +60,6 @@ export default function AddressPage() {
     handleBlur,
     submitCount,
   } = formikProps;
-
-  console.log({ values, errors });
 
   const isSubmitted = submitCount > 0;
   return (
