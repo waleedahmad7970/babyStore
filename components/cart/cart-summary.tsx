@@ -169,7 +169,7 @@ export const CartSummary = ({
           <Button
             text={"CHECKOUT"}
             handler={handleCheckout}
-            className="w-full cursor-pointer rounded-[50px] bg-[#E7448C] px-5 py-[10px] text-[20px] font-semibold text-white uppercase hover:bg-[#E7448C]/80"
+            className="hidden w-full cursor-pointer rounded-[50px] bg-[#E7448C] px-5 py-[10px] text-[20px] font-semibold text-white uppercase hover:bg-[#E7448C]/80 sm:block"
           />
           <Button
             text={"Shop More"}
@@ -192,6 +192,14 @@ export const CartSummary = ({
             <Image key={index} src={method.img} alt={"paymet-cards"} />
           ))}
         </div>
+      </div>
+      {/* checkout mobile buttin float  */}
+      <div className="fixed right-0 bottom-[70px] left-0 z-30 flex items-center justify-center px-[10px]">
+        <Button
+          text={"CHECKOUT"}
+          handler={handleCheckout}
+          className="block w-full cursor-pointer rounded-[50px] bg-[#E7448C] px-5 py-[10px] text-[20px] font-semibold text-white uppercase hover:bg-[#E7448C]/80 sm:hidden"
+        />
       </div>
     </div>
   );
