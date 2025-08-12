@@ -40,7 +40,7 @@ const ExpandableCategoryItem: React.FC<ExpandableCategoryItemProps> = ({
       <div className="flex w-full flex-col gap-[10px]">
         <div
           className={`flex items-center justify-between gap-3 transition-all duration-300 ${
-            isOpen && React.Children.count(children) > 0
+            isOpen && React?.Children?.count(children) > 0
               ? "rounded-[8px] bg-[#F3F3F3] px-[10px]"
               : ""
           }`}

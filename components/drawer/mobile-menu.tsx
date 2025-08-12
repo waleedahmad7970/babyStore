@@ -21,6 +21,7 @@ import { MobSearch } from "../search/mob-search";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 import { imageBaseUrl } from "@/config/config";
+import { toast } from "react-toastify";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -155,8 +156,12 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                             <p
                               onClick={() => {
                                 if (selectedIconIndexOne === actualIndex) {
-                                  router.push(`/category/${item?.id}`);
-                                  close();
+                                  if (item?.id) {
+                                    router.push(`/category/${item?.id}`);
+                                    close();
+                                  } else {
+                                    toast.error(`${item?.id} not found`);
+                                  }
                                 }
                               }}
                               className="absolute text-[12px] leading-[9px] font-bold text-white underline"
@@ -183,17 +188,17 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                           key={idx}
                           title={cat?.title}
                           icon={
-                            `https://www.babystore.ae/storage/back/assets/subcategory/${cat.image}` ||
+                            `https://www.babystore.ae/storage/back/assets/subcategory/${cat?.image}` ||
                             "/default-icon.png"
                           }
                           isOpen={openCategory === idx}
                           onToggle={() => handleCategoryToggle(idx)}
                           parentId={cat?.id}
                         >
-                          {(cat?.items || []).map((item: any) => (
+                          {(cat?.items || [])?.map((item: any) => (
                             <p
-                              key={item.id}
-                              data-id={item.id}
+                              key={item?.id}
+                              data-id={item?.id}
                               className="text-[12px] font-bold text-[#434343]"
                             >
                               {item?.name}
