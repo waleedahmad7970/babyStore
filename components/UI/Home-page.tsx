@@ -270,8 +270,15 @@ const HomePage = () => {
           <ProductSwiperSlider products={section?.products} />
         </Provider>,
       );
+      // cleanupFunctions.push(() => {
+      //   requestIdleCallback(() => {
+      //     root.unmount();
+      //     sliderContainer.remove();
+      //     delete sectionElement.dataset.rendered;
+      //   });
+      // });
       cleanupFunctions.push(() => {
-        requestIdleCallback(() => {
+        (window.requestIdleCallback ?? ((cb) => setTimeout(cb, 1)))(() => {
           root.unmount();
           sliderContainer.remove();
           delete sectionElement.dataset.rendered;
