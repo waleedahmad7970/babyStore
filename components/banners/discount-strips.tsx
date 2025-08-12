@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-const words = ["15%", "OFF", "ON", "Your", "First", "3 ORDERS"];
+const words = ["15% OFF", "ON", "Your", "First", "3 ORDERS"];
 
 const DiscountStripsBanner = () => {
   const wordRefs = useRef<HTMLSpanElement[]>([]);
@@ -11,7 +11,7 @@ const DiscountStripsBanner = () => {
     wordRefs.current.forEach((el, index) => {
       if (!el) return;
 
-      const delay = index * 0.2;
+      const delay = index * 0.1;
 
       const animType = index % 5;
 
@@ -25,14 +25,14 @@ const DiscountStripsBanner = () => {
             {
               rotateX: 0,
               opacity: 1,
-              duration: 0.6,
+              duration: 0.4,
               ease: "back.out(1.7)",
               delay,
             },
           ).to(el, {
             rotateX: 90,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.4,
             ease: "back.in(1.7)",
             delay: 1,
           });
@@ -45,14 +45,14 @@ const DiscountStripsBanner = () => {
             {
               rotateY: 0,
               opacity: 1,
-              duration: 0.6,
+              duration: 0.5,
               ease: "expo.out",
               delay,
             },
           ).to(el, {
             rotateY: -90,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "expo.in",
             delay: 1,
           });
@@ -65,14 +65,14 @@ const DiscountStripsBanner = () => {
             {
               scale: 1,
               opacity: 1,
-              duration: 0.8,
+              duration: 0.6,
               ease: "elastic.out(1, 0.4)",
               delay,
             },
           ).to(el, {
             scale: 0,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
             ease: "power1.inOut",
             delay: 1,
           });

@@ -23,7 +23,7 @@ const HomePage = () => {
         <img src="assets/homepage/school/backtoScholl.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/school/backtoschoolmob.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/school/backtoschoolmob.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
       <img src="assets/homepage/school/s1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
@@ -40,7 +40,7 @@ const HomePage = () => {
         <img src="assets/homepage/travel/tarvelbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/travel/travelmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/travel/travelmobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
       <img src="assets/homepage/travel/t1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
@@ -57,7 +57,7 @@ const HomePage = () => {
         <img src="assets/homepage/summar/summarbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/summar/summarmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/summar/summarmobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[14px]">
       <img src="assets/homepage/summar/s1 (1).jpg" alt="Product" class="w-[48%] h-[225px] lg:w-[215px] lg:h-[252px] object-cover">
@@ -79,7 +79,7 @@ const HomePage = () => {
           </div>
 
           <div class="relative block aspect-[640/236] min-h-[236px] w-full overflow-hidden rounded-[8px] sm:hidden">
-          <img src="assets/homepage/mummy/mummymobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+          <img src="assets/homepage/mummy/mummymobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
           </div>
           </div>
           </div>
@@ -92,7 +92,7 @@ const HomePage = () => {
         <img src="assets/homepage/clearance/clerancebanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/clearance/clearancemobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/clearance/clearancemobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
       <img src="assets/homepage/clearance/c1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[421px] object-cover">
@@ -109,7 +109,7 @@ const HomePage = () => {
         <img src="assets/homepage/firstday/firstdaybanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/firstday/firstdaymobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/firstday/firstdaymobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
       <img src="assets/homepage/firstday/fd1 (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
@@ -125,7 +125,7 @@ const HomePage = () => {
         <img src="assets/homepage/moms/momsbanner.jpg" alt="Banner" class="cus-container h-full w-full object-cover">
       </div>
       <div class="cus-container relative block w-full rounded-[8px] sm:hidden">
-        <img src="assets/homepage/moms/momsmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+        <img src="assets/homepage/moms/momsmobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
       </div>
       <div class="cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between gap-[10px] md:gap-[21px]">
       <img src="assets/homepage/moms/moms (1).jpg" alt="Product" class="w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover">
@@ -138,22 +138,22 @@ const HomePage = () => {
     <!-- Pricing section -->
     <div class="cus-container relative mb-5 flex flex-col items-center gap-5 pb-5 text-center sm:mb-0 md:pb-[60px]">
   <div class="relative hidden aspect-[1148/199] max-h-[436px] w-full rounded-[8px] sm:block">
-    <img src="assets/homepage/toys/toysbanner.png" alt="Banner" class="h-full w-full object-cover">
+    <img src="assets/homepage/toys/toysbanner.jpg" alt="Banner" class="h-full w-full object-cover">
   </div>
   
   <div class="relative block w-full rounded-[8px] sm:hidden">
-    <img src="assets/homepage/toys/toysmobile.png" alt="Mobile Banner" class="h-full w-full object-cover">
+    <img src="assets/homepage/toys/toysmobile.jpg" alt="Mobile Banner" class="h-full w-full object-cover">
   </div>
   
   <div class="flex w-full flex-col justify-between gap-[10px] md:flex-row md:gap-6">
     <div class="w-full">
-      <img src="assets/homepage/toys/toys (1).png" alt="under price 1" class="h-auto w-full md:max-w-[431px]">
+      <img src="assets/homepage/toys/toys (7).jpg" alt="under price 1" class="h-auto w-full md:max-w-[431px]">
     </div>
     <div class="w-full">
-      <img src="assets/homepage/toys/toys (2).png" alt="under price 2" class="h-auto w-full md:max-w-[431px]">
+      <img src="assets/homepage/toys/toys (8).jpg" alt="under price 2" class="h-auto w-full md:max-w-[431px]">
     </div>
      <div class="w-full">
-      <img src="assets/homepage/toys/toys (3).png" alt="under price 2" class="h-auto w-full md:max-w-[431px]">
+      <img src="assets/homepage/toys/toys (9).jpg" alt="under price 2" class="h-auto w-full md:max-w-[431px]">
     </div>
   </div>
   
@@ -167,12 +167,12 @@ const HomePage = () => {
   </div>
 
   <div class="cus-container flex flex-wrap justify-center gap-[10px] md:justify-between md:gap-[5px]">
-    <img src="assets/homepage/toys/toys (6).png" alt="product-1" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="assets/homepage/toys/toys (7).png" alt="product-2" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="assets/homepage/toys/toys (8).png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="assets/homepage/toys/toys (9).png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="assets/homepage/toys/toys (10).png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
-    <img src="assets/homepage/toys/toys (11).png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (1).jpg" alt="product-1" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (2).jpg" alt="product-2" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (3).jpg" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (4).jpg" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (5).jpg" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
+    <img src="assets/homepage/toys/toys (6).png" alt="product-3" class="w-[48%] h-auto lg:w-[215px] lg:h-[252px] object-cover">
   </div>
 </div>
   `);
