@@ -2,6 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import moment from "moment";
+import { fallBackImage } from "@/public/assets/products";
 
 interface BlogCardProps {
   id: number;
@@ -27,7 +28,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
       <div className="relative max-w-[277px] min-w-[277px] overflow-hidden rounded-[4px] bg-[#FFF0F566] p-2 md:max-w-[407px] md:min-w-[407px]">
         <div className="relative h-[145px] w-full overflow-hidden rounded-[4px] md:h-[213px]">
           <Image
-            src={`https://www.babystore.ae/storage/back/assets/blogs/${image}`}
+            src={
+              image
+                ? `https://www.babystore.ae/storage/back/assets/blogs/${image}`
+                : fallBackImage
+            }
             alt="tile"
             fill
             className="object-cover"

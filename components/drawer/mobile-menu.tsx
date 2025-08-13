@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 import { imageBaseUrl } from "@/config/config";
 import { toast } from "react-toastify";
+import { fallBackImage } from "@/public/assets/products";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -103,6 +104,9 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                 <div className="mx-[5px] mt-4 grid grid-cols-4 gap-[7px]">
                   {row?.map((item: any, index: number) => {
                     const actualIndex = startIndex + index;
+                    const categoryImage = item?.cat_image
+                      ? `${imageBaseUrl}/assets/menu_category/${item?.cat_image}`
+                      : fallBackImage;
                     return (
                       <div
                         key={actualIndex}
@@ -139,7 +143,8 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
 
                         <div className="relative h-full w-full overflow-hidden rounded-[8.795px]">
                           <Image
-                            src={`${imageBaseUrl}/assets/menu_category/${item?.cat_image}`}
+                            // src={`${imageBaseUrl}/assets/menu_category/${item?.cat_image}`}
+                            src={categoryImage}
                             quality={100}
                             width={86}
                             height={114}

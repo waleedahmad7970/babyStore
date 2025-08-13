@@ -16,6 +16,7 @@ import { useAppSelector } from "@/store/hooks";
 import { imageBaseUrl } from "@/config/config";
 import productServices from "@/services/product.service";
 import { useParams } from "next/navigation";
+import { fallBackImage } from "@/public/assets/products";
 
 export const menuImages = [menu1, menu2];
 export const menuBrands = [brand1, brand2, brand3, brand4, brand5, brand6];
@@ -53,6 +54,9 @@ export default function CategoryList() {
       )} */}
       <div className="cus-container no-scrollbar group relative z-30 mx-auto flex justify-between overflow-x-auto">
         {(categories as any[]).map((category, catIndex) => {
+          const categoryImage = category?.cat_image
+            ? `${imageBaseUrl}/assets/menu_category/${category?.cat_image}`
+            : fallBackImage;
           return (
             <div
               key={catIndex}
@@ -75,7 +79,8 @@ export default function CategoryList() {
                 ImgClass="w-[82px] h-[82px]"
                 hoveredId={hoveredId}
                 categoryId={catIndex}
-                cat_image={`${imageBaseUrl}/assets/menu_category/${category.cat_image}`}
+                // cat_image={ `${imageBaseUrl}/assets/menu_category/${category?.cat_image}`}
+                cat_image={categoryImage}
                 // slug={category?.slug}
                 slug={`category/${category?.id}`}
                 slugId={category?.id}

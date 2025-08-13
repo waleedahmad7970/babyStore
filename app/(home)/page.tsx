@@ -55,6 +55,10 @@ const DiscountStripsBanner = dynamic(
   () => import("@/components/banners/discount-strips"),
   { ssr: false },
 );
+const CategoryTwoListSlider = dynamic(
+  () => import("@/components/slider/category.list.two.slider"),
+  { ssr: false },
+);
 
 export default function Home() {
   return (
@@ -64,7 +68,8 @@ export default function Home() {
       <DiscountStripsBanner />
       <BannerSlider />
       <BannerSliderMob />
-      <CategoryListTwo />
+      {/* <CategoryListTwo /> */}
+      <CategoryTwoListSlider />
       <HomePage />
     </div>
   );

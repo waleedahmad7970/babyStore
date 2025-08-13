@@ -17,38 +17,30 @@ export default function InitialRequest() {
   useEffect(() => {
     router.prefetch("/");
     router.prefetch("/cart");
-    router.prefetch("/brand");
-    router.prefetch("/category");
     router.prefetch("/dashboard");
   }, [router]);
 
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        await Promise.all([
+        await Promise.allSettled([
           productServices.getCategories(),
           productServices.getHomeSlider(),
           productServices.getHomeMobSlider(),
           productServices.getFavouriteList(),
-        ]);
 
-        await Promise.all([
           // productServices.getSuggestedProducts(), not using in new deisgn anywehre
           productServices.getHomeDesktopSectionsTest(),
-        ]);
 
-        await Promise.all([
           productServices.storeSearchDataToAlgolia(),
           // productServices.getAllProducts(), search api of products
           productServices.getbannerImage(),
-        ]);
 
-        await Promise.all([
-          authService.getUserProfile(registerSessionId),
+          registerSessionId && authService.getUserProfile(registerSessionId),
+          blogService.getAllBlogs(),
+
           authService.getDiscountCoupon(),
-        ]);
 
-        await Promise.all([
           // productServices.getMumzData(), no using because not using any iyts data
           // productServices.getTopBrandList(), not using i nay app
           // productServices.getHomeDesktopSections(), dsta will come form here of home page
@@ -62,11 +54,7 @@ export default function InitialRequest() {
       }
     };
 
-    const fetchInitialDataBlogs = async () => {
-      await blogService.getAllBlogs();
-    };
     fetchInitialData();
-    fetchInitialDataBlogs();
   }, []);
 
   return (
