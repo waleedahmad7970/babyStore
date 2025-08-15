@@ -8,6 +8,7 @@ import { useScrollSlider } from "@/hooks/useScrollSlider";
 import { useAppSelector } from "@/store/hooks";
 import { imageBaseUrl } from "@/config/config";
 import { StaticImageData } from "next/image";
+import { topCategoriesDumy } from "@/static/static";
 
 interface Category {
   name: string;
@@ -57,23 +58,27 @@ const CategoryTwoListSlider: React.FC = () => {
   return (
     <div className="cus-container relative w-full overflow-hidden !py-5 pl-[10px] md:py-10">
       <div className="relative w-full">
+        <div className="mb-5 text-center text-[18px] font-medium text-[#1A1718] md:text-[24px]">
+          Top Categories
+        </div>
         <div
           ref={scrollRef}
           className="no-scrollbar relative flex snap-x snap-mandatory justify-start gap-[10px] overflow-x-auto scroll-smooth md:gap-4"
         >
-          {[...topCategories, ...topCategories]?.map(
-            (category: Category, index) => (
-              <div key={index} className="max-w-[162px] flex-shrink-0">
-                <CategoryCardTwo
-                  cat_image={`${imageBaseUrl}/assets/favorite_category/${category.image}`}
-                  paraClassName="mt-[18px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[20px] md:leading-normal"
-                  ImgClass="object-contain max-w-[70px] md:max-w-[131px] max-h-[65px] md:max-h-[123px]"
-                  className="h-[85px] w-[85px] !rounded-[35px] bg-[#FFF1E9] md:h-[162px] md:w-[162px] md:!rounded-[70px]"
-                  {...category}
-                />
-              </div>
-            ),
-          )}
+          {topCategoriesDumy?.map((category: Category, index) => (
+            <div key={index} className="max-w-[162px] flex-shrink-0">
+              <CategoryCardTwo
+                cat_image={
+                  category.image ||
+                  `${imageBaseUrl}/assets/favorite_category/${category.image}`
+                }
+                paraClassName="mt-[18px] text-[12px] leading-[14.36px] font-medium text-[#1A1718] md:text-[20px] md:leading-normal"
+                ImgClass="object-contain max-w-[70px] md:max-w-[131px] max-h-[65px] md:max-h-[123px]"
+                className="h-[85px] w-[85px] !rounded-[35px] bg-[#FFF1E9] md:h-[162px] md:w-[162px] md:!rounded-[70px]"
+                {...category}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -29,6 +29,9 @@ import {
   Money,
 } from "../public/assets/icons";
 import {
+  babychairs,
+  breast,
+  cribs,
   diaper,
   fashion,
   feeding,
@@ -36,18 +39,35 @@ import {
   ios,
   ios2,
   mommy,
+  new_arrivals,
   nursery,
+  onis,
   p3,
   p4,
   p5,
   party,
+  rockers,
   sale,
   school,
+  seats,
   skincare,
+  stollers,
   toy,
   uutdoor,
 } from "../public/assets/products";
 import { aed100, aed200, aed50, toy_banner } from "@/public/assets/banner";
+
+// top categhry
+export const topCategoriesDumy = [
+  { name: "breast", image: breast },
+  { name: "babychairs", image: babychairs },
+  { name: "cribs", image: cribs },
+  { name: "onis", image: onis },
+  { name: "new arrivals", image: new_arrivals },
+  { name: "rockers", image: rockers },
+  { name: "seats", image: seats },
+  { name: "stollers", image: stollers },
+];
 
 // nav
 export const userMenu = [user, heart, basket];
