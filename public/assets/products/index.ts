@@ -25,13 +25,13 @@ export { default as toy } from "../products/toy.png";
 export { default as uutdoor } from "../products/outdoor.png";
 export { default as skincare } from "../products/skincare.png";
 
-export { default as breast } from "../products/breast.png";
-export { default as babychairs } from "../products/babychairs.png";
-export { default as cribs } from "../products/cribs.png";
-export { default as onis } from "../products/onis.png";
-export { default as new_arrivals } from "../products/new_arrivals.png";
-export { default as rockers } from "../products/rockers.png";
-export { default as seats } from "../products/seats.png";
-export { default as stollers } from "../products/stollers.png";
+export { default as breast } from "../products/breast3x.png";
+export { default as babychairs } from "../products/babychairs3x.png";
+export { default as cribs } from "../products/cribs3x.png";
+export { default as onis } from "../products/onis3x.png";
+export { default as new_arrivals } from "../products/new_arrivals3x.png";
+export { default as rockers } from "../products/rockers3x.png";
+export { default as seats } from "../products/seats3x.png";
+export { default as stollers } from "../products/stollers3x.png";
 
 export { default as fallBackImage } from "../products/fall-back-product.png";

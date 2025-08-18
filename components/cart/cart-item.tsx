@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import { QuantityControl } from "./quanity-controller";
 import { cartAction } from "@/store/slices/cart.slice";
 import { useAppDispatch } from "@/store/hooks";
+import { aedIcon } from "@/public/assets/icons";
 
 type CartItemProps = {
   product: {
@@ -51,11 +52,13 @@ export const CartItem = ({ product }: CartItemProps) => {
           onDecrease={() => dispatch(cartAction.decrementQuantity(product?.id))}
         />
       </div>
-      <p className="w-full max-w-[112px] text-center text-[20px] font-semibold text-[#1C1C1C]">
-        AED {product.price.toFixed(2)}
+      <p className="flex w-full max-w-[112px] items-center justify-center text-center text-[20px] font-semibold text-[#1C1C1C]">
+        <Image src={aedIcon} className="h-[20px] w-[20px]" alt="curr" />{" "}
+        {product.price.toFixed(2)}
       </p>
-      <p className="w-full max-w-[112px] text-center text-[20px] font-semibold text-[#1C1C1C]">
-        AED {(product.price * product.quantity).toFixed(2)}
+      <p className="flex w-full max-w-[112px] items-center justify-center text-center text-[20px] font-semibold text-[#1C1C1C]">
+        <Image src={aedIcon} className="h-[20px] w-[20px]" alt="curr" />{" "}
+        {(product.price * product.quantity).toFixed(2)}
       </p>
       <button
         style={{
