@@ -15,7 +15,7 @@ export default function InitialRequest() {
 
   const [initailRequestLoader, setInitailRequestLoader] = useState(true);
 
-  // prefetch sdlkd;l
+  // prefetch
   useEffect(() => {
     router.prefetch("/");
     router.prefetch("/cart");
