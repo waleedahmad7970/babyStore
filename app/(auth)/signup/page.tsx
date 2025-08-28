@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import FacebookLogin from "@greatsumini/react-facebook-login";
+import { withAuth } from "@/routes/ProtectedRoutes";
 
 const initialValues = {
   name: "",
@@ -229,5 +230,5 @@ const Signup = () => {
   );
 };
 
-// export default withAuth(Signup);
-export default Signup;
+export default withAuth(Signup);
+// export default Signup;

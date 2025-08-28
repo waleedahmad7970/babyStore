@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         hostname: "babystore.ae",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.postimg.cc",
+        pathname: "/**",
+      },
     ],
   },
 };

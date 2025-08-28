@@ -129,10 +129,21 @@ const Checkout = () => {
       country: values.billing.country,
       user_id: registerSessionId,
       cart: orderCart,
+      // shiiping
+      shipping_first_name: values.shipping.firstName,
+      shipping_last_name: values.shipping.lastName,
+      shipping_address: values.shipping.address1,
+      shipping_address2: values.shipping.address2,
+      shipping_country: values.shipping.country,
+      shipping_city: values.shipping.city,
+      shipping_phone: values.shipping.phone,
     };
     if (!id) {
       toast.info("Login first before checkout");
       return router.push("/login");
+    }
+    if (!cartProducts.length) {
+      return toast.info("Add products first before checkout");
     }
     await orderServices.placeOrder(data, router);
   };
@@ -204,6 +215,8 @@ const Checkout = () => {
       });
     }
   };
+
+  console.log("values", values);
 
   return (
     <div className="mx-auto w-full max-w-[1360px] px-[10px] py-10 lg:px-0">

@@ -20,7 +20,7 @@ interface ApiResponse<T = any> {
 }
 
 const httpClient: AxiosInstance = axios.create({
-  baseURL: "http://192.168.0.198:8001/api/v1/",
+  baseURL: "http://192.168.0.198:8001/api/",
   // baseURL: config.baseUrl,
   headers: {
     "Content-Type": "application/json",

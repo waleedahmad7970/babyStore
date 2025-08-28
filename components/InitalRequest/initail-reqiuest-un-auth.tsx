@@ -15,19 +15,19 @@ export default function InitialRequestUnauth() {
     router.prefetch("/dashboard");
   }, [router]);
 
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      try {
-        await Promise.all([productServices.getCategories()]);
-      } catch (error) {
-        console.error("Error in critical requests:", error);
-      } finally {
-        setInitailRequestLoader(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchInitialData = async () => {
+  //     try {
+  //       await Promise.all([productServices.getCategories()]);
+  //     } catch (error) {
+  //       console.error("Error in critical requests:", error);
+  //     } finally {
+  //       setInitailRequestLoader(false);
+  //     }
+  //   };
 
-    fetchInitialData();
-  }, []);
+  //   fetchInitialData();
+  // }, []);
 
   return (
     <div>

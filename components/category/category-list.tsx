@@ -76,7 +76,7 @@ export default function CategoryList() {
                 image={category?.image}
                 paraClassName={`${hoveredId === catIndex ? "text-[#F82D8B99]" : "text-[#1A1718]"}`}
                 {...category}
-                ImgClass="w-[82px] h-[82px]"
+                ImgClass="!object-contain w-[82px] h-[82px]"
                 hoveredId={hoveredId}
                 categoryId={catIndex}
                 // cat_image={ `${imageBaseUrl}/assets/menu_category/${category?.cat_image}`}

@@ -1,64 +1,107 @@
+// import { useAppSelector } from "@/store/hooks";
+// import { usePathname, useRouter } from "next/navigation";
+// import { useEffect } from "react";
+
+// const ROUTE_CONFIG = {
+//   protected: ["/checkout", "/checkout/order-success"],
+//   authOnly: ["/login", "/signup", "/reset-password", "/forgot-password"],
+// };
+
+// export function withAuth<P extends object>(
+//   WrappedComponent: React.ComponentType<P>,
+// ) {
+//   return function WithAuthWrapper(props: P) {
+//     const pathname = usePathname();
+//     const router = useRouter();
+//     const { registerSessionId = "" } = useAppSelector((state) => state.user);
+
+//     const isAuthenticated = Boolean(registerSessionId);
+//     const isProtectedRoute = ROUTE_CONFIG.protected.includes(pathname);
+//     const isPublicRoutes = ROUTE_CONFIG.authOnly.includes(pathname);
+
+//     useEffect(() => {
+//       if (isProtectedRoute && !isAuthenticated) {
+//         router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+//       } else if (isPublicRoutes && isAuthenticated) {
+//         router.replace("/");
+//       }
+//     }, [isAuthenticated, isProtectedRoute, isPublicRoutes, pathname, router]);
+
+//     return <WrappedComponent {...props} />;
+//   };
+// }
+// "use client";
+
+// import { useAppSelector } from "@/store/hooks";
+// import { usePathname, useRouter } from "next/navigation";
+// import { useEffect } from "react";
+
+// const authRoutes = ["/login", "/signup", "/reset-password", "/forgot-password"];
+// const protectedRoutes = ["/checkout", "/checkout/order-success"];
+
+// export function withAuth<P extends object>(
+//   WrappedComponent: React.ComponentType<P>,
+// ) {
+//   return function WithAuthWrapper(props: P) {
+//     const pathname = usePathname();
+//     const router = useRouter();
+//     const { registerSessionId = "" } = useAppSelector((state) => state.user);
+
+//     const isAuthenticated = Boolean(registerSessionId);
+//     const isProtectedRoute = protectedRoutes.includes(pathname);
+//     const isAuthRoute = authRoutes.includes(pathname);
+
+//     useEffect(() => {
+//       if (isProtectedRoute && !isAuthenticated) {
+//         router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+//       } else if (isAuthRoute && isAuthenticated) {
+//         router.replace("/");
+//       }
+//     }, [isProtectedRoute, isAuthRoute, isAuthenticated, pathname, router]);
+
+//     return <WrappedComponent {...props} />;
+//   };
+// }
+
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
-const ROUTE_CONFIG = {
-  protected: ["/checkout", "/checkout/order-success"],
-  authOnly: ["/login", "/signup", "/reset-password", "/forgot-password"],
-};
+const authRoutes = ["/login", "/signup", "/reset-password", "/forgot-password"];
+const protectedRoutes = ["/checkout", "/checkout/order-success"];
 
 export function withAuth<P extends object>(
   WrappedComponent: React.ComponentType<P>,
 ) {
   return function WithAuthWrapper(props: P) {
-    const router = useRouter();
     const pathname = usePathname();
-    const [loaded, setLoaded] = useState(false);
-
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const { registerSessionId = "" } = useAppSelector((state) => state.user);
+
     const isAuthenticated = Boolean(registerSessionId);
+    const isProtectedRoute = protectedRoutes.includes(pathname);
+    const isAuthRoute = authRoutes.includes(pathname);
 
     useEffect(() => {
-      // Prefetch known routes
-      const allRoutes = [
-        ...ROUTE_CONFIG.protected,
-        ...ROUTE_CONFIG.authOnly,
-        "/",
-      ];
-      allRoutes.forEach((route) => router.prefetch(route));
-      setLoaded(true);
-    }, [router]);
-
-    useEffect(() => {
-      if (!loaded) return;
-
-      const cleanPath = pathname?.split("?")[0].replace(/\/+$/, "") || "/";
-
-      const isProtected = ROUTE_CONFIG.protected.includes(cleanPath);
-      const isAuthScreen = ROUTE_CONFIG.authOnly.includes(cleanPath);
-
-      if (!isAuthenticated && isProtected) {
-        // Redirect to login with ?redirect=
-        router.push(`/login?redirect=${encodeURIComponent(cleanPath)}`);
-        return;
+      if (isProtectedRoute && !isAuthenticated) {
+        // Not logged in → push to login with redirect
+        router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+      } else if (isAuthRoute && isAuthenticated) {
+        // Logged in but on login/signup/reset page → redirect out
+        const redirectParam = searchParams.get("redirect");
+        router.replace(redirectParam || "/");
       }
-
-      if (isAuthenticated && isAuthScreen) {
-        // Authenticated users shouldn't see login/signup screens
-        router.push("/");
-        return;
-      }
-    }, [pathname, isAuthenticated, loaded, router]);
-
-    if (!loaded) {
-      return (
-        <div className="flex h-screen items-center justify-center">
-          <div className="animate-pulse">Loading application...</div>
-        </div>
-      );
-    }
+    }, [
+      isProtectedRoute,
+      isAuthRoute,
+      isAuthenticated,
+      pathname,
+      searchParams,
+      router,
+    ]);
 
     return <WrappedComponent {...props} />;
   };

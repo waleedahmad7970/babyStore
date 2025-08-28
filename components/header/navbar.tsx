@@ -400,6 +400,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         <div className="hidden w-[136px] items-center justify-between gap-1 md:flex">
           <div className="relative">
             <Image
+              onClick={() => router.push("/dashboard")}
               onMouseEnter={() => handleMouseEnterLogin()}
               onMouseLeave={() => handleMouseLeaveLogin()}
               src={user}

@@ -26,6 +26,7 @@ import dashboardSlice from "./slices/dashboard.slice";
 import categoriesSlice from "./slices/categories.slice";
 import globalStateSlice from "./slices/globalStates";
 import checkoutSlice from "./slices/checkout.slice";
+import homeSlice from "./slices/home.slice";
 
 // Create noop storage for server-side
 const createNoopStorage = () => ({
@@ -41,6 +42,7 @@ const createNoopStorage = () => ({
 });
 
 const rootReducer = combineReducers({
+  home: homeSlice,
   user: userSlice,
   cart: cartSlice,
   blogs: blogsSlice,
@@ -59,7 +61,15 @@ const storage = isServer ? createNoopStorage() : createWebStorage("local");
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user", "cart", "blogs", "checkout"],
+  whitelist: [
+    "user",
+    "cart",
+    "blogs",
+    "checkout",
+    // "categories",
+    // "globalStates",
+    // "dashboard",
+  ],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

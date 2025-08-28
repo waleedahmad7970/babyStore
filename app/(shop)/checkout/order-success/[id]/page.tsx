@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/button/button";
 import { aedIcon, conformTick } from "@/public/assets/icons";
+import { withAuth } from "@/routes/ProtectedRoutes";
 import orderServices from "@/services/order.service";
 import { useAppSelector } from "@/store/hooks";
 import { cartAction } from "@/store/slices/cart.slice";
@@ -267,5 +268,5 @@ const OrderSuccess = () => {
   );
 };
 
-// export default withAuth(OrderSuccess);
-export default OrderSuccess;
+export default withAuth(OrderSuccess);
+// export default OrderSuccess;

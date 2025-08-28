@@ -6,9 +6,11 @@ import FullScreenLoader from "../Loader/fullscreen-loader";
 import authService from "@/services/auth.service";
 import { useAppSelector } from "@/store/hooks";
 import blogService from "@/services/blogs.service";
+import homeServices from "@/services/UI/home.service";
 
 export default function InitialRequest() {
   const router = useRouter();
+  const { categories = [] } = useAppSelector((state) => state.product);
   const { registerSessionId = "" } = useAppSelector((state) => state.user);
 
   const [initailRequestLoader, setInitailRequestLoader] = useState(true);
@@ -18,6 +20,8 @@ export default function InitialRequest() {
     router.prefetch("/");
     router.prefetch("/cart");
     router.prefetch("/dashboard");
+    router.prefetch("/login");
+    router.prefetch("/signup");
   }, [router]);
 
   useEffect(() => {
@@ -27,6 +31,9 @@ export default function InitialRequest() {
           productServices.getCategories(),
           productServices.getHomeSlider(),
           productServices.getHomeMobSlider(),
+          registerSessionId && authService.getDefaultAddress(registerSessionId),
+
+          homeServices.getHomeSections(),
           productServices.getFavouriteList(),
 
           // productServices.getSuggestedProducts(), not using in new deisgn anywehre

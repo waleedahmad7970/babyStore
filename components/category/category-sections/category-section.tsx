@@ -6,7 +6,7 @@ interface CategorSectiondProps {
   ImgClass?: string;
   className?: string;
   bannerImage?: string | StaticImageData;
-  categoryImages: string[] | StaticImageData[];
+  categoryImages?: string[] | StaticImageData[];
   bannerImageMob?: string | StaticImageData;
 }
 const CategorySection: React.FC<CategorSectiondProps> = ({

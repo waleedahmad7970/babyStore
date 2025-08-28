@@ -14,7 +14,7 @@ export default function AuthLayout({
 }) {
   return (
     <Fragment>
-      <InitialRequestUnauth />
+      {/* <InitialRequestUnauth /> */}
       <FreeShipping />
       <UnAuthNavbar />
       <CategoryList />

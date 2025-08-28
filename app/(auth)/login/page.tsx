@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import { userActions } from "@/store/slices/auth.slice";
 import { useDispatch } from "react-redux";
 import { setItemInLS } from "@/utils/LS_STORAGE";
+import { withAuth } from "@/routes/ProtectedRoutes";
 
 const initialValues = {
   email: "",
@@ -246,5 +247,5 @@ const Login = () => {
   );
 };
 
-// export default withAuth(Login);
-export default Login;
+export default withAuth(Login);
+// export default Login;
