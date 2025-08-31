@@ -25,7 +25,7 @@ const InputField: React.FC<InputFieldProps> = ({
   onBlur,
   rest,
   onChange,
-  className = `rounded-md border px-4 py-2 text-sm shadow-sm transition outline-none ${error ? "" : ""} focus:border-pink-500 focus:ring-2 focus:ring-pink-500 disabled:bg-gray-100`,
+  className = `rounded-md border px-4 py-2 text-sm shadow-sm transition outline-none ${error ? "" : ""} focus:border-pink-500 focus:ring-2 focus:ring-pink-500 `,
   required = false,
   disabled = false,
 }) => {

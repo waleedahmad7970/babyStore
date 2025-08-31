@@ -24,66 +24,6 @@ const paymentData = [
   { value: "telr", methodName: "Credit/ Debit Card" },
 ];
 
-const initialValues = {
-  billing: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    country: "",
-    city: "",
-    address1: "",
-    address2: "",
-    phone: "",
-    additionalInfo: "",
-  },
-  shipping: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    country: "",
-    city: "",
-    address1: "",
-    address2: "",
-    phone: "",
-    additionalInfo: "",
-  },
-  shipToSameAddress: true,
-  payment_method: "cod",
-};
-const checkoutSchema = Yup.object({
-  shipToSameAddress: Yup.boolean().required(),
-  billing: Yup.object({
-    firstName: Yup.string().required("First name is required"),
-    lastName: Yup.string().required("Last name is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    country: Yup.string().required("Country is required"),
-    city: Yup.string().required("City is required"),
-    address1: Yup.string().required("Address is required"),
-    address2: Yup.string(),
-    phone: Yup.string().required("Phone is required"),
-    additionalInfo: Yup.string(),
-  }),
-  shipping: Yup.object().when(
-    "shipToSameAddress",
-    (shipToSameAddress, schema) => {
-      return shipToSameAddress?.[0]
-        ? schema.strip()
-        : Yup.object({
-            firstName: Yup.string().required("First name is required"),
-            lastName: Yup.string().required("Last name is required"),
-            country: Yup.string().required("Country is required"),
-            city: Yup.string().required("City is required"),
-            address1: Yup.string().required("Address is required"),
-            address2: Yup.string(),
-            phone: Yup.string().required("Phone is required"),
-          });
-    },
-  ),
-  payment_method: Yup.string().required("Payment method is required"),
-});
-
 const Checkout = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -94,10 +34,68 @@ const Checkout = () => {
   const {
     registerSessionId = "",
     user = {},
+    defaultAddress = {},
     discountCouponDetails = {},
     appliedCoupon = {},
   } = useAppSelector((state) => state.user) as any;
 
+  const initialValues = {
+    billing: {
+      firstName: defaultAddress.first_name || "",
+      lastName: defaultAddress.last_name || "",
+      email: defaultAddress.email || "",
+      country: defaultAddress.country || "UAE",
+      city: defaultAddress.city || "",
+      address1: defaultAddress.address_1 || "",
+      address2: defaultAddress.address_2 || "",
+      phone: defaultAddress.phone || "",
+      additionalInfo: defaultAddress.additional_info || "",
+    },
+    shipping: {
+      firstName: defaultAddress.first_name || "",
+      lastName: defaultAddress.last_name || "",
+      country: defaultAddress.country || "UAE",
+      city: defaultAddress.city || "",
+      address1: defaultAddress.address_1 || "",
+      address2: defaultAddress.address_2 || "",
+      phone: defaultAddress.phone || "",
+    },
+    shipToSameAddress: true,
+    payment_method: "cod",
+  };
+  const checkoutSchema = Yup.object({
+    shipToSameAddress: Yup.boolean().required(),
+    billing: Yup.object({
+      firstName: Yup.string().required("First name is required"),
+      lastName: Yup.string().required("Last name is required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      country: Yup.string().required("Country is required"),
+      city: Yup.string().required("City is required"),
+      address1: Yup.string().required("Address is required"),
+      address2: Yup.string(),
+      phone: Yup.string().required("Phone is required"),
+      additionalInfo: Yup.string(),
+    }),
+    shipping: Yup.object().when(
+      "shipToSameAddress",
+      (shipToSameAddress, schema) => {
+        return shipToSameAddress?.[0]
+          ? schema.strip()
+          : Yup.object({
+              firstName: Yup.string().required("First name is required"),
+              lastName: Yup.string().required("Last name is required"),
+              country: Yup.string().required("Country is required"),
+              city: Yup.string().required("City is required"),
+              address1: Yup.string().required("Address is required"),
+              address2: Yup.string(),
+              phone: Yup.string().required("Phone is required"),
+            });
+      },
+    ),
+    payment_method: Yup.string().required("Payment method is required"),
+  });
   useEffect(() => {
     if (!token) dispatch(checkoutAction.setIscheckoutVisited(true));
   }, [dispatch, token]);
@@ -285,6 +283,7 @@ const Checkout = () => {
             <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
               <InputField
                 name="country"
+                disabled={true}
                 value={values.billing.country}
                 error={
                   isSubmitted &&
@@ -296,7 +295,7 @@ const Checkout = () => {
                 onChange={handleBillingChange}
                 onBlur={handleBlur}
                 placeholder="Country"
-                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] uppercase outline-none placeholder:text-[#ADADAD] disabled:bg-gray-100 lg:max-w-[228px]"
               />
               <InputField
                 name="city"
@@ -357,9 +356,10 @@ const Checkout = () => {
                 />
                 {isSubmitted &&
                   errors?.billing?.phone &&
-                  touched?.billing?.phone && (
+                  touched?.billing?.phone &&
+                  typeof errors.billing.phone === "string" && (
                     <p className="mt-1 text-sm text-red-500">
-                      {errors?.billing?.phone}
+                      {errors.billing.phone}
                     </p>
                   )}
               </div>
@@ -392,7 +392,7 @@ const Checkout = () => {
                 errors?.billing?.additionalInfo &&
                 touched?.billing?.additionalInfo && (
                   <p className="mt-1 text-sm text-red-500">
-                    {errors?.billing?.additionalInfo}
+                    {errors.billing.additionalInfo as string}
                   </p>
                 )}
             </div>
@@ -446,6 +446,7 @@ const Checkout = () => {
               <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
                 <InputField
                   name="country"
+                  disabled={true}
                   value={values.shipping.country}
                   error={
                     isSubmitted &&
@@ -457,7 +458,7 @@ const Checkout = () => {
                   onChange={handleShippingChange}
                   onBlur={handleBlur}
                   placeholder="Country"
-                  className="w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] outline-none placeholder:text-[#ADADAD] lg:max-w-[228px]"
+                  className={`w-full rounded-[7px] bg-[#FAFAFA] px-4 py-3 text-[14px] leading-[24px] text-[#121212] uppercase outline-none placeholder:text-[#ADADAD] disabled:bg-gray-100 lg:max-w-[228px] ${true ? "disabled:bg-gray-100" : ""}`}
                 />
                 <InputField
                   name="city"
@@ -522,7 +523,7 @@ const Checkout = () => {
                     errors?.shipping?.phone &&
                     touched?.shipping?.phone && (
                       <p className="mt-1 text-sm text-red-500">
-                        {errors?.shipping?.phone}
+                        {errors?.shipping?.phone as string}
                       </p>
                     )}
                 </div>

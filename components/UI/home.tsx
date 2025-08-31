@@ -9,15 +9,15 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner", "products"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     mobile_banner: "https://i.postimg.cc/SxLvmPKR/school-banner-mob.png",
-//     desktop_banner: "https://i.postimg.cc/ydG66xNV/school-banner.png",
+//     mobile_banner: "assets/back-to-school-mobile.jpg",
+//     desktop_banner: "assets/back-to-school-desktop.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/MZR4sX81/school-bag.png",
-//       "https://i.postimg.cc/90rfhTtX/water-bottle.png",
-//       "https://i.postimg.cc/8CxG63hG/stationary.png",
-//       "https://i.postimg.cc/MZR4sX81/school-bag.png",
+//       "assets/stationary-2.jpg",
+//       "assets/water-bottles.jpg",
+//       "assets/school-bags.jpg",
+//       "assets/lunch-boxes-2.jpg",
 //     ],
 //     productsTitle: "School Essentials",
 //     products: [
@@ -104,15 +104,16 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner", "products"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     mobile_banner: "https://i.postimg.cc/SxLvmPKR/school-banner-mob.png",
-//     desktop_banner: "https://i.postimg.cc/zB9CbnDv/travel-banner.png",
+//     mobile_banner: "assets/travel-safe-mobile.jpg",
+//     desktop_banner: "assets/travel-safe-desktop.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/FHLQ0vxK/booster.png",
-//       "https://i.postimg.cc/bwDqLkqp/reversible.png",
-//       "https://i.postimg.cc/m2cxG4JS/iso.png",
-//       "https://i.postimg.cc/65SX7qnS/ages.png",
+//       "assets/reversible.jpg",
+//       "assets/isofix.jpg",
+//       "assets/all-ages.jpg",
+//       "assets/booster.jpg",
+
 //     ],
 //     productsTitle: "Travel Safety",
 //     products: [
@@ -199,17 +200,18 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner", "products"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     mobile_banner: "https://i.postimg.cc/SxLvmPKR/school-banner-mob.png",
-//     desktop_banner: "https://i.postimg.cc/T16cNrzS/summer-banner.png",
+//     mobile_banner: "assets/get-summer-ready-mobile.jpg",
+//     desktop_banner: "assets/get-summer-ready-desktop.jpg,
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/8CLJKqTp/pools.png",
-//       "https://i.postimg.cc/g2VmfdLT/inflatables.png",
-//       "https://i.postimg.cc/c1FKb7Gn/beach-toys.png",
-//       "https://i.postimg.cc/ZRTRfnfH/swimwear.png",
-//       "https://i.postimg.cc/13r4DDBX/pool-shoes.png",
-//       "https://i.postimg.cc/25YhDzcb/sun-protector.png",
+//       "assets/swimwear.jpg",
+//       "assets/sun-protection.jpg",
+//       "assets/pools.jpg",
+//       "assets/pool-shoes.jpg",
+//       "assets/beach-toys.jpg",
+//       "assets/inflatables.jpg",
+
 //     ],
 //     productsTitle: "Summer Collection",
 //     products: [
@@ -296,7 +298,8 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     desktop_banner: "https://i.postimg.cc/Znqp9Vpr/mummy-banner.png",
+//     desktop_banner: "assets/mommy-fav-desktop.jpg",
+//     mobile_banner: "assets/mommy-fav-mobile.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [],
@@ -385,14 +388,16 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner", "products"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     desktop_banner: "https://i.postimg.cc/fbq1VT3y/clearance-banner.png",
+//     desktop_banner: "assets/clearance-sale-desktop.jpg",
+//     mobile_banner: "assets/clearance-sale-mobile.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/rp7Q6d01/toys.png",
-//       "https://i.postimg.cc/c4Thxkt4/gear2.png",
-//       "https://i.postimg.cc/jSFhNWhp/feeding2.png",
-//       "https://i.postimg.cc/4yP63ndF/outdoor.png",
+//       "assets/toys.jpg",
+//       "assets/outdoor.jpg",
+//       "assets/feeding.jpg",
+//       "assets/gear.jpg",
+
 //     ],
 //     productsTitle: "Clearance Sale",
 //     products: [
@@ -479,14 +484,16 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner", "products"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     desktop_banner: "https://i.postimg.cc/kXdS0QjM/first-day-banner.png",
+//     desktop_banner: "assets/my-first-day-at-school-desktop.jpg",
+//     mobile_banner: "assets/my-first-day-at-school-mobile.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/nrTQK5qd/school-bag-2.png",
-//       "https://i.postimg.cc/0Q06x3X8/lunch-box-2.png",
-//       "https://i.postimg.cc/hvwKq1nD/water-botle-2.png",
-//       "https://i.postimg.cc/QMbsM3Dn/stationary-2.png",
+//       "assets/stationary.jpg",
+//       "assets/water-bottles-2.jpg",
+//       "assets/lunch-box.jpg",
+//       "assets/school-bags-2.jpg",
+
 //     ],
 //     productsTitle: "First Day Excitement",
 //     products: [
@@ -573,14 +580,16 @@ import { useAppSelector } from "@/store/hooks";
 //       desktop: ["main_banner", "sub_banner"],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     desktop_banner: "https://i.postimg.cc/1X928n9k/baby-care-banner.png",
+//     desktop_banner: "assets/moms-in-a-budget-desktop.jpg",
+//     mobile_banner: "assets/moms-on-a-budget-mobile.jpg",
 
 //     underPrice_banners: [],
 //     sub_banners: [
-//       "https://i.postimg.cc/JzJxW78Z/diapers.png",
-//       "https://i.postimg.cc/SKk6FWDb/wipes.png",
-//       "https://i.postimg.cc/QC2765HP/formula.png",
-//       "https://i.postimg.cc/xTmMXsZS/skin-care.png",
+//       "assets/wipes-bundles.jpg",
+//       "assets/formula-bundles.jpg",
+//       "assets/diaper-bundles.jpg",
+//       "assets/skincare-bundles.jpg",
+
 //     ],
 //     productsTitle: "",
 //     products: [],
@@ -597,25 +606,27 @@ import { useAppSelector } from "@/store/hooks";
 //       ],
 //       mobile: ["main_banner", "sub_banner", "products"],
 //     },
-//     mobile_banner: "https://i.postimg.cc/NFXF0j4v/toys-banner-mob.png",
-//     desktop_banner: "https://i.postimg.cc/KjRC2Kmx/toy-banner.png",
+//     mobile_banner: "assets/toy-station-mobile.jpg",
+//     desktop_banner: "assets/toy-station-desktop.jpg",
 
 //     kids_banner: [
-//       "https://i.postimg.cc/FsnCvF6H/boys-banners.png",
-//       "https://i.postimg.cc/d11TJFpJ/girls-banner.png",
+//       "assets/girl-toys.jpg",
+//       "assets/girl-toys.jpg",
 //     ],
 //     underPrice_banners: [
-//       "https://i.postimg.cc/d1bQgKKH/aed50.png",
-//       "https://i.postimg.cc/XvXVJvj1/aed100.png",
-//       "https://i.postimg.cc/rwZkvL11/aed200.png",
+//       "assets/under-aed-50.jpg",
+//       "assets/under-aed-100.jpg",
+//       "assets/under-aed-200.jpg",
+
 //     ],
 //     sub_banners: [
-//       "https://i.postimg.cc/FFS0zr1K/activity.png",
-//       "https://i.postimg.cc/ZKF3Pw8t/kitchen.png",
-//       "https://i.postimg.cc/FHHfyNF3/rc-toys.png",
-//       "https://i.postimg.cc/cJKrzhnJ/blocks.png",
-//       "https://i.postimg.cc/dt43tpR1/doll-house.png",
-//       "https://i.postimg.cc/2yTkyLZJ/stem-toys.png",
+//       "assets/doll-house.jpg",
+//       "assets/activity-center.jpg",
+//       "assets/blocks.jpg",
+//       "assets/play-kitchen.jpg",
+//       "assets/rc-toys.jpg",
+//       "assets/stem-toys.jpg",
+
 //     ],
 //     productsTitle: "",
 //     products: [],

@@ -70,7 +70,8 @@ httpClient.interceptors.response.use(
   },
   (error: AxiosError<ApiResponse>) => {
     // const dispatch = getDispatch();
-    let message = error.message || "Something went wrong.";
+    // let message = error.message || "Something went wrong.";
+    let message = error.message;
 
     if (error.response?.data) {
       if (error.response.data.success === true) {

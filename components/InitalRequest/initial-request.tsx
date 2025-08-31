@@ -39,7 +39,7 @@ export default function InitialRequest() {
           // productServices.getSuggestedProducts(), not using in new deisgn anywehre
           productServices.getHomeDesktopSectionsTest(),
 
-          productServices.storeSearchDataToAlgolia(),
+          // productServices.storeSearchDataToAlgolia(),
           // productServices.getAllProducts(), search api of products
           productServices.getbannerImage(),
 
