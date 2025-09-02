@@ -2,7 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { happyTummyBanner } from "@/public/assets/banner";
 import ProductSwiperSlider from "@/components/slider/product.swiper";
-
+// ds
 interface CategorSectiondProps {
   ImgClass?: any;
   className?: any;
