@@ -121,7 +121,7 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_1: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-between ${className}`}
+          className={`cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-center ${className}`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
@@ -139,13 +139,13 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_2: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-between md:gap-[14px]`}
+          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
               key={index}
               className={
-                "h-[225px] w-[48%] object-cover lg:h-[252px] lg:w-[215px]"
+                "h-auto w-[48%] object-cover sm:w-[162px] lg:h-[252px] lg:w-[215px]"
               }
               src={item}
               height={300}
@@ -159,13 +159,13 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_3: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-between md:gap-[14px]`}
+          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
               key={index}
               className={
-                "h-[225px] w-[48%] object-cover lg:h-[252px] lg:w-[215px]"
+                "h-auto w-[48%] object-cover sm:w-[162px] lg:h-[252px] lg:w-[215px]"
               }
               src={item}
               height={300}
