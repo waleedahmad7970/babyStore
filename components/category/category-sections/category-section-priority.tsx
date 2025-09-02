@@ -27,7 +27,7 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
   bannerImage = happyTummyBanner,
   className = "gap-[10px] md:gap-[21px]",
   categoryImages = [],
-  ImgClass = "w-[162px] h-[201px] lg:w-[324px] lg:h-[379px] object-cover",
+  ImgClass = "w-[48%] h-auto lg:w-[324px] lg:h-[379px] object-cover",
   positions,
   isMobile = false,
   products = [],
@@ -121,12 +121,14 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_1: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center md:mb-0 md:justify-center ${className}`}
+          className={`mb-5 flex flex-wrap justify-center md:mb-0 md:justify-center ${className}`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
               key={index}
-              className={ImgClass}
+              className={
+                "h-[230px] w-[48%] object-cover md:object-contain lg:h-[379px] lg:w-[324px]"
+              }
               src={item}
               height={300}
               width={300}
@@ -139,13 +141,13 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_2: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
+          className={`mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
               key={index}
               className={
-                "h-auto w-[48%] object-cover sm:w-[162px] lg:h-[252px] lg:w-[215px]"
+                "h-[230px] w-[48%] object-cover sm:w-[162px] md:object-contain lg:h-[282px] lg:w-[215px]"
               }
               src={item}
               height={300}
@@ -159,13 +161,13 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
     section_3: (
       <>
         <div
-          className={`cus-container mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
+          className={`mb-5 flex flex-wrap justify-center gap-[10px] md:mb-0 md:justify-center md:gap-[14px]`}
         >
           {categoryImages.map((item: any, index: number) => (
             <Image
               key={index}
               className={
-                "h-auto w-[48%] object-cover sm:w-[162px] lg:h-[252px] lg:w-[215px]"
+                "h-[230px] w-[48%] object-cover sm:w-[162px] md:object-contain lg:h-[252px] lg:w-[215px]"
               }
               src={item}
               height={300}
