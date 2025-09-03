@@ -127,7 +127,7 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
             <Image
               key={index}
               className={
-                "h-[230px] w-[48%] object-cover md:object-contain lg:h-[379px] lg:w-[324px]"
+                "h-[230px] w-[48%] object-contain lg:h-[379px] lg:w-[324px]"
               }
               src={item}
               height={300}
@@ -147,7 +147,7 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
             <Image
               key={index}
               className={
-                "h-[230px] w-[48%] object-cover sm:w-[162px] md:object-contain lg:h-[282px] lg:w-[215px]"
+                "h-[230px] w-[48%] object-contain sm:w-[162px] lg:h-[282px] lg:w-[215px]"
               }
               src={item}
               height={300}
@@ -167,7 +167,7 @@ const CategorySectionPriority: React.FC<CategorSectiondProps> = ({
             <Image
               key={index}
               className={
-                "h-[230px] w-[48%] object-cover sm:w-[162px] md:object-contain lg:h-[252px] lg:w-[215px]"
+                "h-[230px] w-[48%] object-contain sm:w-[162px] lg:h-[252px] lg:w-[215px]"
               }
               src={item}
               height={300}
