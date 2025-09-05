@@ -142,14 +142,15 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                         </div>
 
                         <div className="relative h-full w-full overflow-hidden rounded-[8.795px]">
+                          <div className="h-[25px] w-full" />
                           <Image
                             // src={`${imageBaseUrl}/assets/menu_category/${item?.cat_image}`}
                             src={categoryImage}
                             quality={100}
                             width={86}
-                            height={114}
+                            height={90}
                             alt="item"
-                            className="z-0 h-full w-full object-contain"
+                            className="z-0 h-[90px] w-full object-contain"
                           />
                           <div
                             className={`absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] transition-opacity duration-300 ${
