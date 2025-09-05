@@ -213,7 +213,7 @@ const OrderSuccess = () => {
             <div
               className={`font-Inter flex flex-col gap-1 text-end text-[14px] leading-[24px] font-normal text-[#1F1F1F] capitalize`}
             >
-              <span>{billing_info?.email}</span>
+              <span className="lowercase">{billing_info?.email}</span>
               <span>{billing_info?.phone}</span>
               <span>{billing_info?.address_1}</span>
               <span>{billing_info?.address_2}</span>

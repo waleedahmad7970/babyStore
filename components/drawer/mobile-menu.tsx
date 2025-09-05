@@ -149,7 +149,7 @@ export default function MobileDrawer({ isOpen, close }: MobileDrawerProps) {
                             width={86}
                             height={114}
                             alt="item"
-                            className="z-0 h-full w-full object-cover"
+                            className="z-0 h-full w-full object-contain"
                           />
                           <div
                             className={`absolute inset-0 flex items-center justify-center rounded-[8.795px] bg-[#fc8cbe] transition-opacity duration-300 ${

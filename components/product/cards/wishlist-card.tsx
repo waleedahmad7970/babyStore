@@ -47,7 +47,7 @@ const WishlistCard: React.FC<WishlistCardProps> = ({ product }) => {
     >
       <div className={`w-full overflow-hidden rounded-[8px] bg-white`}>
         <div
-          onClick={() => redirectToCart("/product")}
+          onClick={() => redirectToCart(`/product/${product?.id}`)}
           className="relative h-[212px] md:min-w-[212px]"
         >
           <Image
