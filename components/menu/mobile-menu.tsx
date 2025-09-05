@@ -358,7 +358,7 @@ const BottomNavigation: React.FC = () => {
                 }`}
               >
                 {tab?.id === "Bag" && (
-                  <div className="absolute top-[-3px] right-[-3px] flex h-[14px] w-[14px] items-center justify-center rounded-full bg-red-500 text-[9px] text-white">
+                  <div className="absolute top-[-3px] right-[-3px] flex h-[14px] w-[14px] items-center justify-center rounded-full bg-[#ff4747] text-[9px] text-white">
                     <p className="mb-0 pl-[0.5px] text-[7px] font-bold">
                       {cartProducts?.length > 0 ? totalQuantity : 0}
                     </p>
