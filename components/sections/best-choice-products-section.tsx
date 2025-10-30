@@ -5,9 +5,24 @@ import { Star } from "lucide-react";
 import ProductCard from "../cards/product-card";
 import { specialItems4 } from "@/public/assets/support";
 
-const tabs = ["Baby", "Boys", "Girls", "Toys"];
+// Define types
+interface Product {
+  id: number;
+  image: any; // Use more specific type if available, e.g., StaticImageData
+  title: string;
+  price: number;
+  rating: number;
+}
 
-const products = {
+interface ProductsByCategory {
+  [key: string]: Product[];
+}
+
+// Type-safe tabs
+const tabs = ["Baby", "Boys", "Girls", "Toys"] as const;
+type Tab = typeof tabs[number];
+
+const products: ProductsByCategory = {
   Baby: [
     { id: 1, image: specialItems4, title: "Polka Dot Chambray Shirt", price: 60, rating: 5 },
     { id: 2, image: specialItems4, title: "Red Striped Polka Dress", price: 80, rating: 5 },
@@ -31,15 +46,15 @@ const products = {
 };
 
 const BestChoiceProductsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Baby");
+  const [activeTab, setActiveTab] = useState<Tab>("Baby");
 
   return (
     <section className="py-16 bg-white">
       <div className="cus-container">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-10">
-        <h2 className="text-[28px] font-medium text-gray-900">
-        Best Choice Products
+          <h2 className="text-[28px] font-medium text-gray-900">
+            Best Choice Products
           </h2>
 
           {/* Tabs */}

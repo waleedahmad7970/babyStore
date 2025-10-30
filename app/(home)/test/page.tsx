@@ -16,7 +16,6 @@ import SalesSlider from "@/components/slider/sales.slider";
 import TopCategorySlider from "@/components/slider/top-category.slider";
 import { bestQualityBanner } from "@/public/assets/support";
 
-
 export default function Home() {
   return (
     <div>
@@ -26,7 +25,6 @@ export default function Home() {
         <BannerSliderTwo />
       </div>
       <FeatureCardsTwo />
-
       <div className="cus-container flex w-full items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[100px]">
         <div className="flex max-w-[300px] flex-col justify-start">
           <h1 className="text-[26px] font-light text-[#E7448C] uppercase underline">
@@ -42,7 +40,6 @@ export default function Home() {
         </div>
         <TopCategorySlider />
       </div>
-
       <DealOfTheDay />
       <DynamicPromotionBanner
         image={bestQualityBanner}
@@ -56,13 +53,10 @@ export default function Home() {
       <SalesSlider />
       <BestChoiceProductsSection />
       <HeroVideo />
-      <SalesSlider title="Winter Collection Sale"  />
+      <SalesSlider title="Winter Collection Sale" />
       <RotatingTextSlider />
-
-      <BlogSliderTwo/>
-      <ReviewSliderTwo/>
-     
-
+      <BlogSliderTwo />
+      <ReviewSliderTwo />
     </div>
   );
 }

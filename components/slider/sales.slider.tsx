@@ -55,7 +55,7 @@ const products = [
   },
 ];
 
-const SalesSlider: React.FC = ({ title = "Flash Sale" }:any) => {
+const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => {
   return (
     <section className="group relative bg-white py-16">
       <div className="cus-container">
