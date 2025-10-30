@@ -86,3 +86,12 @@ export { default as summer_banner_mob } from "../banner/summer_banner_mob.png";
 
 export { default as menu1 } from "../banner/menu1.svg";
 export { default as menu2 } from "../banner/menu2.svg";
+
+
+
+
+
+// update the diesgn banner 
+
+export { default as slider_bg_1 } from "../banner/slider_bg_1.jpg";
+export { default as slider_bg_2 } from "../banner/slider_bg_2.jpg";

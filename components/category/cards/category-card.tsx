@@ -41,8 +41,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   return (
     <div className="flex flex-col items-center text-center">
       <div
-        className={`flex cursor-pointer items-center justify-center rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] ${className}`}
-      >
+        className={`flex cursor-pointer items-center justify-center rounded-[80px] w-[140px] h-[140px] bg-[#FFF0F5]`}
+        // className={`flex cursor-pointer items-center justify-center rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] ${className}`}
+        >
         {/* {hoveredId !== null && hoveredId !== categoryId && (
           <div className="absolute z-0 h-[99px] w-[99px] rounded-s-[40px] rounded-e-[40px] rounded-t-[40px] rounded-b-[40px] bg-black/50 transition duration-300" />
         )} */}

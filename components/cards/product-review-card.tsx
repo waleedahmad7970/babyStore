@@ -24,7 +24,8 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
 
   return (
     // <Link href={``} className="block text-inherit no-underline">
-    <div className="relative w-full max-w-[368px] min-w-[260px] snap-start rounded-[21px] bg-[#F470AB1A] p-[14.16px] md:min-w-[360px] md:rounded-[30px] md:p-5">
+    // <div className="relative w-full max-w-[368px] min-w-[260px] snap-start rounded-[21px] bg-[#F470AB1A] p-[14.16px] md:min-w-[360px] md:rounded-[30px] md:p-5">
+    <div className="relative w-full max-w-[450px] min-w-[260px] snap-start rounded-[21px] bg-[#F470AB1A] p-[14.16px] md:min-w-[360px] md:rounded-[30px] md:p-5">
       <div className="w-full">
         <Image
           src={qout_icon}

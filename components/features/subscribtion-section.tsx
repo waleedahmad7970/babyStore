@@ -9,6 +9,7 @@ import authService from "@/services/auth.service";
 import InputField from "../fields/input-field";
 import Button from "../button/button";
 import { validationSchemas } from "@/utils/validation";
+import { newLetter } from "@/public/assets/support";
 
 const initialValues = {
   email: "",
@@ -36,7 +37,14 @@ export default function SubscribeSection() {
   } = formikProps;
   const isSubmitted = submitCount > 0;
   return (
-    <div className="cus-container mx-auto flex flex-col justify-between py-[10px] md:py-10 lg:flex-row">
+    <div 
+    style={{
+      backgroundImage: `url(${newLetter.src})`,
+  }}
+    className="w-full p-5 bg-no-repeat">
+    <div
+   
+    className="cus-container mx-auto flex flex-col justify-between py-[10px] md:py-10 lg:flex-row">
       <div className="my-5 flex justify-between gap-10 bg-[#FFF5FA] py-5 pr-[10px] pl-4 sm:hidden md:mx-4 md:my-0">
         <p className="font-inter text-dark mb-0 text-[16px] leading-[19.36px] font-semibold">
           Baby Store – New Mom & Baby Products online in UAE
@@ -56,7 +64,7 @@ export default function SubscribeSection() {
 
         <form
           onSubmit={handleSubmit}
-          className="mt-10 flex w-full items-center overflow-hidden rounded-[8px] bg-[#F7F8F7] p-[10px] lg:max-w-[637px]"
+          className="mt-10 flex w-full items-center overflow-hidden shadow-xl rounded-[8px] bg-white border border-gray-200 p-[10px] lg:max-w-[637px]"
         >
           <InputField
             name="email"
@@ -75,7 +83,7 @@ export default function SubscribeSection() {
             loading={subscribe}
             type={"submit"}
             text={"Subscribe"}
-            className="font-inter h-[40px] min-w-[120px] rounded-[6px] bg-[#F470AB] text-[16px] leading-[19.5px] font-bold text-white md:h-[69px] md:min-w-[200px] md:text-[24px] md:leading-[29.5px]"
+            className="font-inter h-[40px] min-w-[120px] rounded-[20px] bg-[#000] text-[16px] leading-[19.5px] font-bold text-white md:h-[69px] md:min-w-[200px] md:text-[24px] md:leading-[29.5px]"
           />
         </form>
       </div>
@@ -92,15 +100,16 @@ export default function SubscribeSection() {
           <Image
             src={app_store}
             alt="App Store"
-            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px]"
+            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px] shadow-xl"
           />
           <Image
             src={google_play}
             alt="Google Play"
-            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px]"
+            className="h-[67px] w-1/2 cursor-pointer md:max-w-[234px] shadow-xl"
           />
         </div>
       </div>
+    </div>
     </div>
   );
 }

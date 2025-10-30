@@ -13,6 +13,7 @@ import ReviewSlider from "@/components/slider/reviews.slider";
 import DeliveryService from "@/components/features/delivery-services";
 import SubscribeSection from "@/components/features/subscribtion-section";
 import StoreInfoSection from "@/components/features/store-info-section";
+import StoreInfoSectionTwo from "@/components/features/store-info-section-two";
 
 export default function HomePageLayout({
   children,
@@ -24,9 +25,9 @@ export default function HomePageLayout({
       <FreeShipping />
       <Navbar />
       {children}
-      <ReviewSlider reviews={reviews} />
-      <BlogSlider />
-      <StoreInfoSection />
+      {/* <ReviewSlider reviews={reviews} /> */}
+      {/* <BlogSlider /> */}
+      <StoreInfoSectionTwo />
       <SubscribeSection />
       <DeliveryService />
       <Footer />

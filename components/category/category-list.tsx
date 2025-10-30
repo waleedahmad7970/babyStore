@@ -28,7 +28,6 @@ export default function CategoryList() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [previousId, setPreviousId] = useState<number | null>(null);
   const [animationDirection, setAnimationDirection] = useState<string>("");
-
   const handleHover = (id: number) => {
     if (id !== hoveredId) {
       if (hoveredId !== null) {
