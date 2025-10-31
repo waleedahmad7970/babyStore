@@ -99,7 +99,7 @@ export default function BannerSliderTwo() {
             onClick={() => setActiveIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeIndex === index
-                ? "bg-[#E7448C] w-6"
+                ? "bg-[#E7448C] w-9"
                 : "bg-[#E7448C]/70 hover:bg-[#E7448C]/70"
             }`}
           />

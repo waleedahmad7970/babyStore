@@ -3,13 +3,16 @@
 import DynamicPromotionBanner from "@/components/banner/promotion-banner";
 import FeatureCardsTwo from "@/components/cards/feature-card-two";
 import TopCategoriesSection from "@/components/category/top-categories";
+import MobileNav from "@/components/header/mobile-nav";
 import HeroVideo from "@/components/hero/hero-video";
 import InitialRequest from "@/components/InitalRequest/initial-request";
+import TopMenu from "@/components/menu/top-desktop-menu";
 import FeaturedCollection from "@/components/offers-designs/feature-collection";
 import DealOfTheDay from "@/components/offers-designs/today-special";
 import BestChoiceProductsSection from "@/components/sections/best-choice-products-section";
 import BannerSliderTwo from "@/components/slider/banner.slider.two";
 import BlogSliderTwo from "@/components/slider/blogs-slider-two";
+import ProductsSliderTwo from "@/components/slider/product-slider-two";
 import ReviewSliderTwo from "@/components/slider/review-slider-two";
 import RotatingTextSlider from "@/components/slider/rotating-text-slider";
 import SalesSlider from "@/components/slider/sales.slider";
@@ -18,14 +21,17 @@ import { bestQualityBanner } from "@/public/assets/support";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
+      <MobileNav/>
+      <TopMenu/>
       {/* <CategoryList /> */}
-      <TopCategoriesSection />
       <div className="w-full">
         <BannerSliderTwo />
       </div>
       <FeatureCardsTwo />
-      <div className="cus-container flex w-full items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[100px]">
+      <TopCategoriesSection />
+
+      <div className="cus-container flex w-full items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px]">
         <div className="flex max-w-[300px] flex-col justify-start">
           <h1 className="text-[26px] font-light text-[#E7448C] uppercase underline">
             Categories
@@ -40,6 +46,9 @@ export default function Home() {
         </div>
         <TopCategorySlider />
       </div>
+      <ProductsSliderTwo title="New Arrivals" subtitle="Discover the latest products"/>
+      <ProductsSliderTwo title="Best Sellers" subtitle="Enjoy the all best products"/>
+
       <DealOfTheDay />
       <DynamicPromotionBanner
         image={bestQualityBanner}
