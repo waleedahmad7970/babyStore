@@ -78,7 +78,19 @@ const ReviewSliderTwo: React.FC<{ title?: string }> = ({
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
-            slidesPerView={3}
+            breakpoints={{
+              639: {   
+                slidesPerView: 1,
+              },
+              640: {   
+                slidesPerView: 2,
+              },
+              768: {   
+                slidesPerView: 3,
+              },
+              1024: {  
+                slidesPerView: 3,
+              }}}
             navigation={{
               nextEl: ".next-btn",
               prevEl: ".prev-btn",

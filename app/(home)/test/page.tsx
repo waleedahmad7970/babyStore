@@ -22,16 +22,13 @@ import { bestQualityBanner } from "@/public/assets/support";
 export default function Home() {
   return (
     <div className="relative">
-      <MobileNav/>
-      <TopMenu/>
+      <MobileNav />
+      {/* <TopMenu/> */}
       {/* <CategoryList /> */}
-      <div className="w-full">
-        <BannerSliderTwo />
-      </div>
+      <BannerSliderTwo />
       <FeatureCardsTwo />
       <TopCategoriesSection />
-
-      <div className="cus-container flex w-full items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px]">
+      <div className="cus-container flex w-full flex-col items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px] md:flex-row">
         <div className="flex max-w-[300px] flex-col justify-start">
           <h1 className="text-[26px] font-light text-[#E7448C] uppercase underline">
             Categories
@@ -46,9 +43,14 @@ export default function Home() {
         </div>
         <TopCategorySlider />
       </div>
-      <ProductsSliderTwo title="New Arrivals" subtitle="Discover the latest products"/>
-      <ProductsSliderTwo title="Best Sellers" subtitle="Enjoy the all best products"/>
-
+      <ProductsSliderTwo
+        title="New Arrivals"
+        subtitle="Discover the latest products"
+      />
+      <ProductsSliderTwo
+        title="Best Sellers"
+        subtitle="Enjoy the all best products"
+      />
       <DealOfTheDay />
       <DynamicPromotionBanner
         image={bestQualityBanner}
@@ -64,7 +66,10 @@ export default function Home() {
       <HeroVideo />
       <SalesSlider title="Winter Collection Sale" />
       <RotatingTextSlider />
-      <BlogSliderTwo />
+      
+<BlogSliderTwo /> 
+
+
       <ReviewSliderTwo />
     </div>
   );

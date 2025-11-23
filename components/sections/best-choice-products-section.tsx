@@ -52,7 +52,7 @@ const BestChoiceProductsSection: React.FC = () => {
     <section className="py-16 bg-white">
       <div className="cus-container">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center md:flex-row flex-col justify-between mb-10">
           <h2 className="text-[28px] font-medium text-gray-900">
             Best Choice Products
           </h2>
@@ -77,7 +77,7 @@ const BestChoiceProductsSection: React.FC = () => {
 
         {/* Product Grid */}
         {products[activeTab]?.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {products[activeTab].map((item) => (
               <ProductCard
                 key={item.id}

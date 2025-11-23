@@ -23,12 +23,12 @@ const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" })
         <div className="mb-10 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Newspaper className="text-[#E7448A]" size={28} />
-            <h2 className="text-[28px] font-medium text-gray-900">
+            <h2 className="text-[22px] md:text-[28px] font-medium text-gray-900">
             {title}
             </h2>
           </div>
 
-          <button className="rounded-full bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
+          <button className="rounded-full text-[14px] md:text-[16px] bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
             View All Blogs
           </button>
         </div>
@@ -38,7 +38,19 @@ const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" })
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={40}
-            slidesPerView={3}
+            breakpoints={{
+              639: {   
+                slidesPerView: 1,
+              },
+              640: {   
+                slidesPerView: 2,
+              },
+              768: {   
+                slidesPerView: 3,
+              },
+              1024: {  
+                slidesPerView: 3,
+              }}}
             navigation={{
               nextEl: ".next-btn",
               prevEl: ".prev-btn",

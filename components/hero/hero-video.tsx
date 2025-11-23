@@ -4,7 +4,7 @@ import React from "react";
 
 const HeroVideo = () => {
   return (
-    <section className="cus- relative w-full h-[1000px] overflow-hidden ">
+    <section className="cus- relative w-full h-[500px] md:h-[600px] lg:h-[1000px] overflow-hidden ">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -20,7 +20,7 @@ const HeroVideo = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-6">
-        <h1 className="text-4xl md:text-6xl font-bold mb-0 tracking-[-2.72px] max-w-[40%]">We Make Your Children Happier With The Best Toys
+        <h1 className="text-4xl md:text-6xl font-bold mb-0 tracking-[-2.72px] max-w-[90%] md:max-w-[40%]">We Make Your Children Happier With The Best Toys
         </h1>
         <p className="text-lg md:text-xl mb-8">
           Discover adorable babywear and exclusive collections.

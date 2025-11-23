@@ -60,6 +60,10 @@
   }
 }
 
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+}
+
 /* scroll bar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

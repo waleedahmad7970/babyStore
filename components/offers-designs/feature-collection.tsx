@@ -24,10 +24,10 @@ export default function FeaturedCollection() {
       <div className="cus-container mx-auto px-4">
         {/* ===== Header ===== */}
         <div className="flex items-center justify-between mb-10">
-        <h2 className="text-[28px] font-medium text-gray-900">
+        <h2 className="text-[22px] md:text-[28px] font-medium text-gray-900">
         Featured Collection
           </h2>
-          <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-[#E7448C] transition-all">
+          <button className="bg-black text-[14px] md:text-[16px] text-white px-6 py-2 rounded-full hover:bg-[#E7448C] transition-all">
             Explore All
           </button>
         </div>
@@ -35,7 +35,7 @@ export default function FeaturedCollection() {
         {/* ===== Grid Layout ===== */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* ==== Left: Product Cards Grid (2x2) ==== */}
-          <div className="lg:col-span-2 grid grid-cols-2 gap-6">
+          <div className="lg:col-span-2 grid grid-cols-1  md:grid-cols-2 gap-6">
             {products.map((item:any) => (
               <ProductCard
                 key={item.id}

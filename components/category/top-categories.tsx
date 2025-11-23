@@ -1,7 +1,9 @@
 import { imageBaseUrl } from "@/config/config";
 import Image from "next/image";
 import React from "react";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 const mainColor = "#E7448A";
 const secondaryBg = "#FFF0F5";
 
@@ -81,17 +83,27 @@ const toys = [
   },
 ];
 
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+const mobileChunks = chunkArray(toys, 4);
+
+
 const TopCategoriesSection: React.FC = () => (
-  <div className="flex cus-container flex-wrap gap-8 pt-[50px] pb-[100px]" style={{ background: "#fff" }}>
+  <div className="flex cus-container flex-wrap gap-8 pt-[50px] pb-[100px] flex-col xl:flex-row" style={{ background: "#fff" }}>
     {/* Left Banner */}
     <div
-      className="flex flex-col justify-center items-center rounded-2xl p-10 text-[#fff] w-[430px] min-h-[350px]"
+      className="flex flex-col justify-center items-center rounded-2xl p-10 text-[#fff] xl:w-[430px] min-h-[350px]"
       style={{
         background: mainColor,
        
       }}
     >
-      <span className="text-[68px] leading-[60px]">Explore With Our Categories</span>
+      <span className="text-[50px] leading-[45px]  sm:text-[68px] sm:leading-[60px]">Explore With Our Categories</span>
       <span className="text-4xl font-bold mb-3 mt-2">New & Trending</span>
       <button
         className="mt-6 rounded-full px-10 py-3 font-bold text-xl shadow-2xl cursor-pointer hover:mr-3"
@@ -100,8 +112,40 @@ const TopCategoriesSection: React.FC = () => (
         Explore All
       </button>
     </div>
-
-    <div className="flex-1 grid grid-cols-3 gap-2">
+  {/* Mobile / Tablet Slider */}
+  <div className="w-full block md:hidden">
+        <Swiper
+          spaceBetween={12}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+        >
+          {mobileChunks.map((chunk, index) => (
+            <SwiperSlide key={index}>
+              <div className="grid grid-cols-2 gap-2">
+                {chunk.map((toy, idx) => (
+                  <div key={idx} className="flex flex-col items-center cursor-pointer bg-white hover:bg-[#FFF0F5] rounded-2xl p-3 gap-2">
+                    <Image
+                      src={`${imageBaseUrl}/assets/menu_category/${toy?.image}`}
+                      alt={toy?.title}
+                      className="rounded-xl object-contain h-[80px] w-[80px]"
+                      width={75}
+                      height={75}
+                      style={{ background: secondaryBg }}
+                    />
+                    <div className="text-center">
+                      <div className="text-gray-500 font-light text-[clamp(0.9rem,2vw,1rem)]">{toy.title}</div>
+                      <div className="mt-1 text-[clamp(1rem,2vw,1.2rem)] font-bold" style={{ color: mainColor }}>
+                        {toy.price} <span className="text-[#A8A8A8] font-light">Products</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    <div className="hidden  md:flex-1 md:grid grid-cols-3 gap-2">
       {toys.map((toy, idx) => (
         <div
           key={idx}

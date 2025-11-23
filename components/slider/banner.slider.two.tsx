@@ -48,7 +48,7 @@ export default function BannerSliderTwo() {
         {sliderImages.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             <a href={slide.link} rel="noopener noreferrer">
-              <div className="relative aspect-[1440/500] w-full">
+              <div className="relative aspect-[1440/500] w-full max-sm:aspect-[390/420]">
                 <Image
                   src={
                     typeof slide.image === "string"
@@ -61,8 +61,8 @@ export default function BannerSliderTwo() {
                   priority
                 />
 
-                {/* Overlay + Text */}
-                <div className="relative w-full h-full cus-container flex flex-col items-start justify-center">
+                {/* TEXT AREA */}
+                <div className="relative w-full h-full cus-container flex flex-col items-start justify-center px-4 sm:px-0">
                   <div
                     className={`text-white transition-all duration-700 ${
                       activeIndex === index
@@ -70,17 +70,24 @@ export default function BannerSliderTwo() {
                         : "opacity-0 translate-y-10"
                     }`}
                   >
-                    <h4 className="text-sm sm:text-[66px] leading-[55px] font-light uppercase tracking-[-5.52px] text-[#E7448C]">
+                    {/* Heading */}
+                    <h4 className="font-poppins text-[clamp(2rem,3vw,5rem)] font-light uppercase tracking-tight text-[#E7448C]">
                       {slide.heading}
                     </h4>
-                    <h2 className="mt-2 text-2xl sm:text-[60px] leading-[54px] font-bold max-w-[340px]">
+
+                    {/* Title */}
+                    <h2 className="mt-2 text-[clamp(1.5rem,3vw,4rem)] leading-tight font-bold max-w-[clamp(16rem,40vw,26rem)]">
                       {slide.title}
                     </h2>
-                    <p className="mt-3 max-w-md text-sm sm:text-base text-pink-300">
+
+                    {/* Description */}
+                    <p className="mt-3 text-[clamp(1rem,1.3vw,1.4rem)] text-pink-300 max-w-[clamp(18rem,50vw,32rem)]">
                       {slide.description}
                     </p>
+
+                    {/* Button */}
                     <Button
-                      className="my-[10px] bg-[#E7448C] hover:bg-[#000] text-white rounded-4xl px-20 py-3 text-[20px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-bold cursor-pointer"
+                      className="mt-5 bg-[#E7448C] hover:bg-[#000] text-white rounded-4xl text-[clamp(0.9rem,2vw,1.2rem)] px-[clamp(1rem,4vw,4rem)] py-[clamp(0.6rem,2vw,1rem)] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-bold cursor-pointer"
                       text={"Shop Now"}
                     />
                   </div>
@@ -91,15 +98,15 @@ export default function BannerSliderTwo() {
         ))}
       </Swiper>
 
-      {/* ✅ Custom Tailwind Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      {/* PAGINATION DOTS */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-20">
         {sliderImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`h-2 w-2 sm:h-3 sm:w-3 rounded-full transition-all duration-300 ${
               activeIndex === index
-                ? "bg-[#E7448C] w-9"
+                ? "bg-[#E7448C] w-6 sm:w-9"
                 : "bg-[#E7448C]/70 hover:bg-[#E7448C]/70"
             }`}
           />

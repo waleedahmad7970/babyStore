@@ -83,7 +83,20 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
-            slidesPerView={4}
+            breakpoints={{
+              639: {   
+                slidesPerView: 1,
+              },
+              640: {   
+                slidesPerView: 2,
+              },
+              768: {   
+                slidesPerView: 3,
+              },
+              1024: {  
+                slidesPerView: 4,
+              }}}
+          
             loop={true}
             autoplay={{
               delay: 4000,

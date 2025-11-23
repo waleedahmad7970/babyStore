@@ -18,7 +18,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           {children}
-          <BottomNavigation />
+          {/* <BottomNavigation /> */}
         </PersistGate>
       </Provider>
     </GoogleOAuthProvider>

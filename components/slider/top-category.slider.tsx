@@ -70,6 +70,7 @@ import Image, { StaticImageData } from "next/image";
 import { topCategoriesDumy } from "@/static/static";
 import { imageBaseUrl } from "@/config/config";
 import { useRef } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface Category {
   name: string;
@@ -78,6 +79,7 @@ interface Category {
 
 export default function TopCategorySlider() {
   const swiperRef = useRef<any>(null);
+  const isMobile = useIsMobile();
 
   const handlePrev = () => {
     swiperRef.current?.slidePrev();
@@ -92,7 +94,7 @@ export default function TopCategorySlider() {
       {/* Left Navigation Button */}
       <button
         onClick={handlePrev}
-        className="absolute left-[-25px] top-1/2 z-10 -translate-y-1/2 transform rounded-full cursor-pointer bg-[#FFF1E9] p-3 shadow-lg hover:bg-[#ffe3d3] transition-all duration-300 active:scale-90"
+        className="absolute top-[10px] md:top-1/2 left-[0px] md:left-[-25px] z-10 -translate-y-1/2 transform cursor-pointer rounded-full bg-[#FFF1E9] p-3 shadow-lg transition-all duration-300 hover:bg-[#ffe3d3] active:scale-90"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -109,19 +111,20 @@ export default function TopCategorySlider() {
       <Swiper
         modules={[Autoplay]}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        autoplay={{ delay: 25000000, disableOnInteraction: false }}
         slidesPerView="auto"
-        spaceBetween={90}
+        spaceBetween={isMobile ? 20 : 90}
+        freeMode={true}
         loop
         className="overflow-hidden"
       >
         {topCategoriesDumy.map((category: Category, index) => (
           <SwiperSlide
             key={index}
-            className="!w-auto flex justify-center md:!w-[180px]"
+            className="flex !w-[140px] justify-center md:!w-[180px]"
           >
-            <div className="flex py-3 cursor-pointer flex-col items-center transition-transform duration-300 hover:scale-105">
-              <div className="relative flex h-[85px] w-[85px] items-center justify-center rounded-[35px] bg-[#FFF0F5] md:h-[250px] md:w-[250px] md:rounded-[20px]">
+            <div className="flex cursor-pointer flex-col items-center py-3 transition-transform duration-300 hover:scale-105">
+              <div className="relative flex h-[150px] w-[150px] items-center justify-center rounded-[25px] bg-[#FFF0F5] md:h-[250px] md:w-[250px] md:rounded-[20px]">
                 <Image
                   src={
                     typeof category.image === "string"
@@ -131,10 +134,10 @@ export default function TopCategorySlider() {
                   alt={category.name}
                   width={200}
                   height={200}
-                  className="object-contain max-w-[70px] md:max-w-[181px] max-h-[105px] md:max-h-[153px]"
+                  className="max-h-[105px] max-w-[70px] object-contain md:max-h-[153px] md:max-w-[181px]"
                 />
               </div>
-              <p className="mt-3 text-[12px] font-medium uppercase text-[#A8A8A8] md:text-[20px]">
+              <p className="mt-3 text-[12px] font-medium text-[#A8A8A8] uppercase md:text-[20px]">
                 {category.name}
               </p>
             </div>

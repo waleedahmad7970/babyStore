@@ -1,4 +1,3 @@
-// components/FeatureCards.tsx
 
 import { offers, refund, security, support } from "@/public/assets/support";
 import Image from "next/image";
@@ -28,7 +27,7 @@ const features = [
 
 export default function FeatureCardsTwo() {
   return (
-    <div className="w-full cus-container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-15">
+    <div className="w-full cus-container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-15">
       {features.map((feature, i) => (
         <div
           key={i}

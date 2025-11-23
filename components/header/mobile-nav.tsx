@@ -14,7 +14,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 px-6 py-2 bg-white/50 backdrop-blur-xl rounded-full shadow-2xl border border-white/40 z-50">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 px-3 md:px-6 py-2 bg-white/50 backdrop-blur-xl rounded-full shadow-2xl border border-white/40 z-50">
       {navItems.map(({ name, icon: Icon, href }) => {
         const isActive = pathname === href;
         return (
@@ -45,7 +45,7 @@ export default function BottomNav() {
         );
       })}
 
-      <button className="ml-[200px] cursor-pointer p-3 bg-white rounded-full shadow hover:shadow-lg transition">
+      <button className="ml-[20px] md:ml-[200px] cursor-pointer p-3 bg-white rounded-full shadow hover:shadow-lg transition">
         <Search size={20} />
       </button>
     </div>

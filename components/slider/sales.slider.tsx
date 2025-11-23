@@ -59,12 +59,15 @@ const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => 
   return (
     <section className="group relative bg-white py-16">
       <div className="cus-container">
-        <div className="mb-10 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Rocket className="text-[#E7448A]" size={28} />
-            <h2 className="text-[28px] font-medium text-gray-900">
+        <div className="mb-10 flex-col md:flex-row flex items-center justify-between gap-3">
+          <div className="flex items-center flex-col md:flex-row gap-1">
+            <div className=" flex">
+
+            <Rocket className="text-[#E7448A] mr-1" size={28} />
+            <h2 className="text-[22px] md:text-[28px] font-medium text-gray-900 ">
              {title}
             </h2>
+            </div>
             <div className="flex gap-2">
               {["-57", "-19", "-56", "-33"].map((num, i) => (
                 <span
@@ -77,7 +80,7 @@ const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => 
             </div>
           </div>
 
-          <button className="rounded-full bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
+          <button className="rounded-full text-[14px] md:text-[16px] bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
             Explore All
           </button>
         </div>
@@ -87,13 +90,25 @@ const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => 
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
-            slidesPerView={4}
+            breakpoints={{
+              639: {   
+                slidesPerView: 1,
+              },
+              640: {   
+                slidesPerView: 2,
+              },
+              768: {   
+                slidesPerView: 3,
+              },
+              1024: {  
+                slidesPerView: 4,
+              }}}
             navigation={{
               nextEl: ".next-btn",
               prevEl: ".prev-btn",
             }}
             autoplay={{
-              delay: 2500000000000,
+              delay: 2000,
               disableOnInteraction: false,
             }}
             loop={true}
