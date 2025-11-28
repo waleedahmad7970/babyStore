@@ -28,7 +28,7 @@ export default function Home() {
       <BannerSliderTwo />
       <FeatureCardsTwo />
       <TopCategoriesSection />
-      <div className="cus-container flex w-full flex-col items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px] md:flex-row">
+      <div className="cus-container hidden w-full flex-col items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px] md:flex md:flex-row">
         <div className="flex max-w-[300px] flex-col justify-start">
           <h1 className="text-[26px] font-light text-[#E7448C] uppercase underline">
             Categories
@@ -66,9 +66,8 @@ export default function Home() {
       <HeroVideo />
       <SalesSlider title="Winter Collection Sale" />
       <RotatingTextSlider />
-      
-<BlogSliderTwo /> 
 
+      <BlogSliderTwo />
 
       <ReviewSliderTwo />
     </div>

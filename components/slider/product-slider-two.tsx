@@ -20,6 +20,7 @@ const products = [
     image: specialItems2,
     title: "Baby Bag Soft panda",
     price: 50,
+    discount: 10,
     rating: 5,
   },
   {
@@ -27,6 +28,7 @@ const products = [
     image: specialItems3,
     title: "Cute Green Snail Toy",
     price: 80,
+    discount: 10,
     rating: 5,
   },
   {
@@ -34,6 +36,7 @@ const products = [
     image: specialItems4,
     title: "Playmat For Little One",
     price: 70,
+    discount: 10,
     rating: 5,
   },
   {
@@ -41,6 +44,7 @@ const products = [
     image: specialItems5,
     title: "Baby Green Soft Turtle",
     price: 50,
+    discount: 10,
     rating: 5,
   },
   {
@@ -48,6 +52,7 @@ const products = [
     image: specialItems6,
     title: "New Kids Toy Horse",
     price: 50,
+    discount: 10,
     rating: 4,
   },
 ];
@@ -84,19 +89,19 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
             breakpoints={{
-              639: {   
+              639: {
                 slidesPerView: 1,
               },
-              640: {   
+              640: {
                 slidesPerView: 2,
               },
-              768: {   
+              768: {
                 slidesPerView: 3,
               },
-              1024: {  
+              1024: {
                 slidesPerView: 4,
-              }}}
-          
+              },
+            }}
             loop={true}
             autoplay={{
               delay: 4000,
@@ -114,6 +119,7 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
               <SwiperSlide key={item.id}>
                 <ProductCard
                   image={item.image}
+                  discount={item.discount}
                   title={item.title}
                   price={item.price}
                   rating={item.rating}

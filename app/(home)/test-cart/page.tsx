@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Trash2, Edit, Plus, Minus } from "lucide-react";
 import { specialItems6 } from "@/public/assets/support";
 import { paymentMethods } from "@/static/static";
+import FreeShippingBar from "@/components/features/free-shipping-bar";
 
 interface CartItem {
   id: number;
@@ -44,8 +45,8 @@ export default function CartPage() {
       prev.map((item) =>
         item.id === id
           ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
+          : item,
+      ),
     );
   };
 
@@ -55,14 +56,24 @@ export default function CartPage() {
 
   const subtotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
-    <div className="cus-container mx-auto py-10 font-poppins">
-      <h1 className="text-[28px] md:text-4xl font-normal text-gray-400 font-poppins mt-10 md:mt-0 mb-0 md:mb-10">Manage Your Cart</h1>
+    <div className="cus-container font-poppins mx-auto py-10">
+      <h1 className="font-poppins my-10 text-[22px] font-normal text-gray-400 md:mt-0 md:mb-10 md:text-4xl md:text-[28px]">
+        <span className="bg-[#E7448A] px-3 py-1 text-white">Manage</span>
+        <span className="bg-[#FFF0F5] px-3 py-1 text-[#E7448A]">
+          {" "}
+          Your Cart
+        </span>
+      </h1>
+      <div className="w-full pb-10 md:max-w-[500px]">
+        <FreeShippingBar total={50} />
+      </div>
+
       {/* Table Header */}
-      <div className="hidden md:grid grid-cols-12 gap-4 font-semibold text-gray-600 mb-4 border-[#E7448C] border-b-2 pb-2">
+      <div className="mb-4 hidden grid-cols-12 gap-4 border-b-2 border-[#E7448C] pb-2 font-semibold text-gray-600 md:grid">
         <div className="col-span-5">PRODUCT</div>
         <div className="col-span-2">PRICE</div>
         <div className="col-span-2">QUANTITY</div>
@@ -73,30 +84,29 @@ export default function CartPage() {
       {cartItems.map((item) => (
         <div
           key={item.id}
-          className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center py-4 border-b border-gray-400 font-poppins"
+          className="font-poppins grid grid-cols-1 items-center gap-4 border-b border-gray-400 py-4 md:grid-cols-12"
         >
           {/* Product */}
-          <div className="flex items-center col-span-5 gap-4">
-            <div className="w-24 h-24 rounded-xl overflow-hidden bg-gray-100">
+          <div className="col-span-5 flex items-center gap-4">
+            <div className="h-24 w-24 overflow-hidden rounded-xl bg-gray-100">
               <Image
                 src={specialItems6}
                 alt={item.title}
                 width={200}
                 height={200}
-                className="object-cover w-full h-full aspect-square"
+                className="aspect-square h-full w-full object-cover"
               />
             </div>
 
             <div>
-              <div className="font-medium text-gray-800 leading-tight">
+              <div className="leading-tight font-medium text-gray-800">
                 {item.title}
               </div>
-              <div className="text-sm text-gray-500 mt-1">
+              <div className="mt-1 text-sm text-gray-500">
                 Select Size: {item.size}
               </div>
 
-              <div className="flex gap-3 mt-3">
-           
+              <div className="mt-3 flex gap-3">
                 <button
                   onClick={() => handleRemove(item.id)}
                   className="text-gray-500 hover:text-red-500"
@@ -108,7 +118,7 @@ export default function CartPage() {
           </div>
 
           {/* Price */}
-          <div className="col-span-2 text-[#99A1AF] font-medium">
+          <div className="col-span-2 font-medium text-[#99A1AF]">
             AED.{item.price}
           </div>
 
@@ -120,7 +130,9 @@ export default function CartPage() {
             >
               <Minus color="#E7448C" size={20} />
             </button>
-            <span className="font-medium text-[#99A1AF] text-[16px]">{item.quantity}</span>
+            <span className="text-[16px] font-medium text-[#99A1AF]">
+              {item.quantity}
+            </span>
             <button
               onClick={() => handleQuantityChange(item.id, 1)}
               className=""
@@ -137,57 +149,58 @@ export default function CartPage() {
       ))}
 
       {/* Notes & Coupon */}
-      <div className="flex justify-between gap-10 md:gap-20 flex-col md:flex-row ">
-      <div className="mt-6 flex flex-col gap-3 font-poppins w-full">
-        <div className="flex-1 w-full">
-          <label className="block text-[#99A1AF] mb-1">Add Order Note</label>
-          <textarea
-            value={orderNote}
-            onChange={(e) => setOrderNote(e.target.value)}
-            placeholder="How can we help you?"
-            className="w-full border-b border-gray-400 min-h-[200px]  p-3 resize-none"
-          />
+      <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-20">
+        <div className="font-poppins mt-6 flex w-full flex-col gap-3">
+          <div className="w-full flex-1">
+            <label className="mb-1 block text-[#E7448A]">Add Order Note</label>
+            <textarea
+              value={orderNote}
+              onChange={(e) => setOrderNote(e.target.value)}
+              placeholder="How can we help you?"
+              className="min-h-[200px] w-full resize-none border-b border-gray-400 bg-[#FFF0F5] p-3 focus:outline-none"
+            />
+          </div>
+
+          <div className="w-full flex-1">
+            <label className="mb-1 block text-[#E7448A]">Coupon</label>
+            <input
+              type="text"
+              value={coupon}
+              onChange={(e) => setCoupon(e.target.value)}
+              placeholder="Coupon code"
+              className="w-full border-b border-gray-400 bg-[#FFF0F5] p-3 focus:outline-none"
+            />
+            <p className="mt-1 text-sm text-gray-500">
+              Coupon code will work on checkout page
+            </p>
+          </div>
         </div>
 
-        <div className="flex-1 w-full">
-          <label className="block text-[#99A1AF] mb-1">Coupon</label>
-          <input
-            type="text"
-            value={coupon}
-            onChange={(e) => setCoupon(e.target.value)}
-            placeholder="Coupon code"
-            className="w-full border-b border-gray-400  p-3"
-          />
-          <p className="text-gray-500 text-sm mt-1">
-            Coupon code will work on checkout page
-          </p>
+        {/* Subtotal & Checkout */}
+        <div className="font-poppins mt-8 flex flex-col justify-between gap-4">
+          <div className="text-lg font-semibold">
+            SUBTOTAL: Rs.{subtotal}
+            <p className="text-sm text-gray-500">
+              Taxes and shipping calculated at checkout
+            </p>
+          </div>
+          <button className="mb-[24px] cursor-pointer rounded-full bg-[#E7448C] px-10 py-3 text-white transition duration-300 hover:bg-[#121212]">
+            Check Out
+          </button>
         </div>
       </div>
-
-      {/* Subtotal & Checkout */}
-      <div className="mt-8 flex flex-col justify-between  gap-4 font-poppins">
-        <div className="text-lg font-semibold">
-          SUBTOTAL: Rs.{subtotal}
-          <p className="text-sm text-gray-500">
-            Taxes and shipping calculated at checkout
-          </p>
-        </div>
-        <button className="mb-[24px] bg-[#E7448C] cursor-pointer text-white px-10 py-3 rounded-full hover:bg-[#121212] transition duration-300">
-          Check Out
-        </button>
-
-       
-      </div>
-      </div>
-      <div
-        className="flex flex-col gap-2 mt-10 md:mt-20"
-      >
-        <p className="font-Inter text-[16px] leading-[24px] font-normal text-[#99A1AF]">
+      <div className="mt-10 flex flex-col gap-2 md:mt-20">
+        <p className="font-Inter text-[16px] leading-[24px] font-normal text-[#E7448A]">
           We accept:{" "}
         </p>
-        <div className="flex items-center justify-between">
+        <div className="mb-10 flex items-center justify-between md:mb-1">
           {paymentMethods.map((method: any, index: number) => (
-            <Image key={index} src={method.img} alt={"paymet-cards"} className="w-[50px] h-[50px] md:w-[80px] md:h-[80px]" />
+            <Image
+              key={index}
+              src={method.img}
+              alt={"paymet-cards"}
+              className="h-[50px] w-[50px] md:h-[80px] md:w-[80px]"
+            />
           ))}
         </div>
       </div>

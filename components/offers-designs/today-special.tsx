@@ -1,13 +1,8 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-
-  todaySale3,
-  todaySale4,
-} from "@/public/assets/support";
+import { todaySale3, todaySale4 } from "@/public/assets/support";
 
 const products = [
   {
@@ -89,20 +84,20 @@ export default function DealOfTheDay() {
     <section className="bg-[#FFF0F5] py-16">
       <div className="cus-container mx-auto px-4">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+        <div className="mb-12 flex flex-col md:flex-row md:items-center md:justify-between">
           {/* Left Title & Text */}
           <div className="text-center md:text-left">
             <h2 className="text-[34px] leading-[28px] font-bold text-[#E7448C]">
               Deal Of The Day
             </h2>
-            <p className="text-gray-500 max-w-md mx-auto md:mx-0 leading-5">
+            <p className="mx-auto max-w-md leading-5 text-gray-500 md:mx-0">
               Grab your favorite plush toys before the offer ends! Limited-time
               deals updated daily.
             </p>
           </div>
 
           {/* Countdown Timer */}
-          <div className="flex justify-center md:justify-end gap-4 mt-6 md:mt-0">
+          <div className="mt-6 flex justify-center gap-4 md:mt-0 md:justify-end">
             {[
               { label: "Days", value: timeLeft.days },
               { label: "Hrs", value: timeLeft.hrs },
@@ -111,9 +106,11 @@ export default function DealOfTheDay() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center w-16 h-16 bg-[#E7448C] text-white rounded-full shadow-xl"
+                className="flex h-16 w-16 flex-col items-center justify-center rounded-full bg-[#E7448C] text-white shadow-xl"
               >
-                <span className="text-[28px] leading-[20px] font-bold">{item.value}</span>
+                <span className="text-[28px] leading-[20px] font-bold">
+                  {item.value}
+                </span>
                 <span className="text-xs">{item.label}</span>
               </div>
             ))}
@@ -121,19 +118,19 @@ export default function DealOfTheDay() {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-1 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {products.map((product) => (
             <div
               key={product.id}
-              className="relative rounded-2xl bg-white p-3 shadow-sm transition-all duration-300 hover:shadow-md"
+              className="relative rounded-2xl bg-white p-2 shadow-sm transition-all duration-300 hover:shadow-md md:p-3"
             >
               {product.badge && (
-                <span className="absolute top-4 left-4 bg-[#E7448C] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                <span className="absolute top-4 left-4 rounded-full bg-[#E7448C] px-3 py-1 text-xs font-semibold text-white">
                   {product.badge}
                 </span>
               )}
 
-              <div className="relative mb-4 flex h-[300px] items-center justify-center rounded-xl bg-[#FFF0F5] p-2">
+              <div className="relative mb-4 flex h-[160px] items-center justify-center rounded-xl bg-[#FFF0F5] p-2 md:h-[300px]">
                 <Image
                   src={product.image}
                   alt={product.title}
@@ -168,7 +165,7 @@ export default function DealOfTheDay() {
                 </span>
               </div>
 
-              <button className="flex w-full shadow-2xl items-center justify-center gap-2 rounded-full bg-[#E7448C] py-2.5 font-light uppercase text-white transition hover:bg-[#000]">
+              <button className="flex w-full items-center justify-center gap-2 rounded-full bg-[#E7448C] py-2.5 font-light text-white uppercase shadow-2xl transition hover:bg-[#000]">
                 Add to cart
               </button>
             </div>
