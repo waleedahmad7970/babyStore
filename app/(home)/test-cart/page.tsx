@@ -81,72 +81,80 @@ export default function CartPage() {
       </div>
 
       {/* Cart Items */}
-      {cartItems.map((item) => (
-        <div
-          key={item.id}
-          className="font-poppins grid grid-cols-1 items-center gap-4 border-b border-gray-400 py-4 md:grid-cols-12"
-        >
-          {/* Product */}
-          <div className="col-span-5 flex items-center gap-4">
-            <div className="h-24 w-24 overflow-hidden rounded-xl bg-gray-100">
-              <Image
-                src={specialItems6}
-                alt={item.title}
-                width={200}
-                height={200}
-                className="aspect-square h-full w-full object-cover"
-              />
-            </div>
+      {cartItems?.length ? (
+        <>
+          {cartItems?.map((item) => (
+            <div
+              key={item.id}
+              className="font-poppins grid grid-cols-1 items-center gap-4 border-b border-gray-400 py-4 md:grid-cols-12"
+            >
+              {/* Product */}
+              <div className="col-span-5 flex items-center gap-4">
+                <div className="h-24 w-24 overflow-hidden rounded-xl bg-gray-100">
+                  <Image
+                    src={specialItems6}
+                    alt={item.title}
+                    width={200}
+                    height={200}
+                    className="aspect-square h-full w-full object-cover"
+                  />
+                </div>
 
-            <div>
-              <div className="leading-tight font-medium text-gray-800">
-                {item.title}
-              </div>
-              <div className="mt-1 text-sm text-gray-500">
-                Select Size: {item.size}
+                <div>
+                  <div className="leading-tight font-medium text-gray-800">
+                    {item.title}
+                  </div>
+                  <div className="mt-1 text-sm text-gray-500">
+                    Select Size: {item.size}
+                  </div>
+
+                  <div className="mt-3 flex gap-3">
+                    <button
+                      onClick={() => handleRemove(item.id)}
+                      className="text-gray-500 hover:text-red-500"
+                    >
+                      <Trash2 color="#99A1AF" size={18} />
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div className="mt-3 flex gap-3">
+              {/* Price */}
+              <div className="col-span-2 font-medium text-[#99A1AF]">
+                AED.{item.price}
+              </div>
+
+              {/* Quantity */}
+              <div className="col-span-2 flex items-center gap-2">
                 <button
-                  onClick={() => handleRemove(item.id)}
-                  className="text-gray-500 hover:text-red-500"
+                  onClick={() => handleQuantityChange(item.id, -1)}
+                  className=""
                 >
-                  <Trash2 color="#99A1AF" size={18} />
+                  <Minus color="#E7448C" size={20} />
+                </button>
+                <span className="text-[16px] font-medium text-[#99A1AF]">
+                  {item.quantity}
+                </span>
+                <button
+                  onClick={() => handleQuantityChange(item.id, 1)}
+                  className=""
+                >
+                  <Plus color="#E7448C" size={20} />
                 </button>
               </div>
+
+              {/* Total */}
+              <div className="col-span-3 text-right font-semibold text-gray-800">
+                Rs.{item.price * item.quantity}
+              </div>
             </div>
-          </div>
-
-          {/* Price */}
-          <div className="col-span-2 font-medium text-[#99A1AF]">
-            AED.{item.price}
-          </div>
-
-          {/* Quantity */}
-          <div className="col-span-2 flex items-center gap-2">
-            <button
-              onClick={() => handleQuantityChange(item.id, -1)}
-              className=""
-            >
-              <Minus color="#E7448C" size={20} />
-            </button>
-            <span className="text-[16px] font-medium text-[#99A1AF]">
-              {item.quantity}
-            </span>
-            <button
-              onClick={() => handleQuantityChange(item.id, 1)}
-              className=""
-            >
-              <Plus color="#E7448C" size={20} />
-            </button>
-          </div>
-
-          {/* Total */}
-          <div className="col-span-3 text-right font-semibold text-gray-800">
-            Rs.{item.price * item.quantity}
-          </div>
+          ))}
+        </>
+      ) : (
+        <div className="font-poppins py-20 text-center text-[35px] font-normal text-gray-400 capitalize md:py-30 md:text-[40px]">
+          Your cart is empty
         </div>
-      ))}
+      )}
 
       {/* Notes & Coupon */}
       <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-20">
