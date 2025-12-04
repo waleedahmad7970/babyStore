@@ -1,6 +1,3 @@
-
-
-
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -20,32 +17,32 @@ const DynamicPromotionBanner: React.FC<DynamicPromotionBannerProps> = ({
   onButtonClick,
 }) => {
   return (
-    <div className="relative my-12 md:my-[100px] cus-container rounded-2xl overflow-hidden group">
+    <div className="cus-container group relative my-12 overflow-hidden rounded-2xl md:my-[100px]">
       <Image
         src={image}
         alt={title}
-        className="w-full h-[260px] sm:h-[320px] md:h-full object-cover rounded-2xl z-0"
+        className="z-0 h-[260px] w-full rounded-2xl object-cover transition-all duration-500 hover:scale-125 sm:h-[320px] md:h-full"
       />
 
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl md:text-[50px] font-bold mb-2 sm:mb-3 tracking-tight drop-shadow-lg transition-all duration-500 md:group-hover:-translate-y-1 md:group-hover:scale-105">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center text-white sm:px-6">
+        <h2 className="mb-2 text-2xl font-bold tracking-tight drop-shadow-lg transition-all duration-500 sm:mb-3 sm:text-3xl md:text-[50px] md:group-hover:-translate-y-1 md:group-hover:scale-105">
           {title}
         </h2>
-        <p className="max-w-sm sm:max-w-md text-sm sm:text-base md:text-lg drop-shadow-md leading-5 sm:leading-6 transition-all duration-500 delay-100 md:group-hover:translate-y-[-4px]">
+        <p className="max-w-sm text-sm leading-5 drop-shadow-md transition-all delay-100 duration-500 sm:max-w-md sm:text-base sm:leading-6 md:text-lg md:group-hover:translate-y-[-4px]">
           {description}
         </p>
 
         {buttonText && (
           <button
             onClick={onButtonClick}
-            className="mt-4 sm:mt-6 bg-white text-black px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-500 hover:bg-[#E7448C] hover:text-white md:hover:scale-110"
+            className="mt-4 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition-all duration-500 hover:bg-[#E7448C] hover:text-white sm:mt-6 sm:px-6 sm:py-3 sm:text-base md:hover:scale-110"
           >
             {buttonText}
           </button>
         )}
       </div>
 
-      <div className="absolute inset-0 bg-black/20 rounded-2xl z-10" />
+      <div className="absolute inset-0 z-10 rounded-2xl bg-black/20" />
     </div>
   );
 };

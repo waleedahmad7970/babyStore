@@ -13,22 +13,24 @@ interface BlogSliderTwoProps {
   title?: string;
 }
 
-const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" }) => {
+const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({
+  title = "Latest Blogs",
+}) => {
   const { blogs = [] } = useAppSelector((state) => state.blogs);
 
   return (
-    <section className="group relative bg-white py-16">
+    <section className="group relative bg-white py-8 md:py-16">
       <div className="cus-container">
         {/* Header */}
         <div className="mb-10 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Newspaper className="text-[#E7448A]" size={28} />
-            <h2 className="text-[22px] md:text-[28px] font-medium text-gray-900">
-            {title}
+            <h2 className="text-[22px] font-medium text-gray-900 md:text-[28px]">
+              {title}
             </h2>
           </div>
 
-          <button className="rounded-full text-[14px] md:text-[16px] bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
+          <button className="rounded-full bg-black px-6 py-2 text-[14px] font-medium text-white transition-all hover:bg-[#E7448A] md:text-[16px]">
             View All Blogs
           </button>
         </div>
@@ -39,18 +41,19 @@ const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" })
             modules={[Navigation, Autoplay]}
             spaceBetween={40}
             breakpoints={{
-              639: {   
+              639: {
                 slidesPerView: 1,
               },
-              640: {   
+              640: {
                 slidesPerView: 2,
               },
-              768: {   
+              768: {
                 slidesPerView: 3,
               },
-              1024: {  
+              1024: {
                 slidesPerView: 3,
-              }}}
+              },
+            }}
             navigation={{
               nextEl: ".next-btn",
               prevEl: ".prev-btn",
@@ -61,7 +64,6 @@ const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" })
             }}
             loop
             className="!overflow-visible"
-           
           >
             {blogs?.length > 0 ? (
               blogs.map((blog: any, index: number) => (
@@ -78,7 +80,7 @@ const BlogSliderTwo: React.FC<BlogSliderTwoProps> = ({ title = "Latest Blogs" })
                 </SwiperSlide>
               ))
             ) : (
-              <p className="text-gray-500 text-center col-span-full">
+              <p className="col-span-full text-center text-gray-500">
                 No blogs available.
               </p>
             )}

@@ -9,34 +9,41 @@ import {
   specialItems6,
 } from "@/public/assets/support";
 import ProductCard from "../cards/product-card";
+import {
+  Banner2,
+  Banner3,
+  Banner4,
+  Banner5,
+  Banner6,
+} from "@/public/assets/banners";
 
 const products = [
   {
     id: 1,
     title: "Red Striped Polka Dress",
     price: 80,
-    image: specialItems2,
+    image: Banner2,
     rating: 5,
   },
   {
     id: 2,
     title: "Polka Dot Chambray Shirt",
     price: 60,
-    image: specialItems3,
+    image: Banner3,
     rating: 5,
   },
   {
     id: 3,
     title: "Checkered Shirt",
     price: 70,
-    image: specialItems4,
+    image: Banner5,
     rating: 4,
   },
   {
     id: 4,
     title: "Cute Baby Romper",
     price: 55,
-    image: specialItems5,
+    image: Banner6,
     rating: 5,
   },
 ];
@@ -60,30 +67,37 @@ export default function FeaturedCollection() {
           {/* ==== Left: Product Cards Grid (2x2) ==== */}
           <div className="grid grid-cols-2 gap-2 md:grid-cols-2 md:gap-6 lg:col-span-2">
             {products.map((item: any) => (
-              <ProductCard
+              <div
                 key={item.id}
-                image={item.image}
-                title={item.title}
-                price={item.price}
-                rating={item.rating}
-                onAddToCart={() => console.log(`Added ${item.title} to cart`)}
-                onWishlist={() => console.log(`Wishlisted ${item.title}`)}
-                onView={() => console.log(`Viewing ${item.title}`)}
-              />
+                className="relative overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="h-full w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                {/* Sliding glass overlay */}
+                <div className="pointer-events-none absolute inset-0">
+                  <div className="absolute top-0 left-[-100%] h-full w-full rotate-12 transform bg-white/20 backdrop-blur-sm transition-transform duration-500 group-hover:translate-x-[200%]"></div>
+                </div>
+              </div>
             ))}
           </div>
 
           {/* ==== Right: Big Promotional Banner ==== */}
           <div className="relative h-full min-h-[540px] overflow-hidden rounded-2xl">
             <Image
-              src={specialItems1}
+              src={Banner4}
               alt="Special Items Banner"
               fill
               className="scale-100 object-cover transition-transform duration-700 hover:scale-105"
             />
 
             {/* ==== Overlay & Text ==== */}
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent p-10">
+            {/* <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent p-10">
               <h3 className="mb-3 text-4xl font-bold text-white">
                 Special Collection
               </h3>
@@ -94,7 +108,7 @@ export default function FeaturedCollection() {
               <button className="w-fit rounded-full bg-[#E7448C] px-8 py-2 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-black">
                 Shop Now
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

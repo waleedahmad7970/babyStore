@@ -79,10 +79,10 @@ export default function TopMenu() {
 
   return (
     <nav
-      className="relative bg-[#E7448C] text-white font-medium text-sm z-50 group"
+      className="group relative z-50 hidden bg-[#E7448C] text-sm font-medium text-white md:block"
       onMouseLeave={() => setActiveMenu(null)} // Prevent flicker
     >
-      <div className="cus-container mx-auto flex justify-start gap-2 relative">
+      <div className="cus-container relative mx-auto flex justify-start gap-2">
         {menuData.map((menu) => {
           const subMenu = menu.subMenu ?? defaultSubMenu; // every menu has submenu now
           return (
@@ -92,13 +92,13 @@ export default function TopMenu() {
               onMouseEnter={() => setActiveMenu(menu.name)}
             >
               <button
-                className={`flex items-center gap-1 py-3 px-3 font-bold text-[16px] transition-colors duration-200 ${
+                className={`flex items-center gap-1 px-3 py-3 text-[16px] font-bold transition-colors duration-200 ${
                   activeMenu === menu.name ? "bg-pink-700" : "hover:bg-pink-700"
                 }`}
               >
                 {menu.name}
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${
+                  className={`h-4 w-4 transition-transform duration-300 ${
                     activeMenu === menu.name ? "rotate-180" : ""
                   }`}
                 />
@@ -110,26 +110,27 @@ export default function TopMenu() {
 
       {/* Dropdown Container */}
       <div
-        className={`absolute left-1/2 top-full -translate-x-1/2 w-full bg-white text-gray-800 shadow-xl transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+        className={`absolute top-full left-1/2 w-full -translate-x-1/2 bg-white text-gray-800 shadow-xl transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] ${
           activeMenu
-            ? "opacity-100 translate-y-0 visible scale-100"
-            : "opacity-0 -translate-y-3 invisible scale-95"
+            ? "visible translate-y-0 scale-100 opacity-100"
+            : "invisible -translate-y-3 scale-95 opacity-0"
         }`}
       >
         {activeMenu && (
-          <div className="cus-container mx-auto p-6 flex gap-10 min-h-[400px]">
-            {(menuData.find((m) => m.name === activeMenu)?.subMenu ??
+          <div className="cus-container mx-auto flex min-h-[400px] gap-10 p-6">
+            {(
+              menuData.find((m) => m.name === activeMenu)?.subMenu ??
               defaultSubMenu
             ).map((col, i) => (
               <div key={i} className="min-w-[200px]">
-                <h4 className="font-semibold mb-3 text-gray-900">
+                <h4 className="mb-3 font-semibold text-gray-900">
                   {col.title}
                 </h4>
                 <ul className="space-y-1">
                   {col.items.map((item, idx) => (
                     <li
                       key={idx}
-                      className="text-sm hover:text-[#E7448C] cursor-pointer transition"
+                      className="cursor-pointer text-sm transition hover:text-[#E7448C]"
                     >
                       {item}
                     </li>

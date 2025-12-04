@@ -53,20 +53,28 @@ const products = [
     price: 50,
     rating: 4,
   },
+  {
+    id: 6,
+    image: specialItems3,
+    title: "Cute Green Snail Toy",
+    price: 80,
+    rating: 5,
+  },
 ];
 
-const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => {
+const SalesSlider: React.FC<{ title?: string }> = ({
+  title = "Flash Sale",
+}) => {
   return (
-    <section className="group relative bg-white py-16">
+    <section className="group relative bg-white py-8 md:py-16">
       <div className="cus-container">
-        <div className="mb-10 flex-col md:flex-row flex items-center justify-between gap-3">
-          <div className="flex items-center flex-col md:flex-row gap-1">
-            <div className=" flex">
-
-            <Rocket className="text-[#E7448A] mr-1" size={28} />
-            <h2 className="text-[22px] md:text-[28px] font-medium text-gray-900 ">
-             {title}
-            </h2>
+        <div className="mb-10 flex flex-col items-center justify-between gap-3 md:flex-row">
+          <div className="flex flex-col items-center gap-1 md:flex-row">
+            <div className="flex">
+              <Rocket className="mr-1 text-[#E7448A]" size={28} />
+              <h2 className="text-[22px] font-medium text-gray-900 md:text-[28px]">
+                {title}
+              </h2>
             </div>
             <div className="flex gap-2">
               {["-57", "-19", "-56", "-33"].map((num, i) => (
@@ -80,7 +88,7 @@ const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => 
             </div>
           </div>
 
-          <button className="rounded-full text-[14px] md:text-[16px] bg-black px-6 py-2 font-medium text-white transition-all hover:bg-[#E7448A]">
+          <button className="rounded-full bg-black px-6 py-2 text-[14px] font-medium text-white transition-all hover:bg-[#E7448A] md:text-[16px]">
             Explore All
           </button>
         </div>
@@ -89,20 +97,24 @@ const SalesSlider: React.FC<{ title?: string }> = ({ title = "Flash Sale" }) => 
         <div className="relative overflow-hidden">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={20}
+            spaceBetween={12}
             breakpoints={{
-              639: {   
-                slidesPerView: 1,
-              },
-              640: {   
+              0: {
                 slidesPerView: 2,
               },
-              768: {   
+              375: {
+                slidesPerView: 2,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
                 slidesPerView: 3,
               },
-              1024: {  
-                slidesPerView: 4,
-              }}}
+              1024: {
+                slidesPerView: 5,
+              },
+            }}
             navigation={{
               nextEl: ".next-btn",
               prevEl: ".prev-btn",

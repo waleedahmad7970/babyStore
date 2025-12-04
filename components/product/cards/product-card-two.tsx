@@ -23,7 +23,7 @@ interface ProductData {
   id: number;
   name?: string;
   title: string;
-  image: string;
+  image?: string | any;
   price: number;
   oldPrice: number;
   discount: string;

@@ -17,13 +17,14 @@ import ReviewSliderTwo from "@/components/slider/review-slider-two";
 import RotatingTextSlider from "@/components/slider/rotating-text-slider";
 import SalesSlider from "@/components/slider/sales.slider";
 import TopCategorySlider from "@/components/slider/top-category.slider";
+import { Banner9 } from "@/public/assets/banners";
 import { bestQualityBanner } from "@/public/assets/support";
 
 export default function Home() {
   return (
     <div className="relative">
       <MobileNav />
-      {/* <TopMenu/> */}
+      <TopMenu />
       {/* <CategoryList /> */}
       <BannerSliderTwo />
       <FeatureCardsTwo />
@@ -31,10 +32,10 @@ export default function Home() {
       <div className="cus-container hidden w-full flex-col items-center justify-between gap-[50px] overflow-hidden bg-white pt-[0px] pb-[50px] md:flex md:flex-row">
         <div className="flex max-w-[300px] flex-col justify-start">
           <h1 className="text-[26px] font-light text-[#E7448C] uppercase underline">
-            Categories
+            TOP Selling
           </h1>
           <p className="py-3 text-[55px] leading-[44px] font-normal text-[#E7448C]">
-            Browsing Our Top Categories
+            Hot Categories Right Now
           </p>
           <p className="text-[18px] leading-[23px] font-normal text-[#A8A8A8]">
             Browse our top categories with top nation and internation brands and
@@ -52,8 +53,17 @@ export default function Home() {
         subtitle="Enjoy the all best products"
       />
       <DealOfTheDay />
+      <BestChoiceProductsSection />
+
       <DynamicPromotionBanner
         image={bestQualityBanner}
+        title="Best Quality, Best Comfort"
+        description="Discover our premium collection of soft toys and comfort essentials made with love."
+        buttonText="Shop Now"
+        onButtonClick={() => alert("Button Clicked!")}
+      />
+      <DynamicPromotionBanner
+        image={Banner9}
         title="Best Quality, Best Comfort"
         description="Discover our premium collection of soft toys and comfort essentials made with love."
         buttonText="Shop Now"
@@ -62,7 +72,6 @@ export default function Home() {
       <RotatingTextSlider />
       <FeaturedCollection />
       <SalesSlider />
-      <BestChoiceProductsSection />
       <HeroVideo />
       <SalesSlider title="Winter Collection Sale" />
       <RotatingTextSlider />

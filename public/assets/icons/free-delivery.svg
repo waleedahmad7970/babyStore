@@ -1,0 +1,41 @@
+<svg width="260" height="140" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Purple Gradient -->
+    <linearGradient id="grad-free" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5A2DFF" />
+      <stop offset="100%" stop-color="#7E56FF" />
+    </linearGradient>
+
+    <!-- Orange Gradient -->
+    <linearGradient id="grad-delivery" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF8B17" />
+      <stop offset="100%" stop-color="#FF5E00" />
+    </linearGradient>
+  </defs>
+
+  <!-- FREE Ticket Shape -->
+  <g transform="translate(40,10) rotate(-8)">
+    <rect width="180" height="55" rx="12" fill="url(#grad-free)" />
+    <!-- Left cut -->
+    <circle cx="0" cy="17" r="7" fill="#F3EFFF" />
+    <circle cx="0" cy="38" r="7" fill="#F3EFFF" />
+    <!-- Right cut -->
+    <circle cx="180" cy="17" r="7" fill="#F3EFFF" />
+    <circle cx="180" cy="38" r="7" fill="#F3EFFF" />
+
+    <text x="90" y="33" font-size="28" text-anchor="middle"
+      fill="white" font-weight="800" font-family="Arial, sans-serif">
+      FREE
+    </text>
+  </g>
+
+  <!-- DELIVERY Ticket Shape -->
+  <g transform="translate(20,65) rotate(-8)">
+    <rect width="220" height="60" rx="12" fill="url(#grad-delivery)" />
+
+    <text x="110" y="38" font-size="32" text-anchor="middle"
+      fill="white" font-weight="800" font-family="Arial, sans-serif">
+      DELIVERY
+    </text>
+  </g>
+</svg>

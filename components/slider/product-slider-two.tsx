@@ -20,7 +20,6 @@ const products = [
     image: specialItems2,
     title: "Baby Bag Soft panda",
     price: 50,
-    discount: 10,
     rating: 5,
   },
   {
@@ -36,7 +35,6 @@ const products = [
     image: specialItems4,
     title: "Playmat For Little One",
     price: 70,
-    discount: 10,
     rating: 5,
   },
   {
@@ -44,7 +42,6 @@ const products = [
     image: specialItems5,
     title: "Baby Green Soft Turtle",
     price: 50,
-    discount: 10,
     rating: 5,
   },
   {
@@ -52,7 +49,6 @@ const products = [
     image: specialItems6,
     title: "New Kids Toy Horse",
     price: 50,
-    discount: 10,
     rating: 4,
   },
 ];
@@ -65,7 +61,7 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
   const swiperRef = useRef<any>(null);
 
   return (
-    <section className="group relative bg-white py-10">
+    <section className="group relative bg-white py-3 md:py-10">
       <div className="cus-container">
         {/* ✅ Centered Section Heading */}
         <div className="mb-10 text-center">
@@ -87,10 +83,13 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
         <div className="relative overflow-hidden pb-10">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={20}
+            spaceBetween={12}
             breakpoints={{
-              639: {
-                slidesPerView: 1,
+              0: {
+                slidesPerView: 2,
+              },
+              375: {
+                slidesPerView: 2,
               },
               640: {
                 slidesPerView: 2,
@@ -99,12 +98,12 @@ const ProductsSliderTwo: React.FC<{ title?: string; subtitle?: string }> = ({
                 slidesPerView: 3,
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 5,
               },
             }}
             loop={true}
             autoplay={{
-              delay: 4000,
+              delay: 400000000000,
               disableOnInteraction: false,
             }}
             navigation={{

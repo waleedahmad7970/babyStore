@@ -90,26 +90,28 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   }
   return result;
 }
-const mobileChunks = chunkArray(toys, 4);
+const mobileChunks = chunkArray(toys, 6);
 
 const TopCategoriesSection: React.FC = () => (
   <div
-    className="cus-container flex flex-col flex-wrap gap-8 pt-[50px] pb-[100px] xl:flex-row"
+    className="cus-container flex flex-col flex-wrap gap-3 pt-[50px] pb-[100px] md:gap-8 xl:flex-row"
     style={{ background: "#fff" }}
   >
     {/* Left Banner */}
     <div
-      className="flex min-h-[350px] flex-col items-center justify-center rounded-2xl p-10 text-[#fff] xl:w-[430px]"
+      className="flex flex-col items-center justify-center rounded-[8px] p-2 text-[#fff] md:min-h-[350px] md:rounded-2xl md:p-10 xl:w-[430px]"
       style={{
         background: mainColor,
       }}
     >
-      <span className="text-[50px] leading-[45px] sm:text-[68px] sm:leading-[60px]">
+      <span className="hidden text-[50px] leading-[45px] sm:text-[68px] sm:leading-[60px] md:block">
         Explore With Our Categories
       </span>
-      <span className="mt-2 mb-3 text-4xl font-bold">New & Trending</span>
+      <span className="font-poppins text-[24px] md:mt-2 md:mb-3 md:text-4xl">
+        New & Trending
+      </span>
       <button
-        className="mt-6 cursor-pointer rounded-full px-10 py-3 text-xl font-bold shadow-2xl hover:mr-3"
+        className="mt-6 hidden cursor-pointer rounded-full px-10 py-3 text-xl font-bold shadow-2xl hover:mr-3 md:block"
         style={{ background: "#fff0f5", color: mainColor }}
       >
         Explore All
@@ -124,11 +126,11 @@ const TopCategoriesSection: React.FC = () => (
       >
         {mobileChunks.map((chunk, index) => (
           <SwiperSlide key={index}>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-1">
               {chunk.map((toy, idx) => (
                 <div
                   key={idx}
-                  className="flex cursor-pointer flex-col items-center gap-2 rounded-2xl bg-white p-3 hover:bg-[#FFF0F5]"
+                  className="flex cursor-pointer flex-col items-center gap-2 rounded-2xl bg-white hover:bg-[#FFF0F5] md:p-3"
                 >
                   <Image
                     src={`${imageBaseUrl}/assets/menu_category/${toy?.image}`}
@@ -147,7 +149,7 @@ const TopCategoriesSection: React.FC = () => (
                       style={{ color: mainColor }}
                     >
                       {AbbreviateNumber(toy.price)}{" "}
-                      <span className="font-light text-[#A8A8A8]">
+                      <span className="hidden font-light text-[#A8A8A8] md:block">
                         Products
                       </span>
                     </div>

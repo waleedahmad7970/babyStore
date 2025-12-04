@@ -28,6 +28,7 @@ export { default as twoX } from "../icons/twoX.svg";
 export { default as tabby } from "../icons/tabby.svg";
 export { default as connection } from "../icons/connection.svg";
 export { default as price_match } from "../icons/price_match.svg";
+export { default as freeDeliveryIcon } from "../icons/free-delivery.svg";
 
 // delievry
 export { default as truck } from "../icons/truck.svg";

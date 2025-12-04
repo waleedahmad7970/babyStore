@@ -11,50 +11,34 @@ const features = [
 
 export default function FeatureCardsTwo() {
   return (
-    <div className="cus-container mx-auto my-10 w-full">
-      {/* MOBILE AUTO-SLIDER */}
-      <div className="group relative overflow-hidden sm:hidden">
-        <div className="animate-marquee flex gap-2 px-1">
+    <div className="cus-container mx-auto my-3 w-full overflow-hidden md:my-10">
+      {/* MOBILE + DESKTOP MARQUEE (same UI, same animation) */}
+      <div className="group relative overflow-hidden">
+        <div className="animate-marquee flex gap-3 px-1 sm:gap-6 sm:px-4">
           {[...features, ...features].map((feature, i) => (
             <div
               key={i}
-              className="flex min-w-[200px] cursor-pointer snap-start items-center gap-4 rounded-xl bg-[#FFF0F5] p-2 transition-all duration-300 hover:shadow-lg"
+              className="flex min-w-[200px] cursor-pointer items-center gap-4 rounded-xl bg-[#FFF0F5] p-2 transition-all duration-300 hover:shadow-lg sm:min-w-[300px] sm:p-6"
             >
               <Image
                 src={feature.icon}
                 alt={feature.title}
-                className="max-h-[40px] max-w-[30px] animate-bounce"
+                className="h-[35px] w-[30px] sm:h-[50px] sm:w-[50px]"
               />
               <div>
-                <h3 className="text-sm font-semibold text-gray-800">
+                <h3 className="text-sm font-semibold text-gray-800 sm:text-lg">
                   {feature.title}
                 </h3>
-                <p className="text-[10px] text-gray-500">{feature.subtitle}</p>
+                <p className="text-[10px] text-gray-500 sm:text-sm">
+                  {feature.subtitle}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* DESKTOP GRID */}
-      <div className="hidden grid-cols-1 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-        {features.map((feature, i) => (
-          <div
-            key={i}
-            className="flex cursor-pointer items-center gap-4 rounded-xl bg-[#FFF0F5] p-6 transition-all duration-300 hover:shadow-lg"
-          >
-            <Image src={feature.icon} alt={feature.title} />
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-gray-500">{feature.subtitle}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* ANIMATION STYLES */}
+      {/* ANIMATION */}
       <style jsx>{`
         @keyframes marquee {
           0% {
@@ -71,7 +55,6 @@ export default function FeatureCardsTwo() {
           animation: marquee 25s linear infinite;
         }
 
-        /* Pause on hover */
         .group:hover .animate-marquee {
           animation-play-state: paused;
         }
