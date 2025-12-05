@@ -183,6 +183,7 @@ import Image from "next/image";
 import { Heart, Star, ShoppingCart } from "lucide-react";
 import { matched, s_tag } from "@/public/assets/icons";
 import { todaySale3, todaySale4 } from "@/public/assets/support";
+import ProductCard from "../cards/product-card";
 // import s_tag from "@/public/..."
 // import matched from "@/public/..."
 // import todaySale3, todaySale4… (your imports)
@@ -328,87 +329,95 @@ export default function DealOfTheDay() {
                 : 0;
 
             return (
-              <div
+              <ProductCard
                 key={product.id}
-                className="group/card relative cursor-pointer rounded-2xl bg-[#FFF0F5] text-center transition-all duration-300 hover:shadow-lg"
-              >
-                {/* Popular + Discount Badges */}
-                <div className="absolute top-3 right-0 left-0 z-10 flex items-center justify-between px-3">
-                  <div className="text rounded-[20px] bg-[#E7448A] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
-                    Popular
-                  </div>
-                  {discount > 0 && (
-                    <div className="text rounded-[20px] bg-[#46af56] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
-                      {discount}% OFF
-                    </div>
-                  )}
-                </div>
+                image={product.image}
+                discount={discount}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+              />
+              // <div
+              //   key={product.id}
+              //   className="group/card relative cursor-pointer rounded-2xl bg-[#FFF0F5] text-center transition-all duration-300 hover:shadow-lg"
+              // >
+              //   {/* Popular + Discount Badges */}
+              //   <div className="absolute top-3 right-0 left-0 z-10 flex items-center justify-between px-3">
+              //     <div className="text rounded-[20px] bg-[#E7448A] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
+              //       Popular
+              //     </div>
+              //     {discount > 0 && (
+              //       <div className="text rounded-[20px] bg-[#46af56] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
+              //         {discount}% OFF
+              //       </div>
+              //     )}
+              //   </div>
 
-                {/* Heart Icon */}
-                <div className="absolute top-[50%] right-4 z-10 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FFE6F2] hover:bg-[#E7448A] md:h-[40px] md:w-[40px]">
-                  <Heart
-                    className="h-[15px] w-[15px] md:h-[22px] md:w-[22px]"
-                    fill="#FFE6F2"
-                    color="#E7448A"
-                  />
-                </div>
+              //   {/* Heart Icon */}
+              //   <div className="absolute top-[50%] right-4 z-10 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FFE6F2] hover:bg-[#E7448A] md:h-[40px] md:w-[40px]">
+              //     <Heart
+              //       className="h-[15px] w-[15px] md:h-[22px] md:w-[22px]"
+              //       fill="#FFE6F2"
+              //       color="#E7448A"
+              //     />
+              //   </div>
 
-                {/* Image */}
-                <div className="relative flex h-[170px] items-center justify-center overflow-hidden rounded-xl md:h-[250px]">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    width={325}
-                    height={250}
-                    className="object-contain transition-transform duration-500 group-hover/card:scale-110 md:group-hover/card:scale-125"
-                  />
-                </div>
+              //   {/* Image */}
+              //   <div className="relative flex h-[170px] items-center justify-center overflow-hidden rounded-xl md:h-[250px]">
+              //     <Image
+              //       src={product.image}
+              //       alt={product.title}
+              //       width={325}
+              //       height={250}
+              //       className="object-contain transition-transform duration-500 group-hover/card:scale-110 md:group-hover/card:scale-125"
+              //     />
+              //   </div>
 
-                {/* Product Info */}
-                <div className="flex justify-between gap-1 px-2 pb-4 md:gap-5 md:px-4">
-                  <div className="flex flex-col justify-start gap-1">
-                    <h3 className="line-clamp-2 text-left text-[14px] font-semibold text-[#3B3B45]">
-                      {product.title}
-                    </h3>
+              //   {/* Product Info */}
+              //   <div className="flex justify-between gap-1 px-2 pb-4 md:gap-5 md:px-4">
+              //     <div className="flex flex-col justify-start gap-1">
+              //       <h3 className="line-clamp-2 text-left text-[14px] font-semibold text-[#3B3B45]">
+              //         {product.title}
+              //       </h3>
 
-                    {/* Rating */}
-                    <div className="flex items-center gap-1 text-[10px] text-[#3B3B45] md:text-[12px]">
-                      <Star size={16} fill="#FACC15" color="" />
-                      <span>{product.rating}</span>
-                      <span>(203)</span>
-                    </div>
+              //       {/* Rating */}
+              //       <div className="flex items-center gap-1 text-[10px] text-[#3B3B45] md:text-[12px]">
+              //         <Star size={16} fill="#FACC15" color="" />
+              //         <span>{product.rating}</span>
+              //         <span>(203)</span>
+              //       </div>
 
-                    {/* Price */}
-                    <div className="text-left text-[12px] font-bold text-[#3B3B45]">
-                      AED {product.price.toFixed(2)}
-                      {product.oldPrice > 0 && (
-                        <span className="ml-2 text-[10px] text-gray-400 line-through">
-                          AED {product.oldPrice.toFixed(2)}
-                        </span>
-                      )}
-                    </div>
+              //       {/* Price */}
+              //       <div className="text-left text-[12px] font-bold text-[#3B3B45]">
+              //         AED {product.price.toFixed(2)}
+              //         {product.oldPrice > 0 && (
+              //           <span className="ml-2 text-[10px] text-gray-400 line-through">
+              //             AED {product.oldPrice.toFixed(2)}
+              //           </span>
+              //         )}
+              //       </div>
 
-                    {/* S-tag badge */}
-                    <span className="flex max-w-max items-center gap-[3px] rounded-[15px] bg-[#FE9132] px-[5px] py-[2px] text-xs text-white">
-                      <Image src={s_tag} alt="s" width={10} height={10} />
-                      <Image src={matched} alt="match" height={6} />
-                    </span>
+              //       {/* S-tag badge */}
+              //       <span className="flex max-w-max items-center gap-[3px] rounded-[15px] bg-[#FE9132] px-[5px] py-[2px] text-xs text-white">
+              //         <Image src={s_tag} alt="s" width={10} height={10} />
+              //         <Image src={matched} alt="match" height={6} />
+              //       </span>
 
-                    {/* Free Delivery */}
-                    <div className="text-left text-[12px] font-bold text-[#3B82F6]">
-                      Free Delivery
-                    </div>
-                  </div>
+              //       {/* Free Delivery */}
+              //       <div className="text-left text-[12px] font-bold text-[#3B82F6]">
+              //         Free Delivery
+              //       </div>
+              //     </div>
 
-                  <div className="flex h-full self-end pr-2 md:pr-0">
-                    <div className="flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#E7448A] p-0 md:h-[40px] md:w-[40px] md:p-2">
-                      <ShoppingCart
-                        className={`h-[10px] w-[10px] text-white md:h-[22px] md:w-[22px]`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              //     <div className="flex h-full self-end pr-2 md:pr-0">
+              //       <div className="flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#E7448A] p-0 md:h-[40px] md:w-[40px] md:p-2">
+              //         <ShoppingCart
+              //           className={`h-[10px] w-[10px] text-white md:h-[22px] md:w-[22px]`}
+              //         />
+              //       </div>
+              //     </div>
+              //   </div>
+              // </div>
             );
           })}
         </div>

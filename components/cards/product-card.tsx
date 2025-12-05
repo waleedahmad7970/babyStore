@@ -231,16 +231,21 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Star, Heart, Eye, ShoppingBag, ShoppingCart } from "lucide-react";
-import { freeDeliveryIcon, matched, s_tag } from "@/public/assets/icons";
+import {
+  aedIcon,
+  freeDeliveryIcon,
+  matched,
+  s_tag,
+} from "@/public/assets/icons";
 
 interface ProductCardProps {
-  image: string;
+  image?: any;
   title: string;
   price: number;
   rating: number;
-  discount?: string;
+  discount?: string | number | any;
   onAddToCart?: () => void;
   onWishlist?: () => void;
   onView?: () => void;
@@ -266,19 +271,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={toggleMobileActive}
-      className="group/card relative cursor-pointer rounded-2xl bg-[#FFF0F5] text-center transition-all duration-300 hover:shadow-lg"
+      className="group/card shah relative cursor-pointer overflow-hidden rounded-[12px] border border-[#FFF0F5] bg-white text-center transition-all duration-300 hover:shadow-lg"
     >
       <div className="absolute top-3 right-0 left-0 z-10 flex items-center justify-between px-3">
-        <div className="text rounded-[20px] bg-[#E7448A] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
+        <div className="text rounded-[20px] bg-[#E7448A] px-2 py-1 text-[10px] font-semibold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
           Popular
         </div>
-        {discount && (
-          <div className="text rounded-[20px] bg-[#46af56] px-2 py-1 text-[10px] font-bold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
+        {discount > 0 && (
+          <div className="text rounded-[20px] bg-[#46af56] px-2 py-1 text-[10px] font-semibold text-white drop-shadow-2xl md:px-3 md:text-[14px]">
             {discount}% OFF
           </div>
         )}
       </div>
-      <div className="absolute top-[50%] right-4 z-10 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FFE6F2] hover:bg-[#E7448A] md:h-[40px] md:w-[40px]">
+      <div className="absolute top-[54%] right-4 z-10 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#FFE6F2] shadow-2xl shadow-md hover:bg-[#E7448A] md:top-[54%] md:h-[40px] md:w-[40px]">
         <Heart
           className="h-[15px] w-[15px] md:h-[22px] md:w-[22px]"
           fill="#FFE6F2"
@@ -287,7 +292,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Image Wrapper */}
-      <div className="relative flex h-auto items-center justify-center overflow-hidden rounded-xl md:h-[250px]">
+      <div className="relative flex h-auto items-center justify-center overflow-hidden md:h-[250px]">
         <Image
           src={image}
           alt={title}
@@ -328,39 +333,52 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Product Info */}
-      <div className="flex justify-between gap-1 px-2 pb-4 md:gap-5 md:px-4">
+      <div className="flex justify-between gap-1 p-2 md:gap-5 md:p-4">
         <div className="flex flex-col justify-start gap-1">
-          <h3 className="mt-0 line-clamp-2 text-left text-[14px] font-semibold text-[#3B3B45]">
+          <h3 className="font-Inter mt-0 line-clamp-1 text-left text-[14px] font-semibold text-[#3B3B45]">
             {title}
           </h3>
 
           <div className="mt-0 flex items-center gap-1 text-[8px] text-[#3B3B45] md:text-[12px]">
             <Star size={16} fill="#FACC15" color="" />
             <span className="text-[#3B3B45]">{rating}</span>
-            <span>(203)</span>
+            <span className="text-[#71717A]">(203)</span>
           </div>
 
-          <div className="mt-0 text-left text-[10px] font-bold text-[#3B3B45] md:text-[12px]">
-            AED{" "}
+          <div className="mt-0 flex items-center justify-start gap-0 text-left text-[12px] font-bold text-[#3B3B45] md:text-[14px]">
+            {/* Discount % */}
+            <Image
+              src={aedIcon}
+              alt="match"
+              className="mr-[2px] h-[12px] w-[12px] max-w-max md:mt-[1px]"
+            />
             {Number(price) > 0 && Number(discount)
               ? ((Number(discount) / Number(price)) * 100).toFixed(2)
               : "0.00"}
-            <span className="ml-1 text-[8px] font-normal text-gray-400 line-through md:text-[10px]">
-              AED {price.toFixed(2)}
-            </span>{" "}
+            <span className="ml-1 flex items-center gap-0 text-[8px] font-normal text-gray-400 md:text-[10px]">
+              <Image
+                src={aedIcon}
+                alt="match"
+                className="mr-[2px] h-[10px] w-[10px] max-w-max md:mt-[1px]"
+              />
+              <span className="text-[12px] line-through md:text-[14px]">
+                {price.toFixed(2)}
+              </span>
+            </span>
           </div>
-          <span className="flex max-w-max items-center gap-[2.7px] rounded-[15px] bg-[#FE9132] px-[3.7px] py-[1.7px] text-xs text-white">
+
+          {/* <span className="flex max-w-max items-center gap-[2.7px] rounded-[15px] bg-[#FE9132] px-[3.7px] py-[1.7px] text-xs text-white">
             <Image src={s_tag} alt="s" width={10} height={10} />{" "}
             <Image src={matched} alt="match" height={6} />
-          </span>
+          </span> */}
           <div className="mt-0 text-left text-[10px] font-bold text-[#3B82F6] capitalize md:text-[12px]">
             Free Delivery
           </div>
         </div>
         <div className="flex h-full self-end pr-2 md:pr-0">
-          <div className="flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#E7448A] p-0 md:h-[40px] md:w-[40px] md:p-2">
+          <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#E7448A] p-0 md:h-[40px] md:w-[40px] md:p-2">
             <ShoppingCart
-              className={`h-[10px] w-[10px] md:h-[22px] md:w-[22px] ${added ? "text-white" : "text-gray-400"} `}
+              className={`h-[14px] w-[14px] md:h-[22px] md:w-[22px] ${added ? "text-white" : "text-gray-400"} `}
             />
           </div>
         </div>
